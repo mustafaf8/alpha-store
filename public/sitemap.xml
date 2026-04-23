@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+
+    <!-- Ana Sayfa -->
+    <url>
+        <loc>http://gokturklerenerji.com/</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Güneş Enerjisi Ana Kategorileri -->
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=monokristal-gunes-panelleri</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=dc-pompalar</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=off-grid-inverterler</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=lityum-akuler</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Güneş Paneli Alt Kategorileri -->
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=pompa-suruculeri</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=on-grid-inverterler</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=solar-kablolar</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=ac-dc-aku-sarj-cihazlari</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=mppt-sarj-regulatorleri</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- İnverter Alt Kategorileri -->
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=pwm-sarj-regulatorleri</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=modifiye-sinus-inverterler</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=tam-sinus-akill-inverterler</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=tam-sinus-ups-karavan-inverterler</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=tam-sinus-inverterler</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Akü Alt Kategorileri -->
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=auxsol-string-inverterler</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=deye-hibrit-inverterler</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?category=deye-string-inverterler</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- GES Kurulum ve Hizmetler -->
+
+    <!-- Marka Sayfaları -->
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?brand=mexxsun</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?brand=deye</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+        <url>
+            <loc>http://gokturklerenerji.com/shop/listing?brand=sako</loc>
+            <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.7</priority>
+        </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/listing?brand=rmr</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Güç Kapasitesi Sayfaları -->
+    <url>
+        <loc>http://gokturklerenerji.com/3kw-gunes-enerjisi</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/5kw-gunes-enerjisi</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/10kw-gunes-enerjisi</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Bilgi ve Rehber Sayfaları -->
+    <url>
+        <loc>http://gokturklerenerji.com/shop/islem-rehberi</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- İletişim ve Hakkımızda -->
+    <url>
+        <loc>http://gokturklerenerji.com/shop/iletisim</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>http://gokturklerenerji.com/shop/hakkimizda</loc>
+        <lastmod>2024-12-19T10:00:00+03:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+</urlset>

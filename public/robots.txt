@@ -1,0 +1,181 @@
+# ===================================================================
+# Göktürkler Enerji - Konya Güneş Enerjisi Sistemleri için robots.txt
+# Güneş Enerjisi SEO Optimizasyonu - 2025
+# ===================================================================
+
+# Tüm arama motoru botları için geçerli kurallar
+User-agent: *
+
+# -------------------------------------------------------------------
+# GÜNEŞ ENERJİSİ İÇERİKLERİNE ÖNCELİK VERME
+# Ana sayfa ve kategori sayfalarına tam erişim
+# -------------------------------------------------------------------
+
+Allow: /
+Allow: /shop/
+Allow: /shop/listing
+Allow: /shop/iletisim
+Allow: /shop/hakkimizda
+Allow: /shop/islem-rehberi
+
+# Güneş Enerjisi Kategorileri
+Allow: /shop/listing?category=monokristal-gunes-panelleri
+Allow: /shop/listing?category=dc-pompalar
+Allow: /shop/listing?category=off-grid-inverterler
+Allow: /shop/listing?category=lityum-akuler
+Allow: /shop/listing?category=pompa-suruculeri
+Allow: /shop/listing?category=on-grid-inverterler
+Allow: /shop/listing?category=solar-kablolar
+Allow: /shop/listing?category=ac-dc-aku-sarj-cihazlari
+Allow: /shop/listing?category=mppt-sarj-regulatorleri
+Allow: /shop/listing?category=pwm-sarj-regulatorleri
+Allow: /shop/listing?category=modifiye-sinus-inverterler
+Allow: /shop/listing?category=tam-sinus-akill-inverterler
+Allow: /shop/listing?category=tam-sinus-ups-karavan-inverterler
+Allow: /shop/listing?category=tam-sinus-inverterler
+Allow: /shop/listing?category=auxsol-string-inverterler
+Allow: /shop/listing?category=deye-hibrit-inverterler
+Allow: /shop/listing?category=deye-string-inverterler
+
+# Marka Sayfaları
+Allow: /shop/listing?brand=mexxsun
+Allow: /shop/listing?brand=deye
+Allow: /shop/listing?brand=sako
+Allow: /shop/listing?brand=rmr
+
+# Güç Kapasitesi Sayfaları
+Allow: /3kw-gunes-enerjisi
+Allow: /5kw-gunes-enerjisi
+Allow: /10kw-gunes-enerjisi
+
+# -------------------------------------------------------------------
+# KULLANICIYA ÖZEL VE İŞLEVSEL SAYFALARIN ENGELLENMESİ
+# Bu alanlar arama sonuçlarında değer taşımaz ve taranmamalıdır.
+# -------------------------------------------------------------------
+
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /hesabim/
+Disallow: /sepet/
+Disallow: /checkout/
+Disallow: /odeme/
+Disallow: /siparis-takip/
+Disallow: /favoriler/
+Disallow: /karsilastir/
+
+# -------------------------------------------------------------------
+# YİNELENEN İÇERİĞİ ÖNLEME
+# Dahili arama sonuçları ve parametre tabanlı URL'ler
+# taranarak tarama bütçesinin boşa harcanmasını engeller.
+# -------------------------------------------------------------------
+
+# Dahili arama sonuç sayfaları
+Disallow: /arama
+Disallow: /search
+
+# URL parametreleri (filtreleme, sıralama, izleme vb.)
+# Bu kural, '?' içeren tüm URL'leri engelleyerek en kapsamlı korumayı sağlar.
+# Ancak sitemap'teki kategori ve marka sayfalarına izin veriyoruz
+Disallow: /*?sort=
+Disallow: /*?page=
+Disallow: /*?filter=
+Disallow: /*?price=
+Disallow: /*?brand=
+Disallow: /*?category=
+Disallow: /*?search=
+Disallow: /*?q=
+
+# -------------------------------------------------------------------
+# TARAYICININ SAYFAYI DOĞRU RENDER ETMESİ İÇİN GEREKLİ İZİNLER
+# Google'ın sayfaları tam olarak görmesi için CSS ve JS dosyaları
+# gibi kaynaklara erişimine izin verilmelidir.
+# -------------------------------------------------------------------
+
+Allow: /assets/*.js
+Allow: /assets/*.css
+Allow: /*.js$
+Allow: /*.css$
+
+# -------------------------------------------------------------------
+# GÜNEŞ ENERJİSİ ÜRÜN GÖRSELLERİNE ERİŞİM
+# Ürün fotoğrafları ve teknik çizimler için izin
+# -------------------------------------------------------------------
+
+Allow: /images/gunes-paneli/
+Allow: /images/inverter/
+Allow: /images/aku/
+Allow: /images/ges-kurulumu/
+Allow: /images/products/
+Allow: /images/brands/
+
+# -------------------------------------------------------------------
+# SİTE HARİTALARININ KONUMU
+# Ana site haritası indeksi burada belirtilir.
+# -------------------------------------------------------------------
+
+Sitemap: http://gokturklerenerji.com/sitemap.xml
+
+# -------------------------------------------------------------------
+# GOOGLE BOTLARI İÇİN ÖZEL KURALLAR
+# Google'ın güneş enerjisi içeriklerini daha iyi anlaması için
+# -------------------------------------------------------------------
+
+User-agent: Googlebot
+Allow: /
+Allow: /shop/
+Allow: /shop/listing
+Allow: /shop/listing?category=*
+Allow: /shop/listing?brand=*
+Allow: /shop/iletisim
+Allow: /shop/hakkimizda
+Allow: /shop/islem-rehberi
+Allow: /3kw-gunes-enerjisi
+Allow: /5kw-gunes-enerjisi
+Allow: /10kw-gunes-enerjisi
+
+# Güneş Enerjisi Kategorileri
+Allow: /shop/listing?category=monokristal-gunes-panelleri
+Allow: /shop/listing?category=dc-pompalar
+Allow: /shop/listing?category=off-grid-inverterler
+Allow: /shop/listing?category=lityum-akuler
+Allow: /shop/listing?category=pompa-suruculeri
+Allow: /shop/listing?category=on-grid-inverterler
+Allow: /shop/listing?category=solar-kablolar
+Allow: /shop/listing?category=ac-dc-aku-sarj-cihazlari
+Allow: /shop/listing?category=mppt-sarj-regulatorleri
+Allow: /shop/listing?category=pwm-sarj-regulatorleri
+Allow: /shop/listing?category=modifiye-sinus-inverterler
+Allow: /shop/listing?category=tam-sinus-akill-inverterler
+Allow: /shop/listing?category=tam-sinus-ups-karavan-inverterler
+Allow: /shop/listing?category=tam-sinus-inverterler
+Allow: /shop/listing?category=auxsol-string-inverterler
+Allow: /shop/listing?category=deye-hibrit-inverterler
+Allow: /shop/listing?category=deye-string-inverterler
+
+# Marka Sayfaları
+Allow: /shop/listing?brand=mexxsun
+Allow: /shop/listing?brand=deye
+Allow: /shop/listing?brand=sako
+Allow: /shop/listing?brand=rmr
+
+# Crawl-delay: Google botları için özel bekleme süresi
+Crawl-delay: 1
+
+# -------------------------------------------------------------------
+# BING BOTLARI İÇİN ÖZEL KURALLAR
+# -------------------------------------------------------------------
+
+User-agent: Bingbot
+Allow: /
+Allow: /shop/
+Allow: /shop/listing
+Allow: /shop/listing?category=*
+Allow: /shop/listing?brand=*
+Allow: /shop/iletisim
+Allow: /shop/hakkimizda
+Allow: /shop/islem-rehberi
+Allow: /3kw-gunes-enerjisi
+Allow: /5kw-gunes-enerjisi
+Allow: /10kw-gunes-enerjisi
+
+Crawl-delay: 1
