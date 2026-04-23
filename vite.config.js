@@ -1,17 +1,3 @@
-// import path from "path";
-// import { defineConfig } from "vite";
-// import react from "@vitejs/plugin-react";
-
-// // https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-//   resolve: {
-//     alias: {
-//       "@": path.resolve(__dirname, "./src"),
-//     },
-//   },
-// });
-
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
@@ -29,17 +15,6 @@ export default defineConfig({
     alias: {
       // Artık bu satır doğru çalışacaktır
       "@": path.resolve(__dirname, "./src"),
-    },
-  },
-  // Geliştirme sunucusu ayarları
-  server: {
-    // API istekleri için proxy ayarı
-    proxy: {
-      "/api": {
-        target: "http://localhost:5000", // Yerelde çalışan backend sunucunuz
-        changeOrigin: true, // Sunucu tarafı VHost için gereklidir
-        secure: false,
-      },
     },
   },
   css: {
