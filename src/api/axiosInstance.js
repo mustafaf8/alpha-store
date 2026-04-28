@@ -1,12 +1,8 @@
 import axios from "axios";
-import { mockApiAdapter } from "@/mockSite/mockApi";
-
-const isStaticDemoMode = true;
 
 const axiosInstance = axios.create({
-  baseURL: "/api",
+  baseURL: "https://alpha-storegit-47047583-a5a89.firebaseapp.com/api",
   withCredentials: true,
-  ...(isStaticDemoMode ? { adapter: mockApiAdapter } : {}),
 });
 
 export default axiosInstance;
