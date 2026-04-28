@@ -21,6 +21,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Caches and temp files
+.firebase/
 .cache/
 .parcel-cache/
 .eslintcache

@@ -64,6 +64,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        jarir: {
+          blue: "#004169",
+          yellow: "#FBB03B",
+          red: "#E30613",
+          gray: "#F4F4F4",
+          blueHover: "#003250"
+        }
       },
       borderRadius: {
         lg: "var(--radius)",

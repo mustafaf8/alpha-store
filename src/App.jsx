@@ -14,6 +14,7 @@ const SearchProducts = lazy(() => import("./pages/shopping-view/search"));
 const ProductSpecsPage = lazy(() =>
   import("./pages/shopping-view/ProductSpecsPage")
 );
+const ShoppingCartPage = lazy(() => import("./pages/shopping-view/cart"));
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="listing" element={<ShoppingListing />} />
             <Route path="search" element={<SearchProducts />} />
             <Route path="product/:id/specs" element={<ProductSpecsPage />} />
+            <Route path="cart" element={<ShoppingCartPage />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />

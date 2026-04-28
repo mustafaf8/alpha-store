@@ -1,4 +1,4 @@
-import { MessageCircle, Search, ChevronDown } from "lucide-react";
+import { MessageCircle, Search, ChevronDown, ShoppingCart } from "lucide-react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -164,43 +164,76 @@ function CategorySubMenu() {
     navigate(`/shop/listing?category=${slug}`);
   };
 
+  // Turkish → English category name mapping
+  const translateName = (name = "") => {
+    const map = {
+      "telefon": "Phones",
+      "telefonlar": "Phones",
+      "laptop": "Laptops",
+      "laptoplar": "Laptops",
+      "bilgisayar": "Computers",
+      "tablet": "Tablets",
+      "tabletler": "Tablets",
+      "kulaklık": "Headphones",
+      "kulaklıklar": "Headphones",
+      "kamera": "Cameras",
+      "kameralar": "Cameras",
+      "oyun": "Gaming",
+      "aksesuar": "Accessories",
+      "aksesuarlar": "Accessories",
+      "yazıcı": "Printers",
+      "yazıcılar": "Printers",
+      "ekran": "Monitors",
+      "ekranlar": "Monitors",
+      "ses sistemi": "Audio",
+      "ses sistemleri": "Audio",
+      "tv": "TV",
+      "televizyon": "TV",
+      "akıllı saat": "Smart Watches",
+      "akıllı saatler": "Smart Watches",
+      "müzik": "Music",
+      "kitap": "Books",
+      "kırtasiye": "Stationery",
+      "ofis": "Office",
+      "baskı": "Print",
+    };
+    return map[name.toLowerCase()] || name;
+  };
+
   if (categoriesLoading) {
     return (
-      <div className="flex items-center justify-center gap-x-3 md:gap-x-4 h-10 px-4">
+      <div className="flex items-center justify-center gap-x-3 md:gap-x-4 h-11 px-4 border-b border-slate-100 bg-white">
         {Array.from({ length: 8 }).map((_, i) => (
-          <Skeleton key={i} className="h-5 w-24 rounded" />
+          <Skeleton key={i} className="h-5 w-24 rounded-full" />
         ))}
       </div>
     );
   }
 
   return (
-    <nav className="flex items-center justify-center gap-x-1 md:gap-x-2 min-h-12  dark:bg-muted/10 overflow-x-auto px-2 category-menu-container relative z-[99999999] bg-background">
-      {categoryList.map((category) =>
+    <nav className="flex items-center justify-center gap-x-1 min-h-11 bg-white border-b border-slate-100 overflow-x-auto no-scrollbar px-4 lg:px-20 category-menu-container relative z-[99999999] shadow-sm">
+      {categoryList.slice(0, 10).map((category) =>
         category.children && category.children.length > 0 ? (
-          // Ana Kategori (Alt dalları var) - Hover menü
           <HoverMenu
             key={category._id}
             trigger={
-              <Button
-                variant="mustafa"
-                size="mustafa"
-                className="text-sm font-medium text-muted-foreground hover:text-primary px-2 whitespace-normal flex items-center gap-1 min-w-0 max-w-32 text-center h-auto py-2"
+              <button
+                className="text-xs font-semibold text-slate-600 hover:text-purple-700 px-3 py-1.5 whitespace-nowrap flex items-center gap-1 rounded-full hover:bg-purple-50 transition-all duration-200"
               >
-                <span className="break-words">{category.name}</span>
-                <ChevronDown className="h-4 w-4 transition-transform duration-200 flex-shrink-0" />
-              </Button>
+                <span>{translateName(category.name)}</span>
+                <ChevronDown className="h-3 w-3 transition-transform duration-200 flex-shrink-0" />
+              </button>
             }
           >
-            {/* Ana kategorinin kendisine gitmek için link */}
+            {/* Link to the main category itself */}
             <div
               className="category-menu-item px-4 py-3 cursor-pointer text-sm"
               onClick={() => handleNavigate(category.slug)}
             >
-              <span className="break-words">Tüm {category.name}</span>
+              <span className="break-words font-semibold text-purple-700">All {translateName(category.name)}</span>
             </div>
-            <div className="border-t border-gray-200 dark:border-gray-700 my-1"></div>
-            {/* Alt dallar için recursive bileşeni çağır */}
+            <div className="border-t border-gray-200 my-1"></div>
+            {/* Render sub-categories recursively */}
             {category.children.map((subCategory) => (
               <RecursiveMenuItem
                 key={subCategory._id}
@@ -210,16 +243,14 @@ function CategorySubMenu() {
             ))}
           </HoverMenu>
         ) : (
-          // Tekil Ana Kategori (Alt dalı yok)
-          <Button
+          // Category with no sub-categories
+          <button
             key={category._id}
-            variant="mustafa"
-            size="mustafa"
             onClick={() => handleNavigate(category.slug)}
-            className="text-sm font-medium text-muted-foreground hover:text-primary px-2 whitespace-normal min-w-0 max-w-32 text-center h-auto py-2"
+            className="text-xs font-semibold text-slate-600 hover:text-purple-700 px-3 py-1.5 whitespace-nowrap rounded-full hover:bg-purple-50 transition-all duration-200"
           >
-            <span className="break-words">{category.name}</span>
-          </Button>
+            <span>{translateName(category.name)}</span>
+          </button>
         ),
       )}
     </nav>
@@ -227,6 +258,10 @@ function CategorySubMenu() {
 }
 
 function MainHeaderActions() {
+  const navigate = useNavigate();
+  const { cartItems } = useSelector((state) => state.cart || { cartItems: [] });
+  const totalCartItems = cartItems.reduce((acc, item) => acc + (item.quantity || 1), 0);
+
   const handleWhatsApp = () => {
     window.open(
       "https://wa.me/905347168754?text=Merhaba%2C%20site%20uzerinden%20iletisime%20gecmek%20istiyorum.",
@@ -236,7 +271,7 @@ function MainHeaderActions() {
   };
 
   return (
-    <div className="flex items-center gap-2 md:gap-3">
+    <div className="flex items-center gap-2 md:gap-4">
       <Button
         variant="secondary"
         className="flex items-center gap-2 rounded-full border border-green-100 bg-green-50 px-3 md:px-4 py-2 h-10 text-green-700 hover:bg-green-100"
@@ -248,34 +283,37 @@ function MainHeaderActions() {
           WhatsApp
         </span>
       </Button>
+
+      <button
+        onClick={() => navigate("/shop/cart")}
+        className="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-full transition-colors shadow-sm "
+      >
+        <ShoppingCart className="w-5 h-5 text-white" />
+        {totalCartItems > 0 && (
+          <span className="text-sm font-bold text-white min-w-[16px] text-center">
+            {totalCartItems}
+          </span>
+        )}
+
+      </button>
     </div>
   );
 }
 
 function TopStrip() {
-  const [exchangeRate, setExchangeRate] = useState(null);
-
-  useEffect(() => {
-    api
-      .get("/common/currency/rate")
-      .then((response) => {
-        if (response.data.success) {
-          setExchangeRate(response.data.data.rate);
-        }
-      })
-      .catch((error) => {
-        console.error("Döviz kuru alınırken hata oluştu:", error);
-      });
-  }, []);
-
   return (
-    <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 text-xs text-muted-foreground max-[690px]:text-[10px] border-b">
+    <div className="bg-slate-100 text-xs text-slate-600 border-b hidden md:block">
       <div className="container mx-auto px-4 md:px-20 h-9 flex justify-end items-center">
-        {exchangeRate && (
-          <span className="font-semibold text-primary/90 tracking-wide">
-            1 USD = {Number(exchangeRate).toFixed(2)} TL
-          </span>
-        )}
+        <div className="flex items-center gap-4 divide-x divide-slate-300">
+          <Link to="#" className="hover:text-primary transition-colors">Store Locator</Link>
+          <div className="pl-4 flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
+            {/* <img src="https://flagcdn.com/w20/sa.png" alt="SA" className="w-4 h-3" /> */}
+            <span>Saudi Arabia | SAR</span>
+          </div>
+          <div className="pl-4 flex items-center gap-1 cursor-pointer hover:text-primary transition-colors font-medium text-jarir-blue">
+            <span>English</span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -450,10 +488,10 @@ function ShoppingHeader() {
         <div className="flex h-20 items-center justify-between gap-3 md:gap-6 max-[767px]:h-16">
           <Link
             to="/shop/home"
-            className="flex-shrink-0 rounded-xl px-1 py-1 transition-colors hover:bg-slate-50"
+            className="flex-shrink-0 rounded-xl px-1 py-1"
           >
             <img
-              className="h-14 w-auto max-[690px]:h-10"
+              className="h-24 w-auto max-[690px]:h-10"
               src="/logoo.png"
               alt="logo"
               aria-label="Ana Sayfa"

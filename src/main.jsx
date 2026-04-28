@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./store/store.js";
 import { Toaster } from "./components/ui/toaster.jsx";
 import { StrictMode } from "react";
+import "./lib/firebase.js";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>

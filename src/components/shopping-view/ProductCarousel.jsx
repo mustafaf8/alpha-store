@@ -35,7 +35,7 @@ function ProductCarousel({
       setCanScrollLeft(scrollLeft > tolerance);
       setCanScrollRight(
         scrollWidth > clientWidth &&
-          scrollLeft < scrollWidth - clientWidth - tolerance,
+        scrollLeft < scrollWidth - clientWidth - tolerance,
       );
     } else {
       setCanScrollLeft(false);
@@ -118,7 +118,7 @@ function ProductCarousel({
       <div className="shop-container max-[1024px]:px-2">
         {/* Section header */}
         <div className="flex items-center justify-between mb-2 px-1">
-          <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800 flex items-center">
+          <h2 className="text-base sm:text-lg md:text-xl font-semibold text-purple-700 flex items-center">
             {title}
           </h2>
 
@@ -163,7 +163,7 @@ function ProductCarousel({
               Array.from({ length: skeletonCount }).map((_, index) => (
                 <div
                   key={`skel-${fetchConfig?.key || title}-${index}`}
-                  className="product-carousel-item flex-shrink-0 w-[170px] sm:w-[185px] md:w-[200px]"
+                  className="product-carousel-item flex-shrink-0"
                 >
                   <ProductTileSkeleton />
                 </div>
@@ -176,7 +176,7 @@ function ProductCarousel({
               internalProducts.map((productItem) => (
                 <div
                   key={productItem._id}
-                  className="product-carousel-item flex-shrink-0 w-[170px] sm:w-[185px] md:w-[200px]"
+                  className="product-carousel-item flex-shrink-0"
                 >
                   <ShoppingProductTile
                     product={productItem}

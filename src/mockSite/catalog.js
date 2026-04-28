@@ -14,9 +14,37 @@ const categories = [
     children: [],
   },
   {
-    _id: "cat-audio",
+    _id: "cat-audio3",
     name: "Sound Systems",
     slug: "ses-sistemleri",
+    isActive: true,
+    children: [],
+  },
+  {
+    _id: "cat-audio4",
+    name: "Sound4",
+    slug: "ses-sistemleri4",
+    isActive: true,
+    children: [],
+  },
+  {
+    _id: "cat-audio3",
+    name: "Sound3",
+    slug: "ses-sistemleri3",
+    isActive: true,
+    children: [],
+  },
+  {
+    _id: "cat-audio2",
+    name: "Sound2",
+    slug: "ses-sistemleri2",
+    isActive: true,
+    children: [],
+  },
+  {
+    _id: "cat-audio1",
+    name: "Sound1",
+    slug: "ses-sistemleri1",
     isActive: true,
     children: [],
   },
@@ -150,9 +178,9 @@ const products = [
     title: "Orbit Phone Z",
     description: "Oyun ve multimedia odakli guclu telefon.",
     image:
-      "https://images.unsplash.com/photo-1567581935884-3349723552ca?w=900&q=80",
+      "/bannar2.avif",
     images: [
-      "https://images.unsplash.com/photo-1567581935884-3349723552ca?w=900&q=80",
+      "/bannar2.avif",
     ],
     brand: "orbit",
     category: "telefon",
@@ -404,22 +432,19 @@ const featureImages = [
   {
     _id: "feat-1",
     title: "New Season Tech",
-    image:
-      "https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=1400&q=80",
+    image: "/000.webp",
     link: "/shop/listing",
   },
   {
     _id: "feat-2",
-    title: "Telefon firsatlari",
-    image:
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1400&q=80",
+    title: "Phone Campaigns",
+    image: "/banner1.png",
     link: "/shop/listing?category=telefon",
   },
   {
     _id: "feat-3",
     title: "AudioX Campaigns",
-    image:
-      "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=1400&q=80",
+    image: "/banner1.png",
     link: "/shop/listing?brand=audiox",
   },
 ];
@@ -451,7 +476,7 @@ const sideBanners = [
 const homeSections = [
   {
     _id: "hs-1",
-    title: "Cok Satanlar",
+    title: "Best Selling",
     contentType: "BEST_SELLING",
     contentValue: "",
     itemLimit: 10,
@@ -459,7 +484,7 @@ const homeSections = [
   },
   {
     _id: "hs-2",
-    title: "Telefon Onerileri",
+    title: "Phone Suggestions",
     contentType: "CATEGORY",
     contentValue: "telefon",
     itemLimit: 10,
@@ -467,7 +492,7 @@ const homeSections = [
   },
   {
     _id: "hs-3",
-    title: "AudioX Firsatlari",
+    title: "AudioX Campaigns",
     contentType: "BRAND",
     contentValue: "audiox",
     itemLimit: 10,
