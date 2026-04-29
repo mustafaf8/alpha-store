@@ -10,6 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import api from "@/api/axiosInstance";
 import { useRef } from "react";
 import PropTypes from "prop-types";
+import { formatPrice } from "@/lib/utils";
 
 // Hover ile açılır menü bileşeni
 const HoverMenu = ({ children, trigger, className = "" }) => {
@@ -52,7 +53,7 @@ const HoverMenu = ({ children, trigger, className = "" }) => {
       {isOpen && (
         <div
           ref={menuRef}
-          className="absolute top-full left-0 z-[99999999] min-w-[220px] max-w-[280px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl py-2"
+          className="absolute top-full left-0 z-50 min-w-[280px] max-w-[360px] overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/95 shadow-2xl backdrop-blur-sm mt-1"
           onMouseEnter={handleMenuMouseEnter}
           onMouseLeave={handleMenuMouseLeave}
         >
@@ -97,28 +98,35 @@ const RecursiveMenuItem = ({ category, handleNavigate }) => {
   if (category.children && category.children.length > 0) {
     return (
       <div
-        className="relative"
+        className="relative inline-block"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="category-menu-item px-4 py-3 cursor-pointer text-sm flex items-center justify-between">
-          <span className="break-words flex-1">{category.name}</span>
-          <ChevronDown className="h-4 w-4 rotate-[-90deg] flex-shrink-0 ml-2" />
-        </div>
+        <button
+          type="button"
+          className="inline-flex w-auto max-w-full items-center rounded-full border border-slate-200 bg-white px-3 py-1.5 text-left transition-colors hover:border-slate-300 hover:bg-slate-50 shadow-sm"
+        >
+          <span className="block truncate text-[13px] font-medium text-slate-800">
+            {category.name}
+          </span>
+          <ChevronDown className="h-3 w-3 rotate-[-90deg] flex-shrink-0 ml-1.5 text-slate-400" />
+        </button>
         {isSubMenuOpen && (
           <div
-            className="absolute left-full top-0 z-[99999999] min-w-[220px] max-w-[280px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl py-2"
+            className="absolute left-full top-0 z-50 min-w-[260px] max-w-[340px] overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/95 shadow-2xl backdrop-blur-sm p-3 ml-1 flex flex-wrap gap-2"
             onMouseEnter={handleSubMenuMouseEnter}
             onMouseLeave={handleSubMenuMouseLeave}
           >
             {/* "Tümünü Gör" linki, ana dala gitmek için */}
-            <div
-              className="submenu-item px-4 py-3 cursor-pointer text-sm"
+            <button
+              type="button"
               onClick={() => handleNavigate(category.slug)}
+              className="inline-flex w-auto max-w-full items-center rounded-full border border-purple-200 bg-purple-50 px-3 py-1.5 text-left transition-colors hover:border-purple-300 hover:bg-purple-100 shadow-sm"
             >
-              <span className="break-words">Tüm {category.name}</span>
-            </div>
-            <div className="border-t border-gray-200 dark:border-gray-700 my-1"></div>
+              <span className="block truncate text-[13px] font-semibold text-purple-700">
+                Tüm {category.name}
+              </span>
+            </button>
             {/* Alt dalları için kendini tekrar çağır */}
             {category.children.map((child) => (
               <RecursiveMenuItem
@@ -135,18 +143,58 @@ const RecursiveMenuItem = ({ category, handleNavigate }) => {
 
   // Eğer alt dalı yoksa, direkt tıklanabilir bir menü öğesi oluştur
   return (
-    <div
-      className="submenu-item px-4 py-3 cursor-pointer text-sm"
+    <button
+      type="button"
       onClick={() => handleNavigate(category.slug)}
+      className="inline-flex w-auto max-w-full items-center rounded-full border border-slate-200 bg-white px-3 py-1.5 text-left transition-colors hover:border-slate-300 hover:bg-slate-50 shadow-sm"
     >
-      <span className="break-words">{category.name}</span>
-    </div>
+      <span className="block truncate text-[13px] font-medium text-slate-800">
+        {category.name}
+      </span>
+    </button>
   );
 };
 
 RecursiveMenuItem.propTypes = {
   category: PropTypes.object.isRequired,
   handleNavigate: PropTypes.func.isRequired,
+};
+
+// Turkish → English category name mapping - Moved outside for performance
+const CATEGORY_TRANSLATIONS = {
+  "telefon": "Phones",
+  "telefonlar": "Phones",
+  "laptop": "Laptops",
+  "laptoplar": "Laptops",
+  "bilgisayar": "Computers",
+  "tablet": "Tablets",
+  "tabletler": "Tablets",
+  "kulaklık": "Headphones",
+  "kulaklıklar": "Headphones",
+  "kamera": "Cameras",
+  "kameralar": "Cameras",
+  "oyun": "Gaming",
+  "aksesuar": "Accessories",
+  "aksesuarlar": "Accessories",
+  "yazıcı": "Printers",
+  "yazıcılar": "Printers",
+  "ekran": "Monitors",
+  "ekranlar": "Monitors",
+  "ses sistemi": "Audio",
+  "ses sistemleri": "Audio",
+  "tv": "TV",
+  "televizyon": "TV",
+  "akıllı saat": "Smart Watches",
+  "akıllı saatler": "Smart Watches",
+  "müzik": "Music",
+  "kitap": "Books",
+  "kırtasiye": "Stationery",
+  "ofis": "Office",
+  "baskı": "Print",
+};
+
+const translateName = (name = "") => {
+  return CATEGORY_TRANSLATIONS[name.toLowerCase()] || name;
 };
 
 function CategorySubMenu() {
@@ -157,50 +205,17 @@ function CategorySubMenu() {
   );
 
   useEffect(() => {
-    dispatch(fetchAllCategories());
-  }, [dispatch]);
+    // Only fetch if we don't have categories to avoid redundant loading states
+    if (categoryList.length === 0) {
+      dispatch(fetchAllCategories());
+    }
+  }, [dispatch, categoryList.length]);
 
   const handleNavigate = (slug) => {
     navigate(`/shop/listing?category=${slug}`);
   };
 
-  // Turkish → English category name mapping
-  const translateName = (name = "") => {
-    const map = {
-      "telefon": "Phones",
-      "telefonlar": "Phones",
-      "laptop": "Laptops",
-      "laptoplar": "Laptops",
-      "bilgisayar": "Computers",
-      "tablet": "Tablets",
-      "tabletler": "Tablets",
-      "kulaklık": "Headphones",
-      "kulaklıklar": "Headphones",
-      "kamera": "Cameras",
-      "kameralar": "Cameras",
-      "oyun": "Gaming",
-      "aksesuar": "Accessories",
-      "aksesuarlar": "Accessories",
-      "yazıcı": "Printers",
-      "yazıcılar": "Printers",
-      "ekran": "Monitors",
-      "ekranlar": "Monitors",
-      "ses sistemi": "Audio",
-      "ses sistemleri": "Audio",
-      "tv": "TV",
-      "televizyon": "TV",
-      "akıllı saat": "Smart Watches",
-      "akıllı saatler": "Smart Watches",
-      "müzik": "Music",
-      "kitap": "Books",
-      "kırtasiye": "Stationery",
-      "ofis": "Office",
-      "baskı": "Print",
-    };
-    return map[name.toLowerCase()] || name;
-  };
-
-  if (categoriesLoading) {
+  if (categoriesLoading && categoryList.length === 0) {
     return (
       <div className="flex items-center justify-center gap-x-3 md:gap-x-4 h-11 px-4 border-b border-slate-100 bg-white">
         {Array.from({ length: 8 }).map((_, i) => (
@@ -211,49 +226,55 @@ function CategorySubMenu() {
   }
 
   return (
-    <nav className="flex items-center justify-center gap-x-1 min-h-11 bg-white border-b border-slate-100 overflow-x-auto no-scrollbar px-4 lg:px-20 category-menu-container relative z-[99999999] shadow-sm">
-      {categoryList.slice(0, 10).map((category) =>
-        category.children && category.children.length > 0 ? (
-          <HoverMenu
-            key={category._id}
-            trigger={
-              <button
-                className="text-xs font-semibold text-slate-600 hover:text-purple-700 px-3 py-1.5 whitespace-nowrap flex items-center gap-1 rounded-full hover:bg-purple-50 transition-all duration-200"
-              >
-                <span>{translateName(category.name)}</span>
-                <ChevronDown className="h-3 w-3 transition-transform duration-200 flex-shrink-0" />
-              </button>
-            }
-          >
-            {/* Link to the main category itself */}
-            <div
-              className="category-menu-item px-4 py-3 cursor-pointer text-sm"
-              onClick={() => handleNavigate(category.slug)}
+    <div className="bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
+      <nav className="container mx-auto px-20 max-[1024px]:px-1 flex items-center justify-center gap-x-2 min-h-[44px] overflow-x-auto no-scrollbar category-menu-container relative z-40">
+        {categoryList.slice(0, 10).map((category) =>
+          category.children && category.children.length > 0 ? (
+            <HoverMenu
+              key={category._id}
+              trigger={
+                <button
+                  className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-purple-700 px-2 py-1.5 flex items-center justify-center gap-1 rounded-xl hover:bg-slate-100 transition-all duration-200 text-center"
+                >
+                  <span className="max-w-[100px] whitespace-normal break-words">{translateName(category.name)}</span>
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 flex-shrink-0" />
+                </button>
+              }
             >
-              <span className="break-words font-semibold text-purple-700">All {translateName(category.name)}</span>
-            </div>
-            <div className="border-t border-gray-200 my-1"></div>
-            {/* Render sub-categories recursively */}
-            {category.children.map((subCategory) => (
-              <RecursiveMenuItem
-                key={subCategory._id}
-                category={subCategory}
-                handleNavigate={handleNavigate}
-              />
-            ))}
-          </HoverMenu>
-        ) : (
-          // Category with no sub-categories
-          <button
-            key={category._id}
-            onClick={() => handleNavigate(category.slug)}
-            className="text-xs font-semibold text-slate-600 hover:text-purple-700 px-3 py-1.5 whitespace-nowrap rounded-full hover:bg-purple-50 transition-all duration-200"
-          >
-            <span>{translateName(category.name)}</span>
-          </button>
-        ),
-      )}
-    </nav>
+              <div className="flex flex-wrap gap-2 p-3">
+                {/* Link to the main category itself */}
+                <button
+                  type="button"
+                  onClick={() => handleNavigate(category.slug)}
+                  className="inline-flex w-auto max-w-full items-center rounded-full border border-purple-200 bg-purple-50 px-3 py-1.5 text-left transition-colors hover:border-purple-300 hover:bg-purple-100 shadow-sm"
+                >
+                  <span className="block truncate text-[13px] font-semibold text-purple-700">
+                    All {translateName(category.name)}
+                  </span>
+                </button>
+                {/* Render sub-categories recursively */}
+                {category.children.map((subCategory) => (
+                  <RecursiveMenuItem
+                    key={subCategory._id}
+                    category={subCategory}
+                    handleNavigate={handleNavigate}
+                  />
+                ))}
+              </div>
+            </HoverMenu>
+          ) : (
+            // Category with no sub-categories
+            <button
+              key={category._id}
+              onClick={() => handleNavigate(category.slug)}
+              className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-purple-700 px-2 py-1.5 flex items-center justify-center rounded-xl hover:bg-slate-100 transition-all duration-200 text-center"
+            >
+              <span className="max-w-[100px] whitespace-normal break-words">{translateName(category.name)}</span>
+            </button>
+          ),
+        )}
+      </nav>
+    </div>
   );
 }
 
@@ -428,27 +449,59 @@ function ShoppingHeader() {
     suggestions.categories.length > 0 ||
     suggestions.brands.length > 0;
 
-  const renderSuggestionSection = (title, items, onItemClick, itemKey) => {
+  const renderProductSuggestions = (items) => {
     if (!items.length) return null;
     return (
-      <div className="py-1">
-        <div className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-          {title}
+      <div className="py-2 border-b border-slate-100/50">
+        <div className="px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-purple-500">
+          Products
         </div>
-        <div className="space-y-1 px-2">
+        <div className="flex flex-col gap-1 px-2">
           {items.map((item) => (
             <button
-              key={itemKey(item)}
+              key={item._id}
               type="button"
-              className="w-full rounded-lg border border-transparent bg-white px-3 py-2 text-left transition-colors hover:border-slate-200 hover:bg-slate-50"
+              className="flex items-center gap-4 w-full p-2.5 rounded-2xl transition-all hover:bg-white hover:shadow-lg group text-left"
+              onClick={() => handleSuggestionClick(`/shop/product/${item._id}/specs`)}
+            >
+              <div className="w-14 h-14 rounded-xl bg-white border border-slate-100 flex-shrink-0 overflow-hidden shadow-sm">
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                />
+              </div>
+              <div className="flex flex-col min-w-0 flex-1">
+                <span className="text-sm font-bold text-slate-800 truncate group-hover:text-purple-600 transition-colors">
+                  {item.title}
+                </span>
+                <span className="text-xs font-black text-purple-600 mt-0.5">
+                  {formatPrice(item.price)} TL
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const renderChipSuggestions = (title, items, onItemClick) => {
+    if (!items.length) return null;
+    return (
+      <div className="py-3 border-b border-slate-100/50 last:border-0">
+        <div className="px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+          {title}
+        </div>
+        <div className="flex flex-wrap gap-2 px-4 pb-2">
+          {items.map((item) => (
+            <button
+              key={item.slug || item._id}
+              type="button"
+              className="inline-flex items-center rounded-full border border-slate-100 bg-white px-3.5 py-1.5 text-xs font-bold text-slate-600 transition-all hover:border-purple-200 hover:bg-purple-50 hover:text-purple-600 shadow-sm hover:shadow-md"
               onClick={() => onItemClick(item)}
             >
-              <span className="block truncate text-sm font-medium text-slate-800">
-                {item.title || item.name}
-              </span>
-              <span className="block text-xs text-slate-500">
-                {title.slice(0, -1)}
-              </span>
+              {item.name}
             </button>
           ))}
         </div>
@@ -457,32 +510,35 @@ function ShoppingHeader() {
   };
 
   const renderSuggestionsContent = () => (
-    <div className="search-suggestions-portal overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/95 shadow-2xl backdrop-blur-sm">
-      <div className="max-h-80 overflow-y-auto py-2">
-        {renderSuggestionSection(
-          "Products",
-          suggestions.products,
-          (p) => handleSuggestionClick(`/shop/product/${p._id}/specs`),
-          (p) => `prod-${p._id}`,
-        )}
-        {renderSuggestionSection(
+    <div className="search-suggestions-portal w-full overflow-hidden rounded-3xl border border-white/40 bg-slate-50/95 shadow-[0_20px_50px_rgba(0,0,0,0.1)] backdrop-blur-xl animate-in fade-in zoom-in duration-200">
+      <div className="max-h-[min(70vh,500px)] overflow-y-auto no-scrollbar">
+        {renderProductSuggestions(suggestions.products)}
+        {renderChipSuggestions(
           "Categories",
           suggestions.categories,
-          (c) => handleSuggestionClick(`/shop/listing?category=${c.slug}`),
-          (c) => `cat-${c.slug}`,
+          (c) => handleSuggestionClick(`/shop/listing?category=${c.slug}`)
         )}
-        {renderSuggestionSection(
+        {renderChipSuggestions(
           "Brands",
           suggestions.brands,
-          (b) => handleSuggestionClick(`/shop/listing?brand=${b.slug}`),
-          (b) => `brand-${b.slug}`,
+          (b) => handleSuggestionClick(`/shop/listing?brand=${b.slug}`)
         )}
       </div>
+      {hasSuggestions && (
+        <div className="bg-slate-100/50 p-3 text-center border-t border-slate-100/50">
+          <button 
+            onClick={handleSearchSubmit}
+            className="text-[11px] font-bold text-purple-600 hover:underline uppercase tracking-widest"
+          >
+            Show All Results for "{searchTerm}"
+          </button>
+        </div>
+      )}
     </div>
   );
 
   return (
-    <header className="sticky top-0 z-[99999999] w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85 shadow-sm">
+    <header className="sticky top-0 z-[60] w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85 shadow-sm">
       <TopStrip />
       <div className="container mx-auto px-4 md:px-20">
         <div className="flex h-20 items-center justify-between gap-3 md:gap-6 max-[767px]:h-16">
@@ -495,6 +551,7 @@ function ShoppingHeader() {
               src="/logoo.png"
               alt="logo"
               aria-label="Ana Sayfa"
+              loading="eager"
             />
           </Link>
           <form
@@ -516,9 +573,9 @@ function ShoppingHeader() {
                 hasSuggestions &&
                 createPortal(
                   <div
-                    className="fixed z-[9999999999]"
+                    className="fixed z-[70]"
                     style={{
-                      top: "102px",
+                      top: "114px",
                       left: "calc(50% - 320px)",
                       width: "600px",
                       maxWidth: "90vw",
@@ -554,9 +611,9 @@ function ShoppingHeader() {
               hasSuggestions &&
               createPortal(
                 <div
-                  className="fixed z-[9999999999]"
+                  className="fixed z-[70]"
                   style={{
-                    top: "164px",
+                    top: "176px",
                     left: "20px",
                     right: "20px",
                     width: "calc(100vw - 40px)",
@@ -572,7 +629,7 @@ function ShoppingHeader() {
 
       {/* Kategori Menü Satırı (Sadece masaüstünde header'ın altında) */}
       {shouldShowCategoryMenu && (
-        <div className="hidden lg:block border-t border-border relative z-[99999999]">
+        <div className="hidden lg:block border-t border-border relative z-40">
           <CategorySubMenu />
         </div>
       )}

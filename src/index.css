@@ -231,7 +231,7 @@
   width: 100%;
   background-color: white;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 9999998;
+  z-index: 40;
 }
 
 .bottom-nav svg {
@@ -265,7 +265,7 @@
   background-color: hsl(var(--shop-discount));
   color: white;
   border-radius: 50%;
-  padding: 0.15rem 0.40rem;
+  padding: 0.15rem 0.4rem;
   font-size: 0.65rem;
   font-weight: bold;
   z-index: 10;
@@ -394,13 +394,13 @@
 
 @media (max-width: 1023px) {
   .hero-banner-container {
-    height: 300px;
+    height: 350px;
   }
 }
 
 @media (max-width: 640px) {
   .hero-banner-container {
-    height: 220px;
+    height: 180px;
   }
 }
 
@@ -446,20 +446,10 @@
   height: auto;
 }
 
-@media (max-width: 640px) {
-  .promo-banner-item img {
-    height: 160px;
-    object-fit: cover;
-    width: 100%;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 1023px) {
-  .promo-banner-item img {
-    height: 200px;
-    object-fit: cover;
-    width: 100%;
-  }
+.promo-banner-item img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* =========================================
@@ -658,82 +648,18 @@
   }
 }
 
-
 /* Kategori menü container'ı için scroll gizleme */
 .category-menu-container {
   -ms-overflow-style: none;
   scrollbar-width: none;
   position: relative;
-  z-index: 99999999 !important;
-  overflow: visible !important;
 }
 
 .category-menu-container::-webkit-scrollbar {
   display: none;
 }
 
-/* CategorySubMenu'nun kesinlikle en üstte kalması */
-.category-menu-container,
-.category-menu-container * {
-  z-index: 99999999 !important;
-}
-
-/* Header dropdown'larının kesinlikle en üstte kalması */
-header .absolute {
-  z-index: 99999999 !important;
-}
-
-header .relative {
-  z-index: 99999999 !important;
-}
-
-/* Tüm dropdown'ların kesinlikle en üstte kalması */
-.absolute[class*="z-"] {
-  z-index: 99999999 !important;
-}
-
-/* Arama suggestions dropdown'larının en üstte kalması */
-.absolute[class*="z-"]:has(.px-3) {
-  z-index: 999999999 !important;
-}
-
-/* Diğer elementlerin dropdown'ların altında kalması */
-.toast-viewport,
-.sheet-overlay,
-.dialog-overlay,
-.bottom-nav,
-.cookie-consent {
-  z-index: 9999998 !important;
-}
-
-/* Arama pencerelerinin en üstte kalması */
-.absolute[class*="z-"]:has(.px-3.py-2.hover\\:bg-muted) {
-  z-index: 9999999999 !important;
-}
-
-/* Arama suggestions dropdown'larının kesinlikle en üstte kalması */
-div[class*="absolute"][class*="z-"]:has(div[class*="px-3"][class*="py-2"]) {
-  z-index: 9999999999 !important;
-}
-
-/* Arama suggestions için daha güçlü kurallar */
-.absolute[class*="z-"] {
-  z-index: 9999999999 !important;
-}
-
-/* Tüm arama suggestions dropdown'ları */
-.absolute[class*="mt-1"] {
-  z-index: 9999999999 !important;
-}
-
-/* Banner'ların dropdown'ların altında kalması */
-.promo-card-container,
-.promo-card,
-section[class*="z-"] {
-  z-index: 9999997 !important;
-}
-
-/* Dropdown'ların kesinlikle görünür olması */
+/* Dropdown'ların görünürlüğü */
 .category-menu-container,
 .category-menu-container *,
 header .absolute,
@@ -741,51 +667,12 @@ header .relative {
   overflow: visible !important;
 }
 
-/* Dropdown'ların kesilmemesi için */
-.absolute[class*="z-"] {
-  overflow: visible !important;
-  z-index: 99999999 !important;
-}
-
-/* Arama suggestions dropdown'larının kesinlikle en üstte kalması */
-.absolute[class*="z-"]:has(div[class*="px-3"][class*="py-2"]) {
-  z-index: 9999999999 !important;
-  overflow: visible !important;
-}
-
-/* Arama suggestions için en güçlü kural */
-.absolute[class*="z-"]:has(.px-3) {
-  z-index: 9999999999 !important;
-  overflow: visible !important;
-}
-
-/* Arama suggestions için spesifik kural */
-.absolute[class*="z-"]:has(div[class*="hover:bg-muted"]) {
-  z-index: 9999999999 !important;
-}
-
-/* Arama input'unun pozisyonunu sabit tut */
-input[type="search"] {
-  position: relative !important;
-  transform: none !important;
-}
-
-/* Arama container'ının pozisyonunu sabit tut */
-.relative:has(input[type="search"]) {
-  position: relative !important;
-  transform: none !important;
-}
-
-/* Tüm banner'ların dropdown'ların altında kalması */
-.promo-card-container,
-.promo-card,
-.promo-card *,
-section,
-section *,
-img[src*="banner"],
-img[src*="promo"] {
-  z-index: 9999997 !important;
-}
+/* Z-index scale:
+   0-20: content
+   40-50: header + search/category dropdown
+   60-80: overlays (toast/select/dialog/sheet)
+   2147483647: mobile floating bottom nav
+*/
 
 /* Kategori menü hover efektleri */
 .category-menu-item {

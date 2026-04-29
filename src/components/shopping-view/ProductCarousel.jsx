@@ -10,12 +10,7 @@ import { useDispatch } from "react-redux";
 import { fetchAllFilteredProducts } from "@/store/shop/products-slice";
 import isEqual from "lodash/isEqual";
 
-function ProductCarousel({
-  title,
-  handleAddtoCart,
-  viewAllPath,
-  fetchConfig,
-}) {
+function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
   const skeletonCount = 6;
   const scrollContainerRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -35,7 +30,7 @@ function ProductCarousel({
       setCanScrollLeft(scrollLeft > tolerance);
       setCanScrollRight(
         scrollWidth > clientWidth &&
-        scrollLeft < scrollWidth - clientWidth - tolerance,
+          scrollLeft < scrollWidth - clientWidth - tolerance,
       );
     } else {
       setCanScrollLeft(false);
@@ -114,7 +109,7 @@ function ProductCarousel({
   };
 
   return (
-    <section className="shop-section relative my-1 py-2">
+    <section className="shop-section relative z-0 my-1 py-2">
       <div className="shop-container max-[1024px]:px-2">
         {/* Section header */}
         <div className="flex items-center justify-between mb-2 px-1">
@@ -135,7 +130,7 @@ function ProductCarousel({
         </div>
 
         {/* Carousel */}
-        <div className="relative">
+        <div className="relative z-0">
           {/* Left scroll button */}
           <Button
             size="icon"

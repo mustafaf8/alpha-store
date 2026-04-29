@@ -13,8 +13,13 @@ const ok = (data) => ({ status: 200, statusText: "OK", data, headers: {}, config
 
 const getPathAndParams = (url) => {
   const parsed = new URL(url, "http://localhost");
-  return { path: parsed.pathname, params: parsed.searchParams };
+  let path = parsed.pathname;
+  if (path.startsWith("/api")) {
+    path = path.replace("/api", "");
+  }
+  return { path, params: parsed.searchParams };
 };
+
 
 const filterProducts = (params) => {
   let list = [...products];
@@ -62,20 +67,41 @@ export const mockApiAdapter = async (config) => {
   if (method === "get" && path === "/shop/search/suggest") {
     const keyword = (params.get("keyword") || "").toLowerCase().trim();
     if (!keyword) return ok({ success: true, data: { products: [], categories: [], brands: [] } });
+
+    // Recursive category search
+    const matchedCategories = [];
+    const findInCategories = (list) => {
+      for (const cat of list) {
+        if (cat.name.toLowerCase().includes(keyword)) {
+          matchedCategories.push({ _id: cat._id, name: cat.name, slug: cat.slug });
+        }
+        if (cat.children && cat.children.length > 0) {
+          findInCategories(cat.children);
+        }
+      }
+    };
+    findInCategories(categories);
+
     return ok({
       success: true,
       data: {
         products: products
-          .filter((item) => item.title.toLowerCase().includes(keyword))
-          .slice(0, 6)
-          .map((item) => ({ _id: item._id, title: item.title })),
-        categories: categories
-          .filter((item) => item.name.toLowerCase().includes(keyword))
-          .slice(0, 6)
-          .map((item) => ({ _id: item._id, name: item.name, slug: item.slug })),
+          .filter(
+            (item) =>
+              item.title.toLowerCase().includes(keyword) ||
+              item.description.toLowerCase().includes(keyword)
+          )
+          .slice(0, 8)
+          .map((item) => ({ 
+            _id: item._id, 
+            title: item.title, 
+            image: item.image,
+            price: item.salePrice || item.price 
+          })),
+        categories: matchedCategories.slice(0, 8),
         brands: brands
           .filter((item) => item.name.toLowerCase().includes(keyword))
-          .slice(0, 6)
+          .slice(0, 8)
           .map((item) => ({ _id: item._id, name: item.name, slug: item.slug })),
       },
     });

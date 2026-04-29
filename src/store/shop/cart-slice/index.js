@@ -31,28 +31,50 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const { product, quantity = 1 } = action.payload;
+      const selectedVariants = product.selectedVariants || {};
+      
+      // Create a unique key for the item based on its ID and variants
+      const variantKey = Object.entries(selectedVariants)
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([key, val]) => `${key}:${val}`)
+        .join("|");
+      
+      const cartItemKey = `${product._id}-${variantKey}`;
+
       const existingItemIndex = state.cartItems.findIndex(
-        (item) => item._id === product._id
+        (item) => {
+          const itemVariantKey = Object.entries(item.selectedVariants || {})
+            .sort(([a], [b]) => a.localeCompare(b))
+            .map(([key, val]) => `${key}:${val}`)
+            .join("|");
+          return item._id === product._id && itemVariantKey === variantKey;
+        }
       );
 
       if (existingItemIndex >= 0) {
         state.cartItems[existingItemIndex].quantity += quantity;
       } else {
-        state.cartItems.push({ ...product, quantity });
+        state.cartItems.push({ ...product, quantity, cartItemKey });
       }
       saveCartToStorage(state.cartItems);
     },
     removeFromCart: (state, action) => {
-      const productId = action.payload;
+      const { productId, cartItemKey } = action.payload;
       state.cartItems = state.cartItems.filter(
-        (item) => item._id !== productId
+        (item) => {
+          if (cartItemKey) return item.cartItemKey !== cartItemKey;
+          return item._id !== productId;
+        }
       );
       saveCartToStorage(state.cartItems);
     },
     updateQuantity: (state, action) => {
-      const { productId, quantity } = action.payload;
+      const { productId, cartItemKey, quantity } = action.payload;
       const existingItemIndex = state.cartItems.findIndex(
-        (item) => item._id === productId
+        (item) => {
+          if (cartItemKey) return item.cartItemKey === cartItemKey;
+          return item._id === productId;
+        }
       );
 
       if (existingItemIndex >= 0) {

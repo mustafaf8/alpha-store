@@ -19,6 +19,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import ProductTileSkeleton from "@/components/shopping-view/product-tile-skeleton.jsx";
 import { fetchAllCategories } from "@/store/common-slice/categories-slice";
 import { fetchAllBrands } from "@/store/common-slice/brands-slice";
+import { addToCart } from "@/store/shop/cart-slice";
+import { useToast } from "@/components/ui/use-toast";
 import PropTypes from "prop-types";
 
 function createSearchParamsHelper(filterParams) {
@@ -116,6 +118,7 @@ Breadcrumbs.propTypes = {
 
 function ShoppingListing() {
   const dispatch = useDispatch();
+  const { toast } = useToast();
   const {
     productList,
     isLoading: productsLoading,
@@ -169,7 +172,26 @@ function ShoppingListing() {
     sessionStorage.removeItem("filters");
   }, []);
 
-  const handleAddtoCart = useCallback(() => {}, []);
+  const handleAddtoCart = useCallback(
+    (product) => {
+      if ((product?.totalStock ?? 0) <= 0) {
+        toast({
+          variant: "warning",
+          title: "Out of stock",
+          description: "This product is currently unavailable.",
+        });
+        return;
+      }
+
+      dispatch(addToCart({ product, quantity: 1 }));
+      toast({
+        variant: "success",
+        title: "Added to cart",
+        description: `${product?.title || "Product"} has been added.`,
+      });
+    },
+    [dispatch, toast],
+  );
 
   useEffect(() => {
     if (isInitialMount.current) return;
@@ -254,19 +276,9 @@ function ShoppingListing() {
   };
 
   const dynamicFilterOptions = useMemo(() => {
-    const allCategories = flattenCategories(categoryList);
-
     return {
-      category: allCategories
-        .filter((cat) => cat.isActive)
-        .map((cat) => ({
-          id: cat.slug,
-          label: cat.parent ? `└─ ${cat.name}` : cat.name,
-          displayLabel: cat.parent ? `    └─ ${cat.name}` : cat.name,
-        })),
-      brand: brandList
-        .filter((brand) => brand.isActive)
-        .map((brand) => ({ id: brand.slug, label: brand.name })),
+      categories: categoryList,
+      brands: brandList.filter((brand) => brand.isActive),
     };
   }, [categoryList, brandList]);
 
@@ -329,9 +341,7 @@ function ShoppingListing() {
                 <ShoppingProductTile
                   key={productItem._id}
                   product={productItem}
-                  handleAddtoCart={() =>
-                    handleAddtoCart(productItem._id, productItem.totalStock)
-                  }
+                  handleAddtoCart={() => handleAddtoCart(productItem)}
                 />
               ))
             ) : (
