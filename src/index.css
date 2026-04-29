@@ -706,3 +706,19 @@ header .relative {
   transform: translateX(2px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+
+@keyframes heroBannerSlideLeft {
+  from {
+    opacity: 0.9;
+    transform: translateX(18px) scale(1.01);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.hero-banner-slide-left {
+  animation: heroBannerSlideLeft 520ms ease-out;
+  will-change: transform;
+}

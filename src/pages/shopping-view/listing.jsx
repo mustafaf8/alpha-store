@@ -1,8 +1,6 @@
 import ProductFilter from "@/components/shopping-view/filter";
 import ShoppingProductTile from "@/components/shopping-view/product-tile";
-import {
-  fetchAllFilteredProducts,
-} from "@/store/shop/products-slice";
+import { fetchAllFilteredProducts } from "@/store/shop/products-slice";
 import { ChevronRight } from "lucide-react";
 import {
   useEffect,
@@ -119,10 +117,9 @@ Breadcrumbs.propTypes = {
 function ShoppingListing() {
   const dispatch = useDispatch();
   const { toast } = useToast();
-  const {
-    productList,
-    isLoading: productsLoading,
-  } = useSelector((state) => state.shopProducts);
+  const { productList, isLoading: productsLoading } = useSelector(
+    (state) => state.shopProducts,
+  );
   const [searchParams, setSearchParams] = useSearchParams();
   const { categoryList = [], isLoading: categoriesLoading } = useSelector(
     (state) => state.categories || { categoryList: [], isLoading: false },
@@ -226,8 +223,8 @@ function ShoppingListing() {
     const urlFiltersString = createSearchParamsHelper(urlFilters);
 
     if (
-      (!isEqual(filters, urlFilters) &&
-        urlFiltersString !== lastFiltersPushedToUrl.current)
+      !isEqual(filters, urlFilters) &&
+      urlFiltersString !== lastFiltersPushedToUrl.current
     ) {
       setFilters(urlFilters);
       lastFiltersPushedToUrl.current = urlFiltersString;
@@ -285,9 +282,9 @@ function ShoppingListing() {
   const skeletonCount = 8;
 
   return (
-    <div className="container mx-auto px-4 md:px-6 py-4">
+    <div className="container mx-auto px-2 md:px-6 py-4">
       <Breadcrumbs categorySlug={categorySlugFromUrl} />
-      <div className="space-y-4 p-4 md:p-6 max-[600px]:p-0 container mx-auto px-20 max-[1024px]:px-1">
+      <div className="space-y-4 p-2 md:p-4 max-[720px]:p-0 container mx-auto px-6 max-[1024px]:px-1">
         <ProductFilter
           filters={filters}
           handleFilter={handleFilter}
@@ -296,8 +293,8 @@ function ShoppingListing() {
           onClearFilters={handleClearFilters}
         />
         <div className="bg-background w-full rounded-lg shadow-sm border">
-          <div className="p-4 border-b flex items-center justify-between">
-            <h2 className="text-lg font-semibold">
+          <div className="p-4 border-b flex items-center justify-between max-[720px]:flex-col max-[720px]:items-start max-[720px]:gap-2">
+            <h2 className="text-lg font-semibold max-[720px]:hidden">
               {filters?.category?.length > 0
                 ? `${filters.category
                     .map((slug) => {
@@ -331,7 +328,7 @@ function ShoppingListing() {
               )}
             </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4 max-[600px]:p-1 max-[600px]:gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4 max-[720px]:p-0 max-[720px]:gap-1.5">
             {productsLoading ? (
               Array.from({ length: skeletonCount }).map((_, index) => (
                 <ProductTileSkeleton key={`skeleton-${index}`} />

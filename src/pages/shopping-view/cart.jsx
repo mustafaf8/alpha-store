@@ -54,58 +54,60 @@ const ShoppingCartPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50/50">
-      <div className="container mx-auto px-4 lg:px-20 py-12">
-        <div className="flex items-center gap-4 mb-8">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-20 py-6 sm:py-12">
+        <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-8">
           <button 
             onClick={() => navigate(-1)} 
-            className="p-2.5 bg-white rounded-2xl border border-slate-100 text-slate-500 hover:text-purple-600 hover:border-purple-200 transition-all shadow-sm"
+            className="p-2 sm:p-2.5 bg-white rounded-xl sm:rounded-2xl border border-slate-100 text-slate-500 hover:text-purple-600 hover:border-purple-200 transition-all shadow-sm"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
           <div>
-            <h1 className="text-3xl font-black text-slate-800 uppercase tracking-tighter">My Cart</h1>
-            <p className="text-sm font-bold text-purple-500 uppercase tracking-widest">{cartItems.length} Items Selected</p>
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-800 uppercase tracking-tighter">My Cart</h1>
+            <p className="text-[11px] sm:text-sm font-bold text-purple-500 uppercase tracking-widest">
+              {cartItems.length} Items Selected
+            </p>
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-10">
+        <div className="flex flex-col lg:flex-row gap-5 sm:gap-10">
           {/* Left Column: Cart Items */}
           <div className="flex-1 space-y-6">
             <div className="space-y-4">
               {cartItems.map((item) => (
                 <div 
                   key={item.cartItemKey || item._id} 
-                  className="bg-white/60 backdrop-blur-md rounded-[32px] border border-white/40 p-5 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col sm:flex-row gap-6 items-center group transition-all hover:shadow-xl hover:bg-white/80"
+                  className="bg-white/60 backdrop-blur-md rounded-2xl sm:rounded-[32px] border border-white/40 p-3 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col sm:flex-row gap-3 sm:gap-6 items-start sm:items-center group transition-all hover:shadow-xl hover:bg-white/80"
                 >
                   {/* Product Image */}
                   <div 
-                    className="w-32 h-32 sm:w-40 sm:h-40 bg-white rounded-3xl flex items-center justify-center border border-slate-100 p-4 flex-shrink-0 cursor-pointer group-hover:scale-105 transition-transform" 
+                    className="w-full h-48 sm:w-40 sm:h-40 bg-white rounded-2xl sm:rounded-3xl flex items-center justify-center border border-slate-100 overflow-hidden flex-shrink-0 cursor-pointer group-hover:scale-105 transition-transform" 
                     onClick={() => navigate(`/shop/product/${item._id}/specs`)}
                   >
                     <img
                       src={item.image || "/tutu.png"}
                       alt={item.title}
-                      className="max-w-full max-h-full object-contain"
+                      className="w-full h-full object-cover"
                     />
                   </div>
 
                   {/* Product Info */}
                   <div className="flex flex-col flex-1 min-w-0 w-full">
-                    <div className="flex justify-between items-start mb-2">
+                    <div className="flex justify-between items-start mb-2 gap-2">
                       <div className="space-y-0.5">
                         <span className="text-[10px] font-black text-purple-500 uppercase tracking-widest">
                           {item.brand || "Alpha Store"}
                         </span>
                         <Link 
                           to={`/shop/product/${item._id}/specs`} 
-                          className="block text-lg font-bold text-slate-800 leading-tight line-clamp-2 hover:text-purple-600 transition-colors"
+                          className="block text-base sm:text-lg font-bold text-slate-800 leading-tight line-clamp-2 hover:text-purple-600 transition-colors"
                         >
                           {item.title}
                         </Link>
                       </div>
                       <button 
                         onClick={() => handleRemoveItem(item)}
-                        className="p-2 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all"
+                        className="p-1.5 sm:p-2 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all"
                       >
                         <Trash2 className="w-5 h-5" />
                       </button>
@@ -132,28 +134,28 @@ const ShoppingCartPage = () => {
                       <span>{item.category || "General"}</span>
                     </div>
 
-                    <div className="flex flex-wrap items-center justify-between gap-4 mt-auto">
+                    <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4 mt-auto">
                       {/* Quantity Controller */}
-                      <div className="flex items-center bg-slate-100/50 p-1 rounded-2xl border border-slate-100">
+                      <div className="flex items-center bg-slate-100/50 p-1 rounded-xl sm:rounded-2xl border border-slate-100">
                         <button
                           onClick={() => handleUpdateQuantity(item, item.quantity - 1)}
-                          className="w-9 h-9 flex items-center justify-center hover:bg-white hover:shadow-sm text-slate-600 rounded-xl transition-all disabled:opacity-30"
+                          className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center hover:bg-white hover:shadow-sm text-slate-600 rounded-lg sm:rounded-xl transition-all disabled:opacity-30"
                           disabled={item.quantity <= 1}
                         >
                           <Minus className="w-4 h-4" />
                         </button>
-                        <span className="w-10 text-center font-black text-slate-800 text-sm">{item.quantity}</span>
+                        <span className="w-9 sm:w-10 text-center font-black text-slate-800 text-sm">{item.quantity}</span>
                         <button
                           onClick={() => handleUpdateQuantity(item, item.quantity + 1)}
-                          className="w-9 h-9 flex items-center justify-center hover:bg-white hover:shadow-sm text-slate-600 rounded-xl transition-all"
+                          className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center hover:bg-white hover:shadow-sm text-slate-600 rounded-lg sm:rounded-xl transition-all"
                         >
                           <Plus className="w-4 h-4" />
                         </button>
                       </div>
 
                       {/* Pricing */}
-                      <div className="flex flex-col items-end">
-                        <span className="text-xl font-black text-slate-800">
+                      <div className="flex flex-col items-end ml-auto">
+                        <span className="text-lg sm:text-xl font-black text-slate-800">
                           {formatPrice((item.salePrice || item.price || 0) * item.quantity)} TL
                         </span>
                         <span className="text-[10px] font-bold text-slate-400">
@@ -169,16 +171,16 @@ const ShoppingCartPage = () => {
 
           {/* Right Column: Order Summary */}
           <div className="lg:w-[400px] flex-shrink-0">
-            <div className="bg-white/60 backdrop-blur-xl rounded-[40px] border border-white/40 shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-8 sticky top-24">
-              <h2 className="text-xl font-black text-slate-800 uppercase tracking-tight mb-8">Summary</h2>
+            <div className="bg-white/60 backdrop-blur-xl rounded-3xl sm:rounded-[40px] border border-white/40 shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-4 sm:p-8 sticky top-20 sm:top-24">
+              <h2 className="text-lg sm:text-xl font-black text-slate-800 uppercase tracking-tight mb-6 sm:mb-8">Summary</h2>
               
-              <div className="space-y-5 mb-8">
-                <div className="flex justify-between items-center text-sm">
+              <div className="space-y-4 sm:space-y-5 mb-6 sm:mb-8">
+                <div className="flex justify-between items-center text-xs sm:text-sm">
                   <span className="font-bold text-slate-400 uppercase tracking-widest">Subtotal</span>
                   <span className="font-black text-slate-800">{formatPrice(subtotal)} TL</span>
                 </div>
                 
-                <div className="flex justify-between items-center text-sm">
+                <div className="flex justify-between items-center text-xs sm:text-sm">
                   <span className="font-bold text-slate-400 uppercase tracking-widest">Delivery</span>
                   {shippingCost === 0 ? (
                     <span className="font-black text-green-500 uppercase tracking-widest">Free</span>
@@ -188,7 +190,7 @@ const ShoppingCartPage = () => {
                 </div>
                 
                 {shippingCost > 0 && (
-                  <div className="bg-purple-50 p-4 rounded-3xl border border-purple-100">
+                  <div className="bg-purple-50 p-3 sm:p-4 rounded-2xl sm:rounded-3xl border border-purple-100">
                     <p className="text-[11px] font-bold text-purple-600 leading-relaxed text-center">
                       Add <span className="text-sm font-black underline">{formatPrice(1000 - subtotal)} TL</span> more for <span className="uppercase">Free Delivery</span>
                     </p>
@@ -196,11 +198,11 @@ const ShoppingCartPage = () => {
                 )}
               </div>
               
-              <div className="border-t border-slate-100 pt-6 mb-8">
+              <div className="border-t border-slate-100 pt-5 sm:pt-6 mb-6 sm:mb-8">
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-black text-slate-800 uppercase tracking-tight">Total</span>
+                  <span className="text-base sm:text-lg font-black text-slate-800 uppercase tracking-tight">Total</span>
                   <div className="flex flex-col items-end">
-                    <span className="text-3xl font-black text-purple-600 tracking-tighter">
+                    <span className="text-2xl sm:text-3xl font-black text-purple-600 tracking-tighter">
                       {formatPrice(total)} TL
                     </span>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tax Included</span>
@@ -208,12 +210,12 @@ const ShoppingCartPage = () => {
                 </div>
               </div>
 
-              <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white h-16 rounded-[24px] text-lg font-black uppercase tracking-widest shadow-xl shadow-purple-200 transition-all active:scale-95 group">
+              <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white h-14 sm:h-16 rounded-2xl sm:rounded-[24px] text-base sm:text-lg font-black uppercase tracking-widest shadow-xl shadow-purple-200 transition-all active:scale-95 group">
                 Checkout Now
                 <ArrowLeft className="w-5 h-5 rotate-180 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               
-              <div className="mt-8 flex items-center gap-3 text-[10px] font-bold text-slate-400 justify-center uppercase tracking-widest">
+              <div className="mt-6 sm:mt-8 flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] font-bold text-slate-400 justify-center uppercase tracking-widest">
                 <div className="w-8 h-px bg-slate-100" />
                 <span className="flex items-center gap-1.5">
                   <svg className="w-3.5 h-3.5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 4.946-2.597 9.181-6.5 11.5a11.954 11.954 0 01-11.5-11.5c0-.68.056-1.35.166-2.001zm11.548 4.325a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>

@@ -109,7 +109,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
   };
 
   return (
-    <section className="shop-section relative z-0 my-1 py-2">
+    <section className="shop-section my-1 py-2">
       <div className="shop-container max-[1024px]:px-2">
         {/* Section header */}
         <div className="flex items-center justify-between mb-2 px-1">
@@ -141,8 +141,11 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
                 ? "opacity-100"
                 : "opacity-0 pointer-events-none",
             )}
-            onClick={() => scroll("left")}
-            disabled={!canScrollLeft || internalLoading}
+            onClick={() => {
+              if (!canScrollLeft || internalLoading) return;
+              scroll("left");
+            }}
+            aria-disabled={!canScrollLeft || internalLoading}
             aria-label="Scroll left"
           >
             <ChevronLeftIcon className="h-4 w-4 text-gray-700" />
@@ -198,8 +201,11 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
                 ? "opacity-100"
                 : "opacity-0 pointer-events-none",
             )}
-            onClick={() => scroll("right")}
-            disabled={!canScrollRight || internalLoading}
+            onClick={() => {
+              if (!canScrollRight || internalLoading) return;
+              scroll("right");
+            }}
+            aria-disabled={!canScrollRight || internalLoading}
             aria-label="Scroll right"
           >
             <ChevronRightIcon className="h-4 w-4 text-gray-700" />

@@ -151,7 +151,7 @@ function ShoppingHome() {
   return (
     <div className="bg-white flex flex-col min-h-screen">
       {/* Quick Explore Section */}
-      <div className="container mx-auto px-4 max-[1024px]:px-0 mt-4 md:mt-2 relative z-50">
+      <div className="container mx-auto px-4 max-[1024px]:px-0 mt-4 md:mt-2 relative z-0">
         <div className="shop-container max-[1024px]:px-2">
           <section className="px-0 py-1">
             <div className="mb-2 flex items-center justify-between gap-2">
@@ -184,7 +184,7 @@ function ShoppingHome() {
       </div>
 
       {/* Hero Banner Section */}
-      <div className="container mx-auto px-4 max-[1024px]:px-0 my-3 md:my-4 pt-1 max-[1024px]:pt-1 relative z-10">
+      <div className="container mx-auto px-4 max-[1024px]:px-0 my-3 md:my-4 pt-1 max-[1024px]:pt-1 relative z-0">
         <div className="shop-container max-[1024px]:px-2">
           <div className="w-full">
             {featuresLoading ? (
@@ -194,62 +194,68 @@ function ShoppingHome() {
             ) : (
               <div className="flex w-full">
                 <div className="hero-banner-container relative w-full rounded-3xl overflow-hidden shadow-sm group">
-              {featureImageList && featureImageList.length > 0 ? (
-                featureImageList.map((slide, index) => (
-                  <img
-                    key={slide._id || index}
-                    src={slide.image}
-                    alt={slide.title || `Banner ${index + 1}`}
-                    onClick={() => handlePromoCardClick(slide.link)}
-                    className={`${
-                      index === currentSlide
-                        ? "opacity-100 z-10"
-                        : "opacity-0 z-0"
-                    } absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out ${
-                      slide.link ? "cursor-pointer" : ""
-                    }`}
-                    loading="eager"
-                  />
-                ))
-              ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-gray-400 text-sm">Banner Area</span>
-                </div>
-              )}
-              {featureImageList && featureImageList.length > 1 && (
-                <>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setCurrentSlide(
-                        (prev) =>
-                          (prev - 1 + featureImageList.length) %
-                          featureImageList.length,
-                      );
-                    }}
-                    className="absolute top-1/2 left-3 z-20 transform -translate-y-1/2 bg-white/60 hover:bg-white rounded-full h-8 w-8 max-sm:h-6 max-md:h-6 max-sm:w-6 max-md:w-6 opacity-0 group-hover:opacity-100 transition-opacity"
-                    aria-label="Scroll left"
-                  >
-                    <ChevronLeftIcon className="w-5 h-5 text-gray-700" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setCurrentSlide(
-                        (prev) => (prev + 1) % featureImageList.length,
-                      );
-                    }}
-                    className="absolute top-1/2 right-3 z-20 transform -translate-y-1/2 bg-white/60 hover:bg-white rounded-full h-8 w-8 shadow-md max-sm:h-6 max-md:h-6 max-sm:w-6 max-md:w-6 opacity-0 group-hover:opacity-100 transition-opacity"
-                    aria-label="Scroll right"
-                  >
-                    <ChevronRightIcon className="w-5 h-5 text-gray-700" />
-                  </Button>
-                </>
-              )}
+                  {featureImageList && featureImageList.length > 0 ? (
+                    <img
+                      key={
+                        featureImageList[currentSlide]?._id ??
+                        `banner-${currentSlide}`
+                      }
+                      src={featureImageList[currentSlide]?.image}
+                      alt={
+                        featureImageList[currentSlide]?.title ||
+                        `Banner ${currentSlide + 1}`
+                      }
+                      onClick={() =>
+                        handlePromoCardClick(
+                          featureImageList[currentSlide]?.link,
+                        )
+                      }
+                      className={`hero-banner-slide-left absolute inset-0 z-0 h-full w-full object-cover object-center ${
+                        featureImageList[currentSlide]?.link
+                          ? "cursor-pointer"
+                          : ""
+                      }`}
+                      loading="eager"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-gray-400 text-sm">Banner Area</span>
+                    </div>
+                  )}
+                  {featureImageList && featureImageList.length > 1 && (
+                    <>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentSlide(
+                            (prev) =>
+                              (prev - 1 + featureImageList.length) %
+                              featureImageList.length,
+                          );
+                        }}
+                        className="absolute top-1/2 left-3 z-20 -translate-y-1/2 bg-white/60 hover:bg-white rounded-full h-8 w-8 max-sm:h-6 max-md:h-6 max-sm:w-6 max-md:w-6 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity"
+                        aria-label="Scroll left"
+                      >
+                        <ChevronLeftIcon className="w-5 h-5 text-gray-700" />
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentSlide(
+                            (prev) => (prev + 1) % featureImageList.length,
+                          );
+                        }}
+                        className="absolute top-1/2 right-3 z-20 -translate-y-1/2 bg-white/60 hover:bg-white rounded-full h-8 w-8 shadow-md max-sm:h-6 max-md:h-6 max-sm:w-6 max-md:w-6 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity"
+                        aria-label="Scroll right"
+                      >
+                        <ChevronRightIcon className="w-5 h-5 text-gray-700" />
+                      </Button>
+                    </>
+                  )}
                 </div>
               </div>
             )}

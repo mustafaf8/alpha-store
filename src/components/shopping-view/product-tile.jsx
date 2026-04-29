@@ -31,21 +31,28 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
 
   // Extract unique data from product object
   const vendorName = product?.brand?.name || product?.brand || "Premium Brand";
-  
+
   // Extract attributes from technicalSpecs or fallback to simple strings
-  const attributes = (product?.technicalSpecs 
-    ? product.technicalSpecs.map(s => s.value) 
-    : (product?.attributes || ["Premium", "Original"]))
-    .sort((a, b) => a.toString().length - b.toString().length);
+  const attributes = (
+    product?.technicalSpecs
+      ? product.technicalSpecs.map((s) => s.value)
+      : product?.attributes || ["Premium", "Original"]
+  ).sort((a, b) => a.toString().length - b.toString().length);
 
   // Calculate dynamic discount percentage
   let discountPercentage = 0;
   if (product?.price > product?.salePrice) {
-    discountPercentage = Math.round(((product.price - product.salePrice) / product.price) * 100);
+    discountPercentage = Math.round(
+      ((product.price - product.salePrice) / product.price) * 100,
+    );
   }
-  const discountText = discountPercentage > 0 ? `Extra ${discountPercentage}% discount` : "Best Price Guarantee";
-  
-  const salesCount = product?.salesCount || Math.floor(Math.random() * 500) + 10;
+  const discountText =
+    discountPercentage > 0
+      ? `Extra ${discountPercentage}% discount`
+      : "Best Price Guarantee";
+
+  const salesCount =
+    product?.salesCount || Math.floor(Math.random() * 500) + 10;
   const statusText = product?.totalStock > 0 ? "In Stock" : "Out of Stock";
 
   return (
@@ -54,11 +61,11 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
       onClick={handleProductClick}
     >
       {/* Product Image area with Badges */}
-      <div className="product-tile-image relative w-full flex-shrink-0 bg-white rounded-xl overflow-hidden">
+      <div className="product-tile-image relative z-0 w-full flex-shrink-0 bg-white rounded-xl overflow-hidden">
         <img
           src={product?.image}
           alt={product?.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="relative z-0 w-full h-full object-cover"
           loading="lazy"
           onError={(event) => {
             event.currentTarget.onerror = null;
@@ -66,21 +73,23 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
           }}
         />
 
-        {/* Top Left Heart Icon */}
-        <div className="absolute top-2 left-2 z-10">
-          <button
-            onClick={handleAction}
-            className="bg-white/80 backdrop-blur-md border border-purple-100 p-2 rounded-xl text-slate-600 hover:text-purple-600 transition-colors shadow-sm"
-          >
-            <Heart className="w-4 h-4" />
-          </button>
-        </div>
+        <div className="absolute inset-0 z-30 pointer-events-none">
+          {/* Top Left Heart Icon */}
+          <div className="absolute top-2 left-2 z-10">
+            <button
+              onClick={handleAction}
+              className="pointer-events-auto bg-white border border-slate-200 p-2 rounded-xl text-slate-600 hover:text-purple-600 transition-colors"
+            >
+              <Heart className="w-4 h-4" />
+            </button>
+          </div>
 
-        {/* Top Right Status Badge */}
-        <div className="absolute top-2 right-2 z-10">
-          <span className="bg-blue-50/90 backdrop-blur-md text-blue-600 font-bold text-[10px] px-2 py-1 rounded-md tracking-wide">
-            {statusText}
-          </span>
+          {/* Top Right Status Badge */}
+          <div className="absolute top-2 right-2 z-10">
+            <span className="bg-white border border-slate-200 text-blue-600 font-bold text-[10px] px-2 py-1 rounded-md tracking-wide">
+              {statusText}
+            </span>
+          </div>
         </div>
       </div>
 
@@ -165,7 +174,8 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
         <button
           onClick={(e) => {
             e.stopPropagation();
-            if (handleAddtoCart) handleAddtoCart(product._id, product.totalStock);
+            if (handleAddtoCart)
+              handleAddtoCart(product._id, product.totalStock);
           }}
           className="product-tile-cart-btn w-full bg-jarir-blue hover:bg-jarir-blueHover text-white text-xs sm:text-sm font-semibold py-1.5 sm:py-2 rounded-lg sm:rounded-xl transition-colors shadow-md"
         >

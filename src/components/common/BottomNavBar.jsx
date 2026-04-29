@@ -1,15 +1,19 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, MessageCircle, LayoutGrid, Search } from "lucide-react";
+import { Home, MessageCircle, LayoutGrid, Search, ShoppingCart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { createPortal } from "react-dom";
+import { useSelector } from "react-redux";
 
 const BottomNavBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { cartItems } = useSelector((state) => state.cart || { cartItems: [] });
+  const totalCartItems = cartItems.reduce((acc, item) => acc + (item.quantity || 1), 0);
 
   const navItems = [
     { to: "/shop/home", label: "Home", icon: Home },
     { to: "/shop/listing", label: "Shop", icon: LayoutGrid },
+    { to: "/shop/cart", label: "Cart", icon: ShoppingCart },
     { to: "/shop/whatsapp", label: "Help", icon: MessageCircle },
     { to: "/shop/search", label: "Search", icon: Search },
   ];
@@ -70,6 +74,11 @@ const BottomNavBar = () => {
                             "drop-shadow-[0_0_12px_rgba(147,51,234,0.5)]",
                         )}
                       />
+                      {item.to === "/shop/cart" && totalCartItems > 0 && (
+                        <span className="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full bg-purple-600 text-white text-[10px] font-bold leading-4 text-center">
+                          {totalCartItems > 99 ? "99+" : totalCartItems}
+                        </span>
+                      )}
                       {isActive && (
                         <div className="absolute -bottom-2 w-1.5 h-1.5 bg-purple-600 rounded-full shadow-[0_0_15px_rgba(147,51,234,1)] animate-pulse" />
                       )}

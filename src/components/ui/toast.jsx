@@ -26,22 +26,24 @@ ToastViewport.displayName = ToastPrimitives.Viewport.displayName;
 // --- toastVariants GÜNCELLENDİ ---
 const toastVariants = cva(
   // Ortak stiller: Yuvarlak köşeler, GÖLGE, KENARLIK, dolgu (p-4), ikon için sağ boşluk (pr-8), animasyonlar
-  "group pointer-events-auto relative flex w-full items-center justify-between space-x-2.5 overflow-hidden rounded-md border p-2.5 pr-6 shadow-md transition-all backdrop-blur-sm sm:space-x-4 sm:rounded-xl sm:p-4 sm:pr-8 sm:shadow-xl data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2",
+  "group pointer-events-auto relative flex w-full items-center justify-between space-x-2.5 overflow-hidden rounded-md border p-2.5 pr-6 shadow-lg transition-all backdrop-blur-xl sm:space-x-4 sm:rounded-xl sm:p-4 sm:pr-8 data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2",
   {
     variants: {
       variant: {
-        default: "border bg-background text-foreground",
+        default:
+          "border-white/40 bg-white/75 text-slate-800 shadow-[0_14px_32px_rgba(15,23,42,0.16)]",
         // Başarı (Yeşil)
         success:
-          "success group border-green-500 bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400 dark:border-green-600 border-l-4", // Sol kenarlık ve renkler
+          "success group border-green-200/80 bg-emerald-50/80 text-emerald-800 border-l-4 border-l-emerald-500 shadow-[0_14px_32px_rgba(16,185,129,0.18)]",
         // Yıkıcı/Hata (Kırmızı) - Renkler ayarlandı
         destructive:
-          "destructive group border-red-500 bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-400 dark:border-red-600 border-l-4", // Sol kenarlık ve renkler
+          "destructive group border-red-200/80 bg-rose-50/80 text-rose-800 border-l-4 border-l-rose-500 shadow-[0_14px_32px_rgba(244,63,94,0.18)]",
         // Uyarı (Sarı/Turuncu)
         warning:
-          "warning group border-yellow-500 bg-yellow-50 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400 dark:border-yellow-600 border-l-4", // Sol kenarlık ve renkler
+          "warning group border-amber-200/80 bg-amber-50/80 text-amber-800 border-l-4 border-l-amber-500 shadow-[0_14px_32px_rgba(245,158,11,0.18)]",
         // Bilgi (Mavi)
-        info: "info group border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-600 border-l-4", // Sol kenarlık ve renkler
+        info:
+          "info group border-sky-200/80 bg-sky-50/80 text-sky-800 border-l-4 border-l-sky-500 shadow-[0_14px_32px_rgba(14,165,233,0.18)]",
       },
     },
     defaultVariants: {

@@ -1,4 +1,4 @@
-import { MessageCircle, Search, ChevronDown, ShoppingCart } from "lucide-react";
+import { MessageCircle, Search, ChevronDown } from "lucide-react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -162,35 +162,35 @@ RecursiveMenuItem.propTypes = {
 
 // Turkish → English category name mapping - Moved outside for performance
 const CATEGORY_TRANSLATIONS = {
-  "telefon": "Phones",
-  "telefonlar": "Phones",
-  "laptop": "Laptops",
-  "laptoplar": "Laptops",
-  "bilgisayar": "Computers",
-  "tablet": "Tablets",
-  "tabletler": "Tablets",
-  "kulaklık": "Headphones",
-  "kulaklıklar": "Headphones",
-  "kamera": "Cameras",
-  "kameralar": "Cameras",
-  "oyun": "Gaming",
-  "aksesuar": "Accessories",
-  "aksesuarlar": "Accessories",
-  "yazıcı": "Printers",
-  "yazıcılar": "Printers",
-  "ekran": "Monitors",
-  "ekranlar": "Monitors",
+  telefon: "Phones",
+  telefonlar: "Phones",
+  laptop: "Laptops",
+  laptoplar: "Laptops",
+  bilgisayar: "Computers",
+  tablet: "Tablets",
+  tabletler: "Tablets",
+  kulaklık: "Headphones",
+  kulaklıklar: "Headphones",
+  kamera: "Cameras",
+  kameralar: "Cameras",
+  oyun: "Gaming",
+  aksesuar: "Accessories",
+  aksesuarlar: "Accessories",
+  yazıcı: "Printers",
+  yazıcılar: "Printers",
+  ekran: "Monitors",
+  ekranlar: "Monitors",
   "ses sistemi": "Audio",
   "ses sistemleri": "Audio",
-  "tv": "TV",
-  "televizyon": "TV",
+  tv: "TV",
+  televizyon: "TV",
   "akıllı saat": "Smart Watches",
   "akıllı saatler": "Smart Watches",
-  "müzik": "Music",
-  "kitap": "Books",
-  "kırtasiye": "Stationery",
-  "ofis": "Office",
-  "baskı": "Print",
+  müzik: "Music",
+  kitap: "Books",
+  kırtasiye: "Stationery",
+  ofis: "Office",
+  baskı: "Print",
 };
 
 const translateName = (name = "") => {
@@ -233,10 +233,10 @@ function CategorySubMenu() {
             <HoverMenu
               key={category._id}
               trigger={
-                <button
-                  className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-purple-700 px-2 py-1.5 flex items-center justify-center gap-1 rounded-xl hover:bg-slate-100 transition-all duration-200 text-center"
-                >
-                  <span className="max-w-[100px] whitespace-normal break-words">{translateName(category.name)}</span>
+                <button className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-purple-700 px-2 py-1.5 flex items-center justify-center gap-1 rounded-xl hover:bg-slate-100 transition-all duration-200 text-center">
+                  <span className="max-w-[100px] whitespace-normal break-words">
+                    {translateName(category.name)}
+                  </span>
                   <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 flex-shrink-0" />
                 </button>
               }
@@ -269,7 +269,9 @@ function CategorySubMenu() {
               onClick={() => handleNavigate(category.slug)}
               className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-purple-700 px-2 py-1.5 flex items-center justify-center rounded-xl hover:bg-slate-100 transition-all duration-200 text-center"
             >
-              <span className="max-w-[100px] whitespace-normal break-words">{translateName(category.name)}</span>
+              <span className="max-w-[100px] whitespace-normal break-words">
+                {translateName(category.name)}
+              </span>
             </button>
           ),
         )}
@@ -279,10 +281,6 @@ function CategorySubMenu() {
 }
 
 function MainHeaderActions() {
-  const navigate = useNavigate();
-  const { cartItems } = useSelector((state) => state.cart || { cartItems: [] });
-  const totalCartItems = cartItems.reduce((acc, item) => acc + (item.quantity || 1), 0);
-
   const handleWhatsApp = () => {
     window.open(
       "https://wa.me/905347168754?text=Merhaba%2C%20site%20uzerinden%20iletisime%20gecmek%20istiyorum.",
@@ -300,33 +298,23 @@ function MainHeaderActions() {
         onClick={handleWhatsApp}
       >
         <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
-        <span className="hidden sm:inline text-xs md:text-sm font-semibold">
+        <span className="inline text-[11px] md:text-sm font-semibold">
           WhatsApp
         </span>
       </Button>
 
-      <button
-        onClick={() => navigate("/shop/cart")}
-        className="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-full transition-colors shadow-sm "
-      >
-        <ShoppingCart className="w-5 h-5 text-white" />
-        {totalCartItems > 0 && (
-          <span className="text-sm font-bold text-white min-w-[16px] text-center">
-            {totalCartItems}
-          </span>
-        )}
-
-      </button>
     </div>
   );
 }
 
 function TopStrip() {
   return (
-    <div className="bg-slate-100 text-xs text-slate-600 border-b hidden md:block">
-      <div className="container mx-auto px-4 md:px-20 h-9 flex justify-end items-center">
+    <div className="bg-slate-100 text-xs text-slate-600 border-b block">
+      <div className="container mx-auto px-3 md:px-20 h-8 md:h-9 flex justify-end items-center">
         <div className="flex items-center gap-4 divide-x divide-slate-300">
-          <Link to="#" className="hover:text-primary transition-colors">Store Locator</Link>
+          <Link to="#" className="hover:text-primary transition-colors">
+            Store Locator
+          </Link>
           <div className="pl-4 flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
             {/* <img src="https://flagcdn.com/w20/sa.png" alt="SA" className="w-4 h-3" /> */}
             <span>Saudi Arabia | SAR</span>
@@ -462,13 +450,15 @@ function ShoppingHeader() {
               key={item._id}
               type="button"
               className="flex items-center gap-4 w-full p-2.5 rounded-2xl transition-all hover:bg-white hover:shadow-lg group text-left"
-              onClick={() => handleSuggestionClick(`/shop/product/${item._id}/specs`)}
+              onClick={() =>
+                handleSuggestionClick(`/shop/product/${item._id}/specs`)
+              }
             >
               <div className="w-14 h-14 rounded-xl bg-white border border-slate-100 flex-shrink-0 overflow-hidden shadow-sm">
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="flex flex-col min-w-0 flex-1">
@@ -513,20 +503,16 @@ function ShoppingHeader() {
     <div className="search-suggestions-portal w-full overflow-hidden rounded-3xl border border-white/40 bg-slate-50/95 shadow-[0_20px_50px_rgba(0,0,0,0.1)] backdrop-blur-xl animate-in fade-in zoom-in duration-200">
       <div className="max-h-[min(70vh,500px)] overflow-y-auto no-scrollbar">
         {renderProductSuggestions(suggestions.products)}
-        {renderChipSuggestions(
-          "Categories",
-          suggestions.categories,
-          (c) => handleSuggestionClick(`/shop/listing?category=${c.slug}`)
+        {renderChipSuggestions("Categories", suggestions.categories, (c) =>
+          handleSuggestionClick(`/shop/listing?category=${c.slug}`),
         )}
-        {renderChipSuggestions(
-          "Brands",
-          suggestions.brands,
-          (b) => handleSuggestionClick(`/shop/listing?brand=${b.slug}`)
+        {renderChipSuggestions("Brands", suggestions.brands, (b) =>
+          handleSuggestionClick(`/shop/listing?brand=${b.slug}`),
         )}
       </div>
       {hasSuggestions && (
         <div className="bg-slate-100/50 p-3 text-center border-t border-slate-100/50">
-          <button 
+          <button
             onClick={handleSearchSubmit}
             className="text-[11px] font-bold text-purple-600 hover:underline uppercase tracking-widest"
           >
@@ -542,12 +528,9 @@ function ShoppingHeader() {
       <TopStrip />
       <div className="container mx-auto px-4 md:px-20">
         <div className="flex h-20 items-center justify-between gap-3 md:gap-6 max-[767px]:h-16">
-          <Link
-            to="/shop/home"
-            className="flex-shrink-0 rounded-xl px-1 py-1"
-          >
+          <Link to="/shop/home" className="flex-shrink-0 rounded-xl px-1 py-1">
             <img
-              className="h-24 w-auto max-[690px]:h-10"
+              className="h-24 w-auto max-[690px]:h-[85px] max-[490px]:h-[75px]"
               src="/logoo.png"
               alt="logo"
               aria-label="Ana Sayfa"
