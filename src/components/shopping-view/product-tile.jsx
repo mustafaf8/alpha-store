@@ -161,13 +161,13 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
       </div>
 
       {/* Hover Add to Cart Button */}
-      <div className="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-white via-white to-transparent translate-y-0 opacity-100 md:translate-y-full md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 z-20">
+      <div className="absolute bottom-0 left-0 w-full p-1.5 sm:p-2 bg-gradient-to-t from-white via-white to-transparent translate-y-0 opacity-100 md:translate-y-full md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 z-20">
         <button
           onClick={(e) => {
             e.stopPropagation();
             if (handleAddtoCart) handleAddtoCart(product._id, product.totalStock);
           }}
-          className="product-tile-cart-btn w-full bg-jarir-blue hover:bg-jarir-blueHover text-white font-semibold py-2 rounded-xl transition-colors shadow-md"
+          className="product-tile-cart-btn w-full bg-jarir-blue hover:bg-jarir-blueHover text-white text-xs sm:text-sm font-semibold py-1.5 sm:py-2 rounded-lg sm:rounded-xl transition-colors shadow-md"
         >
           Add to Cart
         </button>

@@ -118,7 +118,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#1a1a2e] dark:bg-gray-950 text-slate-300 text-sm mt-6 pb-24 lg:pb-0">
+    <footer className="bg-[#1a1a2e] dark:bg-gray-950 text-slate-300 text-sm mt-6 pb-14 lg:pb-0">
       {/* Newsletter */}
       <div className="border-b border-white/10">
         <div className="shop-container py-6 md:py-8 flex flex-col md:flex-row items-center justify-between gap-6">

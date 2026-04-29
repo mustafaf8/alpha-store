@@ -169,7 +169,7 @@ function ShoppingHome() {
                     index > 6 ? "max-[790px]:hidden" : ""
                   }`}
                 >
-                  <div className="category-card w-full aspect-square rounded-3xl border border-slate-200 bg-slate-50 overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105 group-hover:shadow-md">
+                  <div className="category-card w-full aspect-square rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105 group-hover:shadow-md">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -184,14 +184,16 @@ function ShoppingHome() {
       </div>
 
       {/* Hero Banner Section */}
-      <section className="my-3 md:my-4 pt-1 container mx-auto px-20 max-[1024px]:px-1 max-[1024px]:pt-1 relative z-10">
-        {featuresLoading ? (
-          <div className="flex gap-4 h-[400px] max-sm:h-[250px] max-md:h-[300px]">
-            <Skeleton className="w-full h-full rounded-3xl bg-gray-200 animate-pulse" />
-          </div>
-        ) : (
-          <div className="flex w-full">
-            <div className="hero-banner-container relative w-full rounded-3xl overflow-hidden shadow-sm group">
+      <div className="container mx-auto px-4 max-[1024px]:px-0 my-3 md:my-4 pt-1 max-[1024px]:pt-1 relative z-10">
+        <div className="shop-container max-[1024px]:px-2">
+          <div className="w-full">
+            {featuresLoading ? (
+              <div className="flex gap-4 h-[400px] max-sm:h-[250px] max-md:h-[300px]">
+                <Skeleton className="w-full h-full rounded-3xl bg-gray-200 animate-pulse" />
+              </div>
+            ) : (
+              <div className="flex w-full">
+                <div className="hero-banner-container relative w-full rounded-3xl overflow-hidden shadow-sm group">
               {featureImageList && featureImageList.length > 0 ? (
                 featureImageList.map((slide, index) => (
                   <img
@@ -248,10 +250,12 @@ function ShoppingHome() {
                   </Button>
                 </>
               )}
-            </div>
+                </div>
+              </div>
+            )}
           </div>
-        )}
-      </section>
+        </div>
+      </div>
 
       {/* Top Brands Section */}
       <div className="hidden lg:block shop-container mx-auto">
