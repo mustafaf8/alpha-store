@@ -46,8 +46,8 @@ const BottomNavBar = () => {
   // We use a portal to ensure the nav bar is at the very top of the DOM stacking order
   const content = (
     <div className="lg:hidden">
-      <div className="fixed bottom-1 left-1/2 -translate-x-1/2 w-[95%] max-w-[420px] z-[2147483647] sm:bottom-2 sm:w-[92%]">
-        <nav className="bg-white/80 backdrop-blur-2xl border border-white/40 shadow-[0_14px_30px_rgba(0,0,0,0.12)] rounded-[22px] px-3 py-2 sm:rounded-[35px] sm:px-6 sm:py-3.5">
+      <div className="fixed bottom-2 left-1/2 -translate-x-1/2 w-[95%] max-w-[540px] z-[2147483647] sm:bottom-2 sm:w-[92%]">
+        <nav className="bg-white/80 backdrop-blur-2xl border border-white/40 shadow-[0_14px_30px_rgba(0,0,0,0.12)] rounded-[22px] px-3 py-2.5 sm:rounded-[35px] sm:px-6 sm:py-4">
           <ul className="flex items-center justify-between gap-1">
             {navItems.map((item) => {
               const isActive = location.pathname.startsWith(item.to);
@@ -71,7 +71,7 @@ const BottomNavBar = () => {
                         className={cn(
                           "h-[18px] w-[18px] transition-all sm:h-6 sm:w-6",
                           isActive &&
-                            "drop-shadow-[0_0_12px_rgba(147,51,234,0.5)]",
+                          "drop-shadow-[0_0_12px_rgba(147,51,234,0.5)]",
                         )}
                       />
                       {item.to === "/shop/cart" && totalCartItems > 0 && (

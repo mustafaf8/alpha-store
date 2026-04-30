@@ -1,4 +1,4 @@
-import { MessageCircle, Search, ChevronDown } from "lucide-react";
+import { MessageCircle, Search, ChevronDown, X } from "lucide-react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -11,6 +11,7 @@ import api from "@/api/axiosInstance";
 import { useRef } from "react";
 import PropTypes from "prop-types";
 import { formatPrice } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Hover ile açılır menü bileşeni
 const HoverMenu = ({ children, trigger, className = "" }) => {
@@ -227,7 +228,7 @@ function CategorySubMenu() {
 
   return (
     <div className="bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
-      <nav className="container mx-auto px-20 max-[1024px]:px-1 flex items-center justify-center gap-x-2 min-h-[44px] overflow-x-auto no-scrollbar category-menu-container relative z-40">
+      <nav className="w-full px-4 max-[1024px]:px-1 flex items-center justify-center gap-x-2 min-h-[44px] overflow-x-auto no-scrollbar category-menu-container relative z-40">
         {categoryList.slice(0, 10).map((category) =>
           category.children && category.children.length > 0 ? (
             <HoverMenu
@@ -293,7 +294,7 @@ function MainHeaderActions() {
     <div className="flex items-center gap-2 md:gap-4">
       <Button
         variant="secondary"
-        className="flex items-center gap-2 rounded-full border border-green-100 bg-green-50 px-3 md:px-4 py-2 h-10 text-green-700 hover:bg-green-100"
+        className="hidden md:flex items-center gap-2 rounded-full border border-green-100 bg-green-50 px-3 md:px-4 py-2 h-10 text-green-700 hover:bg-green-100"
         aria-label="WhatsApp"
         onClick={handleWhatsApp}
       >
@@ -302,15 +303,14 @@ function MainHeaderActions() {
           WhatsApp
         </span>
       </Button>
-
     </div>
   );
 }
 
 function TopStrip() {
   return (
-    <div className="bg-slate-100 text-xs text-slate-600 border-b block">
-      <div className="container mx-auto px-3 md:px-20 h-8 md:h-9 flex justify-end items-center">
+    <div className="bg-slate-100 text-xs max-[720px]:text-[10px] text-slate-600 border-b block">
+      <div className="w-full px-2 md:px-4 h-8 md:h-9 flex justify-end items-center">
         <div className="flex items-center gap-4 divide-x divide-slate-300">
           <Link to="#" className="hover:text-primary transition-colors">
             Store Locator
@@ -338,6 +338,7 @@ function ShoppingHeader() {
   });
   const [showSuggest, setShowSuggest] = useState(false);
   const [activeInput, setActiveInput] = useState("");
+  const [isMobileSearchVisible, setIsMobileSearchVisible] = useState(false);
   const debounceRef = useRef();
   const [searchParams] = useSearchParams();
   const normalizeSuggestions = (payload) => ({
@@ -347,6 +348,19 @@ function ShoppingHeader() {
   });
 
   const shouldShowCategoryMenu = true;
+
+  // Search portal açıkken sayfanın kaydırılmasını engelle
+  useEffect(() => {
+    if (showSuggest) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showSuggest]);
 
   // Portal dışına tıklandığında ve ESC tuşu ile suggestions'ı kapat
   useEffect(() => {
@@ -445,7 +459,7 @@ function ShoppingHeader() {
           Products
         </div>
         <div className="flex flex-col gap-1 px-2">
-          {items.map((item) => (
+          {items.slice(0, 5).map((item) => (
             <button
               key={item._id}
               type="button"
@@ -526,88 +540,90 @@ function ShoppingHeader() {
   return (
     <header className="sticky top-0 z-[60] w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85 shadow-sm">
       <TopStrip />
-      <div className="container mx-auto px-4 md:px-20">
-        <div className="flex h-20 items-center justify-between gap-3 md:gap-6 max-[767px]:h-16">
+      <div className="w-full px-2 md:px-4">
+        <div className="flex h-20 items-center justify-between gap-3 md:gap-6 max-[767px]:h-16 relative">
           <Link to="/shop/home" className="flex-shrink-0 rounded-xl px-1 py-1">
             <img
-              className="h-24 w-auto max-[690px]:h-[85px] max-[490px]:h-[75px]"
+              className="h-24 w-auto max-[690px]:h-[70px] max-[490px]:h-[55px] transition-all"
               src="/logoo.png"
               alt="logo"
               aria-label="Ana Sayfa"
               loading="eager"
             />
           </Link>
-          <form
-            onSubmit={handleSearchSubmit}
-            className="flex-grow min-w-0 max-w-3xl"
-          >
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground max-lg:hidden" />
-              <Input
-                type="search"
-                placeholder="Search products, categories, or brands..."
-                value={searchTerm}
-                onChange={(e) => handleSearchChange(e, "desktop")}
-                className="w-full rounded-full bg-slate-50 pl-10 pr-4 py-2.5 h-11 text-sm border border-slate-200 focus:border-primary focus:bg-background focus:ring-1 focus:ring-primary max-md:hidden"
-              />
-              {/* Suggestions Dropdown - Sadece desktop için */}
-              {showSuggest &&
-                activeInput === "desktop" &&
-                hasSuggestions &&
-                createPortal(
-                  <div
-                    className="fixed z-[70]"
-                    style={{
-                      top: "114px",
-                      left: "calc(50% - 320px)",
-                      width: "600px",
-                      maxWidth: "90vw",
-                    }}
-                  >
-                    {renderSuggestionsContent()}
-                  </div>,
-                  document.body,
-                )}
-              <button type="submit" className="hidden"></button>
+
+          {/* Search Container (Desktop & Mobile) */}
+          <div className="flex-grow flex items-center justify-end min-w-0 px-2 md:px-0">
+            {/* Desktop Search */}
+            <form
+              onSubmit={handleSearchSubmit}
+              className="w-full max-w-5xl max-md:hidden mr-auto"
+            >
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Input
+                  type="search"
+                  placeholder="Search products, categories, or brands..."
+                  value={searchTerm}
+                  onChange={(e) => handleSearchChange(e, "desktop")}
+                  className="w-full rounded-full bg-slate-50 pl-10 pr-4 py-2.5 h-11 text-sm border border-slate-200 focus:border-primary focus:bg-background focus:ring-1 focus:ring-primary"
+                />
+                {showSuggest &&
+                  activeInput === "desktop" &&
+                  hasSuggestions &&
+                  createPortal(
+                    <div
+                      className="fixed z-[70]"
+                      style={{
+                        top: "114px",
+                        left: "calc(50% - 320px)",
+                        width: "600px",
+                        maxWidth: "90vw",
+                      }}
+                    >
+                      {renderSuggestionsContent()}
+                    </div>,
+                    document.body,
+                  )}
+              </div>
+            </form>
+
+            {/* Mobile Search (Always Visible & Embedded) */}
+            <div className="md:hidden flex items-center justify-end w-full max-w-[320px]">
+              <div className="bg-slate-50 rounded-full flex items-center gap-2 px-3 py-1.5 border border-slate-200 h-10 w-full shadow-sm focus-within:border-purple-200 focus-within:bg-white focus-within:shadow-md transition-all">
+                <Search className="h-4 w-4 text-slate-400 flex-shrink-0" />
+                <Input
+                  type="search"
+                  placeholder="Ara..."
+                  value={searchTerm}
+                  onChange={(e) => handleSearchChange(e, "mobile")}
+                  className="flex-grow border-none bg-transparent focus-visible:ring-0 h-full text-sm px-1 min-w-0"
+                />
+                {showSuggest &&
+                  activeInput === "mobile" &&
+                  hasSuggestions &&
+                  createPortal(
+                    <div
+                      className="fixed z-[80]"
+                      style={{
+                        top: "75px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        width: "calc(100vw - 32px)",
+                      }}
+                    >
+                      {renderSuggestionsContent()}
+                    </div>,
+                    document.body,
+                  )}
+              </div>
             </div>
-          </form>
+          </div>
+
           <div className="flex-shrink-0">
             <MainHeaderActions />
           </div>
         </div>
-      </div>
-      {/* Arama Çubuğu (Sadece Küçük Ekranlarda Ayrı Satırda) */}
-      <div className="lg:hidden md:hidden px-4 pb-2 pt-2 border-t bg-white/90">
-        <form onSubmit={handleSearchSubmit} className="w-full">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="What are you looking for?"
-              value={searchTerm}
-              onChange={(e) => handleSearchChange(e, "mobile")}
-              className="w-full rounded-full bg-slate-50 pl-10 pr-4 py-2 h-10 text-sm border border-slate-200 focus:border-primary focus:bg-background focus:ring-1 focus:ring-primary"
-            />
-            {/* Suggestions Dropdown - Sadece mobile için */}
-            {showSuggest &&
-              activeInput === "mobile" &&
-              hasSuggestions &&
-              createPortal(
-                <div
-                  className="fixed z-[70]"
-                  style={{
-                    top: "176px",
-                    left: "20px",
-                    right: "20px",
-                    width: "calc(100vw - 40px)",
-                  }}
-                >
-                  {renderSuggestionsContent()}
-                </div>,
-                document.body,
-              )}
-          </div>
-        </form>
       </div>
 
       {/* Kategori Menü Satırı (Sadece masaüstünde header'ın altında) */}

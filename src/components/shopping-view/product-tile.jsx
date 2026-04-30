@@ -75,18 +75,18 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
 
         <div className="absolute inset-0 z-30 pointer-events-none">
           {/* Top Left Heart Icon */}
-          <div className="absolute top-2 left-2 z-10">
+          <div className="absolute top-2 left-2 z-10 max-[720px]:top-1 max-[720px]:left-1">
             <button
               onClick={handleAction}
-              className="pointer-events-auto bg-white border border-slate-200 p-2 rounded-xl text-slate-600 hover:text-purple-600 transition-colors"
+              className="pointer-events-auto bg-white border border-slate-200 p-2 max-[720px]:p-1.5 rounded-xl max-[720px]:rounded-lg text-slate-600 hover:text-purple-600 transition-colors"
             >
-              <Heart className="w-4 h-4" />
+              <Heart className="w-4 h-4 max-[720px]:w-3.5 max-[720px]:h-3.5" />
             </button>
           </div>
 
           {/* Top Right Status Badge */}
-          <div className="absolute top-2 right-2 z-10">
-            <span className="bg-white border border-slate-200 text-blue-600 font-bold text-[10px] px-2 py-1 rounded-md tracking-wide">
+          <div className="absolute top-2 right-2 z-10 max-[720px]:top-1 max-[720px]:right-1">
+            <span className="bg-white border border-slate-200 text-blue-600 font-bold text-[10px] max-[720px]:text-[8px] px-2 py-1 max-[720px]:px-1.5 max-[720px]:py-0.5 rounded-md max-[720px]:rounded tracking-wide">
               {statusText}
             </span>
           </div>
@@ -102,10 +102,15 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
 
         {/* Title */}
         <h2
-          className="product-tile-title text-slate-800 text-sm font-medium line-clamp-2 leading-tight min-h-[40px]"
+          className="product-tile-title text-slate-800 text-sm font-bold line-clamp-2 leading-[1.2] max-h-[2.4em] overflow-hidden pr-1"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+          }}
           title={product?.title}
         >
-          {product?.title || "Product description, 2-line..."}
+          {product?.title || "Product Title"}
         </h2>
 
         {/* Attributes */}

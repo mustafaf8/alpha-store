@@ -30,7 +30,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
       setCanScrollLeft(scrollLeft > tolerance);
       setCanScrollRight(
         scrollWidth > clientWidth &&
-          scrollLeft < scrollWidth - clientWidth - tolerance,
+        scrollLeft < scrollWidth - clientWidth - tolerance,
       );
     } else {
       setCanScrollLeft(false);
@@ -109,7 +109,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
   };
 
   return (
-    <section className="shop-section my-1 py-2">
+    <section className="shop-section my-1 py-2 max-[720px]:py-0 max-[720px]:my-0">
       <div className="shop-container max-[1024px]:px-2">
         {/* Section header */}
         <div className="flex items-center justify-between mb-2 px-1">
@@ -155,7 +155,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
           <div
             ref={scrollContainerRef}
             onScroll={checkScroll}
-            className="flex gap-3 overflow-x-auto py-1 pb-3 px-1 no-scrollbar"
+            className="flex gap-3 overflow-x-auto py-1 pb-3 px-1 no-scrollbar max-[720px]:pb-0 max-[720px]:gap-1"
           >
             {internalLoading ? (
               Array.from({ length: skeletonCount }).map((_, index) => (

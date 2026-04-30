@@ -292,30 +292,30 @@ function ShoppingListing() {
           isLoading={categoriesLoading || brandsLoading}
           onClearFilters={handleClearFilters}
         />
-        <div className="bg-background w-full rounded-lg shadow-sm border">
+        <div className="bg-background w-full rounded-lg ">
           <div className="p-4 border-b flex items-center justify-between max-[720px]:flex-col max-[720px]:items-start max-[720px]:gap-2">
             <h2 className="text-lg font-semibold max-[720px]:hidden">
               {filters?.category?.length > 0
                 ? `${filters.category
-                    .map((slug) => {
-                      const allCategories = flattenCategories(categoryList);
-                      const category = allCategories.find(
-                        (c) => c.slug === slug,
-                      );
-                      return category
-                        ? category.parent
-                          ? `    └─ ${category.name}`
-                          : category.name
-                        : slug;
-                    })
-                    .join(", ")} Products`
+                  .map((slug) => {
+                    const allCategories = flattenCategories(categoryList);
+                    const category = allCategories.find(
+                      (c) => c.slug === slug,
+                    );
+                    return category
+                      ? category.parent
+                        ? `    └─ ${category.name}`
+                        : category.name
+                      : slug;
+                  })
+                  .join(", ")} Products`
                 : filters?.brand?.length > 0
                   ? `${filters.brand
-                      .map(
-                        (slug) =>
-                          brandList.find((b) => b.slug === slug)?.name || slug,
-                      )
-                      .join(", ")} Brand Products`
+                    .map(
+                      (slug) =>
+                        brandList.find((b) => b.slug === slug)?.name || slug,
+                    )
+                    .join(", ")} Brand Products`
                   : "All Products"}
             </h2>
             <div className="flex items-center gap-3">
@@ -328,7 +328,7 @@ function ShoppingListing() {
               )}
             </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4 max-[720px]:p-0 max-[720px]:gap-1.5">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4 max-[720px]:px-0 max-[720px]:gap-1.5">
             {productsLoading ? (
               Array.from({ length: skeletonCount }).map((_, index) => (
                 <ProductTileSkeleton key={`skeleton-${index}`} />

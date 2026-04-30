@@ -23,13 +23,16 @@ function ProductDescriptionPanel({ productDetails }) {
             <span className="w-1 h-5 rounded-full bg-gradient-to-b from-purple-500 to-blue-500" />
             Öne Çıkanlar
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {highlights.map((h, idx) => (
               <div
                 key={`${h}-${idx}`}
-                className="flex items-center justify-center p-4 min-w-[140px] flex-1 sm:flex-none aspect-square rounded-2xl bg-purple-50 border border-purple-100 text-purple-800 text-center text-sm font-semibold shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+                className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 text-slate-800 text-sm font-semibold shadow-sm hover:shadow-md hover:border-purple-200 hover:bg-purple-50/30 transition-all duration-300 group"
               >
-                {h}
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white border border-slate-200 group-hover:border-purple-200 shadow-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                </div>
+                <span className="leading-tight">{h}</span>
               </div>
             ))}
           </div>

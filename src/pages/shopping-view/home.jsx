@@ -94,7 +94,7 @@ function ShoppingHome() {
       link: "/shop/listing?category=telefon",
     },
     {
-      title: "Sound Systems",
+      title: "Sound",
       image: "/bannerx/2.webp",
       link: "/shop/listing?category=ses-sistemleri",
     },
@@ -117,6 +117,16 @@ function ShoppingHome() {
       title: "Novatek",
       image: "/bannerx/6.webp",
       link: "/shop/listing?brand=novatek",
+    },
+    {
+      title: "Gadgets",
+      image: "/bannerx/2.webp",
+      link: "/shop/listing?category=aksesuar",
+    },
+    {
+      title: "Deals",
+      image: "/bannerx/2.webp",
+      link: "/shop/listing?category=firsatlar",
     },
   ];
 
@@ -151,7 +161,7 @@ function ShoppingHome() {
   return (
     <div className="bg-white flex flex-col min-h-screen">
       {/* Quick Explore Section */}
-      <div className="container mx-auto px-4 max-[1024px]:px-0 mt-4 md:mt-2 relative z-0">
+      <div className="container mx-auto px-4 max-[1024px]:px-0 max-[720px]:mt-0 mt-4 md:mt-2 relative z-0">
         <div className="shop-container max-[1024px]:px-2">
           <section className="px-0 py-1">
             <div className="mb-2 flex items-center justify-between gap-2">
@@ -159,23 +169,22 @@ function ShoppingHome() {
                 Browse Categories
               </h3>*/}
             </div>
-            <div className="category-grid grid grid-cols-3 gap-3 sm:gap-4 lg:grid-cols-6">
+            <div className="category-grid grid grid-cols-4 gap-3 sm:gap-4 lg:grid-cols-8">
               {quickExploreItems.map((item, index) => (
                 <button
-                  key={item.title}
+                  key={index}
                   type="button"
                   onClick={() => navigate(item.link)}
-                  className={`category-grid-item group flex flex-col items-center justify-start gap-2 ${
-                    index > 6 ? "max-[790px]:hidden" : ""
-                  }`}
+                  className="category-grid-item group flex flex-col items-center justify-start gap-2"
                 >
-                  <div className="category-card w-full aspect-square rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105 group-hover:shadow-md">
+                  <div className="category-card w-full aspect-square rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:border-purple-200">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="h-full w-full object-cover object-center"
+                      className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
+
                 </button>
               ))}
             </div>
@@ -210,11 +219,10 @@ function ShoppingHome() {
                           featureImageList[currentSlide]?.link,
                         )
                       }
-                      className={`hero-banner-slide-left absolute inset-0 z-0 h-full w-full object-cover object-center ${
-                        featureImageList[currentSlide]?.link
-                          ? "cursor-pointer"
-                          : ""
-                      }`}
+                      className={`hero-banner-slide-left absolute inset-0 z-0 h-full w-full object-cover object-center ${featureImageList[currentSlide]?.link
+                        ? "cursor-pointer"
+                        : ""
+                        }`}
                       loading="eager"
                     />
                   ) : (
@@ -357,14 +365,14 @@ function ShoppingHome() {
                   className="snap-start flex-shrink-0 w-[90px] h-[45px] sm:w-[130px] sm:h-[70px] md:w-[150px] md:h-[80px] bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center p-3 sm:p-4 hover:shadow-md transition-shadow cursor-pointer"
                 >
                   {brand.logo ? (
-                    <div className="w-full h-full opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                    <div className="w-full h-full transition-opacity">
                       {brand.logo}
                     </div>
                   ) : (
                     <img
                       src={brand.img}
                       alt={brand.name}
-                      className="max-w-full max-h-full object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                      className="max-w-full max-h-full object-contain transition-opacity"
                     />
                   )}
                 </div>
@@ -386,10 +394,10 @@ function ShoppingHome() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 space-y-6 pb-8 max-[1024px]:px-0 mt-0">
+      <div className="container mx-auto px-4 space-y-4 pb-8 max-[1024px]:px-0 mt-0">
         {/* Custom Banner Row */}
         <div className="shop-container mx-auto max-[1024px]:px-2">
-          <div className="promo-banner-grid grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="promo-banner-grid grid grid-cols-2 gap-4 max-[720px]:gap-2">
             <div className="promo-banner-item rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
               <img
                 src="/bannar2.avif"
@@ -470,7 +478,7 @@ function ShoppingHome() {
 
                 {/* Banners after Best Selling */}
                 {section.contentType === "BEST_SELLING" && (
-                  <div className="shop-container mx-auto max-[1024px]:px-2 space-y-4">
+                  <div className="shop-container mx-auto max-[1024px]:px-2 space-y-4 max-[720px]:space-y-2">
                     {/* Banner 7 - Full width */}
                     <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group w-full">
                       <img
@@ -480,7 +488,7 @@ function ShoppingHome() {
                       />
                     </div>
                     {/* Banner 5 & 6 - Side by side */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2">
                       <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/banner5.avif"
@@ -501,9 +509,9 @@ function ShoppingHome() {
 
                 {/* Banners after New Fashion Arrivals */}
                 {section.title === "New Fashion Arrivals" && (
-                  <div className="shop-container mx-auto max-[1024px]:px-2 space-y-4">
+                  <div className="shop-container mx-auto max-[1024px]:px-2 space-y-4 max-[720px]:space-y-2">
                     {/* First Row - 2 Banners */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-2 gap-4 max-[720px]:gap-2">
                       <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/bannar2.avif"
@@ -520,7 +528,7 @@ function ShoppingHome() {
                       </div>
                     </div>
                     {/* Second Row - 2 Banners */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2">
                       <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/banner5.avif"

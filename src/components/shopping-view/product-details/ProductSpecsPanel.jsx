@@ -20,27 +20,29 @@ function ProductSpecsPanel({ mergedSpecs }) {
           </div>
 
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-            {group.specs.map((spec) => {
-              const IconComponent = getSpecIcon(spec.key);
-              return (
-                <div
-                  key={`${spec.key}-${spec.value}`}
-                  className="rounded-lg border border-slate-100 bg-slate-50/60 px-3 py-2.5 hover:bg-purple-50/40 hover:border-purple-100 transition-all duration-200 group/spec flex items-center justify-between gap-3"
-                >
-                  <div className="flex items-center gap-2 min-w-0">
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-white border border-slate-200 group-hover/spec:border-purple-200 transition-colors shadow-sm">
-                      <IconComponent className="h-3 w-3 text-purple-600" />
+            {[...group.specs]
+              .sort((a, b) => (a.key + a.value).length - (b.key + b.value).length)
+              .map((spec) => {
+                const IconComponent = getSpecIcon(spec.key);
+                return (
+                  <div
+                    key={`${spec.key}-${spec.value}`}
+                    className="rounded-lg border border-slate-100 bg-slate-50/60 px-3 py-2.5 hover:bg-purple-50/40 hover:border-purple-100 transition-all duration-200 group/spec flex items-center justify-between gap-3"
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-white border border-slate-200 group-hover/spec:border-purple-200 transition-colors shadow-sm">
+                        <IconComponent className="h-3 w-3 text-purple-600" />
+                      </div>
+                      <div className="text-[13px] font-bold text-gray-800 truncate">
+                        {spec.key}
+                      </div>
                     </div>
-                    <div className="text-[13px] font-bold text-gray-800 truncate">
-                      {spec.key}
+                    <div className="text-[13px] font-medium text-slate-600 text-right break-words line-clamp-2">
+                      {spec.value}
                     </div>
                   </div>
-                  <div className="text-[13px] font-medium text-slate-600 text-right break-words line-clamp-2">
-                    {spec.value}
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </div>
       ))}
