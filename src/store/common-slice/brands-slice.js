@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../api/axiosInstance";
+import { shopReadRepository } from "@/services/shop/repositories/shopReadRepository";
 
 const initialState = {
   brandList: [],
@@ -12,14 +13,14 @@ export const fetchAllBrands = createAsyncThunk(
   "brands/fetchAll",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await api.get(`/common/brands/list`);
-      return response.data;
+      const payload = await shopReadRepository.getBrands();
+      return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Markalar getirilemedi." }
+        error.response?.data || { message: "Markalar getirilemedi." },
       );
     }
-  }
+  },
 );
 
 export const addBrand = createAsyncThunk(

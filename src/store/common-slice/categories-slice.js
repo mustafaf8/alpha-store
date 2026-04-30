@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../api/axiosInstance";
+import { shopReadRepository } from "@/services/shop/repositories/shopReadRepository";
 
 const initialState = {
   categoryList: [],
@@ -11,14 +12,14 @@ export const fetchAllCategories = createAsyncThunk(
   "categories/fetchAll",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await api.get(`/common/categories/list`);
-      return response.data;
+      const payload = await shopReadRepository.getCategories();
+      return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Kategoriler getirilemedi." }
+        error.response?.data || { message: "Kategoriler getirilemedi." },
       );
     }
-  }
+  },
 );
 
 export const addCategory = createAsyncThunk(

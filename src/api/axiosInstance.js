@@ -6,16 +6,20 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
+const useMockApi = import.meta.env.VITE_USE_MOCK_API !== "false";
+
 // Intercept requests and use mock adapter
 axiosInstance.interceptors.request.use(async (config) => {
+  if (!useMockApi) {
+    return config;
+  }
+
   const mockResponse = await mockApiAdapter(config);
   if (mockResponse) {
-    // Return a resolved promise with the mock response
-    // to "short-circuit" the actual network request
     return Promise.reject({
       config,
       response: mockResponse,
-      isMock: true
+      isMock: true,
     });
   }
   return config;

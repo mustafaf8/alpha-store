@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "../../api/axiosInstance";
+import { shopReadRepository } from "@/services/shop/repositories/shopReadRepository";
 
 const initialState = {
   isLoading: false,
@@ -11,24 +12,14 @@ export const getFeatureImages = createAsyncThunk(
   "commonFeature/getFeatureImages",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await api.get(`/common/feature/get`);
-      if (response.data && response.data.success) {
-        return response.data;
-      } else {
-        return rejectWithValue(
-          response.data || { message: "Banner verisi alınamadı." }
-        );
-      }
+      const payload = await shopReadRepository.getFeatureImages();
+      return { success: true, data: payload };
     } catch (error) {
-    //  console.error(
-    //    "getFeatureImages API Hatası:",
-    //    error.response?.data || error.message
-    //  );
       return rejectWithValue(
-        error.response?.data || { message: "Bannerlar getirilemedi." }
+        error.response?.data || { message: "Bannerlar getirilemedi." },
       );
     }
-  }
+  },
 );
 
 export const addFeatureImage = createAsyncThunk(

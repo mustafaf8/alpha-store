@@ -3,12 +3,13 @@ import {
   getSearchResults,
   resetSearchResults,
 } from "@/store/shop/search-slice";
+import { fetchAllCategories } from "@/store/common-slice/categories-slice";
+import { fetchAllBrands } from "@/store/common-slice/brands-slice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import NoSearchResults from "./NoSearchResults";
 import ProductTileSkeleton from "@/components/shopping-view/product-tile-skeleton.jsx";
-import { brands, categories } from "@/mockSite/catalog";
 import { Compass, Sparkles } from "lucide-react";
 
 function SearchProducts() {
@@ -19,12 +20,23 @@ function SearchProducts() {
   const { searchResults, isLoading: searchLoading } = useSelector(
     (state) => state.shopSearch,
   );
+  const { categoryList = [] } = useSelector(
+    (state) => state.categories || { categoryList: [] },
+  );
+  const { brandList = [] } = useSelector(
+    (state) => state.brands || { brandList: [] },
+  );
   const dispatch = useDispatch();
   const keyword = (searchParams.get("keyword") || "").trim();
-  const topCategories = categories.slice(0, 10);
-  const topBrands = brands.slice(0, 8);
+  const topCategories = categoryList.slice(0, 10);
+  const topBrands = brandList.filter((brand) => brand.isActive).slice(0, 8);
   const isMobileInitialState =
     !keyword && !searchLoading && searchResults.length === 0;
+
+  useEffect(() => {
+    dispatch(fetchAllCategories());
+    dispatch(fetchAllBrands());
+  }, [dispatch]);
 
   useEffect(() => {
     const keywordFromUrl = searchParams.get("keyword");

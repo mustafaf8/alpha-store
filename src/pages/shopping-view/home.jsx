@@ -8,9 +8,9 @@ import { fetchSideBanners } from "@/store/common-slice/side-banner-slice";
 import ProductTileSkeleton from "@/components/shopping-view/product-tile-skeleton.jsx";
 import ProductCarousel from "@/components/shopping-view/ProductCarousel";
 import { fetchActiveHomeSections } from "@/store/common-slice/home-sections-slice";
+import { fetchProductDetails } from "@/store/shop/products-slice";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { products } from "@/mockSite/catalog";
 import { useToast } from "@/components/ui/use-toast";
 
 function ShoppingHome() {
@@ -63,10 +63,22 @@ function ShoppingHome() {
   };
 
   const handleAddtoCart = useCallback(
-    (productId) => {
-      const product = products.find((p) => p._id === productId) || {
-        _id: productId,
-      };
+    async (productInput) => {
+      const baseProduct =
+        typeof productInput === "object" && productInput !== null
+          ? productInput
+          : null;
+
+      let product = baseProduct;
+
+      if (!product && productInput) {
+        try {
+          const payload = await dispatch(fetchProductDetails(productInput)).unwrap();
+          product = payload?.data || { _id: productInput };
+        } catch {
+          product = { _id: productInput };
+        }
+      }
 
       if ((product?.totalStock ?? 0) <= 0) {
         toast({

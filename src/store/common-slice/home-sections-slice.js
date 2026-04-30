@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../api/axiosInstance";
+import { shopReadRepository } from "@/services/shop/repositories/shopReadRepository";
 const initialState = {
   homeSections: [],
   activeHomeSections: [],
@@ -11,14 +12,14 @@ export const fetchActiveHomeSections = createAsyncThunk(
   "homeSections/fetchActive",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await api.get(`/shop/home-sections/active`);
-      return response.data;
+      const payload = await shopReadRepository.getActiveHomeSections();
+      return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Ana sayfa bölümleri getirilemedi." }
+        error.response?.data || { message: "Ana sayfa bölümleri getirilemedi." },
       );
     }
-  }
+  },
 );
 
 export const fetchAllHomeSections = createAsyncThunk(

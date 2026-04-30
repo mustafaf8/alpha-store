@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import api from "../../../api/axiosInstance";
+import { shopReadRepository } from "@/services/shop/repositories/shopReadRepository";
 
 const initialState = {
   productList: [],
@@ -13,40 +13,31 @@ export const fetchAllFilteredProducts = createAsyncThunk(
   "products/fetchAllProducts",
   async ({ filterParams, sortParams }, { rejectWithValue }) => {
     try {
-      const params = {};
-      Object.keys(filterParams || {}).forEach((key) => {
-        const value = filterParams[key];
-        if (Array.isArray(value)) {
-          if (value.length > 0) params[key] = value.join(",");
-        } else if (value !== undefined && value !== "") {
-          params[key] = value;
-        }
+      const payload = await shopReadRepository.getProducts({
+        filterParams,
+        sortParams,
       });
-      params.sortBy = sortParams;
-
-      const query = new URLSearchParams(params).toString();
-      const response = await api.get(`/shop/products/get?${query}`);
-      return response.data;
+      return { success: true, data: payload.items, meta: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Ürünler getirilemedi." }
+        error?.response?.data || { message: "Ürünler getirilemedi." },
       );
     }
-  }
+  },
 );
 
 export const fetchProductDetails = createAsyncThunk(
   "products/fetchProductDetails",
   async (id, { rejectWithValue }) => {
     try {
-      const response = await api.get(`/shop/products/get/${id}`);
-      return response.data;
+      const payload = await shopReadRepository.getProductById(id);
+      return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Ürün detayı alınamadı." }
+        error?.response?.data || { message: "Ürün detayı alınamadı." },
       );
     }
-  }
+  },
 );
 
 const shoppingProductSlice = createSlice({

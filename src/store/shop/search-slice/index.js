@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import api from "../../../api/axiosInstance";
+import { shopReadRepository } from "@/services/shop/repositories/shopReadRepository";
 
 const initialState = {
   isLoading: false,
@@ -11,22 +11,16 @@ export const getSearchResults = createAsyncThunk(
   "search/getSearchResults",
   async (keyword, { rejectWithValue }) => {
     try {
-      const response = await api.get(`/shop/search`, { params: { keyword } });
-      if (response.data && response.data.success) {
-        return response.data;
-      } else {
-        return rejectWithValue(
-          response.data || { message: "Arama sonuçları alınamadı." }
-        );
-      }
+      const payload = await shopReadRepository.searchProducts(keyword);
+      return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || {
-          message: error.message || "Arama sırasında bir hata oluştu.",
+        error?.response?.data || {
+          message: error?.message || "Arama sırasında bir hata oluştu.",
         }
       );
     }
-  }
+  },
 );
 
 const searchSlice = createSlice({

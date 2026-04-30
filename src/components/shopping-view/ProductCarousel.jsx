@@ -178,9 +178,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
                 >
                   <ShoppingProductTile
                     product={productItem}
-                    handleAddtoCart={() =>
-                      handleAddtoCart(productItem._id, productItem.totalStock)
-                    }
+                    handleAddtoCart={() => handleAddtoCart(productItem)}
                   />
                 </div>
               ))

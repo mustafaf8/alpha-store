@@ -35,6 +35,29 @@ const filterProducts = (params) => {
         item.description.toLowerCase().includes(keyword),
     );
   }
+  const sortBy = params.get("sortBy");
+  switch (sortBy) {
+    case "price-lowtohigh":
+      list.sort((a, b) => (a.salePrice || a.price || 0) - (b.salePrice || b.price || 0));
+      break;
+    case "price-hightolow":
+      list.sort((a, b) => (b.salePrice || b.price || 0) - (a.salePrice || a.price || 0));
+      break;
+    case "title-atoz":
+      list.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
+      break;
+    case "title-ztoa":
+      list.sort((a, b) => (b.title || "").localeCompare(a.title || ""));
+      break;
+    case "salesCount-desc":
+      list.sort((a, b) => (b.salesCount || 0) - (a.salesCount || 0));
+      break;
+    case "createdAt-desc":
+      list.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+      break;
+    default:
+      break;
+  }
   return list;
 };
 
@@ -54,7 +77,24 @@ export const mockApiAdapter = async (config) => {
     return ok({ success: true, data: clone(homeSections.filter((item) => item.isActive)) });
   }
 
-  if (method === "get" && path === "/shop/products/get") return ok({ success: true, data: clone(filterProducts(params)) });
+  if (method === "get" && path === "/shop/products/get") {
+    const page = Number(params.get("page")) || 1;
+    const limit = Number(params.get("limit")) || 0;
+    const filtered = filterProducts(params);
+    if (!limit) {
+      return ok({ success: true, data: clone(filtered) });
+    }
+    const start = (page - 1) * limit;
+    return ok({
+      success: true,
+      data: {
+        items: clone(filtered.slice(start, start + limit)),
+        total: filtered.length,
+        page,
+        limit,
+      },
+    });
+  }
   if (method === "get" && path.startsWith("/shop/products/get/")) {
     const id = path.split("/").pop();
     return ok({ success: true, data: clone(products.find((item) => item._id === id) || null) });

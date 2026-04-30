@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../api/axiosInstance";
+import { shopReadRepository } from "@/services/shop/repositories/shopReadRepository";
 
 const initialState = {
   sideBannerList: [],
@@ -11,20 +12,14 @@ export const fetchSideBanners = createAsyncThunk(
   "sideBanners/fetchSideBanners",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await api.get(`/common/side-banners/get`);
-      if (response.data && response.data.success) {
-        return response.data;
-      } else {
-        return rejectWithValue(
-          response.data || { message: "Yan banner verisi alınamadı." }
-        );
-      }
+      const payload = await shopReadRepository.getSideBanners();
+      return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Yan bannerlar getirilemedi." }
+        error.response?.data || { message: "Yan bannerlar getirilemedi." },
       );
     }
-  }
+  },
 );
 
 export const addSideBanner = createAsyncThunk(
