@@ -118,7 +118,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#1a1a2e] dark:bg-gray-950 text-slate-300 text-sm mt-6 pb-14 lg:pb-0">
+    <footer className="bg-[#1a1a2e] dark:bg-gray-950 text-slate-300 text-sm mt-6 pb-20 lg:pb-0">
       {/* Newsletter */}
       <div className="border-b border-white/10">
         <div className="shop-container py-6 md:py-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -261,7 +261,9 @@ const Footer = () => {
             </svg>
             <span className="flex flex-col leading-tight">
               <span className="text-[10px] text-slate-300">GET IT ON</span>
-              <span className="text-sm font-semibold text-white">Google Play</span>
+              <span className="text-sm font-semibold text-white">
+                Google Play
+              </span>
             </span>
           </a>
 
@@ -280,8 +282,12 @@ const Footer = () => {
               <path d="M16.37 12.15c.02 2.38 2.09 3.17 2.12 3.18-.02.06-.33 1.13-1.08 2.24-.65.96-1.33 1.92-2.39 1.94-1.04.02-1.37-.62-2.56-.62-1.19 0-1.56.6-2.53.64-1 .04-1.77-1-2.42-1.95-1.33-1.93-2.35-5.46-.98-7.84.68-1.18 1.9-1.93 3.22-1.95 1.01-.02 1.96.68 2.56.68.6 0 1.73-.84 2.92-.72.5.02 1.9.2 2.8 1.51-.07.04-1.67.97-1.65 2.89zM14.93 5.2c.54-.66.9-1.58.8-2.5-.77.03-1.7.51-2.25 1.17-.49.57-.92 1.5-.8 2.38.86.07 1.72-.44 2.25-1.05z" />
             </svg>
             <span className="flex flex-col leading-tight">
-              <span className="text-[10px] text-slate-300">Download on the</span>
-              <span className="text-sm font-semibold text-white">App Store</span>
+              <span className="text-[10px] text-slate-300">
+                Download on the
+              </span>
+              <span className="text-sm font-semibold text-white">
+                App Store
+              </span>
             </span>
           </a>
         </div>
