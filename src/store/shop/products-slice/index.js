@@ -20,7 +20,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
       return { success: true, data: payload.items, meta: payload };
     } catch (error) {
       return rejectWithValue(
-        error?.response?.data || { message: "Ürünler getirilemedi." },
+        error?.response?.data || { message: "Products could not be fetched." },
       );
     }
   },
@@ -34,7 +34,7 @@ export const fetchProductDetails = createAsyncThunk(
       return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error?.response?.data || { message: "Ürün detayı alınamadı." },
+        error?.response?.data || { message: "Product details could not be fetched." },
       );
     }
   },
@@ -63,13 +63,13 @@ const shoppingProductSlice = createSlice({
           state.productList = action.payload.data;
         } else {
           state.productList = [];
-          state.error = action.payload?.message || "Ürünler alınamadı.";
+          state.error = action.payload?.message || "Products could not be loaded.";
         }
       })
       .addCase(fetchAllFilteredProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.productList = [];
-        state.error = action.payload?.message || "Bir hata oluştu.";
+        state.error = action.payload?.message || "An unexpected error occurred.";
       })
 
       .addCase(fetchProductDetails.pending, (state) => {
@@ -82,13 +82,14 @@ const shoppingProductSlice = createSlice({
           state.productDetails = action.payload.data;
         } else {
           state.productDetails = null;
-          state.error = action.payload?.message || "Detaylar alınamadı.";
+          state.error =
+            action.payload?.message || "Product details could not be loaded.";
         }
       })
       .addCase(fetchProductDetails.rejected, (state, action) => {
         state.isDetailsLoading = false;
         state.productDetails = null;
-        state.error = action.payload?.message || "Bir hata oluştu.";
+        state.error = action.payload?.message || "An unexpected error occurred.";
       });
   },
 });

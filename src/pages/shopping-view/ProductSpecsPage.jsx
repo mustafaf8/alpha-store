@@ -14,6 +14,7 @@ import ProductTabs from "@/components/shopping-view/product-details/ProductTabs"
 import { buildMergedSpecs } from "@/components/shopping-view/product-details/specs-utils";
 import { fetchAllCategories } from "@/store/common-slice/categories-slice";
 import { ChevronRight, Home } from "lucide-react";
+import { translateCategoryName } from "@/lib/taxonomy-translations";
 
 function ProductSpecsPage() {
   const { id } = useParams();
@@ -103,8 +104,8 @@ function ProductSpecsPage() {
 
     dispatch(addToCart({ product, quantity }));
     toast({
-      title: "Sepete eklendi",
-      description: `${product.title} (${quantity} adet)`,
+      title: "Added to cart",
+      description: `${product.title} (${quantity} units)`,
       variant: "success",
     });
   };
@@ -113,8 +114,8 @@ function ProductSpecsPage() {
     if (!productDetails) return;
     const price = formatPrice(productDetails?.salePrice || productDetails?.price || 0);
     const message =
-      `Merhaba, ${productDetails.title} urununden ${quantity} adet almak istiyorum. ` +
-      `Fiyat: ${price} TL. Yardimci olur musunuz?`;
+      `Hello, I would like to buy ${quantity} unit(s) of ${productDetails.title}. ` +
+      `Price: ${price}. Could you assist me?`;
 
     window.open(
       `https://wa.me/905347168754?text=${encodeURIComponent(message)}`,
@@ -149,13 +150,13 @@ function ProductSpecsPage() {
   if (!productDetails) {
     return (
       <div className="container mx-auto px-4 py-10 text-center">
-        <h1 className="text-2xl font-bold mb-4">Ürün bulunamadı.</h1>
+        <h1 className="text-2xl font-bold mb-4">Product not found.</h1>
         <Button
           onClick={() => navigate("/shop/home")}
           className="mt-3 text-base"
-          aria-label="Ana Sayfaya Dön"
+          aria-label="Back to Home"
         >
-          Ana Sayfaya Dön
+          Back to Home
         </Button>
       </div>
     );
@@ -187,7 +188,7 @@ function ProductSpecsPage() {
                 onClick={() => navigate(`/shop/listing?category=${crumb.slug}`)}
                 className="hover:text-purple-600 transition-colors font-medium"
               >
-                {crumb.name}
+                {translateCategoryName(crumb.name, crumb.slug)}
               </button>
               <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
             </div>

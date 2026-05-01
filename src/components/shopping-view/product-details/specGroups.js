@@ -17,48 +17,48 @@ export const buildSpecGroups = (mergedSpecs) => {
 
   const groupDefs = [
     {
-      title: "Ekran & Boyut",
+      title: "Display & Size",
       icon: Monitor,
-      matcher: (k) => /ekran|display|screen|boyut/i.test(k),
+      matcher: (k) => /ekran|display|screen|boyut|size/i.test(k),
     },
     {
-      title: "Depolama",
+      title: "Storage",
       icon: HardDrive,
-      matcher: (k) => /depolama|storage|hafıza/i.test(k),
+      matcher: (k) => /depolama|storage|hafiza|memory/i.test(k),
     },
     {
-      title: "Performans",
+      title: "Performance",
       icon: Cpu,
-      matcher: (k) => /işlemci|cpu|processor/i.test(k),
+      matcher: (k) => /islemci|cpu|processor|performance/i.test(k),
     },
     {
-      title: "Bağlantı",
+      title: "Connectivity",
       icon: Cable,
-      matcher: (k) => /bağlantı|usb|port|kablo|connection/i.test(k),
+      matcher: (k) => /baglanti|usb|port|kablo|connection|connectivity/i.test(k),
     },
     {
-      title: "Güç & Pil",
+      title: "Power & Battery",
       icon: Zap,
       matcher: (k) =>
-        /güç|watt|volt|power|pil|battery|charge/i.test(k),
+        /guc|watt|volt|power|pil|battery|charge/i.test(k),
     },
     {
-      title: "Renk & Malzeme",
+      title: "Color & Material",
       icon: Palette,
       matcher: (k) =>
         /renk|color|material|malzeme|materyal/i.test(k),
     },
     {
-      title: "Garanti",
+      title: "Warranty",
       icon: Shield,
-      matcher: (k) => /garanti|warranty|koruma/i.test(k),
+      matcher: (k) => /garanti|warranty|koruma|protection/i.test(k),
     },
     {
-      title: "Ağırlık",
+      title: "Weight",
       icon: Weight,
-      matcher: (k) => /ağırlık|weight|kg|gram/i.test(k),
+      matcher: (k) => /agirlik|weight|kg|gram/i.test(k),
     },
-    { title: "Diğer", icon: Info, matcher: () => true },
+    { title: "Other", icon: Info, matcher: () => true },
   ];
 
   const bucket = new Map();
@@ -69,7 +69,7 @@ export const buildSpecGroups = (mergedSpecs) => {
     const lower = k.toLowerCase();
 
     const match = groupDefs.find((g) => g.matcher(lower));
-    const targetTitle = match?.title || "Diğer";
+    const targetTitle = match?.title || "Other";
     bucket.get(targetTitle).push(spec);
   });
 

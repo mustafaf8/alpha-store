@@ -16,7 +16,7 @@ export const fetchAllCategories = createAsyncThunk(
       return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Kategoriler getirilemedi." },
+        error.response?.data || { message: "Categories could not be fetched." },
       );
     }
   },
@@ -30,7 +30,7 @@ export const addCategory = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Kategori eklenemedi." }
+        error.response?.data || { message: "Category could not be added." }
       );
     }
   }
@@ -47,7 +47,7 @@ export const updateCategory = createAsyncThunk(
       return response.data; 
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Kategori güncellenemedi." }
+        error.response?.data || { message: "Category could not be updated." }
       );
     }
   }
@@ -61,7 +61,7 @@ export const deleteCategory = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Kategori silinemedi." }
+        error.response?.data || { message: "Category could not be deleted." }
       );
     }
   }
@@ -77,7 +77,7 @@ export const fetchAllCategoriesAdmin = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Kategoriler getirilemedi (admin)." }
+        error.response?.data || { message: "Categories could not be fetched (admin)." }
       );
     }
   }
@@ -103,23 +103,23 @@ const categoriesSlice = createSlice({
       })
       .addCase(fetchAllCategories.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload?.message || "Kategoriler alınamadı.";
+        state.error = action.payload?.message || "Categories could not be loaded.";
         state.categoryList = [];
       })
       .addCase(addCategory.fulfilled, (state, action) => {
       })
       .addCase(addCategory.rejected, (state, action) => {
-        state.error = action.payload?.message || "Kategori eklenemedi.";
+        state.error = action.payload?.message || "Category could not be added.";
       })
       .addCase(updateCategory.fulfilled, (state, action) => {
       })
       .addCase(updateCategory.rejected, (state, action) => {
-        state.error = action.payload?.message || "Kategori güncellenemedi.";
+        state.error = action.payload?.message || "Category could not be updated.";
       })
       .addCase(deleteCategory.fulfilled, (state, action) => {
       })
       .addCase(deleteCategory.rejected, (state, action) => {
-        state.error = action.payload?.message || "Kategori silinemedi.";
+        state.error = action.payload?.message || "Category could not be deleted.";
       })
       .addCase(fetchAllCategoriesAdmin.pending, (state) => {
         state.isLoading = true;
@@ -131,7 +131,8 @@ const categoriesSlice = createSlice({
       })
       .addCase(fetchAllCategoriesAdmin.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload?.message || "Kategoriler alınamadı (admin).";
+        state.error =
+          action.payload?.message || "Categories could not be loaded (admin).";
         state.categoryList = [];
       });
   },

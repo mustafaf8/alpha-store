@@ -19,10 +19,10 @@ function ProductDeliveryReturnsPanel({ productDetails }) {
 
   const deliveryText =
     etaMain && mainCities.length > 0
-      ? `Ana şehirler: ${mainCities.slice(0, 3).join(", ")}${
+      ? `Major cities: ${mainCities.slice(0, 3).join(", ")}${
           mainCities.length > 3 ? "..." : ""
-        } — ${etaMain} gün`
-      : delivery?.message || "Teslimat bilgisi bulunamadı.";
+        } — ${etaMain} days`
+      : delivery?.message || "Delivery information is unavailable.";
 
   return (
     <div className="space-y-6">
@@ -31,7 +31,7 @@ function ProductDeliveryReturnsPanel({ productDetails }) {
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sky-400 to-blue-500 shadow-md">
             <Truck className="h-5 w-5 text-white" />
           </div>
-          <div className="text-lg font-bold text-gray-900">Teslimat</div>
+          <div className="text-lg font-bold text-gray-900">Delivery</div>
         </div>
 
         <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -40,7 +40,7 @@ function ProductDeliveryReturnsPanel({ productDetails }) {
 
         {Array.isArray(otherCities) && otherCities.length > 0 && (
           <div className="mt-5 text-sm text-slate-600">
-            <div className="font-semibold mb-3 text-gray-800">Diğer şehirler</div>
+            <div className="font-semibold mb-3 text-gray-800">Other cities</div>
             <div className="flex flex-wrap gap-2">
               {otherCities.slice(0, 6).map((c) => (
                 <span
@@ -51,7 +51,7 @@ function ProductDeliveryReturnsPanel({ productDetails }) {
                 </span>
               ))}
             </div>
-            {etaOther ? <div className="mt-2 text-slate-500">Tahmini: {etaOther} gün</div> : null}
+            {etaOther ? <div className="mt-2 text-slate-500">Estimated: {etaOther} days</div> : null}
           </div>
         )}
       </div>
@@ -62,10 +62,10 @@ function ProductDeliveryReturnsPanel({ productDetails }) {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 shadow-md">
               <RotateCcw className="h-5 w-5 text-white" />
             </div>
-            <div className="text-lg font-bold text-gray-900">İade & Değişim</div>
+            <div className="text-lg font-bold text-gray-900">Returns & Exchanges</div>
           </div>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            {returns?.message || returns || "İade/Değişim bilgisi bulunamadı."}
+            {returns?.message || returns || "Returns/Exchanges information is unavailable."}
           </p>
         </div>
 
@@ -74,10 +74,10 @@ function ProductDeliveryReturnsPanel({ productDetails }) {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-green-500 shadow-md">
               <Shield className="h-5 w-5 text-white" />
             </div>
-            <div className="text-lg font-bold text-gray-900">Garanti</div>
+            <div className="text-lg font-bold text-gray-900">Warranty</div>
           </div>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            {warranty?.message || warranty || "Garanti bilgisi bulunamadı."}
+            {warranty?.message || warranty || "Warranty information is unavailable."}
           </p>
         </div>
       </div>
@@ -88,7 +88,7 @@ function ProductDeliveryReturnsPanel({ productDetails }) {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-violet-600 shadow-md">
               <Package className="h-5 w-5 text-white" />
             </div>
-            <div className="text-lg font-bold text-gray-900">Kutudan Çıkanlar</div>
+            <div className="text-lg font-bold text-gray-900">In the Box</div>
           </div>
           <div className="flex flex-wrap gap-2">
             {inTheBox.map((item) => (

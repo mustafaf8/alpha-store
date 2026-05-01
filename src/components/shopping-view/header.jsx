@@ -27,8 +27,9 @@ import { useRef } from "react";
 import PropTypes from "prop-types";
 import { formatPrice } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { translateCategoryName } from "@/lib/taxonomy-translations";
 
-// Hover ile açılır menü bileşeni
+// Hover-based dropdown menu
 const HoverMenu = ({ children, trigger, className = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef(null);
@@ -80,7 +81,7 @@ const HoverMenu = ({ children, trigger, className = "" }) => {
   );
 };
 
-// Recursive (Özyineli) Menü Bileşeni
+// Recursive menu item component
 const RecursiveMenuItem = ({ category, handleNavigate }) => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const timeoutRef = useRef(null);
@@ -110,7 +111,7 @@ const RecursiveMenuItem = ({ category, handleNavigate }) => {
     }, 10);
   };
 
-  // Eğer kategorinin alt dalları varsa, bir alt menü oluştur
+  // Build a nested submenu when children exist
   if (category.children && category.children.length > 0) {
     return (
       <div
@@ -123,7 +124,7 @@ const RecursiveMenuItem = ({ category, handleNavigate }) => {
           className="inline-flex w-auto max-w-full items-center rounded-full border border-slate-200 bg-white px-3 py-1.5 text-left transition-colors hover:border-slate-300 hover:bg-slate-50 shadow-sm"
         >
           <span className="block truncate text-[13px] font-medium text-slate-800">
-            {category.name}
+            {translateCategoryName(category.name, category.slug)}
           </span>
           <ChevronDown className="h-3 w-3 rotate-[-90deg] flex-shrink-0 ml-1.5 text-slate-400" />
         </button>
@@ -133,17 +134,17 @@ const RecursiveMenuItem = ({ category, handleNavigate }) => {
             onMouseEnter={handleSubMenuMouseEnter}
             onMouseLeave={handleSubMenuMouseLeave}
           >
-            {/* "Tümünü Gör" linki, ana dala gitmek için */}
+            {/* Link to parent category */}
             <button
               type="button"
               onClick={() => handleNavigate(category.slug)}
               className="inline-flex w-auto max-w-full items-center rounded-full border border-purple-200 bg-purple-50 px-3 py-1.5 text-left transition-colors hover:border-purple-300 hover:bg-purple-100 shadow-sm"
             >
               <span className="block truncate text-[13px] font-semibold text-purple-700">
-                Tüm {category.name}
+                All {translateCategoryName(category.name, category.slug)}
               </span>
             </button>
-            {/* Alt dalları için kendini tekrar çağır */}
+            {/* Render child items recursively */}
             {category.children.map((child) => (
               <RecursiveMenuItem
                 key={child._id}
@@ -157,7 +158,7 @@ const RecursiveMenuItem = ({ category, handleNavigate }) => {
     );
   }
 
-  // Eğer alt dalı yoksa, direkt tıklanabilir bir menü öğesi oluştur
+  // Render as a direct clickable item when no children exist
   return (
     <button
       type="button"
@@ -165,7 +166,7 @@ const RecursiveMenuItem = ({ category, handleNavigate }) => {
       className="inline-flex w-auto max-w-full items-center rounded-full border border-slate-200 bg-white px-3 py-1.5 text-left transition-colors hover:border-slate-300 hover:bg-slate-50 shadow-sm"
     >
       <span className="block truncate text-[13px] font-medium text-slate-800">
-        {category.name}
+        {translateCategoryName(category.name, category.slug)}
       </span>
     </button>
   );
@@ -185,32 +186,32 @@ const CATEGORY_TRANSLATIONS = {
   bilgisayar: "Computers",
   tablet: "Tablets",
   tabletler: "Tablets",
-  kulaklık: "Headphones",
-  kulaklıklar: "Headphones",
+  kulaklik: "Headphones",
+  kulakliklar: "Headphones",
   kamera: "Cameras",
   kameralar: "Cameras",
   oyun: "Gaming",
   aksesuar: "Accessories",
   aksesuarlar: "Accessories",
-  yazıcı: "Printers",
-  yazıcılar: "Printers",
+  yazici: "Printers",
+  yazicilar: "Printers",
   ekran: "Monitors",
   ekranlar: "Monitors",
   "ses sistemi": "Audio",
   "ses sistemleri": "Audio",
   tv: "TV",
   televizyon: "TV",
-  "akıllı saat": "Smart Watches",
-  "akıllı saatler": "Smart Watches",
-  müzik: "Music",
+  "akilli saat": "Smart Watches",
+  "akilli saatler": "Smart Watches",
+  muzik: "Music",
   kitap: "Books",
-  kırtasiye: "Stationery",
+  kirtasiye: "Stationery",
   ofis: "Office",
-  baskı: "Print",
+  baski: "Print",
 };
 
 const translateName = (name = "") => {
-  return CATEGORY_TRANSLATIONS[name.toLowerCase()] || name;
+  return CATEGORY_TRANSLATIONS[name.toLowerCase()] || translateCategoryName(name);
 };
 
 function CategorySubMenu() {
@@ -325,7 +326,7 @@ function MainHeaderActions() {
 
   const handleWhatsApp = () => {
     window.open(
-      "https://wa.me/905347168754?text=Merhaba%2C%20site%20uzerinden%20iletisime%20gecmek%20istiyorum.",
+      "https://wa.me/905347168754?text=Hello%2C%20I%20would%20like%20to%20contact%20you%20through%20the%20website.",
       "_blank",
       "noopener,noreferrer",
     );
@@ -347,7 +348,7 @@ function MainHeaderActions() {
         <Button
           variant="outline"
           className="h-9 px-2 rounded-full border border-slate-200 bg-white text-slate-700"
-          aria-label="Dil Seçimi"
+          aria-label="Language Selection"
           onClick={() => navigate("/shop/home")}
         >
           <Globe className="w-3.5 h-3.5" />
@@ -357,7 +358,7 @@ function MainHeaderActions() {
         <Button
           variant="outline"
           className="h-9 w-9 p-0 rounded-full border border-slate-200 bg-white text-slate-700"
-          aria-label="Kur Seçimi"
+          aria-label="Currency Selection"
           onClick={handleCurrencyChange}
         >
           <span className="text-sm font-bold leading-none">
@@ -368,7 +369,7 @@ function MainHeaderActions() {
         <Button
           variant="outline"
           className="h-9 w-9 p-0 rounded-full border border-slate-200 bg-white text-slate-700"
-          aria-label="Mağaza Konumu"
+          aria-label="Store Location"
           onClick={handleStoreLocation}
         >
           <MapPin className="w-4 h-4" />
@@ -377,7 +378,7 @@ function MainHeaderActions() {
         <Button
           variant="outline"
           className="h-9 w-9 p-0 rounded-full border border-slate-200 bg-white text-slate-700"
-          aria-label="Kategori Menüsü"
+          aria-label="Category Menu"
           onClick={handleOpenMobileCategoriesMenu}
         >
           <Menu className="w-4 h-4" />
@@ -387,17 +388,17 @@ function MainHeaderActions() {
       <Button
         variant="outline"
         className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
-        aria-label="Tüm Ürünler"
+        aria-label="All Products"
         onClick={() => navigate("/shop/listing")}
       >
         <LayoutGrid className="w-4 h-4" />
-        <span className="text-sm font-semibold">Tüm Ürünler</span>
+        <span className="text-sm font-semibold">All Products</span>
       </Button>
 
       <Button
         variant="outline"
         className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
-        aria-label="Dil Seçimi"
+        aria-label="Language Selection"
         onClick={() => navigate("/shop/home")}
       >
         <Globe className="w-4 h-4" />
@@ -407,7 +408,7 @@ function MainHeaderActions() {
       <Button
         variant="outline"
         className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
-        aria-label="Kur Seçimi"
+        aria-label="Currency Selection"
         onClick={handleCurrencyChange}
       >
         <span className="text-base font-bold leading-none">
@@ -421,31 +422,31 @@ function MainHeaderActions() {
       <Button
         variant="outline"
         className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
-        aria-label="Favoriler"
+        aria-label="Favorites"
         onClick={() => navigate("/shop/listing")}
       >
         <Heart className="w-4 h-4" />
-        <span className="text-sm font-semibold">Favoriler</span>
+        <span className="text-sm font-semibold">Favorites</span>
       </Button>
 
       <Button
         variant="outline"
         className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
-        aria-label="Mağaza Konumu"
+        aria-label="Store Location"
         onClick={handleStoreLocation}
       >
         <MapPin className="w-4 h-4" />
-        <span className="text-sm font-semibold">Konum</span>
+        <span className="text-sm font-semibold">Location</span>
       </Button>
 
       <Button
         variant="outline"
         className="hidden lg:flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-3 py-2 h-10 text-purple-700 hover:bg-purple-100 hover:border-purple-300 relative"
-        aria-label="Sepet"
+        aria-label="Cart"
         onClick={() => navigate("/shop/cart")}
       >
         <ShoppingCart className="w-4 h-4" />
-        <span className="text-sm font-semibold">Sepetim</span>
+        <span className="text-sm font-semibold">My Cart</span>
         {totalCartItems > 0 && (
           <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-rose-500 text-white text-[10px] font-bold flex items-center justify-center">
             {totalCartItems}
@@ -490,7 +491,7 @@ function ShoppingHeader() {
 
   const shouldShowCategoryMenu = true;
 
-  // Search portal açıkken sayfanın kaydırılmasını engelle
+  // Prevent body scroll while suggestions are open
   useEffect(() => {
     if (showSuggest) {
       document.body.style.overflow = "hidden";
@@ -503,10 +504,10 @@ function ShoppingHeader() {
     };
   }, [showSuggest]);
 
-  // Portal dışına tıklandığında ve ESC tuşu ile suggestions'ı kapat
+  // Close suggestions on outside click and ESC
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Eğer suggestions açıksa ve tıklanan element suggestions içinde değilse
+      // Close when click target is outside the suggestions container
       if (showSuggest && !event.target.closest(".search-suggestions-portal")) {
         setShowSuggest(false);
         setSuggestions({ products: [], categories: [], brands: [] });
@@ -514,14 +515,14 @@ function ShoppingHeader() {
     };
 
     const handleKeyDown = (event) => {
-      // ESC tuşu ile kapat
+      // Close on ESC
       if (event.key === "Escape" && showSuggest) {
         setShowSuggest(false);
         setSuggestions({ products: [], categories: [], brands: [] });
       }
     };
 
-    // Event listener'ları ekle
+    // Register listeners
     document.addEventListener("click", handleClickOutside);
     document.addEventListener("keydown", handleKeyDown);
 
@@ -631,7 +632,7 @@ function ShoppingHeader() {
                   {item.title}
                 </span>
                 <span className="text-xs font-black text-purple-600 mt-0.5">
-                  {formatPrice(item.price)} TL
+                  {formatPrice(item.price)}
                 </span>
               </div>
             </button>
@@ -656,7 +657,9 @@ function ShoppingHeader() {
               className="inline-flex items-center rounded-full border border-slate-100 bg-white px-3.5 py-1.5 text-xs font-bold text-slate-600 transition-all hover:border-purple-200 hover:bg-purple-50 hover:text-purple-600 shadow-sm hover:shadow-md"
               onClick={() => onItemClick(item)}
             >
-              {item.name}
+              {title === "Categories"
+                ? translateCategoryName(item.name, item.slug)
+                : item.name}
             </button>
           ))}
         </div>
@@ -714,7 +717,7 @@ function ShoppingHeader() {
               className="h-16 w-auto max-[690px]:h-[40px] max-[490px]:h-[40px] transition-all"
               src="/logoo.png"
               alt="logo"
-              aria-label="Ana Sayfa"
+              aria-label="Home"
               loading="eager"
             />
           </Link>
@@ -762,7 +765,7 @@ function ShoppingHeader() {
                 <Search className="h-4 w-4 text-slate-400 flex-shrink-0" />
                 <Input
                   type="search"
-                  placeholder="Ara..."
+                  placeholder="Search..."
                   value={searchTerm}
                   onChange={(e) => handleSearchChange(e, "mobile")}
                   onFocus={handleDesktopSearchFocus}
@@ -795,7 +798,7 @@ function ShoppingHeader() {
         </div>
       </div>
 
-      {/* Kategori Menü Satırı (Sadece masaüstünde header'ın altında) */}
+      {/* Category menu row (desktop only) */}
       {shouldShowCategoryMenu && (
         <div className="hidden lg:block border-t border-border relative z-40">
           <CategorySubMenu />

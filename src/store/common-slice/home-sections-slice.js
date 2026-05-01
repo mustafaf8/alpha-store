@@ -16,7 +16,7 @@ export const fetchActiveHomeSections = createAsyncThunk(
       return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Ana sayfa bölümleri getirilemedi." },
+        error.response?.data || { message: "Home sections could not be fetched." },
       );
     }
   },
@@ -31,7 +31,7 @@ export const fetchAllHomeSections = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(
         error.response?.data || {
-          message: "Yönetim için ana sayfa bölümleri getirilemedi.",
+          message: "Home sections could not be fetched for admin.",
         }
       );
     }
@@ -46,7 +46,7 @@ export const addHomeSection = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Ana sayfa bölümü eklenemedi." }
+        error.response?.data || { message: "Home section could not be added." }
       );
     }
   }
@@ -63,7 +63,7 @@ export const updateHomeSection = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Ana sayfa bölümü güncellenemedi." }
+        error.response?.data || { message: "Home section could not be updated." }
       );
     }
   }
@@ -77,7 +77,7 @@ export const deleteHomeSection = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Ana sayfa bölümü silinemedi." }
+        error.response?.data || { message: "Home section could not be deleted." }
       );
     }
   }
@@ -93,7 +93,7 @@ export const updateHomeSectionsOrder = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Bölüm sıralaması güncellenemedi." }
+        error.response?.data || { message: "Section order could not be updated." }
       );
     }
   }
@@ -119,7 +119,7 @@ const homeSectionsSlice = createSlice({
       })
       .addCase(fetchActiveHomeSections.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload?.message || "Aktif bölümler alınamadı.";
+        state.error = action.payload?.message || "Active sections could not be loaded.";
         state.activeHomeSections = [];
       })
       .addCase(fetchAllHomeSections.pending, (state) => {
@@ -133,7 +133,7 @@ const homeSectionsSlice = createSlice({
       .addCase(fetchAllHomeSections.rejected, (state, action) => {
         state.isLoading = false;
         state.error =
-          action.payload?.message || "Admin için bölümler alınamadı.";
+          action.payload?.message || "Sections could not be loaded for admin.";
         state.homeSections = [];
       })
       .addCase(addHomeSection.fulfilled, (state, action) => {
@@ -142,7 +142,7 @@ const homeSectionsSlice = createSlice({
         }
       })
       .addCase(addHomeSection.rejected, (state, action) => {
-        state.error = action.payload?.message || "Bölüm eklenemedi.";
+        state.error = action.payload?.message || "Section could not be added.";
       })
       .addCase(updateHomeSection.fulfilled, (state, action) => {
         if (action.payload?.success && action.payload?.data) {
@@ -167,7 +167,7 @@ const homeSectionsSlice = createSlice({
         }
       })
       .addCase(updateHomeSection.rejected, (state, action) => {
-        state.error = action.payload?.message || "Bölüm güncellenemedi.";
+        state.error = action.payload?.message || "Section could not be updated.";
       })
       .addCase(deleteHomeSection.fulfilled, (state, action) => {
         if (action.payload?.success && action.payload?.data?._id) {
@@ -180,7 +180,7 @@ const homeSectionsSlice = createSlice({
         }
       })
       .addCase(deleteHomeSection.rejected, (state, action) => {
-        state.error = action.payload?.message || "Bölüm silinemedi.";
+        state.error = action.payload?.message || "Section could not be deleted.";
       })
       .addCase(updateHomeSectionsOrder.fulfilled, (state, action) => {
         if (action.payload?.success && action.payload?.data) {
@@ -191,7 +191,7 @@ const homeSectionsSlice = createSlice({
         }
       })
       .addCase(updateHomeSectionsOrder.rejected, (state, action) => {
-        state.error = action.payload?.message || "Sıralama güncellenemedi.";
+        state.error = action.payload?.message || "Order could not be updated.";
       });
   },
 });

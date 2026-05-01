@@ -22,19 +22,19 @@ function ProductTabs({
       <TabsList className="w-full justify-start overflow-x-auto rounded-2xl bg-white border border-slate-100 shadow-sm px-2 py-1.5 gap-1 no-scrollbar">
         <TabsTrigger value="description" className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 text-sm font-medium px-4 py-2">
           <Info className="h-4 w-4" />
-          Açıklama
+          Description
         </TabsTrigger>
         <TabsTrigger value="specs" className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 text-sm font-medium px-4 py-2">
           <Ruler className="h-4 w-4" />
-          Teknik Özellikler
+          Technical Specifications
         </TabsTrigger>
         <TabsTrigger value="delivery" className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 text-sm font-medium px-4 py-2">
           <Truck className="h-4 w-4" />
-          Teslimat & İade
+          Delivery & Returns
         </TabsTrigger>
         <TabsTrigger value="reviews" className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 text-sm font-medium px-4 py-2">
           <MessageSquareText className="h-4 w-4" />
-          Yorumlar
+          Reviews
         </TabsTrigger>
       </TabsList>
 

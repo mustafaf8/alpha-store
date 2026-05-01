@@ -20,6 +20,7 @@ import { createPortal } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchAllCategories } from "@/store/common-slice/categories-slice";
+import { translateCategoryName } from "@/lib/taxonomy-translations";
 
 const BottomNavBar = () => {
   const location = useLocation();
@@ -157,7 +158,7 @@ const BottomNavBar = () => {
                   level === 0 ? "font-bold" : "font-semibold",
                 )}
               >
-                {category.name}
+                {translateCategoryName(category.name, category.slug)}
               </span>
               <div className="flex items-center gap-1.5">
                 {category.children?.length > 0 && (
@@ -181,7 +182,7 @@ const BottomNavBar = () => {
                   }
                   className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors border-t border-slate-200"
                 >
-                  <span>Alt Kategoriler</span>
+                  <span>Subcategories</span>
                   {expandedCategoryIds[category._id] ? (
                     <ChevronDown className="w-4 h-4" />
                   ) : (
@@ -204,7 +205,7 @@ const BottomNavBar = () => {
   const mobileMenuItems = [
     {
       id: "cart",
-      label: "Sepet",
+      label: "Cart",
       icon: ShoppingCart,
       badge: totalCartItems > 0 ? totalCartItems : null,
       onClick: () => {
@@ -214,7 +215,7 @@ const BottomNavBar = () => {
     },
     {
       id: "favorites",
-      label: "Favoriler",
+      label: "Favorites",
       icon: Heart,
       badge: favoriteItemsCount > 0 ? favoriteItemsCount : null,
       onClick: () => {
@@ -224,7 +225,7 @@ const BottomNavBar = () => {
     },
     {
       id: "language",
-      label: `Dil Seçimi (${selectedLanguage})`,
+      label: `Language (${selectedLanguage})`,
       icon: Globe,
       onClick: () => {
         setSelectedLanguage((prev) => (prev === "TR" ? "EN" : "TR"));
@@ -232,7 +233,7 @@ const BottomNavBar = () => {
     },
     {
       id: "currency",
-      label: `Para Birimi (${selectedCurrency})`,
+      label: `Currency (${selectedCurrency})`,
       icon: Wallet,
       onClick: () => {
         setSelectedCurrency((prev) => {
@@ -244,7 +245,7 @@ const BottomNavBar = () => {
     },
     {
       id: "privacy",
-      label: "Gizlilik Politikası",
+      label: "Privacy Policy",
       icon: ShieldCheck,
       onClick: () => {
         closeMenu();
@@ -253,11 +254,11 @@ const BottomNavBar = () => {
     },
     {
       id: "contact",
-      label: "İletişim Bilgileri",
+      label: "Contact Information",
       icon: Phone,
       onClick: () => {
         window.open(
-          "https://wa.me/905347168754?text=Merhaba%2C%20ileti%C5%9Fim%20bilgileri%20hakk%C4%B1nda%20yard%C4%B1m%20almak%20istiyorum.",
+          "https://wa.me/905347168754?text=Hello%2C%20I%20need%20help%20with%20contact%20information.",
           "_blank",
           "noopener,noreferrer",
         );
@@ -265,7 +266,7 @@ const BottomNavBar = () => {
     },
     {
       id: "store",
-      label: "Mağaza Konumu ve Adres Detayları",
+      label: "Store Location and Address Details",
       icon: MapPin,
       onClick: () => {
         window.open(
@@ -304,18 +305,18 @@ const BottomNavBar = () => {
             <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 bg-slate-50">
               <div className="flex flex-col">
                 <h3 className="text-base font-bold text-slate-800">
-                  {menuMode === "categories" ? "Kategoriler" : "Hızlı Menü"}
+                  {menuMode === "categories" ? "Categories" : "Quick Menu"}
                 </h3>
                 <span className="text-xs text-slate-500">
                   {menuMode === "categories"
-                    ? "Tüm bölümleri keşfet ve hızlıca filtrele"
-                    : "Hesap ve mağaza işlemlerine hızlı erişim"}
+                    ? "Explore all sections and filter quickly"
+                    : "Quick access to account and store actions"}
                 </span>
               </div>
               <button
                 type="button"
                 onClick={closeMenu}
-                aria-label="Menüyü kapat"
+                aria-label="Close menu"
                 className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-slate-600"
               >
                 <X className="w-4 h-4" />

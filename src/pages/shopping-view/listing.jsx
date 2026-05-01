@@ -20,6 +20,7 @@ import { fetchAllBrands } from "@/store/common-slice/brands-slice";
 import { addToCart } from "@/store/shop/cart-slice";
 import { useToast } from "@/components/ui/use-toast";
 import PropTypes from "prop-types";
+import { translateCategoryName } from "@/lib/taxonomy-translations";
 
 function createSearchParamsHelper(filterParams) {
   const queryParams = [];
@@ -95,13 +96,15 @@ const Breadcrumbs = ({ categorySlug }) => {
         <Fragment key={p._id}>
           <ChevronRight className="h-4 w-4 mx-1" />
           {index === path.length - 1 ? (
-            <span className="font-medium text-foreground">{p.name}</span>
+            <span className="font-medium text-foreground">
+              {translateCategoryName(p.name, p.slug)}
+            </span>
           ) : (
             <Link
               to={`/shop/listing?category=${p.slug}`}
               className="hover:text-primary"
             >
-              {p.name}
+              {translateCategoryName(p.name, p.slug)}
             </Link>
           )}
         </Fragment>
@@ -304,8 +307,8 @@ function ShoppingListing() {
                     );
                     return category
                       ? category.parent
-                        ? `    └─ ${category.name}`
-                        : category.name
+                        ? `    └─ ${translateCategoryName(category.name, category.slug)}`
+                        : translateCategoryName(category.name, category.slug)
                       : slug;
                   })
                   .join(", ")} Products`

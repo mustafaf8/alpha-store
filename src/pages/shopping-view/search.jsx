@@ -11,6 +11,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import NoSearchResults from "./NoSearchResults";
 import ProductTileSkeleton from "@/components/shopping-view/product-tile-skeleton.jsx";
 import { Compass, Sparkles } from "lucide-react";
+import { translateCategoryName } from "@/lib/taxonomy-translations";
 
 function SearchProducts() {
   const [, setKeyword] = useState("");
@@ -80,7 +81,7 @@ function SearchProducts() {
                   onClick={() => navigate(`/shop/listing?category=${category.slug}`)}
                   className="px-3 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 hover:bg-purple-50 hover:text-purple-700 hover:border-purple-200 transition-colors"
                 >
-                  {category.name}
+                  {translateCategoryName(category.name, category.slug)}
                 </button>
               ))}
             </div>

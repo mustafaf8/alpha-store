@@ -426,19 +426,19 @@ function ShoppingHome() {
             let viewAllPath = "/shop/listing";
             const isMenSection =
               section.contentType === "CATEGORY" &&
-              section.contentValue === "erkek";
+              section.contentValue === "men";
             const isWomenSection =
               section.contentType === "CATEGORY" &&
-              section.contentValue === "kadin";
+              section.contentValue === "women";
             const sectionSubcategoryKey = isMenSection
-              ? "Erkeklere Özel Seçenekler"
+              ? "Men's Special Offers"
               : isWomenSection
                 ? "New Fashion Arrivals"
                 : section.title;
             const sectionSubcategoryLabel = isMenSection
-              ? "Erkeklere Özel Seçenekler"
+              ? "Men's Special Offers"
               : isWomenSection
-                ? "Kadınlara Özel Seçenekler"
+                ? "Women's Special Offers"
                 : section.title;
 
             if (section.contentType === "BEST_SELLING") {
@@ -486,10 +486,10 @@ function ShoppingHome() {
                       const subcategories =
                         homeSubcategoriesData[sectionSubcategoryKey] || [];
                       const allItem = subcategories.find(
-                        (item) => item.title === "Tümü",
+                        (item) => item.title === "All",
                       );
                       const visibleSubcategories = subcategories.filter(
-                        (item) => item.title !== "Tümü",
+                        (item) => item.title !== "All",
                       );
 
                       return (
@@ -549,11 +549,11 @@ function ShoppingHome() {
                       const groupSubcategories =
                         homeSubcategoriesData[groupTitle] || [];
                       const allItem = groupSubcategories.find(
-                        (item) => item.title === "Tümü",
+                        (item) => item.title === "All",
                       );
                       const visibleGroupSubcategories =
                         groupSubcategories.filter(
-                          (item) => item.title !== "Tümü",
+                          (item) => item.title !== "All",
                         );
 
                       return (

@@ -17,7 +17,7 @@ export const fetchAllBrands = createAsyncThunk(
       return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Markalar getirilemedi." },
+        error.response?.data || { message: "Brands could not be fetched." },
       );
     }
   },
@@ -31,7 +31,7 @@ export const addBrand = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Marka eklenemedi." }
+        error.response?.data || { message: "Brand could not be added." }
       );
     }
   }
@@ -45,7 +45,7 @@ export const updateBrand = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Marka güncellenemedi." }
+        error.response?.data || { message: "Brand could not be updated." }
       );
     }
   }
@@ -59,7 +59,7 @@ export const deleteBrand = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Marka silinemedi." }
+        error.response?.data || { message: "Brand could not be deleted." }
       );
     }
   }
@@ -73,7 +73,7 @@ export const fetchAllBrandsAdmin = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Markalar getirilemedi (admin)." }
+        error.response?.data || { message: "Brands could not be fetched (admin)." }
       );
     }
   }
@@ -99,7 +99,7 @@ const brandsSlice = createSlice({
       })
       .addCase(fetchAllBrands.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload?.message || "Markalar alınamadı.";
+        state.error = action.payload?.message || "Brands could not be loaded.";
         state.brandList = [];
       })
 
@@ -114,13 +114,13 @@ const brandsSlice = createSlice({
           state.brandList.sort((a, b) => a.name.localeCompare(b.name));
         } else {
           state.error =
-            action.payload?.message || "Marka eklenemedi (backend).";
+            action.payload?.message || "Brand could not be added (backend).";
         }
       })
       .addCase(addBrand.rejected, (state, action) => {
         state.isProcessing = false;
         state.error =
-          action.payload?.message || "Marka eklenirken bir hata oluştu.";
+          action.payload?.message || "An error occurred while adding the brand.";
       })
 
       .addCase(updateBrand.pending, (state) => {
@@ -139,13 +139,13 @@ const brandsSlice = createSlice({
           }
         } else {
           state.error =
-            action.payload?.message || "Marka güncellenemedi (backend).";
+            action.payload?.message || "Brand could not be updated (backend).";
         }
       })
       .addCase(updateBrand.rejected, (state, action) => {
         state.isProcessing = false;
         state.error =
-          action.payload?.message || "Marka güncellenirken bir hata oluştu.";
+          action.payload?.message || "An error occurred while updating the brand.";
       })
 
       .addCase(deleteBrand.pending, (state) => {
@@ -160,13 +160,13 @@ const brandsSlice = createSlice({
           );
         } else {
           state.error =
-            action.payload?.message || "Marka silinemedi (backend).";
+            action.payload?.message || "Brand could not be deleted (backend).";
         }
       })
       .addCase(deleteBrand.rejected, (state, action) => {
         state.isProcessing = false;
         state.error =
-          action.payload?.message || "Marka silinirken bir hata oluştu.";
+          action.payload?.message || "An error occurred while deleting the brand.";
       })
 
       .addCase(fetchAllBrandsAdmin.pending, (state) => {
@@ -179,7 +179,8 @@ const brandsSlice = createSlice({
       })
       .addCase(fetchAllBrandsAdmin.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload?.message || "Markalar alınamadı (admin).";
+        state.error =
+          action.payload?.message || "Brands could not be loaded (admin).";
         state.brandList = [];
       });
   },

@@ -16,7 +16,7 @@ export const getFeatureImages = createAsyncThunk(
       return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Bannerlar getirilemedi." },
+        error.response?.data || { message: "Banners could not be fetched." },
       );
     }
   },
@@ -31,16 +31,12 @@ export const addFeatureImage = createAsyncThunk(
         return response.data;
       } else {
         return rejectWithValue(
-          response.data || { message: "Banner eklenemedi." }
+          response.data || { message: "Banner could not be added." }
         );
       }
     } catch (error) {
-    //  console.error(
-    //    "addFeatureImage API Hatası:",
-    //    error.response?.data || error.message
-    //  );
       return rejectWithValue(
-        error.response?.data || { message: "Banner eklenemedi." }
+        error.response?.data || { message: "Banner could not be added." }
       );
     }
   }
@@ -55,12 +51,12 @@ export const updateFeatureImage = createAsyncThunk(
         return response.data;
       } else {
         return rejectWithValue(
-          response.data || { message: "Banner güncellenemedi." }
+          response.data || { message: "Banner could not be updated." }
         );
       }
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Banner güncellenemedi." }
+        error.response?.data || { message: "Banner could not be updated." }
       );
     }
   }
@@ -75,7 +71,7 @@ export const deleteFeatureImage = createAsyncThunk(
         return { success: true, data: { _id: bannerId } };
       } else {
         return rejectWithValue(
-          response.data || { message: "Banner silinemedi." }
+          response.data || { message: "Banner could not be deleted." }
         );
       }
     } catch (error) {
@@ -84,7 +80,7 @@ export const deleteFeatureImage = createAsyncThunk(
     //    error.response?.data || error.message
     //  );
       return rejectWithValue(
-        error.response?.data || { message: "Banner silinemedi." }
+        error.response?.data || { message: "Banner could not be deleted." }
       );
     }
   }
@@ -118,7 +114,6 @@ const commonSlice = createSlice({
       })
       .addCase(addFeatureImage.rejected, (state, action) => {
         state.error = action.payload?.message || action.error.message;
-       // console.error("Banner ekleme hatası (Redux):", state.error);
       })
 
       .addCase(updateFeatureImage.fulfilled, (state, action) => {
@@ -145,7 +140,6 @@ const commonSlice = createSlice({
       })
       .addCase(deleteFeatureImage.rejected, (state, action) => {
         state.error = action.payload?.message || action.error.message;
-       // console.error("Banner silme hatası (Redux):", state.error);
       });
   },
 });

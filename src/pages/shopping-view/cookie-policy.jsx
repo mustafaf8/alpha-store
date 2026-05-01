@@ -3,36 +3,36 @@ import { Cookie, ShieldCheck, SlidersHorizontal, Gauge, BarChart3 } from "lucide
 function CookiePolicyPage() {
   const cookieTypes = [
     {
-      title: "Zorunlu Cerezler",
+      title: "Essential Cookies",
       description:
-        "Sepet, oturum guvenligi ve temel sayfa islevlerinin calismasi icin gereklidir.",
+        "Required for cart behavior, session security, and core page functionality.",
       icon: ShieldCheck,
     },
     {
-      title: "Performans Cerezleri",
+      title: "Performance Cookies",
       description:
-        "Sayfa hizini, kullanim davranislarini ve genel performansi analiz etmek icin kullanilir.",
+        "Used to analyze page speed, usage behavior, and overall performance.",
       icon: Gauge,
     },
     {
-      title: "Analitik Cerezler",
+      title: "Analytics Cookies",
       description:
-        "Kullanici etkileşimlerini olcumleyerek urun ve deneyim iyilestirmelerinde yol gosterir.",
+        "Measure user interactions to guide product and experience improvements.",
       icon: BarChart3,
     },
     {
-      title: "Tercih Cerezleri",
+      title: "Preference Cookies",
       description:
-        "Dil, para birimi ve gorunum tercihlerini hatirlayarak daha tutarli deneyim sunar.",
+        "Remember language, currency, and view preferences for a consistent experience.",
       icon: SlidersHorizontal,
     },
   ];
 
   const notes = [
-    "Cerezleri tarayici ayarlarindan silebilir veya engelleyebilirsiniz.",
-    "Zorunlu cerezlerin devre disi birakilmasi platformun bazi alanlarini kisitlayabilir.",
-    "Cerez tercihleri cihaz ve tarayici bazinda ayrica yonetilir.",
-    "Politika ve cerez kullanimi operasyonel ihtiyaca gore guncellenebilir.",
+    "You can delete or block cookies through browser settings.",
+    "Disabling essential cookies may limit parts of the platform.",
+    "Cookie preferences are managed per device and browser.",
+    "Cookie usage and policy details may be updated based on operational needs.",
   ];
 
   return (
@@ -46,15 +46,15 @@ function CookiePolicyPage() {
             Cookie Policy
           </h1>
           <p className="mt-4 text-sm md:text-base text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Cerezler; platformun guvenli, hizli ve size ozel calismasini saglamak
-            icin kullanilir. Bu sayfa cerez turlerini ve tercih yonetimini aciklar.
+            Cookies help the platform stay secure, fast, and personalized.
+            This page explains cookie categories and preference controls.
           </p>
         </div>
 
         <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
           <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
             <Cookie className="w-5 h-5 text-purple-600" />
-            Cerez Turleri
+            Cookie Types
           </h2>
           <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             {cookieTypes.map((item) => {
@@ -82,23 +82,22 @@ function CookiePolicyPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
             <h2 className="text-lg md:text-xl font-black text-slate-900">
-              Cerez Tercihlerinizi Yonetin
+              Manage Cookie Preferences
             </h2>
             <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-              Tarayici ayarlarinizdan cerezleri inceleyebilir, silebilir veya
-              belirli kategorileri engelleyebilirsiniz. Platform kullanim
-              deneyiminin bozulmamasi icin zorunlu cerezlerin acik tutulmasi
-              onerilir.
+              You can review, delete, or block cookie categories through your
+              browser settings. Keeping essential cookies enabled is recommended
+              for a stable platform experience.
             </p>
             <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">
-              Cerez tercihleri cihaz bazindadir; farkli cihazlarda ayarlarinizi
-              ayrica duzenlemeniz gerekebilir.
+              Cookie preferences are device-specific, so you may need to update
+              settings separately on different devices.
             </p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
             <h2 className="text-lg md:text-xl font-black text-slate-900">
-              Onemli Notlar
+              Important Notes
             </h2>
             <ul className="mt-4 space-y-2 text-sm text-slate-600">
               {notes.map((note) => (

@@ -13,82 +13,82 @@ import {
 function PrivacyPolicyPage() {
   const collectedData = [
     {
-      title: "Kimlik ve Iletisim Bilgileri",
-      items: ["Ad soyad", "E-posta adresi", "Telefon numarasi", "Hesap bilgileri"],
+      title: "Identity and Contact Information",
+      items: ["Full name", "Email address", "Phone number", "Account details"],
     },
     {
-      title: "Adres ve Teslimat Bilgileri",
+      title: "Address and Delivery Information",
       items: [
-        "Teslimat adresi",
-        "Fatura bilgileri",
-        "Sehir/ilce/posta kodu",
-        "Siparis teslimat notlari",
+        "Delivery address",
+        "Billing details",
+        "City/District/Postal code",
+        "Order delivery notes",
       ],
     },
     {
-      title: "Siparis ve Islem Bilgileri",
+      title: "Order and Transaction Information",
       items: [
-        "Siparis gecmisi",
-        "Iade ve degisim kayitlari",
-        "Fatura detaylari",
-        "Musteri hizmetleri talepleri",
+        "Order history",
+        "Return and exchange records",
+        "Invoice details",
+        "Customer service requests",
       ],
     },
     {
-      title: "Kullanim ve Teknik Veriler",
+      title: "Usage and Technical Data",
       items: [
-        "IP ve cihaz bilgileri",
-        "Tarayici ve oturum verileri",
-        "Sayfa kullanim davranislari",
-        "Cerez (cookie) tercihleri",
+        "IP and device information",
+        "Browser and session data",
+        "Page usage behavior",
+        "Cookie preferences",
       ],
     },
   ];
 
   const processingPurposes = [
-    "Siparislerin alinmasi, onaylanmasi ve teslim edilmesi",
-    "Musteri talepleri ve destek sureclerinin yonetilmesi",
-    "Odeme guvenligi, dolandiricilik onleme ve risk kontrolu",
-    "Platform performansi, urun deneyimi ve hizmet kalitesinin iyilestirilmesi",
-    "Yasal ve duzenleyici yukumluluklerin yerine getirilmesi",
+    "Processing, confirming, and delivering orders",
+    "Managing customer requests and support processes",
+    "Payment security, fraud prevention, and risk control",
+    "Improving platform performance and service quality",
+    "Complying with legal and regulatory obligations",
   ];
 
   const sharingParties = [
     {
-      title: "Lojistik ve Kargo Is Ortaklari",
+      title: "Logistics and Shipping Partners",
       description:
-        "Teslimat operasyonunun yurutulmesi icin gerekli ad, soyad, telefon ve adres bilgileri.",
+        "Name, phone, and address details required to fulfill delivery operations.",
     },
     {
-      title: "Odeme ve Finans Kuruluslari",
+      title: "Payment and Financial Institutions",
       description:
-        "Odeme dogrulama ve islem guvenligi icin gerekli finansal islem verileri.",
+        "Financial transaction data required for payment validation and security.",
     },
     {
-      title: "Teknik Servis Saglayicilar",
+      title: "Technical Service Providers",
       description:
-        "Altyapi, analiz, bildirim ve sistem guvenligi amacli sinirli teknik veri erisimi.",
+        "Limited technical data access for infrastructure, analytics, notifications, and security.",
     },
     {
-      title: "Yetkili Kamu Kurumlari",
+      title: "Authorized Public Authorities",
       description:
-        "Yasal zorunluluk veya resmi talep halinde, mevzuat kapsaminda paylasim.",
+        "Data sharing under legal obligations or official requests when required by law.",
     },
   ];
 
   const securityMeasures = [
-    "Sifreleme, erisim kontrolu ve sistem guvenlik duvarlari",
-    "Yetki bazli personel erisimi ve kayitli denetim mekanizmalari",
-    "Duzenli guvenlik taramalari ve olay yonetim prosedurleri",
-    "Veri yedekleme, butunluk kontrolleri ve operasyonel denetimler",
+    "Encryption, access control, and system firewalls",
+    "Role-based access and auditable control mechanisms",
+    "Regular security scans and incident response procedures",
+    "Backups, integrity checks, and operational audits",
   ];
 
   const userRights = [
-    "Hangi verilerin islendigi hakkinda bilgi alma",
-    "Yanlis veya eksik verilerin duzeltilmesini talep etme",
-    "Belirli kosullarda verilerin silinmesini isteme",
-    "Veri isleme faaliyetlerine itiraz etme",
-    "Yasal kapsamda kurul ve merciilere basvuru yapma",
+    "Request information about what data is processed",
+    "Request correction of inaccurate or incomplete data",
+    "Request deletion of data under applicable conditions",
+    "Object to specific processing activities",
+    "Submit a complaint to authorized supervisory bodies",
   ];
 
   return (
@@ -99,19 +99,18 @@ function PrivacyPolicyPage() {
             Legal
           </p>
           <h1 className="mt-4 text-3xl md:text-5xl font-black leading-tight">
-            Gizlilik Politikasi
+            Privacy Policy
           </h1>
           <p className="mt-4 text-sm md:text-base text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Kisisel verilerinizin gizliligi ve guvenligi onceligimizdir. Bu
-            politika; hangi verileri topladigimizi, neden kullandigimizi ve nasil
-            korudugumuzu detayli sekilde aciklar.
+            Protecting your personal data is one of our core commitments.
+            This policy explains what we collect, why we use it, and how we protect it.
           </p>
         </div>
 
         <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
           <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
             <FileText className="w-5 h-5 text-purple-600" />
-            Hangi Verileri Topluyoruz?
+            What Data Do We Collect?
           </h2>
           <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             {collectedData.map((group) => (
@@ -134,7 +133,7 @@ function PrivacyPolicyPage() {
           <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
             <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
               <Eye className="w-5 h-5 text-purple-600" />
-              Verileri Neden Isliyoruz?
+              Why Do We Process Data?
             </h2>
             <ul className="mt-4 space-y-2 text-sm text-slate-600">
               {processingPurposes.map((item) => (
@@ -151,7 +150,7 @@ function PrivacyPolicyPage() {
           <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
             <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
               <Users className="w-5 h-5 text-purple-600" />
-              Verileri Kimlerle Paylasiyoruz?
+              Who Do We Share Data With?
             </h2>
             <div className="mt-4 space-y-2.5">
               {sharingParties.map((item) => (
@@ -172,7 +171,7 @@ function PrivacyPolicyPage() {
         <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
           <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
             <Lock className="w-5 h-5 text-purple-600" />
-            Verilerinizi Nasil Koruyoruz?
+            How Do We Protect Your Data?
           </h2>
           <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2.5">
             {securityMeasures.map((item) => (
@@ -190,20 +189,17 @@ function PrivacyPolicyPage() {
           <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
             <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
               <Clock3 className="w-5 h-5 text-purple-600" />
-              Saklama Sureleri
+              Retention Periods
             </h2>
             <div className="mt-4 space-y-2 text-sm text-slate-600">
               <p className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
-                Hesap bilgileri: hesap aktif oldugu surece veya mevzuat kapsaminda
-                gerekli sure boyunca.
+                Account data: while your account is active or as required by law.
               </p>
               <p className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
-                Siparis ve fatura kayitlari: yasal zorunluluklar dogrultusunda
-                ilgili saklama suresi boyunca.
+                Order and invoice records: for legally required retention periods.
               </p>
               <p className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
-                Destek ve iletisim kayitlari: hizmet kalitesi ve hukuki gereklilik
-                kapsaminda sinirli sureyle.
+                Support records: for a limited period for service quality and legal compliance.
               </p>
             </div>
           </div>
@@ -211,7 +207,7 @@ function PrivacyPolicyPage() {
           <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
             <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
               <Globe className="w-5 h-5 text-purple-600" />
-              Veri Sahibi Haklari
+              Data Subject Rights
             </h2>
             <ul className="mt-4 space-y-2 text-sm text-slate-600">
               {userRights.map((item) => (
@@ -228,12 +224,11 @@ function PrivacyPolicyPage() {
 
         <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm text-center">
           <h2 className="text-lg md:text-xl font-black text-slate-900">
-            Haklariniz ve Iletisim
+            Your Rights and Contact
           </h2>
           <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed max-w-3xl mx-auto">
-            Verilerinize iliskin tum taleplerinizi destek kanalimiz uzerinden
-            iletebilirsiniz. Talepleriniz ilgili mevzuat cercevesinde
-            degerlendirilir ve size en kisa surede donus yapilir.
+            You can submit all data-related requests via our support channels.
+            Requests are reviewed in line with applicable regulations and answered promptly.
           </p>
           <div className="mt-5 rounded-xl border border-slate-100 bg-slate-50 p-4 flex items-center justify-center gap-2 text-slate-700">
             <ShieldCheck className="w-4 h-4 text-purple-600" />

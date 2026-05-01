@@ -16,7 +16,7 @@ export const fetchSideBanners = createAsyncThunk(
       return { success: true, data: payload };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Yan bannerlar getirilemedi." },
+        error.response?.data || { message: "Side banners could not be fetched." },
       );
     }
   },
@@ -31,12 +31,12 @@ export const addSideBanner = createAsyncThunk(
         return response.data;
       } else {
         return rejectWithValue(
-          response.data || { message: "Yan banner eklenemedi." }
+          response.data || { message: "Side banner could not be added." }
         );
       }
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Yan banner eklenemedi." }
+        error.response?.data || { message: "Side banner could not be added." }
       );
     }
   }
@@ -50,12 +50,12 @@ export const updateSideBanner = createAsyncThunk(
         return response.data;
       } else {
         return rejectWithValue(
-          response.data || { message: "Yan banner güncellenemedi." }
+          response.data || { message: "Side banner could not be updated." }
         );
       }
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Yan banner güncellenemedi." }
+        error.response?.data || { message: "Side banner could not be updated." }
       );
     }
   }
@@ -72,12 +72,12 @@ export const deleteSideBanner = createAsyncThunk(
         return { success: true, data: { _id: bannerId } };
       } else {
         return rejectWithValue(
-          response.data || { message: "Yan banner silinemedi." }
+          response.data || { message: "Side banner could not be deleted." }
         );
       }
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || { message: "Yan banner silinemedi." }
+        error.response?.data || { message: "Side banner could not be deleted." }
       );
     }
   }

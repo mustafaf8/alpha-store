@@ -7,8 +7,8 @@ export default function PasswordStrengthInput({
   value,
   onChange,
   onValidityChange,
-  label = "Şifre",
-  placeholder = "Şifre",
+  label = "Password",
+  placeholder = "Password",
   id: propId,
 }) {
   const id = propId || useId();
@@ -17,10 +17,10 @@ export default function PasswordStrengthInput({
   const toggleVisibility = () => setIsVisible((prev) => !prev);
 
   const requirements = [
-    { regex: /.{8,}/, text: "En az 8 karakter" },
-    { regex: /[0-9]/, text: "En az 1 sayı" },
-    { regex: /[a-z]/, text: "En az 1 küçük harf" },
-    { regex: /[A-Z]/, text: "En az 1 büyük harf" },
+    { regex: /.{8,}/, text: "At least 8 characters" },
+    { regex: /[0-9]/, text: "At least 1 number" },
+    { regex: /[a-z]/, text: "At least 1 lowercase letter" },
+    { regex: /[A-Z]/, text: "At least 1 uppercase letter" },
   ];
 
   const strength = useMemo(() => {
@@ -42,10 +42,10 @@ export default function PasswordStrengthInput({
   };
 
   const getStrengthText = (score) => {
-    if (score === 0) return "Şifre girin";
-    if (score <= 2) return "Zayıf şifre";
-    if (score === 3) return "Orta şifre";
-    return "Güçlü şifre";
+    if (score === 0) return "Enter a password";
+    if (score <= 2) return "Weak password";
+    if (score === 3) return "Medium password";
+    return "Strong password";
   };
 
   return (
@@ -68,7 +68,7 @@ export default function PasswordStrengthInput({
             className="absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-lg text-muted-foreground/80 outline-offset-2 transition-colors hover:text-foreground focus:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
             type="button"
             onClick={toggleVisibility}
-            aria-label={isVisible ? "Şifreyi gizle" : "Şifreyi göster"}
+            aria-label={isVisible ? "Hide password" : "Show password"}
             aria-pressed={isVisible}
             aria-controls={id}
           >
@@ -87,7 +87,7 @@ export default function PasswordStrengthInput({
         aria-valuenow={strengthScore}
         aria-valuemin={0}
         aria-valuemax={4}
-        aria-label="Şifre gücü"
+        aria-label="Password strength"
       >
         <div
           className={`h-full ${getStrengthColor(strengthScore)} transition-all duration-500 ease-out`}
@@ -99,7 +99,7 @@ export default function PasswordStrengthInput({
         {getStrengthText(strengthScore)}. 
       </p>
 
-      <ul className="space-y-1.5" aria-label="Şifre gereksinimleri">
+      <ul className="space-y-1.5" aria-label="Password requirements">
         {strength.map((req, index) => (
           <li key={index} className="flex items-center gap-2">
             {req.met ? (
@@ -109,7 +109,7 @@ export default function PasswordStrengthInput({
             )}
             <span className={`text-xs ${req.met ? "text-emerald-600" : "text-muted-foreground"}`}>
               {req.text}
-              <span className="sr-only">{req.met ? " - Şart sağlandı" : " - Şart sağlanmadı"}</span>
+              <span className="sr-only">{req.met ? " - Requirement met" : " - Requirement not met"}</span>
             </span>
           </li>
         ))}

@@ -39,13 +39,13 @@ function NotFound() {
 
     
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-4">
-            Kaybolmuş Gibisiniz!
+            Looks Like You're Lost!
           </h2>
 
       
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-            Aradığınız sayfa bir maceraya çıkmış olabilir. 🚀<br />
-            Merak etmeyin, sizi güvenli bir yere götürebiliriz.
+            The page you are looking for may have moved. 🚀<br />
+            No worries, we can guide you back to a safe place.
           </p>
 
          
@@ -54,11 +54,11 @@ function NotFound() {
               asChild 
               size="lg" 
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-              aria-label="Ana Sayfaya Dön"
+              aria-label="Back to Home"
             >
               <Link to="/shop/home">
                 <Home className="mr-2 h-5 w-5" /> 
-                Ana Sayfaya Dön
+                Back to Home
               </Link>
             </Button>
 
@@ -67,10 +67,10 @@ function NotFound() {
               size="lg" 
               onClick={() => navigate(-1)}
               className="border-gray-300 hover:border-gray-400 hover:bg-gray-50 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-800 transform hover:scale-105 transition-all duration-200"
-              aria-label="Geri Dön"
+              aria-label="Go Back"
             >
               <ArrowLeft className="mr-2 h-5 w-5" /> 
-              Geri Dön
+              Go Back
             </Button>
 
             <Button 
@@ -78,11 +78,11 @@ function NotFound() {
               variant="ghost" 
               size="lg"
               className="hover:bg-blue-50 dark:hover:bg-gray-800 transform hover:scale-105 transition-all duration-200"
-              aria-label="Arama Yap"
+              aria-label="Search"
               >
               <Link to="/shop/search">
                 <Search className="mr-2 h-5 w-5" /> 
-                Arama Yap
+                Search
               </Link>
             </Button>
           </div>
@@ -90,20 +90,20 @@ function NotFound() {
           {/* Help Text */}
           <div className="mt-12 p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
-              Size Nasıl Yardım Edebiliriz?
+              How Can We Help?
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
               <div className="flex items-center text-gray-600 dark:text-gray-300">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                Ana sayfaya dönün
+                Return to home
               </div>
               <div className="flex items-center text-gray-600 dark:text-gray-300">
                 <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                Ürünleri keşfedin
+                Explore products
               </div>
               <div className="flex items-center text-gray-600 dark:text-gray-300">
                 <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
-                Arama yapın
+                Search for items
               </div>
             </div>
           </div>

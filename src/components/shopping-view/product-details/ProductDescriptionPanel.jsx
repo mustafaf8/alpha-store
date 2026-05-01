@@ -10,10 +10,10 @@ function ProductDescriptionPanel({ productDetails }) {
       <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
         <div className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
           <span className="w-1 h-5 rounded-full bg-gradient-to-b from-purple-500 to-blue-500" />
-          Açıklama
+          Description
         </div>
         <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-          {productDetails?.description || "Bu ürün için açıklama eklenmemiş."}
+          {productDetails?.description || "No description has been added for this product."}
         </p>
       </div>
 
@@ -21,7 +21,7 @@ function ProductDescriptionPanel({ productDetails }) {
         <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <div className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span className="w-1 h-5 rounded-full bg-gradient-to-b from-purple-500 to-blue-500" />
-            Öne Çıkanlar
+            Highlights
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {highlights.map((h, idx) => (

@@ -3,35 +3,35 @@ import { ShieldCheck, FileText, Wrench, Clock3, BadgeCheck, Phone } from "lucide
 function WarrantyInfoPage() {
   const coverage = [
     {
-      title: "Elektronik Urunler",
-      detail: "Genellikle uretici garantisi kapsaminda 24 aya kadar desteklenir.",
+      title: "Electronics",
+      detail: "Usually covered by manufacturer warranty support for up to 24 months.",
     },
     {
-      title: "Kucuk Ev Aletleri",
-      detail: "Marka ve modele bagli olarak 12-24 ay garanti sunulabilir.",
+      title: "Small Home Appliances",
+      detail: "Depending on brand and model, warranty coverage may range from 12 to 24 months.",
     },
     {
-      title: "Aksesuar ve Sarf Urunleri",
-      detail: "Kategoriye gore sinirli garanti veya degisim kosullari uygulanir.",
+      title: "Accessories and Consumables",
+      detail: "Limited warranty or exchange terms may apply by category.",
     },
     {
-      title: "Kampanya / Ozel Urunler",
-      detail: "Urun kartinda belirtilen ozel kosullar gecerlidir.",
+      title: "Campaign / Special Items",
+      detail: "Special conditions listed on the product page apply.",
     },
   ];
 
   const claimSteps = [
-    "Fatura ve siparis numaranizi hazirlayin.",
-    "Destek ekibine urun modeli ve ariza detaylarini iletin.",
-    "Yonlendirme sonrasi yetkili servis veya inceleme surecini baslatin.",
-    "Onaylanan durumlarda onarim, degisim veya iade islemi uygulanir.",
+    "Prepare your invoice and order number.",
+    "Share the product model and issue details with our support team.",
+    "After guidance, start the authorized service or inspection process.",
+    "For approved cases, repair, replacement, or refund is applied.",
   ];
 
   const exclusions = [
-    "Kullanici hatasi kaynakli fiziksel hasarlar",
-    "Yetkisiz mudahale veya servis islemleri",
-    "Sivi temasi, dusme, kirilma gibi kapsam disi durumlar",
-    "Faturasiz veya garanti kosullarina aykiri kullanim",
+    "Physical damage caused by user misuse",
+    "Unauthorized interventions or service actions",
+    "Out-of-scope cases such as liquid contact, drops, or breakage",
+    "Usage without invoice or outside warranty conditions",
   ];
 
   return (
@@ -45,16 +45,15 @@ function WarrantyInfoPage() {
             Warranty Info
           </h1>
           <p className="mt-4 text-sm md:text-base text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Garanti kapsam, basvuru adimlari ve surec detaylarini bu sayfada
-            bulabilirsiniz. Hedefimiz, garanti taleplerinizi hizli ve seffaf
-            sekilde sonuclandirmaktir.
+            You can find warranty scope, claim steps, and process details on
+            this page. Our goal is to resolve warranty requests quickly and transparently.
           </p>
         </div>
 
         <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
           <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-purple-600" />
-            Garanti Kapsami
+            Warranty Coverage
           </h2>
           <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             {coverage.map((item) => (
@@ -75,7 +74,7 @@ function WarrantyInfoPage() {
           <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
             <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
               <Wrench className="w-5 h-5 text-purple-600" />
-              Garanti Basvuru Adimlari
+              Warranty Claim Steps
             </h2>
             <ul className="mt-4 space-y-2 text-sm text-slate-600">
               {claimSteps.map((step) => (
@@ -92,7 +91,7 @@ function WarrantyInfoPage() {
           <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
             <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
               <BadgeCheck className="w-5 h-5 text-purple-600" />
-              Kapsam Disi Durumlar
+              Exclusions
             </h2>
             <ul className="mt-4 space-y-2 text-sm text-slate-600">
               {exclusions.map((item) => (
@@ -109,25 +108,24 @@ function WarrantyInfoPage() {
 
         <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm text-center">
           <h2 className="text-lg md:text-xl font-black text-slate-900">
-            Surecler ve Iletisim
+            Process and Contact
           </h2>
           <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed max-w-3xl mx-auto">
-            Garanti sureci urun ve marka bazinda degisebilir. Basvurunuz
-            alindiktan sonra servis veya inceleme adimlari hakkinda detayli
-            bilgilendirme yapilir.
+            Warranty timelines may vary by product and brand. Once your request
+            is received, we provide detailed updates on inspection and service steps.
           </p>
           <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
             <div className="rounded-xl border border-slate-100 bg-slate-50 p-3 text-sm font-semibold text-slate-700 flex items-center justify-center gap-2">
               <FileText className="w-4 h-4 text-purple-600" />
-              Fatura Hazir Bulunsun
+              Keep Invoice Ready
             </div>
             <div className="rounded-xl border border-slate-100 bg-slate-50 p-3 text-sm font-semibold text-slate-700 flex items-center justify-center gap-2">
               <Clock3 className="w-4 h-4 text-purple-600" />
-              Hizli Degerlendirme
+              Fast Evaluation
             </div>
             <div className="rounded-xl border border-slate-100 bg-slate-50 p-3 text-sm font-semibold text-slate-700 flex items-center justify-center gap-2">
               <Phone className="w-4 h-4 text-purple-600" />
-              Destek: +90 534 716 87 54
+              Support: +90 534 716 87 54
             </div>
           </div>
         </div>

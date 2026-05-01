@@ -51,8 +51,8 @@ function ProductReviewsPanel({ reviews, isLoading }) {
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-purple-100 to-blue-100 mb-4">
           <MessageSquareText className="h-8 w-8 text-purple-400" />
         </div>
-        <div className="text-gray-800 font-semibold text-base">Henüz yorum yok</div>
-        <div className="text-slate-400 text-sm mt-1.5">İlk yorumu siz yapabilirsiniz.</div>
+        <div className="text-gray-800 font-semibold text-base">No reviews yet</div>
+        <div className="text-slate-400 text-sm mt-1.5">Be the first to leave a review.</div>
       </div>
     );
   }
@@ -64,7 +64,7 @@ function ProductReviewsPanel({ reviews, isLoading }) {
           <div>
             <div className="text-lg font-bold text-gray-900 flex items-center gap-2">
               <span className="w-1 h-5 rounded-full bg-gradient-to-b from-purple-500 to-blue-500" />
-              Yorumlar
+              Reviews
             </div>
             <div className="text-sm text-slate-500 mt-1.5">
               Ortalama: <span className="font-semibold text-gray-700">{avg.toFixed(1)}</span> / 5
@@ -88,10 +88,10 @@ function ProductReviewsPanel({ reviews, isLoading }) {
                   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 text-white text-sm font-bold">
                     {(r.user?.name || "M")[0].toUpperCase()}
                   </div>
-                  <div className="font-semibold text-gray-900">{r.user?.name || "Müşteri"}</div>
+                  <div className="font-semibold text-gray-900">{r.user?.name || "Customer"}</div>
                   {r.verified && (
                     <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs border border-emerald-200 font-medium">
-                      Doğrulanmış
+                      Verified
                     </span>
                   )}
                 </div>

@@ -16,7 +16,7 @@ export const getSearchResults = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(
         error?.response?.data || {
-          message: error?.message || "Arama sırasında bir hata oluştu.",
+          message: error?.message || "An error occurred during search.",
         }
       );
     }
@@ -49,7 +49,7 @@ const searchSlice = createSlice({
         state.error =
           action.payload?.message ||
           action.error?.message ||
-          "Arama başarısız oldu.";
+          "Search failed.";
       });
   },
 });

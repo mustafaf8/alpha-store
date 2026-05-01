@@ -27,7 +27,7 @@ function CommonForm({
 
     switch (getControlItem.componentType) {
       case "input":
-        // Şifre alanları için PasswordInput kullan
+        // Use PasswordInput for password fields
         if (getControlItem.type === "password") {
           element = (
             <PasswordInput

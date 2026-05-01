@@ -9,23 +9,23 @@ function StoreLocatorPage() {
             Store Locator
           </p>
           <h1 className="mt-4 text-3xl md:text-5xl font-black leading-tight">
-            Magazamiz Sizi Bekliyor
+            Our Store Is Ready for You
           </h1>
           <p className="mt-4 text-sm md:text-base text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Adres, iletisim ve yol tarifi bilgilerini tek sayfada bulabilir,
-            magaza konumumuza tek tikla ulasabilirsiniz.
+            Find address, contact details, and directions in one place, then
+            open navigation with a single click.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-5">
           <div className="lg:col-span-2 rounded-2xl border border-slate-200 bg-white p-5 md:p-6 shadow-sm">
-            <h2 className="text-xl font-black text-slate-900">Magaza Bilgileri</h2>
+            <h2 className="text-xl font-black text-slate-900">Store Information</h2>
             <div className="mt-4 space-y-3">
               <div className="rounded-xl border border-slate-100 bg-slate-50 p-3 flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-purple-600 mt-0.5" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Adres
+                    Address
                   </p>
                   <p className="text-sm font-medium text-slate-800">
                     Istanbul City Center, Main Shopping District
@@ -37,7 +37,7 @@ function StoreLocatorPage() {
                 <Phone className="w-4 h-4 text-purple-600 mt-0.5" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Telefon
+                    Phone
                   </p>
                   <p className="text-sm font-medium text-slate-800">
                     +90 534 716 87 54
@@ -49,7 +49,7 @@ function StoreLocatorPage() {
                 <Mail className="w-4 h-4 text-purple-600 mt-0.5" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    E-Posta
+                    Email
                   </p>
                   <p className="text-sm font-medium text-slate-800">
                     support@alphastore.com
@@ -61,10 +61,10 @@ function StoreLocatorPage() {
                 <Clock3 className="w-4 h-4 text-purple-600 mt-0.5" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Calisma Saatleri
+                    Opening Hours
                   </p>
                   <p className="text-sm font-medium text-slate-800">
-                    Hafta Ici 09:00 - 22:00 / Hafta Sonu 10:00 - 23:00
+                    Weekdays 09:00 - 22:00 / Weekend 10:00 - 23:00
                   </p>
                 </div>
               </div>
@@ -73,10 +73,10 @@ function StoreLocatorPage() {
                 <MapPin className="w-4 h-4 text-purple-600 mt-0.5" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    Ulasim Notu
+                    Transit Note
                   </p>
                   <p className="text-sm font-medium text-slate-800">
-                    Metro ve otobus duraklarina 5 dakika yurume mesafesinde.
+                    A 5-minute walk from nearby metro and bus stops.
                   </p>
                 </div>
               </div>
@@ -89,7 +89,7 @@ function StoreLocatorPage() {
               className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-4 py-3 text-sm font-semibold text-white hover:bg-purple-700 transition-colors"
             >
               <Navigation className="w-4 h-4" />
-              Yol Tarifi Al
+              Get Directions
             </a>
           </div>
 
@@ -104,8 +104,7 @@ function StoreLocatorPage() {
               />
             </div>
             <p className="mt-3 text-xs text-slate-500">
-              Haritada yakinlastirarak konumu detayli inceleyebilir ve rota
-              olusturabilirsiniz.
+              You can zoom the map for detail and create your route instantly.
             </p>
           </div>
         </div>

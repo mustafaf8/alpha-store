@@ -5,6 +5,7 @@ import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Filter, Building2, Tag, X, ChevronRight, ChevronDown } from "lucide-react";
+import { translateCategoryName } from "@/lib/taxonomy-translations";
 
 function ProductFilter({
   filters,
@@ -120,15 +121,25 @@ function ProductFilter({
                     <div key={category._id} className="space-y-3 group">
                       <div className="flex items-center gap-2">
                         <span className="text-[12px] font-black text-slate-800 uppercase tracking-wider group-hover:text-purple-600 transition-colors">
-                          {category.name}
+                          {translateCategoryName(category.name, category.slug)}
                         </span>
                         <div className="h-px flex-1 bg-slate-100" />
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {category.children && category.children.length > 0 ? (
-                          category.children.map((sub) => renderFilterChip(sub.slug, sub.name, "category"))
+                          category.children.map((sub) =>
+                            renderFilterChip(
+                              sub.slug,
+                              translateCategoryName(sub.name, sub.slug),
+                              "category",
+                            ),
+                          )
                         ) : (
-                          renderFilterChip(category.slug, category.name, "category")
+                          renderFilterChip(
+                            category.slug,
+                            translateCategoryName(category.name, category.slug),
+                            "category",
+                          )
                         )}
                       </div>
                     </div>

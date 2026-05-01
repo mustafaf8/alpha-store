@@ -12,36 +12,36 @@ import {
 function TermsAndConditionsPage() {
   const sections = [
     {
-      title: "Siparis ve Satin Alma",
+      title: "Orders and Purchases",
       description:
-        "Verilen tum siparisler stok durumu, odeme dogrulamasi ve guvenlik kontrollerine tabidir.",
+        "All orders are subject to stock availability, payment verification, and security checks.",
       icon: ShoppingCart,
     },
     {
-      title: "Odeme ve Fiyatlandirma",
+      title: "Payment and Pricing",
       description:
-        "Fiyatlar kampanya ve stok durumuna gore guncellenebilir. Odeme onayi alinmadan siparis tamamlanmis sayilmaz.",
+        "Prices may change based on campaigns and stock status. Orders are not final until payment is confirmed.",
       icon: CreditCard,
     },
     {
-      title: "Teslimat Surecleri",
+      title: "Delivery Process",
       description:
-        "Teslimat sureleri bolge, urun tipi ve operasyonel yogunluga bagli olarak degisebilir.",
+        "Delivery times may vary depending on region, product type, and operational volume.",
       icon: Truck,
     },
     {
-      title: "Iade ve Iptal",
+      title: "Returns and Cancellations",
       description:
-        "Iade, degisim ve iptal islemleri yayinlanan iade kosullari ve ilgili mevzuat cercevesinde uygulanir.",
+        "Returns, exchanges, and cancellations are handled according to our published policy and applicable law.",
       icon: RotateCcw,
     },
   ];
 
   const legalNotes = [
-    "Urun gorselleri temsilidir; renk ve detaylarda kucuk farkliliklar olabilir.",
-    "Platformdaki icerik, fiyat ve kampanya bilgileri onceden haber verilmeksizin guncellenebilir.",
-    "Kotuye kullanim, sahte islem veya guvenlik ihlali durumlarinda siparisler iptal edilebilir.",
-    "Yasal uyusmazliklarda ilgili mevzuat ve yetkili mahkemeler esas alinir.",
+    "Product visuals are representative and may slightly differ in color or detail.",
+    "Content, pricing, and promotions may be updated without prior notice.",
+    "Orders may be canceled in cases of misuse, fraud, or security violations.",
+    "Legal disputes are resolved under applicable law and competent courts.",
   ];
 
   return (
@@ -55,26 +55,25 @@ function TermsAndConditionsPage() {
             Terms & Conditions
           </h1>
           <p className="mt-4 text-sm md:text-base text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Bu sayfa; siparis, odeme, teslimat, iade ve platform kullanimina
-            iliskin temel kosullari aciklar. Siparis olusturan her kullanici bu
-            kosullari kabul etmis sayilir.
+            This page explains the core terms for orders, payments, deliveries,
+            returns, and platform usage. By placing an order, users accept these terms.
           </p>
         </div>
 
         <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
           <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
             <FileText className="w-5 h-5 text-purple-600" />
-            Genel Kosullar
+            General Terms
           </h2>
           <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">
-            Platformda yer alan urun, fiyat ve kampanya bilgileri guncel
-            operasyonel kosullara gore duzenlenir. Siparisin olusmasi, odeme
-            onayi ve guvenlik kontrollerinin tamamlanmasina baglidir.
+            Product, pricing, and campaign data may be adjusted based on
+            operational conditions. Order completion depends on successful
+            payment approval and security validation.
           </p>
           <p className="mt-2.5 text-sm md:text-base text-slate-600 leading-relaxed">
-            Urun aciklamalari ve gorselleri bilgilendirme amaclidir; teknik
-            farkliliklar, ekran goruntuleme degiskenleri veya uretici guncellemeleri
-            nedeniyle kucuk farklar olusabilir.
+            Product descriptions and visuals are informational. Small
+            variations may occur due to technical factors, display differences,
+            or manufacturer updates.
           </p>
         </div>
 
@@ -106,33 +105,30 @@ function TermsAndConditionsPage() {
           <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
             <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-purple-600" />
-              Sorumluluk ve Guvenlik
+              Responsibility and Security
             </h2>
             <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-              Dolandiricilik, kotuye kullanim veya guvenlik politikalarina aykiri
-              durumlarda siparislerin islenmesi durdurulabilir ya da iptal
-              edilebilir.
+              In cases of fraud, misuse, or policy violations, order processing
+              may be suspended or canceled.
             </p>
             <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">
-              Hesap guvenligi kullanicinin sorumlulugundadir. Hesap bilgilerinizin
-              gizliligini korumak adina guclu sifre ve guvenli oturum kullanimi
-              onemlidir.
+              Account security is the user's responsibility. Use strong
+              passwords and secure sessions to protect your account credentials.
             </p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
             <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
               <Scale className="w-5 h-5 text-purple-600" />
-              Yasal Cerceve
+              Legal Framework
             </h2>
             <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-              Bu kosullar ulusal mevzuata uygun olarak uygulanir. Uyusmazlik
-              durumlarinda ilgili tuketici mevzuati ve yetkili yargi mercileri
-              esas alinir.
+              These terms are enforced under applicable national regulations.
+              Consumer law and authorized judicial bodies apply in disputes.
             </p>
             <p className="mt-2.5 text-sm text-slate-600 leading-relaxed">
-              Platforma ait icerik, marka ve dijital varliklar fikri mulkiyet
-              haklari kapsaminda korunur.
+              Platform content, trademarks, and digital assets are protected by
+              intellectual property rights.
             </p>
           </div>
         </div>
@@ -140,7 +136,7 @@ function TermsAndConditionsPage() {
         <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
           <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
             <AlertTriangle className="w-5 h-5 text-purple-600" />
-            Onemli Notlar
+            Important Notes
           </h2>
           <ul className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2.5">
             {legalNotes.map((note) => (

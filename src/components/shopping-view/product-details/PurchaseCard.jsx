@@ -6,11 +6,11 @@ import { formatPrice } from "@/lib/utils";
 import StarRatingComponent from "@/components/common/star-rating";
 
 const DEFAULT_COLORS = [
-  { name: "Siyah", hex: "#1a1a1a" },
-  { name: "Beyaz", hex: "#f5f5f5" },
-  { name: "Gece Mavisi", hex: "#1e3a5f" },
-  { name: "Gümüş", hex: "#c0c0c0" },
-  { name: "Mor", hex: "#7c3aed" },
+  { name: "Black", hex: "#1a1a1a" },
+  { name: "White", hex: "#f5f5f5" },
+  { name: "Navy Blue", hex: "#1e3a5f" },
+  { name: "Silver", hex: "#c0c0c0" },
+  { name: "Purple", hex: "#7c3aed" },
 ];
 
 function PurchaseCard({
@@ -77,7 +77,7 @@ function PurchaseCard({
         <div className="text-sm font-semibold text-gray-700 mb-2.5 flex items-center justify-between">
           <span>{attr.name}</span>
           <span className="text-purple-600 font-medium text-xs bg-purple-50 px-2 py-0.5 rounded-md">
-            {selectedVariants[attr.name] || "Seçiniz"}
+            {selectedVariants[attr.name] || "Select"}
           </span>
         </div>
         
@@ -168,7 +168,7 @@ function PurchaseCard({
             {rating ? rating.toFixed(1) : "0.0"}
           </span>
           <span className="text-sm text-slate-400">
-            ({reviewCount} Yorum)
+            ({reviewCount} Reviews)
           </span>
           <span
             className={`inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${
@@ -178,7 +178,7 @@ function PurchaseCard({
             }`}
           >
             <span className={`w-1.5 h-1.5 rounded-full ${stock > 0 ? "bg-emerald-500 animate-pulse" : "bg-red-500"}`} />
-            {stock > 0 ? `Stokta: ${stock} Adet` : "Stokta Yok"}
+            {stock > 0 ? `In Stock: ${stock} Units` : "Out of Stock"}
           </span>
         </div>
 
@@ -190,18 +190,18 @@ function PurchaseCard({
           {productDetails.salePrice ? (
             <>
               <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold px-5 py-2 rounded-2xl text-xl sm:text-2xl shadow-md">
-                {formatPrice(productDetails.salePrice)} TL
+                {formatPrice(productDetails.salePrice)}
               </span>
               <span className="line-through text-base sm:text-lg text-slate-400 mb-0.5">
-                {formatPrice(productDetails.price)} TL
+                {formatPrice(productDetails.price)}
               </span>
               <span className="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full mb-0.5">
-                %{Math.round(((productDetails.price - productDetails.salePrice) / productDetails.price) * 100)} İndirim
+                {Math.round(((productDetails.price - productDetails.salePrice) / productDetails.price) * 100)}% Off
               </span>
             </>
           ) : (
             <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold px-5 py-2 rounded-2xl text-xl sm:text-2xl shadow-md">
-              {formatPrice(productDetails.price)} TL
+              {formatPrice(productDetails.price)}
             </span>
           )}
         </div>
@@ -240,7 +240,7 @@ function PurchaseCard({
         <div className="flex flex-col gap-3">
           {!allVariantsSelected && attributes.length > 0 && (
              <div className="text-xs text-red-500 font-medium bg-red-50 px-3 py-1.5 rounded-lg border border-red-100 inline-block self-start">
-               Lütfen sepete eklemeden önce tüm seçenekleri (varyantları) belirleyin.
+               Please select all options (variants) before adding to cart.
              </div>
           )}
           
@@ -279,11 +279,11 @@ function PurchaseCard({
               }`}
               onClick={() => onAddToCart({ ...productDetails, selectedVariants })}
               disabled={stock === 0 || (!allVariantsSelected && attributes.length > 0)}
-              aria-label="Sepete ekle"
+              aria-label="Add to cart"
             >
               <span className="flex items-center justify-center gap-2">
                 <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
-                {stock === 0 ? "Stokta Yok" : "Sepete Ekle"}
+                {stock === 0 ? "Out of Stock" : "Add to Cart"}
               </span>
             </Button>
           </div>
@@ -298,15 +298,15 @@ function PurchaseCard({
         <div className="grid grid-cols-3 gap-2 mt-1">
           <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
             <Truck className="w-5 h-5 text-sky-500" />
-            <span className="text-[11px] text-slate-600 font-medium text-center leading-tight">Hızlı Teslimat</span>
+            <span className="text-[11px] text-slate-600 font-medium text-center leading-tight">Fast Delivery</span>
           </div>
           <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
             <Shield className="w-5 h-5 text-emerald-500" />
-            <span className="text-[11px] text-slate-600 font-medium text-center leading-tight">2 Yıl Garanti</span>
+            <span className="text-[11px] text-slate-600 font-medium text-center leading-tight">2-Year Warranty</span>
           </div>
           <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
             <RotateCcw className="w-5 h-5 text-amber-500" />
-            <span className="text-[11px] text-slate-600 font-medium text-center leading-tight">Kolay İade</span>
+            <span className="text-[11px] text-slate-600 font-medium text-center leading-tight">Easy Returns</span>
           </div>
         </div>
       </div>

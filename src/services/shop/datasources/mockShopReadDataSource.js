@@ -39,6 +39,84 @@ const sortProducts = (list, sortBy = "") => {
 
 const filterProducts = (allProducts, filterParams = {}, keyword = "") => {
   let list = [...allProducts];
+  const categoryCanonicalMap = {
+    women: "women",
+    kadin: "women",
+    men: "men",
+    erkek: "men",
+    shoes: "shoes",
+    ayakkabi: "shoes",
+    phones: "phones",
+    telefon: "phones",
+    "audio-systems": "audio-systems",
+    "ses-sistemleri": "audio-systems",
+    refrigerators: "refrigerators",
+    buzdolabi: "refrigerators",
+    "washing-machines": "washing-machines",
+    "camasir-makinesi": "washing-machines",
+    "vacuum-cleaners": "vacuum-cleaners",
+    supurge: "vacuum-cleaners",
+    "coffee-machines": "coffee-machines",
+    "kahve-makineleri": "coffee-machines",
+    furniture: "furniture",
+    mobilya: "furniture",
+    lighting: "lighting",
+    aydinlatma: "lighting",
+    makeup: "makeup",
+    makyaj: "makeup",
+    skincare: "skincare",
+    "cilt-bakimi": "skincare",
+    "basic-food": "basic-food",
+    "temel-gida": "basic-food",
+    "baby-diapers": "baby-diapers",
+    "bebek-bezi": "baby-diapers",
+    "fitness-equipment": "fitness-equipment",
+    "fitness-ekipmanlari": "fitness-equipment",
+    luggage: "luggage",
+    valiz: "luggage",
+    toys: "toys",
+    oyuncaklar: "toys",
+    books: "books",
+    kitaplar: "books",
+    "car-accessories": "car-accessories",
+    "arac-aksesuarlari": "car-accessories",
+    gold: "gold",
+    altin: "gold",
+    "pet-food": "pet-food",
+    "evcil-hayvan-mamasi": "pet-food",
+    "hand-tools": "hand-tools",
+    "el-aletleri": "hand-tools",
+    accessories: "accessories",
+    aksesuar: "accessories",
+    sportswear: "sportswear",
+    "spor-giyim": "sportswear",
+    pants: "pants",
+    pantolon: "pants",
+    jacket: "jacket",
+    ceket: "jacket",
+    cameras: "cameras",
+    kamera: "cameras",
+    "shower-gel": "shower-gel",
+    "dus-jeli": "shower-gel",
+    lipstick: "lipstick",
+    ruj: "lipstick",
+    "nail-polish": "nail-polish",
+    oje: "nail-polish",
+    mascara: "mascara",
+    rimel: "mascara",
+    foundation: "foundation",
+    fondoten: "foundation",
+    cosmetics: "cosmetics",
+    kozmetik: "cosmetics",
+    cleaning: "cleaning",
+    temizlik: "cleaning",
+    blouse: "blouse",
+    bluz: "blouse",
+    dress: "dress",
+    fistan: "dress",
+    deals: "deals",
+    firsatlar: "deals",
+  };
 
   const categoryFilters = Array.isArray(filterParams.category)
     ? filterParams.category
@@ -52,7 +130,12 @@ const filterProducts = (allProducts, filterParams = {}, keyword = "") => {
       : [];
 
   if (categoryFilters.length > 0) {
-    list = list.filter((item) => categoryFilters.includes(item.category));
+    const normalizedCategoryFilters = categoryFilters.map(
+      (slug) => categoryCanonicalMap[slug] || slug,
+    );
+    list = list.filter((item) =>
+      normalizedCategoryFilters.includes(categoryCanonicalMap[item.category] || item.category),
+    );
   }
 
   if (brandFilters.length > 0) {
