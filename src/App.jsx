@@ -15,6 +15,22 @@ const ProductSpecsPage = lazy(() =>
   import("./pages/shopping-view/ProductSpecsPage")
 );
 const ShoppingCartPage = lazy(() => import("./pages/shopping-view/cart"));
+const AboutUsPage = lazy(() => import("./pages/shopping-view/about-us"));
+const StoreLocatorPage = lazy(() =>
+  import("./pages/shopping-view/store-locator")
+);
+const PrivacyPolicyPage = lazy(() =>
+  import("./pages/shopping-view/privacy-policy")
+);
+const TermsAndConditionsPage = lazy(() =>
+  import("./pages/shopping-view/terms-and-conditions")
+);
+const CookiePolicyPage = lazy(() =>
+  import("./pages/shopping-view/cookie-policy")
+);
+const WarrantyInfoPage = lazy(() =>
+  import("./pages/shopping-view/warranty-info")
+);
 
 function App() {
   return (
@@ -36,6 +52,15 @@ function App() {
             <Route path="search" element={<SearchProducts />} />
             <Route path="product/:id/specs" element={<ProductSpecsPage />} />
             <Route path="cart" element={<ShoppingCartPage />} />
+            <Route path="about-us" element={<AboutUsPage />} />
+            <Route path="store-locator" element={<StoreLocatorPage />} />
+            <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route
+              path="terms-and-conditions"
+              element={<TermsAndConditionsPage />}
+            />
+            <Route path="cookie-policy" element={<CookiePolicyPage />} />
+            <Route path="warranty-info" element={<WarrantyInfoPage />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />

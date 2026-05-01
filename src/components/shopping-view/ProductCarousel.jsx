@@ -133,12 +133,13 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
         <div className="relative z-0">
           {/* Left scroll button */}
           <Button
+            variant="ghost"
             size="icon"
             className={cn(
-              "absolute -left-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-md bg-white h-8 w-8 transition-all",
-              "max-md:h-7 max-md:w-7 max-md:-left-2",
+              "absolute -left-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0",
+              "max-md:-left-2",
               !internalLoading && canScrollLeft
-                ? "opacity-100"
+                ? "opacity-100 pointer-events-auto"
                 : "opacity-0 pointer-events-none",
             )}
             onClick={() => {
@@ -148,7 +149,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
             aria-disabled={!canScrollLeft || internalLoading}
             aria-label="Scroll left"
           >
-            <ChevronLeftIcon className="h-4 w-4 text-gray-700" />
+            <ChevronLeftIcon className="h-5 w-5" />
           </Button>
 
           {/* Products container */}
@@ -191,12 +192,13 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
 
           {/* Right scroll button */}
           <Button
+            variant="ghost"
             size="icon"
             className={cn(
-              "absolute -right-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-md bg-white h-8 w-8 transition-all",
-              "max-md:h-7 max-md:w-7 max-md:-right-2",
+              "absolute -right-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0",
+              "max-md:-right-2",
               !internalLoading && canScrollRight
-                ? "opacity-100"
+                ? "opacity-100 pointer-events-auto"
                 : "opacity-0 pointer-events-none",
             )}
             onClick={() => {
@@ -206,7 +208,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
             aria-disabled={!canScrollRight || internalLoading}
             aria-label="Scroll right"
           >
-            <ChevronRightIcon className="h-4 w-4 text-gray-700" />
+            <ChevronRightIcon className="h-5 w-5" />
           </Button>
         </div>
       </div>

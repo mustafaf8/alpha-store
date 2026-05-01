@@ -1,34 +1,286 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, MessageCircle, LayoutGrid, Search, ShoppingCart } from "lucide-react";
+import {
+  Home,
+  LayoutGrid,
+  Search,
+  ShoppingCart,
+  Menu,
+  X,
+  ChevronRight,
+  Heart,
+  Globe,
+  MapPin,
+  ShieldCheck,
+  Phone,
+  Wallet,
+  ChevronDown,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { createPortal } from "react-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { fetchAllCategories } from "@/store/common-slice/categories-slice";
 
 const BottomNavBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuMode, setMenuMode] = useState("quick");
+  const [expandedCategoryIds, setExpandedCategoryIds] = useState({});
+  const [selectedLanguage, setSelectedLanguage] = useState("TR");
+  const [selectedCurrency, setSelectedCurrency] = useState("TRY");
+  const [favoriteItemsCount, setFavoriteItemsCount] = useState(0);
   const { cartItems } = useSelector((state) => state.cart || { cartItems: [] });
+  const { categoryList = [] } = useSelector((state) => state.categories || {});
   const totalCartItems = cartItems.reduce((acc, item) => acc + (item.quantity || 1), 0);
+
+  useEffect(() => {
+    const readFavoriteCount = () => {
+      const possibleKeys = ["favoriteItems", "favorites", "wishlistItems"];
+      let count = 0;
+
+      for (const key of possibleKeys) {
+        try {
+          const raw = localStorage.getItem(key);
+          if (!raw) continue;
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) {
+            count = parsed.length;
+            break;
+          }
+        } catch {
+          // ignore malformed localStorage values
+        }
+      }
+
+      setFavoriteItemsCount(count);
+    };
+
+    readFavoriteCount();
+    window.addEventListener("storage", readFavoriteCount);
+    return () => {
+      window.removeEventListener("storage", readFavoriteCount);
+    };
+  }, []);
 
   const navItems = [
     { to: "/shop/home", label: "Home", icon: Home },
     { to: "/shop/listing", label: "Shop", icon: LayoutGrid },
     { to: "/shop/cart", label: "Cart", icon: ShoppingCart },
-    { to: "/shop/whatsapp", label: "Help", icon: MessageCircle },
     { to: "/shop/search", label: "Search", icon: Search },
+    { to: "/shop/menu", label: "Menu", icon: Menu },
   ];
+
+  useEffect(() => {
+    if (categoryList.length === 0) {
+      dispatch(fetchAllCategories());
+    }
+  }, [dispatch, categoryList.length]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleOpenMobileCategoriesMenu = () => {
+      setMenuMode("categories");
+      setIsMenuOpen(true);
+    };
+
+    window.addEventListener(
+      "open-mobile-categories-menu",
+      handleOpenMobileCategoriesMenu,
+    );
+
+    return () => {
+      window.removeEventListener(
+        "open-mobile-categories-menu",
+        handleOpenMobileCategoriesMenu,
+      );
+    };
+  }, []);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   const scrollToTopSmooth = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const handleCategoryNavigate = (slug) => {
+    closeMenu();
+    navigate(`/shop/listing?category=${slug}`);
+    requestAnimationFrame(() => {
+      scrollToTopSmooth();
+    });
+  };
+
+  const renderCategoryTree = (items, level = 0) => {
+    if (!items || items.length === 0) return null;
+
+    return (
+      <div
+        className={cn(
+          "space-y-2.5",
+          level > 0 && "pl-3.5 ml-1.5 border-l-2 border-slate-200",
+        )}
+      >
+        {items.map((category) => (
+          <div
+            key={category._id}
+            className={cn(
+              "rounded-xl border overflow-hidden",
+              level === 0
+                ? "border-slate-200 bg-slate-50/70"
+                : "border-slate-200 bg-white",
+            )}
+          >
+            <button
+              type="button"
+              onClick={() => handleCategoryNavigate(category.slug)}
+              className={cn(
+                "w-full flex items-center justify-between px-3 py-2.5 text-left transition-colors",
+                level === 0 ? "hover:bg-slate-100" : "hover:bg-slate-50",
+              )}
+            >
+              <span
+                className={cn(
+                  "text-sm text-slate-800",
+                  level === 0 ? "font-bold" : "font-semibold",
+                )}
+              >
+                {category.name}
+              </span>
+              <div className="flex items-center gap-1.5">
+                {category.children?.length > 0 && (
+                  <span className="rounded-full bg-purple-100 px-2 py-0.5 text-[10px] font-bold text-purple-700">
+                    {category.children.length}
+                  </span>
+                )}
+                <ChevronRight className="w-4 h-4 text-slate-400" />
+              </div>
+            </button>
+
+            {category.children && category.children.length > 0 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setExpandedCategoryIds((prev) => ({
+                      ...prev,
+                      [category._id]: !prev[category._id],
+                    }))
+                  }
+                  className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors border-t border-slate-200"
+                >
+                  <span>Alt Kategoriler</span>
+                  {expandedCategoryIds[category._id] ? (
+                    <ChevronDown className="w-4 h-4" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4" />
+                  )}
+                </button>
+                {expandedCategoryIds[category._id] && (
+                  <div className="px-3 pb-3 pt-2">
+                    {renderCategoryTree(category.children, level + 1)}
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  const mobileMenuItems = [
+    {
+      id: "cart",
+      label: "Sepet",
+      icon: ShoppingCart,
+      badge: totalCartItems > 0 ? totalCartItems : null,
+      onClick: () => {
+        closeMenu();
+        navigate("/shop/cart");
+      },
+    },
+    {
+      id: "favorites",
+      label: "Favoriler",
+      icon: Heart,
+      badge: favoriteItemsCount > 0 ? favoriteItemsCount : null,
+      onClick: () => {
+        closeMenu();
+        navigate("/shop/listing");
+      },
+    },
+    {
+      id: "language",
+      label: `Dil Seçimi (${selectedLanguage})`,
+      icon: Globe,
+      onClick: () => {
+        setSelectedLanguage((prev) => (prev === "TR" ? "EN" : "TR"));
+      },
+    },
+    {
+      id: "currency",
+      label: `Para Birimi (${selectedCurrency})`,
+      icon: Wallet,
+      onClick: () => {
+        setSelectedCurrency((prev) => {
+          if (prev === "TRY") return "USD";
+          if (prev === "USD") return "EUR";
+          return "TRY";
+        });
+      },
+    },
+    {
+      id: "privacy",
+      label: "Gizlilik Politikası",
+      icon: ShieldCheck,
+      onClick: () => {
+        closeMenu();
+        navigate("/shop/home");
+      },
+    },
+    {
+      id: "contact",
+      label: "İletişim Bilgileri",
+      icon: Phone,
+      onClick: () => {
+        window.open(
+          "https://wa.me/905347168754?text=Merhaba%2C%20ileti%C5%9Fim%20bilgileri%20hakk%C4%B1nda%20yard%C4%B1m%20almak%20istiyorum.",
+          "_blank",
+          "noopener,noreferrer",
+        );
+      },
+    },
+    {
+      id: "store",
+      label: "Mağaza Konumu ve Adres Detayları",
+      icon: MapPin,
+      onClick: () => {
+        window.open(
+          "https://maps.google.com/?q=Istanbul+store",
+          "_blank",
+          "noopener,noreferrer",
+        );
+      },
+    },
+  ];
+
   const handleNavigate = (to) => {
-    if (to === "/shop/whatsapp") {
-      window.open(
-        "https://wa.me/905347168754?text=Merhaba%2C%20site%20uzerinden%20iletisime%20gecmek%20istiyorum.",
-        "_blank",
-        "noopener,noreferrer",
-      );
+    if (to === "/shop/menu") {
+      setMenuMode("quick");
+      setIsMenuOpen(true);
       return;
     }
 
@@ -46,8 +298,77 @@ const BottomNavBar = () => {
   // We use a portal to ensure the nav bar is at the very top of the DOM stacking order
   const content = (
     <div className="lg:hidden">
-      <div className="fixed bottom-2 left-1/2 -translate-x-1/2 w-[95%] max-w-[540px] z-[2147483647] sm:bottom-2 sm:w-[92%]">
-        <nav className="bg-white/80 backdrop-blur-2xl border border-white/40 shadow-[0_14px_30px_rgba(0,0,0,0.12)] rounded-[22px] px-3 py-2.5 sm:rounded-[35px] sm:px-6 sm:py-4">
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-[2147483646] bg-black/40 backdrop-blur-[2px]">
+          <div className="absolute inset-x-0 bottom-0 h-[84vh] max-h-[84vh] rounded-t-2xl bg-white shadow-2xl flex flex-col">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 bg-slate-50">
+              <div className="flex flex-col">
+                <h3 className="text-base font-bold text-slate-800">
+                  {menuMode === "categories" ? "Kategoriler" : "Hızlı Menü"}
+                </h3>
+                <span className="text-xs text-slate-500">
+                  {menuMode === "categories"
+                    ? "Tüm bölümleri keşfet ve hızlıca filtrele"
+                    : "Hesap ve mağaza işlemlerine hızlı erişim"}
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={closeMenu}
+                aria-label="Menüyü kapat"
+                className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center text-slate-600"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 pb-7 touch-pan-y">
+              {menuMode === "categories" ? (
+                renderCategoryTree(categoryList)
+              ) : (
+                <div className="space-y-2.5">
+                  {mobileMenuItems.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={item.onClick}
+                        className="w-full rounded-xl border border-slate-200 bg-white px-3 py-3 flex items-center justify-between text-left hover:bg-slate-50 transition-colors"
+                      >
+                        <span className="flex items-center gap-2.5">
+                          <span className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600">
+                            <Icon className="w-4 h-4" />
+                          </span>
+                          <span className="text-sm font-semibold text-slate-800">
+                            {item.label}
+                          </span>
+                        </span>
+                        <span className="flex items-center gap-2">
+                          {item.badge ? (
+                            <span className="min-w-[20px] h-5 px-1.5 rounded-full bg-purple-600 text-white text-[10px] font-bold flex items-center justify-center">
+                              {item.badge > 99 ? "99+" : item.badge}
+                            </span>
+                          ) : null}
+                          <ChevronRight className="w-4 h-4 text-slate-400" />
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div
+        className={cn(
+          "fixed bottom-0 left-0 right-0 w-full z-[2147483647]",
+          isMenuOpen && "hidden",
+        )}
+      >
+        <nav className="bg-white/85 backdrop-blur-2xl border-t border-white/40 shadow-[0_-8px_24px_rgba(0,0,0,0.10)] rounded-none px-4 py-4 sm:px-7 sm:py-5">
           <ul className="flex items-center justify-between gap-1">
             {navItems.map((item) => {
               const isActive = location.pathname.startsWith(item.to);
@@ -59,9 +380,9 @@ const BottomNavBar = () => {
                     aria-label={item.label}
                     onClick={() => handleNavigate(item.to)}
                     className={cn(
-                      "flex flex-col items-center justify-center gap-0.5 p-1 rounded-xl transition-all duration-500 sm:gap-1.5 sm:p-2 sm:rounded-2xl",
+                      "flex flex-col items-center justify-start -translate-y-1.5 gap-1 px-1.5 py-1 rounded-xl transition-colors duration-300 sm:gap-1.5 sm:px-2 sm:py-1.5 sm:rounded-2xl",
                       isActive
-                        ? "text-purple-600 scale-110"
+                        ? "text-purple-600"
                         : "text-slate-400 hover:text-slate-600",
                     )}
                   >
@@ -69,7 +390,7 @@ const BottomNavBar = () => {
                       <Icon
                         strokeWidth={isActive ? 2.5 : 1.8}
                         className={cn(
-                          "h-[18px] w-[18px] transition-all sm:h-6 sm:w-6",
+                          "h-5 w-5 sm:h-6 sm:w-6",
                           isActive &&
                           "drop-shadow-[0_0_12px_rgba(147,51,234,0.5)]",
                         )}
@@ -79,10 +400,15 @@ const BottomNavBar = () => {
                           {totalCartItems > 99 ? "99+" : totalCartItems}
                         </span>
                       )}
-                      {isActive && (
-                        <div className="absolute -bottom-2 w-1.5 h-1.5 bg-purple-600 rounded-full shadow-[0_0_15px_rgba(147,51,234,1)] animate-pulse" />
-                      )}
                     </div>
+                    <span
+                      className={cn(
+                        "h-3 text-[10px] sm:h-3.5 sm:text-xs font-semibold leading-none",
+                        isActive ? "text-purple-700" : "text-slate-500",
+                      )}
+                    >
+                      {item.label}
+                    </span>
                   </button>
                 </li>
               );

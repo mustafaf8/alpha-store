@@ -6,11 +6,49 @@ const categories = [
     icon: "tshirt",
     isActive: true,
     children: [
-      { _id: "cat-fashion-women", name: "Kadın", slug: "kadin", isActive: true, children: [] },
-      { _id: "cat-fashion-men", name: "Erkek", slug: "erkek", isActive: true, children: [] },
-      { _id: "cat-fashion-kids", name: "Çocuk", slug: "cocuk", isActive: true, children: [] },
-      { _id: "cat-fashion-shoes", name: "Ayakkabı", slug: "ayakkabi", isActive: true, children: [] },
-      { _id: "cat-fashion-accessories", name: "Aksesuar", slug: "aksesuar", isActive: true, children: [] },
+      {
+        _id: "cat-fashion-women",
+        name: "Kadın",
+        slug: "kadin",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-fashion-men",
+        name: "Erkek",
+        slug: "erkek",
+        isActive: true,
+        children: [
+          {
+            _id: "cat-fashion-men-special",
+            name: "Erkeklere Özel Seçenekler",
+            slug: "erkeklere-ozel-secenekler",
+            isActive: true,
+            children: [],
+          },
+        ],
+      },
+      {
+        _id: "cat-fashion-kids",
+        name: "Çocuk",
+        slug: "cocuk",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-fashion-shoes",
+        name: "Ayakkabı",
+        slug: "ayakkabi",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-fashion-accessories",
+        name: "Aksesuar",
+        slug: "aksesuar",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -20,11 +58,41 @@ const categories = [
     icon: "smartphone",
     isActive: true,
     children: [
-      { _id: "cat-elec-phone", name: "Telefon & Aksesuar", slug: "telefon", isActive: true, children: [] },
-      { _id: "cat-elec-laptop", name: "Bilgisayar / Laptop", slug: "bilgisayar", isActive: true, children: [] },
-      { _id: "cat-elec-tablet", name: "Tablet", slug: "tablet", isActive: true, children: [] },
-      { _id: "cat-elec-audio", name: "TV & Ses Sistemleri", slug: "ses-sistemleri", isActive: true, children: [] },
-      { _id: "cat-elec-console", name: "Oyun Konsolları", slug: "oyun-konsollari", isActive: true, children: [] },
+      {
+        _id: "cat-elec-phone",
+        name: "Telefon & Aksesuar",
+        slug: "telefon",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-elec-laptop",
+        name: "Bilgisayar / Laptop",
+        slug: "bilgisayar",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-elec-tablet",
+        name: "Tablet",
+        slug: "tablet",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-elec-audio",
+        name: "TV & Ses Sistemleri",
+        slug: "ses-sistemleri",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-elec-console",
+        name: "Oyun Konsolları",
+        slug: "oyun-konsollari",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -34,10 +102,34 @@ const categories = [
     icon: "home",
     isActive: true,
     children: [
-      { _id: "cat-home-furniture", name: "Mobilya", slug: "mobilya", isActive: true, children: [] },
-      { _id: "cat-home-decor", name: "Dekorasyon", slug: "dekorasyon", isActive: true, children: [] },
-      { _id: "cat-home-lighting", name: "Aydınlatma", slug: "aydinlatma", isActive: true, children: [] },
-      { _id: "cat-home-textile", name: "Ev Tekstili", slug: "ev-tekstili", isActive: true, children: [] },
+      {
+        _id: "cat-home-furniture",
+        name: "Mobilya",
+        slug: "mobilya",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-home-decor",
+        name: "Dekorasyon",
+        slug: "dekorasyon",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-home-lighting",
+        name: "Aydınlatma",
+        slug: "aydinlatma",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-home-textile",
+        name: "Ev Tekstili",
+        slug: "ev-tekstili",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -47,10 +139,34 @@ const categories = [
     icon: "refrigerator",
     isActive: true,
     children: [
-      { _id: "cat-app-fridge", name: "Buzdolabı", slug: "buzdolabi", isActive: true, children: [] },
-      { _id: "cat-app-washer", name: "Çamaşır Makinesi", slug: "camasir-makinesi", isActive: true, children: [] },
-      { _id: "cat-app-vacuum", name: "Süpürge", slug: "supurge", isActive: true, children: [] },
-      { _id: "cat-app-coffee", name: "Kahve Makineleri", slug: "kahve-makineleri", isActive: true, children: [] },
+      {
+        _id: "cat-app-fridge",
+        name: "Buzdolabı",
+        slug: "buzdolabi",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-app-washer",
+        name: "Çamaşır Makinesi",
+        slug: "camasir-makinesi",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-app-vacuum",
+        name: "Süpürge",
+        slug: "supurge",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-app-coffee",
+        name: "Kahve Makineleri",
+        slug: "kahve-makineleri",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -60,10 +176,34 @@ const categories = [
     icon: "sparkles",
     isActive: true,
     children: [
-      { _id: "cat-cos-makeup", name: "Makyaj", slug: "makyaj", isActive: true, children: [] },
-      { _id: "cat-cos-skincare", name: "Cilt Bakımı", slug: "cilt-bakimi", isActive: true, children: [] },
-      { _id: "cat-cos-perfume", name: "Parfüm", slug: "parfum", isActive: true, children: [] },
-      { _id: "cat-cos-hair", name: "Saç Bakımı", slug: "sac-bakimi", isActive: true, children: [] },
+      {
+        _id: "cat-cos-makeup",
+        name: "Makyaj",
+        slug: "makyaj",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-cos-skincare",
+        name: "Cilt Bakımı",
+        slug: "cilt-bakimi",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-cos-perfume",
+        name: "Parfüm",
+        slug: "parfum",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-cos-hair",
+        name: "Saç Bakımı",
+        slug: "sac-bakimi",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -73,10 +213,34 @@ const categories = [
     icon: "shopping-basket",
     isActive: true,
     children: [
-      { _id: "cat-sup-basic", name: "Temel Gıda", slug: "temel-gida", isActive: true, children: [] },
-      { _id: "cat-sup-snacks", name: "Atıştırmalık", slug: "atistirmalik", isActive: true, children: [] },
-      { _id: "cat-sup-drinks", name: "İçecekler", slug: "icecekler", isActive: true, children: [] },
-      { _id: "cat-sup-organic", name: "Organik Ürünler", slug: "organik-urunler", isActive: true, children: [] },
+      {
+        _id: "cat-sup-basic",
+        name: "Temel Gıda",
+        slug: "temel-gida",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-sup-snacks",
+        name: "Atıştırmalık",
+        slug: "atistirmalik",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-sup-drinks",
+        name: "İçecekler",
+        slug: "icecekler",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-sup-organic",
+        name: "Organik Ürünler",
+        slug: "organik-urunler",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -86,10 +250,34 @@ const categories = [
     icon: "baby",
     isActive: true,
     children: [
-      { _id: "cat-baby-diaper", name: "Bebek Bezi", slug: "bebek-bezi", isActive: true, children: [] },
-      { _id: "cat-baby-food", name: "Mama", slug: "mama", isActive: true, children: [] },
-      { _id: "cat-baby-toy", name: "Oyuncak", slug: "oyuncak", isActive: true, children: [] },
-      { _id: "cat-baby-clothes", name: "Bebek Giyim", slug: "bebek-giyim", isActive: true, children: [] },
+      {
+        _id: "cat-baby-diaper",
+        name: "Bebek Bezi",
+        slug: "bebek-bezi",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-baby-food",
+        name: "Mama",
+        slug: "mama",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-baby-toy",
+        name: "Oyuncak",
+        slug: "oyuncak",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-baby-clothes",
+        name: "Bebek Giyim",
+        slug: "bebek-giyim",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -99,10 +287,34 @@ const categories = [
     icon: "puzzle",
     isActive: true,
     children: [
-      { _id: "cat-toy-toys", name: "Oyuncaklar", slug: "oyuncaklar", isActive: true, children: [] },
-      { _id: "cat-toy-puzzle", name: "Puzzle", slug: "puzzle", isActive: true, children: [] },
-      { _id: "cat-toy-hobby", name: "Hobi Malzemeleri", slug: "hobi-malzemeleri", isActive: true, children: [] },
-      { _id: "cat-toy-collection", name: "Koleksiyon Ürünleri", slug: "koleksiyon-urunleri", isActive: true, children: [] },
+      {
+        _id: "cat-toy-toys",
+        name: "Oyuncaklar",
+        slug: "oyuncaklar",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-toy-puzzle",
+        name: "Puzzle",
+        slug: "puzzle",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-toy-hobby",
+        name: "Hobi Malzemeleri",
+        slug: "hobi-malzemeleri",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-toy-collection",
+        name: "Koleksiyon Ürünleri",
+        slug: "koleksiyon-urunleri",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -112,10 +324,34 @@ const categories = [
     icon: "book",
     isActive: true,
     children: [
-      { _id: "cat-book-books", name: "Kitaplar", slug: "kitaplar", isActive: true, children: [] },
-      { _id: "cat-book-magazines", name: "Dergiler", slug: "dergiler", isActive: true, children: [] },
-      { _id: "cat-book-vinyl", name: "Plak / CD", slug: "plak-cd", isActive: true, children: [] },
-      { _id: "cat-book-media", name: "Film & Dizi İçerikleri", slug: "film-dizi", isActive: true, children: [] },
+      {
+        _id: "cat-book-books",
+        name: "Kitaplar",
+        slug: "kitaplar",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-book-magazines",
+        name: "Dergiler",
+        slug: "dergiler",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-book-vinyl",
+        name: "Plak / CD",
+        slug: "plak-cd",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-book-media",
+        name: "Film & Dizi İçerikleri",
+        slug: "film-dizi",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -125,9 +361,27 @@ const categories = [
     icon: "car",
     isActive: true,
     children: [
-      { _id: "cat-auto-acc", name: "Araç Aksesuarları", slug: "arac-aksesuarlari", isActive: true, children: [] },
-      { _id: "cat-auto-parts", name: "Yedek Parça", slug: "yedek-parca", isActive: true, children: [] },
-      { _id: "cat-auto-tires", name: "Lastik", slug: "lastik", isActive: true, children: [] },
+      {
+        _id: "cat-auto-acc",
+        name: "Araç Aksesuarları",
+        slug: "arac-aksesuarlari",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-auto-parts",
+        name: "Yedek Parça",
+        slug: "yedek-parca",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-auto-tires",
+        name: "Lastik",
+        slug: "lastik",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -137,9 +391,27 @@ const categories = [
     icon: "dumbbell",
     isActive: true,
     children: [
-      { _id: "cat-sport-fitness", name: "Fitness Ekipmanları", slug: "fitness-ekipmanlari", isActive: true, children: [] },
-      { _id: "cat-sport-camp", name: "Kamp Malzemeleri", slug: "kamp-malzemeleri", isActive: true, children: [] },
-      { _id: "cat-sport-wear", name: "Spor Giyim", slug: "spor-giyim", isActive: true, children: [] },
+      {
+        _id: "cat-sport-fitness",
+        name: "Fitness Ekipmanları",
+        slug: "fitness-ekipmanlari",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-sport-camp",
+        name: "Kamp Malzemeleri",
+        slug: "kamp-malzemeleri",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-sport-wear",
+        name: "Spor Giyim",
+        slug: "spor-giyim",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -149,9 +421,27 @@ const categories = [
     icon: "gem",
     isActive: true,
     children: [
-      { _id: "cat-jewel-gold", name: "Altın", slug: "altin", isActive: true, children: [] },
-      { _id: "cat-jewel-silver", name: "Gümüş", slug: "gumus", isActive: true, children: [] },
-      { _id: "cat-jewel-watches", name: "Saat", slug: "saat", isActive: true, children: [] },
+      {
+        _id: "cat-jewel-gold",
+        name: "Altın",
+        slug: "altin",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-jewel-silver",
+        name: "Gümüş",
+        slug: "gumus",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-jewel-watches",
+        name: "Saat",
+        slug: "saat",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -161,9 +451,27 @@ const categories = [
     icon: "paw",
     isActive: true,
     children: [
-      { _id: "cat-pet-food", name: "Mama", slug: "evcil-hayvan-mamasi", isActive: true, children: [] },
-      { _id: "cat-pet-toy", name: "Oyuncak", slug: "evcil-hayvan-oyuncagi", isActive: true, children: [] },
-      { _id: "cat-pet-acc", name: "Aksesuar", slug: "evcil-hayvan-aksesuar", isActive: true, children: [] },
+      {
+        _id: "cat-pet-food",
+        name: "Mama",
+        slug: "evcil-hayvan-mamasi",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-pet-toy",
+        name: "Oyuncak",
+        slug: "evcil-hayvan-oyuncagi",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-pet-acc",
+        name: "Aksesuar",
+        slug: "evcil-hayvan-aksesuar",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -173,8 +481,20 @@ const categories = [
     icon: "briefcase",
     isActive: true,
     children: [
-      { _id: "cat-travel-luggage", name: "Valiz", slug: "valiz", isActive: true, children: [] },
-      { _id: "cat-travel-acc", name: "Seyahat Aksesuarları", slug: "seyahat-aksesuarlari", isActive: true, children: [] },
+      {
+        _id: "cat-travel-luggage",
+        name: "Valiz",
+        slug: "valiz",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-travel-acc",
+        name: "Seyahat Aksesuarları",
+        slug: "seyahat-aksesuarlari",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -184,9 +504,27 @@ const categories = [
     icon: "paperclip",
     isActive: true,
     children: [
-      { _id: "cat-office-notebooks", name: "Defter", slug: "defter", isActive: true, children: [] },
-      { _id: "cat-office-pens", name: "Kalem", slug: "kalem", isActive: true, children: [] },
-      { _id: "cat-office-printer", name: "Yazıcı Ürünleri", slug: "yazici-urunleri", isActive: true, children: [] },
+      {
+        _id: "cat-office-notebooks",
+        name: "Defter",
+        slug: "defter",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-office-pens",
+        name: "Kalem",
+        slug: "kalem",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-office-printer",
+        name: "Yazıcı Ürünleri",
+        slug: "yazici-urunleri",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -196,9 +534,27 @@ const categories = [
     icon: "hammer",
     isActive: true,
     children: [
-      { _id: "cat-tools-handtools", name: "El Aletleri", slug: "el-aletleri", isActive: true, children: [] },
-      { _id: "cat-tools-paint", name: "Boya", slug: "boya", isActive: true, children: [] },
-      { _id: "cat-tools-garden", name: "Bahçe Ürünleri", slug: "bahce-urunleri", isActive: true, children: [] },
+      {
+        _id: "cat-tools-handtools",
+        name: "El Aletleri",
+        slug: "el-aletleri",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-tools-paint",
+        name: "Boya",
+        slug: "boya",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-tools-garden",
+        name: "Bahçe Ürünleri",
+        slug: "bahce-urunleri",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -208,8 +564,20 @@ const categories = [
     icon: "gift",
     isActive: true,
     children: [
-      { _id: "cat-gift-sets", name: "Hediye Setleri", slug: "hediye-setleri", isActive: true, children: [] },
-      { _id: "cat-gift-custom", name: "Kişiye Özel Ürünler", slug: "kisiye-ozel", isActive: true, children: [] },
+      {
+        _id: "cat-gift-sets",
+        name: "Hediye Setleri",
+        slug: "hediye-setleri",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-gift-custom",
+        name: "Kişiye Özel Ürünler",
+        slug: "kisiye-ozel",
+        isActive: true,
+        children: [],
+      },
     ],
   },
   {
@@ -219,9 +587,27 @@ const categories = [
     icon: "monitor",
     isActive: true,
     children: [
-      { _id: "cat-dig-software", name: "Yazılım", slug: "yazilim", isActive: true, children: [] },
-      { _id: "cat-dig-games", name: "Oyun", slug: "oyun", isActive: true, children: [] },
-      { _id: "cat-dig-subs", name: "Abonelikler", slug: "abonelikler", isActive: true, children: [] },
+      {
+        _id: "cat-dig-software",
+        name: "Yazılım",
+        slug: "yazilim",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-dig-games",
+        name: "Oyun",
+        slug: "oyun",
+        isActive: true,
+        children: [],
+      },
+      {
+        _id: "cat-dig-subs",
+        name: "Abonelikler",
+        slug: "abonelikler",
+        isActive: true,
+        children: [],
+      },
     ],
   },
 ];
@@ -233,21 +619,25 @@ const brands = [
   { _id: "brand-orbit", name: "Orbit", slug: "orbit", isActive: true },
   { _id: "brand-alpha", name: "Alpha", slug: "alpha", isActive: true },
   { _id: "brand-step", name: "Step", slug: "step", isActive: true },
+  { _id: "brand-zenith", name: "Zenith", slug: "zenith", isActive: true },
+  { _id: "brand-vera", name: "Vera", slug: "vera", isActive: true },
 ];
 
 const productsRaw = [
   // Fashion Products
   {
     _id: "prd-17",
-    title: "Premium Cotton Oversize Comfort Fit Unisex T-Shirt with Reinforced Neckline and Breathable Fabric Technology for All Seasons",
-    description: "Experience the ultimate comfort with our Premium Cotton Oversize Comfort Fit Unisex T-Shirt. Crafted from 100% sustainable organic cotton, this t-shirt features a reinforced neckline that maintains its shape even after multiple washes. The breathable fabric technology ensures you stay cool during summer and warm during winter. Designed with a modern minimalist aesthetic, it fits perfectly into any wardrobe. Available in a variety of colors, each treated with eco-friendly dyes to prevent fading. Perfect for casual outings, lounging at home, or layering under a jacket for a more sophisticated look. Join the revolution of comfort and style today with Alpha's signature collection.",
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=80",
-    images: [
+    title:
+      "Premium Cotton Oversize Comfort Fit Unisex T-Shirt with Reinforced Neckline and Breathable Fabric Technology for All Seasons",
+    description:
+      "Experience the ultimate comfort with our Premium Cotton Oversize Comfort Fit Unisex T-Shirt. Crafted from 100% sustainable organic cotton, this t-shirt features a reinforced neckline that maintains its shape even after multiple washes. The breathable fabric technology ensures you stay cool during summer and warm during winter. Designed with a modern minimalist aesthetic, it fits perfectly into any wardrobe. Available in a variety of colors, each treated with eco-friendly dyes to prevent fading. Perfect for casual outings, lounging at home, or layering under a jacket for a more sophisticated look. Join the revolution of comfort and style today with Alpha's signature collection.",
+    image:
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=80",
+    images: [
       "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=900&q=80",
     ],
     brand: "alpha",
-    category: "kadin",
+    category: "erkek",
     price: 349.99,
     salePrice: 299.99,
     totalStock: 50,
@@ -262,7 +652,10 @@ const productsRaw = [
       { key: "Fit", value: "Relaxed Oversize Silhouette" },
       { key: "Neckline", value: "Double-stitched Ribbed Crew Neck" },
       { key: "Sleeve Length", value: "Half Sleeves" },
-      { key: "Washing Instructions", value: "Machine wash cold, tumble dry low" },
+      {
+        key: "Washing Instructions",
+        value: "Machine wash cold, tumble dry low",
+      },
       { key: "Country of Origin", value: "Turkey" },
     ],
     highlights: [
@@ -271,7 +664,7 @@ const productsRaw = [
       "Reinforced double-stitched seams",
       "Eco-friendly non-fade dyes",
       "Modern unisex relaxed fit",
-      "Breathable moisture-wicking technology"
+      "Breathable moisture-wicking technology",
     ],
     variantOptions: {
       size: ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
@@ -280,11 +673,13 @@ const productsRaw = [
   },
   {
     _id: "prd-18",
-    title: "Pro Runner X1 Ultimate Performance Sneakers - Lightweight Breathable Mesh with Enhanced Arch Support and Carbon Fiber Plate",
-    description: "Take your running to the next level with the Pro Runner X1 Ultimate Performance Sneakers. Designed for serious athletes, these sneakers feature a lightweight, breathable mesh upper that keeps your feet cool even during the most intense workouts. The high-rebound foam midsole, combined with a built-in carbon fiber plate, provides exceptional energy return and propels you forward with every stride. Enhanced arch support ensures stability and reduces fatigue over long distances. The durable rubber outsole offers superior grip on various surfaces, from city streets to track lanes. Whether you're training for a marathon or just enjoying a morning jog, the Pro Runner X1 delivers the perfect balance of comfort, speed, and durability.",
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&q=80",
-    images: [
+    title:
+      "Pro Runner X1 Ultimate Performance Sneakers - Lightweight Breathable Mesh with Enhanced Arch Support and Carbon Fiber Plate",
+    description:
+      "Take your running to the next level with the Pro Runner X1 Ultimate Performance Sneakers. Designed for serious athletes, these sneakers feature a lightweight, breathable mesh upper that keeps your feet cool even during the most intense workouts. The high-rebound foam midsole, combined with a built-in carbon fiber plate, provides exceptional energy return and propels you forward with every stride. Enhanced arch support ensures stability and reduces fatigue over long distances. The durable rubber outsole offers superior grip on various surfaces, from city streets to track lanes. Whether you're training for a marathon or just enjoying a morning jog, the Pro Runner X1 delivers the perfect balance of comfort, speed, and durability.",
+    image:
       "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&q=80",
+    images: [
       "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=900&q=80",
     ],
     brand: "step",
@@ -297,10 +692,16 @@ const productsRaw = [
     salesCount: 1500,
     createdAt: "2026-04-05T10:00:00.000Z",
     technicalSpecs: [
-      { key: "Material", value: "Engineered Breathable Mesh & Synthetic Overlays" },
+      {
+        key: "Material",
+        value: "Engineered Breathable Mesh & Synthetic Overlays",
+      },
       { key: "Weight", value: "280g (Size 42)" },
       { key: "Dimensions", value: "Fits True to Size" },
-      { key: "Midsole", value: "Pro-Nitro High-Rebound Foam with Carbon Plate" },
+      {
+        key: "Midsole",
+        value: "Pro-Nitro High-Rebound Foam with Carbon Plate",
+      },
       { key: "Outsole", value: "Multi-Surface High-Grip Rubber" },
       { key: "Arch Support", value: "TPU Dynamic Support Bridge" },
       { key: "Drop", value: "8mm (Heel: 32mm / Forefoot: 24mm)" },
@@ -312,7 +713,7 @@ const productsRaw = [
       "High-rebound foam for maximum energy return",
       "Durable all-surface traction outsole",
       "Enhanced ergonomic arch support",
-      "Reflective elements for low-light visibility"
+      "Reflective elements for low-light visibility",
     ],
     variantOptions: {
       size: ["38", "39", "40", "41", "42", "43", "44", "45"],
@@ -321,12 +722,17 @@ const productsRaw = [
   },
   {
     _id: "prd-19",
-    title: "Classic Vintage Denim Jacket - Rugged Indigo Blue with Copper Hardware and Multiple Internal Storage Pockets",
-    description: "The Classic Vintage Denim Jacket is a timeless piece designed for those who value both style and durability. Made from premium, heavy-duty 14oz denim, this jacket features a deep indigo blue wash that only looks better with age. The rugged construction is complemented by genuine copper hardware and reinforced stitching throughout. With multiple external chest pockets and hidden internal storage pockets, it offers plenty of space for your essentials. The relaxed yet structured fit makes it perfect for layering over a sweater or t-shirt. Whether you're heading to a concert or a casual weekend outing, this denim jacket is the ultimate versatile outer layer.",
-    image: "https://images.unsplash.com/photo-1544441893-675973e31985?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1544441893-675973e31985?w=900&q=80"],
+    title:
+      "Classic Vintage Denim Jacket - Rugged Indigo Blue with Copper Hardware and Multiple Internal Storage Pockets",
+    description:
+      "The Classic Vintage Denim Jacket is a timeless piece designed for those who value both style and durability. Made from premium, heavy-duty 14oz denim, this jacket features a deep indigo blue wash that only looks better with age. The rugged construction is complemented by genuine copper hardware and reinforced stitching throughout. With multiple external chest pockets and hidden internal storage pockets, it offers plenty of space for your essentials. The relaxed yet structured fit makes it perfect for layering over a sweater or t-shirt. Whether you're heading to a concert or a casual weekend outing, this denim jacket is the ultimate versatile outer layer.",
+    image:
+      "https://images.unsplash.com/photo-1544441893-675973e31985?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1544441893-675973e31985?w=900&q=80",
+    ],
     brand: "alpha",
-    category: "kadin",
+    category: "erkek",
     price: 899.99,
     salePrice: 799.99,
     totalStock: 25,
@@ -348,7 +754,7 @@ const productsRaw = [
       "Multiple reinforced storage pockets",
       "Timeless vintage indigo wash",
       "Durable double-needle stitching",
-      "Perfect for year-round layering"
+      "Perfect for year-round layering",
     ],
     variantOptions: {
       size: ["S", "M", "L", "XL"],
@@ -357,10 +763,15 @@ const productsRaw = [
   },
   {
     _id: "prd-20",
-    title: "Summer Flowy Boho-Style Dress - Lightweight Floral Viscose with Adjustable Waist and Ruffle Hem Detail",
-    description: "Embrace the sunshine with our Summer Flowy Boho-Style Dress. This elegant piece is crafted from premium, lightweight viscose fabric that offers exceptional breathability and comfort on hot summer days. The beautiful floral pattern is inspired by Mediterranean gardens, adding a touch of romance to your look. Featuring an adjustable drawstring waist, it allows for a customized fit that flatters any silhouette. The delicate ruffle hem adds a playful movement to every step. Whether you're attending a beach wedding, a garden party, or simply enjoying a casual stroll, this dress is the perfect choice for effortless elegance. Pair it with sandals or heels for a versatile look that transitions from day to night.",
-    image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=900&q=80"],
+    title:
+      "Summer Flowy Boho-Style Dress - Lightweight Floral Viscose with Adjustable Waist and Ruffle Hem Detail",
+    description:
+      "Embrace the sunshine with our Summer Flowy Boho-Style Dress. This elegant piece is crafted from premium, lightweight viscose fabric that offers exceptional breathability and comfort on hot summer days. The beautiful floral pattern is inspired by Mediterranean gardens, adding a touch of romance to your look. Featuring an adjustable drawstring waist, it allows for a customized fit that flatters any silhouette. The delicate ruffle hem adds a playful movement to every step. Whether you're attending a beach wedding, a garden party, or simply enjoying a casual stroll, this dress is the perfect choice for effortless elegance. Pair it with sandals or heels for a versatile look that transitions from day to night.",
+    image:
+      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=900&q=80",
+    ],
     brand: "step",
     category: "kadin",
     price: 549.99,
@@ -384,7 +795,7 @@ const productsRaw = [
       "Adjustable waist for a personalized fit",
       "Playful ruffle hem for extra movement",
       "Versatile style for day or evening",
-      "Eco-friendly viscose material"
+      "Eco-friendly viscose material",
     ],
     variantOptions: {
       size: ["XS", "S", "M", "L", "XL"],
@@ -393,10 +804,15 @@ const productsRaw = [
   },
   {
     _id: "prd-21",
-    title: "Sport Compression Leggings Pro - High-Waisted Seamless Design with Moisture-Wicking and Squat-Proof Technology",
-    description: "Achieve your fitness goals in style with the Sport Compression Leggings Pro. These high-performance leggings are engineered with advanced compression technology to support your muscles and improve circulation during intense workouts. The seamless design prevents chafing and provides a second-skin feel, while the moisture-wicking fabric keeps you dry and comfortable. Designed with a high-waistband for maximum support and a flattering fit, these leggings are guaranteed to be 100% squat-proof. Whether you're lifting weights, practicing yoga, or going for a run, the Sport Compression Leggings Pro offer the durability and flexibility you need to perform at your best.",
-    image: "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=900&q=80"],
+    title:
+      "Sport Compression Leggings Pro - High-Waisted Seamless Design with Moisture-Wicking and Squat-Proof Technology",
+    description:
+      "Achieve your fitness goals in style with the Sport Compression Leggings Pro. These high-performance leggings are engineered with advanced compression technology to support your muscles and improve circulation during intense workouts. The seamless design prevents chafing and provides a second-skin feel, while the moisture-wicking fabric keeps you dry and comfortable. Designed with a high-waistband for maximum support and a flattering fit, these leggings are guaranteed to be 100% squat-proof. Whether you're lifting weights, practicing yoga, or going for a run, the Sport Compression Leggings Pro offer the durability and flexibility you need to perform at your best.",
+    image:
+      "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=900&q=80",
+    ],
     brand: "alpha",
     category: "kadin",
     price: 399.99,
@@ -420,7 +836,7 @@ const productsRaw = [
       "Moisture-wicking fabric keeps you dry",
       "100% squat-proof high-waist design",
       "Flattering second-skin aerodynamic fit",
-      "Durable and stretch-resistant material"
+      "Durable and stretch-resistant material",
     ],
     variantOptions: {
       size: ["XS", "S", "M", "L", "XL", "XXL"],
@@ -430,9 +846,13 @@ const productsRaw = [
   {
     _id: "prd-22",
     title: "Minimalist Leather Backpack",
-    description: "Günlük kullanıma uygun, şık ve su geçirmez vegan deri sırt çantası.",
-    image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=900&q=80"],
+    description:
+      "Günlük kullanıma uygun, şık ve su geçirmez vegan deri sırt çantası.",
+    image:
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=900&q=80",
+    ],
     brand: "step",
     category: "kadin",
     price: 1299.99,
@@ -454,8 +874,11 @@ const productsRaw = [
     _id: "prd-23",
     title: "Polarized Retro Sunglasses",
     description: "UV400 korumalı, hafif çerçeveli klasik güneş gözlüğü.",
-    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=900&q=80"],
+    image:
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=900&q=80",
+    ],
     brand: "alpha",
     category: "kadin",
     price: 649.99,
@@ -473,12 +896,213 @@ const productsRaw = [
       color: ["#000000", "#FFD700"], // Black, Gold
     },
   },
+  {
+    _id: "prd-24",
+    title:
+      "Elegant Silk Floral Scarf - Hand-Rolled Edges and Vibrant Natural Dyes",
+    description:
+      "Add a touch of sophistication to your outfit with our Elegant Silk Floral Scarf. Made from 100% pure mulberry silk, this scarf features hand-rolled edges for a premium finish. The vibrant floral pattern is created using traditional natural dyes, ensuring long-lasting color and a soft feel against the skin. Perfect for draping over your shoulders or tying around your neck, it's a versatile accessory for any season.",
+    image:
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=900&q=80",
+    ],
+    brand: "alpha",
+    category: "kadin",
+    price: 249.99,
+    salePrice: 199.99,
+    totalStock: 45,
+    averageReview: 4.7,
+    numReviews: 32,
+    salesCount: 150,
+    createdAt: "2026-04-22T10:00:00.000Z",
+    technicalSpecs: [
+      { key: "Material", value: "100% Pure Mulberry Silk" },
+      { key: "Dimensions", value: "90cm x 90cm" },
+    ],
+  },
+  {
+    _id: "prd-25",
+    title:
+      "Classic Wool Overcoat - Tailored Fit with Sustainable Wool Blend and Internal Quilting",
+    description:
+      "Stay warm and stylish with our Classic Wool Overcoat. This tailored-fit coat is crafted from a sustainable wool blend, providing excellent insulation without the weight. Featuring a sleek minimalist design, it includes a notched lapel, three-button closure, and deep side pockets. The internal quilting adds an extra layer of warmth, making it ideal for the coldest months. A timeless piece for the modern woman.",
+    image:
+      "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=900&q=80",
+    ],
+    brand: "step",
+    category: "erkek",
+    price: 2999.99,
+    salePrice: 2499.99,
+    totalStock: 20,
+    averageReview: 4.9,
+    numReviews: 58,
+    salesCount: 120,
+    createdAt: "2026-04-25T10:00:00.000Z",
+    technicalSpecs: [
+      { key: "Material", value: "70% Recycled Wool, 30% Polyamide" },
+      { key: "Fit", value: "Tailored Slim Fit" },
+    ],
+  },
+  {
+    _id: "prd-26",
+    title:
+      "Urban Denim Shirt Jacket - Relaxed Fit with Washed Cotton and Utility Pockets",
+    description:
+      "A versatile shirt jacket designed for daily wear with a structured yet soft feel.",
+    image:
+      "https://images.unsplash.com/photo-1520367745676-81f5d8d3f6f9?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1520367745676-81f5d8d3f6f9?w=900&q=80",
+    ],
+    brand: "alpha",
+    category: "erkek",
+    price: 1199.99,
+    salePrice: 999.99,
+    totalStock: 38,
+    averageReview: 4.6,
+    numReviews: 42,
+    salesCount: 205,
+    createdAt: "2026-04-26T10:00:00.000Z",
+    technicalSpecs: [
+      { key: "Material", value: "100% Washed Cotton" },
+      { key: "Fit", value: "Relaxed Utility Fit" },
+    ],
+  },
+  {
+    _id: "prd-27",
+    title:
+      "Performance Chino Pants - Stretch Fabric with Tapered Leg and Flex Waistband",
+    description:
+      "Smart-casual chino trousers with breathable stretch fabric and day-long comfort.",
+    image:
+      "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=900&q=80",
+    ],
+    brand: "step",
+    category: "erkek",
+    price: 899.99,
+    salePrice: 749.99,
+    totalStock: 52,
+    averageReview: 4.7,
+    numReviews: 31,
+    salesCount: 188,
+    createdAt: "2026-04-27T10:00:00.000Z",
+    technicalSpecs: [
+      { key: "Material", value: "97% Cotton, 3% Elastane" },
+      { key: "Fit", value: "Tapered Fit" },
+    ],
+  },
+  {
+    _id: "prd-28",
+    title:
+      "Minimal Crewneck Knit Sweater - Lightweight Merino Blend for Everyday Layering",
+    description:
+      "A breathable merino-blend knit sweater that works from office to weekend.",
+    image:
+      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&q=80",
+    ],
+    brand: "vera",
+    category: "erkek",
+    price: 999.99,
+    salePrice: 829.99,
+    totalStock: 44,
+    averageReview: 4.5,
+    numReviews: 22,
+    salesCount: 141,
+    createdAt: "2026-04-28T10:00:00.000Z",
+    technicalSpecs: [
+      { key: "Material", value: "Merino Wool Blend" },
+      { key: "Neckline", value: "Classic Crewneck" },
+    ],
+  },
+  {
+    _id: "prd-29",
+    title:
+      "City Runner Sneakers - Cushioned Midsole with Breathable Mesh Upper",
+    description:
+      "Modern lifestyle sneakers built with soft cushioning and durable traction grip.",
+    image:
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=900&q=80",
+    ],
+    brand: "zenith",
+    category: "erkek",
+    price: 1799.99,
+    salePrice: 1499.99,
+    totalStock: 36,
+    averageReview: 4.8,
+    numReviews: 47,
+    salesCount: 266,
+    createdAt: "2026-04-29T10:00:00.000Z",
+    technicalSpecs: [
+      { key: "Upper", value: "Engineered Breathable Mesh" },
+      { key: "Midsole", value: "Responsive EVA Cushioning" },
+    ],
+  },
+  {
+    _id: "prd-30",
+    title: "Flowy Satin Midi Skirt - High-Waist A-Line Cut with Soft Lining",
+    description:
+      "Elegant satin midi skirt designed for daily chic looks and special occasions.",
+    image:
+      "https://images.unsplash.com/photo-1583496661160-fb5886a13d77?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1583496661160-fb5886a13d77?w=900&q=80",
+    ],
+    brand: "lumina",
+    category: "kadin",
+    price: 799.99,
+    salePrice: 669.99,
+    totalStock: 48,
+    averageReview: 4.6,
+    numReviews: 27,
+    salesCount: 159,
+    createdAt: "2026-04-30T10:00:00.000Z",
+    technicalSpecs: [
+      { key: "Material", value: "Satin Blend" },
+      { key: "Fit", value: "High-Waist A-Line" },
+    ],
+  },
+  {
+    _id: "prd-31",
+    title:
+      "Structured Blazer Jacket - Modern Fit with Lightweight Stretch Fabric",
+    description:
+      "Versatile blazer with a clean silhouette for office, city, and evening wear.",
+    image:
+      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=900&q=80",
+    ],
+    brand: "vera",
+    category: "kadin",
+    price: 1699.99,
+    salePrice: 1399.99,
+    totalStock: 34,
+    averageReview: 4.8,
+    numReviews: 39,
+    salesCount: 201,
+    createdAt: "2026-05-01T10:00:00.000Z",
+    technicalSpecs: [
+      { key: "Material", value: "Polyester-Viscose Stretch Blend" },
+      { key: "Fit", value: "Modern Tailored Fit" },
+    ],
+  },
 
   // Electronics Products
   {
     _id: "prd-1",
-    title: "Orbit Phone X Pro Max Ultra - 1TB Special Edition with AI Neural Processor and Quantum Display Technology",
-    description: "The Orbit Phone X Pro Max Ultra represents the pinnacle of mobile engineering. Featuring the revolutionary AI Neural Processor, this device offers unprecedented speed and efficiency. The Quantum Display Technology provides a breathtaking visual experience with over 1 billion colors and 2000 nits of peak brightness. With a massive 1TB of storage, you never have to worry about running out of space for your high-resolution photos and 8K videos. The triple-lens camera system, powered by AI, captures stunning detail even in the lowest light conditions. Encased in a surgical-grade titanium frame, it is as durable as it is beautiful. Experience the future of communication today.",
+    title:
+      "Orbit Phone X Pro Max Ultra - 1TB Special Edition with AI Neural Processor and Quantum Display Technology",
+    description:
+      "The Orbit Phone X Pro Max Ultra represents the pinnacle of mobile engineering. Featuring the revolutionary AI Neural Processor, this device offers unprecedented speed and efficiency. The Quantum Display Technology provides a breathtaking visual experience with over 1 billion colors and 2000 nits of peak brightness. With a massive 1TB of storage, you never have to worry about running out of space for your high-resolution photos and 8K videos. The triple-lens camera system, powered by AI, captures stunning detail even in the lowest light conditions. Encased in a surgical-grade titanium frame, it is as durable as it is beautiful. Experience the future of communication today.",
     image:
       "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=900&q=80",
     images: [
@@ -502,9 +1126,15 @@ const productsRaw = [
       { key: "Dimensions", value: "163 x 77 x 8.2 mm" },
       { key: "Weight", value: "235g" },
       { key: "Display", value: "6.9-inch Quantum OLED Pro, 120Hz LTPO" },
-      { key: "Main Camera", value: "108MP (Wide) + 48MP (Ultra-Wide) + 48MP (Telephoto)" },
+      {
+        key: "Main Camera",
+        value: "108MP (Wide) + 48MP (Ultra-Wide) + 48MP (Telephoto)",
+      },
       { key: "Front Camera", value: "32MP TrueDepth AI Camera" },
-      { key: "Connectivity", value: "5G (Sub-6GHz and mmWave), Wi-Fi 7, Bluetooth 5.4" },
+      {
+        key: "Connectivity",
+        value: "5G (Sub-6GHz and mmWave), Wi-Fi 7, Bluetooth 5.4",
+      },
       { key: "Water Resistance", value: "IP68 (up to 6m for 30 mins)" },
     ],
     highlights: [
@@ -514,7 +1144,7 @@ const productsRaw = [
       "A20 Bionic AI Neural Processor",
       "Breathtaking 8K video recording",
       "All-day battery with 100W HyperCharge",
-      "Advanced Face and Fingerprint Security"
+      "Advanced Face and Fingerprint Security",
     ],
     variantOptions: {
       color: ["#000000", "#C0C0C0", "#FFD700", "#1E3A5F"],
@@ -523,8 +1153,10 @@ const productsRaw = [
   },
   {
     _id: "prd-2",
-    title: "Orbit Phone Mini Compact Edition - 128GB with Cinematic Display and All-Day Battery Performance",
-    description: "Don't let the size fool you. The Orbit Phone Mini Compact Edition packs professional-grade technology into a pocket-friendly design. Featuring a brilliant 6.1-inch Cinematic OLED display, it delivers vivid colors and deep blacks for an immersive viewing experience. The advanced dual-camera system allows you to capture stunning photos and 4K videos with ease. Powered by the efficient Orbit A18 chip, it handles multitasking effortlessly while ensuring all-day battery life. With 5G connectivity, high-quality stereo speakers, and a durable ceramic-shield front, the Orbit Phone Mini is the perfect companion for those who want power without the bulk.",
+    title:
+      "Orbit Phone Mini Compact Edition - 128GB with Cinematic Display and All-Day Battery Performance",
+    description:
+      "Don't let the size fool you. The Orbit Phone Mini Compact Edition packs professional-grade technology into a pocket-friendly design. Featuring a brilliant 6.1-inch Cinematic OLED display, it delivers vivid colors and deep blacks for an immersive viewing experience. The advanced dual-camera system allows you to capture stunning photos and 4K videos with ease. Powered by the efficient Orbit A18 chip, it handles multitasking effortlessly while ensuring all-day battery life. With 5G connectivity, high-quality stereo speakers, and a durable ceramic-shield front, the Orbit Phone Mini is the perfect companion for those who want power without the bulk.",
     image:
       "https://images.unsplash.com/photo-1512499617640-c2f999098c01?w=900&q=80",
     images: [
@@ -556,13 +1188,15 @@ const productsRaw = [
       "Advanced dual-camera system",
       "All-day battery performance",
       "Durable ceramic shield protection",
-      "Lightweight and portable design"
+      "Lightweight and portable design",
     ],
   },
   {
     _id: "prd-3",
-    title: "Novatek Phone Pro Elite - 512GB Cinematic Master Edition with Triple AI Camera System and Nano-Carbon Cooling",
-    description: "Redefine photography with the Novatek Phone Pro Elite. This Cinematic Master Edition features a groundbreaking triple AI camera system, including a 50MP main sensor with enhanced optical image stabilization. Capture professional-grade portraits and breathtaking night shots with incredible detail. The innovative nano-carbon cooling system ensures the device stays cool even during intensive gaming or video editing sessions. The 6.7-inch Pro-Fluid AMOLED display offers a buttery-smooth 120Hz refresh rate, while the 512GB of internal storage provides vast space for all your high-quality content. Encased in a refined aerospace-grade aluminum body, the Novatek Phone Pro Elite is built for performance and durability.",
+    title:
+      "Novatek Phone Pro Elite - 512GB Cinematic Master Edition with Triple AI Camera System and Nano-Carbon Cooling",
+    description:
+      "Redefine photography with the Novatek Phone Pro Elite. This Cinematic Master Edition features a groundbreaking triple AI camera system, including a 50MP main sensor with enhanced optical image stabilization. Capture professional-grade portraits and breathtaking night shots with incredible detail. The innovative nano-carbon cooling system ensures the device stays cool even during intensive gaming or video editing sessions. The 6.7-inch Pro-Fluid AMOLED display offers a buttery-smooth 120Hz refresh rate, while the 512GB of internal storage provides vast space for all your high-quality content. Encased in a refined aerospace-grade aluminum body, the Novatek Phone Pro Elite is built for performance and durability.",
     image:
       "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=900&q=80",
     images: [
@@ -593,7 +1227,7 @@ const productsRaw = [
       "High-capacity 512GB storage",
       "Efficient nano-carbon cooling",
       "Rapid 80W TurboCharge technology",
-      "Durable aerospace aluminum build"
+      "Durable aerospace aluminum build",
     ],
   },
   {
@@ -654,11 +1288,8 @@ const productsRaw = [
     _id: "prd-6",
     title: "Orbit Phone Z",
     description: "Gaming and multimedia focused powerful phone.",
-    image:
-      "/bannar2.avif",
-    images: [
-      "/bannar2.avif",
-    ],
+    image: "/bannar2.avif",
+    images: ["/bannar2.avif"],
     brand: "orbit",
     category: "telefon",
     price: 31999,
@@ -721,8 +1352,10 @@ const productsRaw = [
   },
   {
     _id: "prd-9",
-    title: "AudioX Wave Buds Pro - True Wireless Earbuds with Active Noise Cancellation and Spatial Audio Support",
-    description: "Immerse yourself in pure sound with the AudioX Wave Buds Pro. These next-generation true wireless earbuds feature industry-leading Active Noise Cancellation (ANC) that blocks out unwanted background noise, allowing you to focus on your music or calls. With Spatial Audio support, you'll experience a theater-like surround sound experience wherever you go. The custom-designed high-excursion driver delivers deep, rich bass and crisp, clear highs. Designed for all-day comfort, the earbuds come with multiple sizes of soft silicone tips. With a total battery life of up to 30 hours with the charging case and IPX5 water resistance, the Wave Buds Pro are built to keep up with your active lifestyle.",
+    title:
+      "AudioX Wave Buds Pro - True Wireless Earbuds with Active Noise Cancellation and Spatial Audio Support",
+    description:
+      "Immerse yourself in pure sound with the AudioX Wave Buds Pro. These next-generation true wireless earbuds feature industry-leading Active Noise Cancellation (ANC) that blocks out unwanted background noise, allowing you to focus on your music or calls. With Spatial Audio support, you'll experience a theater-like surround sound experience wherever you go. The custom-designed high-excursion driver delivers deep, rich bass and crisp, clear highs. Designed for all-day comfort, the earbuds come with multiple sizes of soft silicone tips. With a total battery life of up to 30 hours with the charging case and IPX5 water resistance, the Wave Buds Pro are built to keep up with your active lifestyle.",
     image:
       "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=900&q=80",
     images: [
@@ -738,14 +1371,26 @@ const productsRaw = [
     salesCount: 410,
     createdAt: "2026-01-05T10:00:00.000Z",
     technicalSpecs: [
-      { key: "Audio Tech", value: "Active Noise Cancellation (ANC) & Transparency Mode" },
+      {
+        key: "Audio Tech",
+        value: "Active Noise Cancellation (ANC) & Transparency Mode",
+      },
       { key: "Driver", value: "Custom High-Excursion AudioX Driver" },
       { key: "Bluetooth", value: "Version 5.3 with LE Audio Support" },
-      { key: "Battery Life", value: "Up to 6 hours (buds) / 30 hours (with case)" },
-      { key: "Charging", value: "Fast Charging (5 mins = 1 hour) & Wireless Support" },
+      {
+        key: "Battery Life",
+        value: "Up to 6 hours (buds) / 30 hours (with case)",
+      },
+      {
+        key: "Charging",
+        value: "Fast Charging (5 mins = 1 hour) & Wireless Support",
+      },
       { key: "Microphones", value: "Triple-Mic Array with Beamforming" },
       { key: "Protection", value: "IPX5 Sweat and Water Resistant" },
-      { key: "Features", value: "Personalized Spatial Audio with Head Tracking" },
+      {
+        key: "Features",
+        value: "Personalized Spatial Audio with Head Tracking",
+      },
     ],
     highlights: [
       "Advanced Active Noise Cancellation",
@@ -753,7 +1398,7 @@ const productsRaw = [
       "Up to 30 hours total battery life",
       "IPX5 water and sweat resistance",
       "Custom high-fidelity audio driver",
-      "Crystal clear calls with beamforming"
+      "Crystal clear calls with beamforming",
     ],
     variantOptions: {
       color: ["#FFFFFF", "#000000", "#808080", "#1E3A5F"],
@@ -761,8 +1406,10 @@ const productsRaw = [
   },
   {
     _id: "prd-10",
-    title: "AudioX Bass Boom 500 Ultimate - 120W Portable Bluetooth Speaker with Deep Bass Enhancement and RGB Light Show",
-    description: "Turn up the volume with the AudioX Bass Boom 500 Ultimate. This powerful portable speaker delivers a staggering 120W of pure audio power, featuring custom-tuned drivers that produce deep, bone-shaking bass and crystal-clear highs. The integrated RGB light show syncs perfectly with your music, creating a vibrant party atmosphere wherever you are. With its rugged, IPX7 waterproof design, you can take the Bass Boom 500 to the pool, the beach, or any outdoor adventure without worry. The long-lasting battery provides up to 24 hours of continuous playtime, and the built-in power bank allows you to charge your devices on the go. Experience music in a whole new light with AudioX.",
+    title:
+      "AudioX Bass Boom 500 Ultimate - 120W Portable Bluetooth Speaker with Deep Bass Enhancement and RGB Light Show",
+    description:
+      "Turn up the volume with the AudioX Bass Boom 500 Ultimate. This powerful portable speaker delivers a staggering 120W of pure audio power, featuring custom-tuned drivers that produce deep, bone-shaking bass and crystal-clear highs. The integrated RGB light show syncs perfectly with your music, creating a vibrant party atmosphere wherever you are. With its rugged, IPX7 waterproof design, you can take the Bass Boom 500 to the pool, the beach, or any outdoor adventure without worry. The long-lasting battery provides up to 24 hours of continuous playtime, and the built-in power bank allows you to charge your devices on the go. Experience music in a whole new light with AudioX.",
     image:
       "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=900&q=80",
     images: [
@@ -793,7 +1440,7 @@ const productsRaw = [
       "Immersive sync RGB light show",
       "IPX7 fully waterproof construction",
       "Up to 24 hours of party time",
-      "Convenient built-in device charger"
+      "Convenient built-in device charger",
     ],
   },
   {
@@ -915,10 +1562,15 @@ const productsRaw = [
   // --- Home Appliances ---
   {
     _id: "prd-app-1",
-    title: "Lumina FrostFree Pro Series Smart Refrigerator - 4 Door French Design with Dual Ice Maker and Internal Water Dispenser",
-    description: "Upgrade your kitchen with the Lumina FrostFree Pro Series Smart Refrigerator. This state-of-the-art appliance features a 4-door French design, providing ample space and easy access to all your groceries. The dual ice maker ensures you never run out of ice, while the internal water dispenser offers clean, filtered water at the touch of a button. Powered by intelligent cooling technology, it maintains optimal temperature and humidity levels to keep your food fresher for longer. The energy-efficient compressor operates quietly and reduces your electricity bills. With built-in Wi-Fi, you can control and monitor your refrigerator from anywhere using the Lumina Smart app. Its sleek Inox finish is fingerprint-resistant, keeping your kitchen looking spotless.",
-    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=900&q=80"],
+    title:
+      "Lumina FrostFree Pro Series Smart Refrigerator - 4 Door French Design with Dual Ice Maker and Internal Water Dispenser",
+    description:
+      "Upgrade your kitchen with the Lumina FrostFree Pro Series Smart Refrigerator. This state-of-the-art appliance features a 4-door French design, providing ample space and easy access to all your groceries. The dual ice maker ensures you never run out of ice, while the internal water dispenser offers clean, filtered water at the touch of a button. Powered by intelligent cooling technology, it maintains optimal temperature and humidity levels to keep your food fresher for longer. The energy-efficient compressor operates quietly and reduces your electricity bills. With built-in Wi-Fi, you can control and monitor your refrigerator from anywhere using the Lumina Smart app. Its sleek Inox finish is fingerprint-resistant, keeping your kitchen looking spotless.",
+    image:
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=900&q=80",
+    ],
     brand: "lumina",
     category: "buzdolabi",
     price: 45999,
@@ -944,18 +1596,23 @@ const productsRaw = [
       "Wi-Fi Connected Smart Monitoring",
       "Energy Efficient A+++ Rating",
       "Multi-Air Flow System for Even Cooling",
-      "Spacious 4-Door French Design"
+      "Spacious 4-Door French Design",
     ],
     variantOptions: {
       color: ["#C0C0C0", "#000000", "#FFFFFF"], // Silver, Black, White
-    }
+    },
   },
   {
     _id: "prd-app-2",
-    title: "Novatek EcoWash 9kg Pro - Smart Front-Loading Washing Machine with SteamCare and AI-Inverter Technology",
-    description: "Keep your clothes looking new with the Novatek EcoWash 9kg Pro. This advanced front-loading washing machine features SteamCare technology, which deep-cleans fabrics and removes 99.9% of allergens and bacteria while reducing wrinkles. The AI-Inverter technology optimizes the drum movement and water usage based on the weight and type of laundry, ensuring superior cleaning results with maximum energy efficiency. With a spacious 9kg capacity, it can handle large loads with ease. The ultra-quiet operation makes it perfect for any home, even during the night. Featuring 14 different wash programs and a high-speed spin of 1400 RPM, the EcoWash Pro provides professional-level care for all your favorite garments.",
-    image: "https://images.unsplash.com/photo-1582730147233-0df63bd1b232?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1582730147233-0df63bd1b232?w=900&q=80"],
+    title:
+      "Novatek EcoWash 9kg Pro - Smart Front-Loading Washing Machine with SteamCare and AI-Inverter Technology",
+    description:
+      "Keep your clothes looking new with the Novatek EcoWash 9kg Pro. This advanced front-loading washing machine features SteamCare technology, which deep-cleans fabrics and removes 99.9% of allergens and bacteria while reducing wrinkles. The AI-Inverter technology optimizes the drum movement and water usage based on the weight and type of laundry, ensuring superior cleaning results with maximum energy efficiency. With a spacious 9kg capacity, it can handle large loads with ease. The ultra-quiet operation makes it perfect for any home, even during the night. Featuring 14 different wash programs and a high-speed spin of 1400 RPM, the EcoWash Pro provides professional-level care for all your favorite garments.",
+    image:
+      "https://images.unsplash.com/photo-1582730147233-0df63bd1b232?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1582730147233-0df63bd1b232?w=900&q=80",
+    ],
     brand: "novatek",
     category: "camasir-makinesi",
     price: 18999,
@@ -982,18 +1639,23 @@ const productsRaw = [
       "Ultra-quiet brushless motor",
       "Energy-efficient A+++ performance",
       "Modern touch LED control panel",
-      "Reinforced tempered glass door"
+      "Reinforced tempered glass door",
     ],
     variantOptions: {
       color: ["#FFFFFF", "#808080"], // White, Silver
-    }
+    },
   },
   {
     _id: "prd-app-3",
-    title: "Orbit Cyclone V10 Digital Pro - Cordless Stick Vacuum with HEPA Filtration and 120AW Extreme Suction",
-    description: "Experience effortless cleaning with the Orbit Cyclone V10 Digital Pro. This high-performance cordless stick vacuum is powered by a digital motor that generates an incredible 120AW of suction power, easily picking up fine dust and large debris from both carpets and hard floors. The advanced fully-sealed HEPA filtration system captures 99.99% of particles as small as 0.3 microns, ensuring cleaner air in your home. With a lightweight and ergonomic design, it easily converts to a handheld vacuum for cleaning stairs, cars, and upholstery. The long-lasting battery provides up to 60 minutes of fade-free suction in Eco mode. Includes multiple attachments for every cleaning task.",
-    image: "https://images.unsplash.com/photo-1558317374-067df5f15430?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1558317374-067df5f15430?w=900&q=80"],
+    title:
+      "Orbit Cyclone V10 Digital Pro - Cordless Stick Vacuum with HEPA Filtration and 120AW Extreme Suction",
+    description:
+      "Experience effortless cleaning with the Orbit Cyclone V10 Digital Pro. This high-performance cordless stick vacuum is powered by a digital motor that generates an incredible 120AW of suction power, easily picking up fine dust and large debris from both carpets and hard floors. The advanced fully-sealed HEPA filtration system captures 99.99% of particles as small as 0.3 microns, ensuring cleaner air in your home. With a lightweight and ergonomic design, it easily converts to a handheld vacuum for cleaning stairs, cars, and upholstery. The long-lasting battery provides up to 60 minutes of fade-free suction in Eco mode. Includes multiple attachments for every cleaning task.",
+    image:
+      "https://images.unsplash.com/photo-1558317374-067df5f15430?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1558317374-067df5f15430?w=900&q=80",
+    ],
     brand: "orbit",
     category: "supurge",
     price: 12499,
@@ -1017,15 +1679,20 @@ const productsRaw = [
       "Versatile cordless stick design",
       "Up to 60 minutes fade-free runtime",
       "Large easy-to-empty dust bin",
-      "Includes specialized motorhead tools"
+      "Includes specialized motorhead tools",
     ],
   },
   {
     _id: "prd-app-4",
-    title: "AudioX Barista One Ultimate - Professional Grade Espresso Machine with Integrated Precision Grinder",
-    description: "Bring the coffee house experience home with the AudioX Barista One Ultimate. This professional-grade espresso machine is designed for true coffee enthusiasts. The integrated precision conical burr grinder delivers the right amount of freshly ground coffee directly into the portafilter for your preferred taste with any roast of bean. With a high-pressure 15-bar pump and digital temperature control (PID), it ensures optimal espresso extraction for a rich and aromatic flavor. The powerful steam wand allows you to hand-texture micro-foam milk that enhances flavor and enables the creation of latte art. Crafted from durable stainless steel, it's as beautiful as it is functional.",
-    image: "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=900&q=80"],
+    title:
+      "AudioX Barista One Ultimate - Professional Grade Espresso Machine with Integrated Precision Grinder",
+    description:
+      "Bring the coffee house experience home with the AudioX Barista One Ultimate. This professional-grade espresso machine is designed for true coffee enthusiasts. The integrated precision conical burr grinder delivers the right amount of freshly ground coffee directly into the portafilter for your preferred taste with any roast of bean. With a high-pressure 15-bar pump and digital temperature control (PID), it ensures optimal espresso extraction for a rich and aromatic flavor. The powerful steam wand allows you to hand-texture micro-foam milk that enhances flavor and enables the creation of latte art. Crafted from durable stainless steel, it's as beautiful as it is functional.",
+    image:
+      "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=900&q=80",
+    ],
     brand: "audiox",
     category: "kahve-makineleri",
     price: 8999,
@@ -1048,17 +1715,22 @@ const productsRaw = [
       "Digital PID temperature control",
       "Professional micro-foam steam wand",
       "Sleek brushed stainless steel design",
-      "Large 2L removable water reservoir"
+      "Large 2L removable water reservoir",
     ],
   },
 
   // --- Home & Life ---
   {
     _id: "prd-home-1",
-    title: "Nordic Velvet Grand Sofa - Elegant 3-Seater with Premium Upholstery and Hand-Finished Solid Wood Frame",
-    description: "Transform your living space with the Nordic Velvet Grand Sofa. This elegant 3-seater combines classic Scandinavian design with modern luxury. The premium velvet upholstery is incredibly soft to the touch and features a sophisticated sheen that adds depth to any room. Underneath the beautiful exterior lies a hand-finished frame made from solid oak, providing exceptional strength and durability. The high-density foam cushions are reinforced with pocket springs to ensure long-lasting comfort and support. Its minimalist silhouette and tapered wooden legs make it a perfect centerpiece for both traditional and contemporary interiors. Assembly is quick and easy, allowing you to enjoy your new piece of furniture in no time.",
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80"],
+    title:
+      "Nordic Velvet Grand Sofa - Elegant 3-Seater with Premium Upholstery and Hand-Finished Solid Wood Frame",
+    description:
+      "Transform your living space with the Nordic Velvet Grand Sofa. This elegant 3-seater combines classic Scandinavian design with modern luxury. The premium velvet upholstery is incredibly soft to the touch and features a sophisticated sheen that adds depth to any room. Underneath the beautiful exterior lies a hand-finished frame made from solid oak, providing exceptional strength and durability. The high-density foam cushions are reinforced with pocket springs to ensure long-lasting comfort and support. Its minimalist silhouette and tapered wooden legs make it a perfect centerpiece for both traditional and contemporary interiors. Assembly is quick and easy, allowing you to enjoy your new piece of furniture in no time.",
+    image:
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80",
+    ],
     brand: "alpha",
     category: "mobilya",
     price: 12999,
@@ -1080,17 +1752,18 @@ const productsRaw = [
       "Superior comfort with pocket springs",
       "Elegant Nordic minimalist design",
       "Stain-resistant and easy-care fabric",
-      "Tapered legs for a modern look"
+      "Tapered legs for a modern look",
     ],
     variantOptions: {
       color: ["#1E3A5F", "#1A1A1A", "#006400", "#4B0082"], // Navy, Black, DarkGreen, Indigo
-    }
+    },
   },
   {
     _id: "prd-home-2",
     title: "Modern Floor Lamp",
     description: "Minimalist floor lamp with adjustable head and warm glow.",
-    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=900&q=80",
+    image:
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=900&q=80",
     brand: "lumina",
     category: "aydinlatma",
     price: 1499,
@@ -1099,7 +1772,7 @@ const productsRaw = [
     technicalSpecs: [
       { key: "Height", value: "160 cm" },
       { key: "Bulb", value: "E27 LED" },
-    ]
+    ],
   },
 
   // --- Cosmetics ---
@@ -1107,7 +1780,8 @@ const productsRaw = [
     _id: "prd-cos-1",
     title: "Lumina Silk Foundation",
     description: "Long-lasting full coverage foundation with SPF 15.",
-    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=900&q=80",
+    image:
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=900&q=80",
     brand: "lumina",
     category: "makyaj",
     price: 449,
@@ -1115,13 +1789,14 @@ const productsRaw = [
     totalStock: 100,
     variantOptions: {
       shade: ["Fair", "Natural", "Honey", "Deep"],
-    }
+    },
   },
   {
     _id: "prd-cos-2",
     title: "Lumina Night Repair Serum",
     description: "Advanced night repair serum with hyaluronic acid.",
-    image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&q=80",
+    image:
+      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&q=80",
     brand: "lumina",
     category: "cilt-bakimi",
     price: 899,
@@ -1134,7 +1809,8 @@ const productsRaw = [
     _id: "prd-sup-1",
     title: "Organic Olive Oil 1L",
     description: "Extra virgin cold-pressed organic olive oil.",
-    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=900&q=80",
+    image:
+      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=900&q=80",
     brand: "alpha",
     category: "temel-gida",
     price: 189,
@@ -1147,7 +1823,8 @@ const productsRaw = [
     _id: "prd-baby-1",
     title: "SoftTouch Eco Diapers",
     description: "Hypoallergenic and eco-friendly baby diapers.",
-    image: "https://images.unsplash.com/photo-1522771935876-2497116a7a9e?w=900&q=80",
+    image:
+      "https://images.unsplash.com/photo-1522771935876-2497116a7a9e?w=900&q=80",
     brand: "alpha",
     category: "bebek-bezi",
     price: 349,
@@ -1155,16 +1832,21 @@ const productsRaw = [
     totalStock: 150,
     variantOptions: {
       size: ["Newborn", "Mini", "Midi", "Maxi"],
-    }
+    },
   },
 
   // --- Sports ---
   {
     _id: "prd-sport-1",
-    title: "Orbit Adjustable Dumbbells Pro - Space-Saving Quick-Select Set (2kg to 24kg) with Non-Slip Grip",
-    description: "Maximize your home gym potential with the Orbit Adjustable Dumbbells Pro. This innovative set replaces 15 pairs of traditional dumbbells, allowing you to quickly and easily adjust the weight from 2kg to 24kg with a simple turn of a dial. The high-quality steel plates are coated in a durable, noise-reducing material for a quieter workout. Featuring an ergonomic, non-slip handle, these dumbbells provide a secure and comfortable grip even during the most intense exercises. The compact design makes them perfect for small spaces, while the included storage trays keep your workout area organized. Whether you're a beginner or an experienced lifter, the Orbit Adjustable Dumbbells Pro offer the versatility you need for a full-body workout.",
-    image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=900&q=80"],
+    title:
+      "Orbit Adjustable Dumbbells Pro - Space-Saving Quick-Select Set (2kg to 24kg) with Non-Slip Grip",
+    description:
+      "Maximize your home gym potential with the Orbit Adjustable Dumbbells Pro. This innovative set replaces 15 pairs of traditional dumbbells, allowing you to quickly and easily adjust the weight from 2kg to 24kg with a simple turn of a dial. The high-quality steel plates are coated in a durable, noise-reducing material for a quieter workout. Featuring an ergonomic, non-slip handle, these dumbbells provide a secure and comfortable grip even during the most intense exercises. The compact design makes them perfect for small spaces, while the included storage trays keep your workout area organized. Whether you're a beginner or an experienced lifter, the Orbit Adjustable Dumbbells Pro offer the versatility you need for a full-body workout.",
+    image:
+      "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=900&q=80",
+    ],
     brand: "orbit",
     category: "fitness-ekipmanlari",
     price: 4999,
@@ -1174,7 +1856,10 @@ const productsRaw = [
     numReviews: 84,
     technicalSpecs: [
       { key: "Weight Range", value: "2 kg to 24 kg per Dumbbell" },
-      { key: "Weight Increments", value: "2, 3, 4, 5, 7, 8, 9, 10, 11, 14, 16, 18, 20, 23, 24 kg" },
+      {
+        key: "Weight Increments",
+        value: "2, 3, 4, 5, 7, 8, 9, 10, 11, 14, 16, 18, 20, 23, 24 kg",
+      },
       { key: "Material", value: "Powder-Coated Steel & Heavy-Duty Nylon" },
       { key: "Mechanism", value: "Quick-Select Dial System" },
       { key: "Handle", value: "Ergonomic Textured Non-Slip Grip" },
@@ -1186,17 +1871,22 @@ const productsRaw = [
       "Durable powder-coated steel plates",
       "Ergonomic non-slip handle design",
       "Compact space-saving storage trays",
-      "Versatile for full-body strength training"
+      "Versatile for full-body strength training",
     ],
   },
 
   // --- Travel ---
   {
     _id: "prd-travel-1",
-    title: "Step Carry-On Pro Luggage - 20-Inch Lightweight Hardshell Suitcase with 360-Degree Silent Spinner Wheels",
-    description: "Travel with ease and style with the Step Carry-On Pro Luggage. This 20-inch suitcase is engineered from premium aerospace-grade polycarbonate, making it exceptionally lightweight yet incredibly durable and impact-resistant. The hardshell exterior features a scratch-resistant matte finish that maintains its sleek look trip after trip. Four 360-degree silent spinner wheels provide smooth and effortless maneuverability through crowded airports. The integrated TSA-approved combination lock keeps your belongings secure while allowing for easy inspections. Inside, you'll find a spacious, fully-lined compartment with compression straps and multiple mesh pockets to keep your items organized and in place.",
-    image: "https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=900&q=80"],
+    title:
+      "Step Carry-On Pro Luggage - 20-Inch Lightweight Hardshell Suitcase with 360-Degree Silent Spinner Wheels",
+    description:
+      "Travel with ease and style with the Step Carry-On Pro Luggage. This 20-inch suitcase is engineered from premium aerospace-grade polycarbonate, making it exceptionally lightweight yet incredibly durable and impact-resistant. The hardshell exterior features a scratch-resistant matte finish that maintains its sleek look trip after trip. Four 360-degree silent spinner wheels provide smooth and effortless maneuverability through crowded airports. The integrated TSA-approved combination lock keeps your belongings secure while allowing for easy inspections. Inside, you'll find a spacious, fully-lined compartment with compression straps and multiple mesh pockets to keep your items organized and in place.",
+    image:
+      "https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=900&q=80",
+    ],
     brand: "step",
     category: "valiz",
     price: 2899,
@@ -1219,20 +1909,25 @@ const productsRaw = [
       "Integrated secure TSA combination lock",
       "Spacious organized interior compartments",
       "Scratch-resistant modern matte finish",
-      "Ergonomic telescopic handle system"
+      "Ergonomic telescopic handle system",
     ],
     variantOptions: {
       color: ["#0000FF", "#000000", "#FF0000", "#C0C0C0"], // Blue, Black, Red, Silver
-    }
+    },
   },
 
   // --- Toys & Hobbies ---
   {
     _id: "prd-toy-1",
-    title: "Eco-Friendly Master Wooden Train Set - 50-Piece Sustainable Collection with Magnetic Connections and Detailed Scenery",
-    description: "Spark your child's imagination with the Eco-Friendly Master Wooden Train Set. This comprehensive 50-piece collection is crafted from 100% sustainable, FSC-certified beechwood, ensuring a safe and durable play experience. The set includes a variety of track pieces, bridges, buildings, trees, and figurines, allowing children to build their own miniature world. Each train car features strong magnetic connections for easy assembly and long-lasting play. The smooth, hand-finished edges and non-toxic, water-based paints make it a safe choice for children aged 3 and up. This timeless toy encourages creativity, fine motor skills, and hand-eye coordination while providing hours of screen-free entertainment.",
-    image: "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=900&q=80"],
+    title:
+      "Eco-Friendly Master Wooden Train Set - 50-Piece Sustainable Collection with Magnetic Connections and Detailed Scenery",
+    description:
+      "Spark your child's imagination with the Eco-Friendly Master Wooden Train Set. This comprehensive 50-piece collection is crafted from 100% sustainable, FSC-certified beechwood, ensuring a safe and durable play experience. The set includes a variety of track pieces, bridges, buildings, trees, and figurines, allowing children to build their own miniature world. Each train car features strong magnetic connections for easy assembly and long-lasting play. The smooth, hand-finished edges and non-toxic, water-based paints make it a safe choice for children aged 3 and up. This timeless toy encourages creativity, fine motor skills, and hand-eye coordination while providing hours of screen-free entertainment.",
+    image:
+      "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=900&q=80",
+    ],
     brand: "alpha",
     category: "oyuncaklar",
     price: 599,
@@ -1253,15 +1948,20 @@ const productsRaw = [
       "Strong magnetic car connections",
       "Promotes creativity and motor skills",
       "Timeless classic screen-free play",
-      "Durable hand-finished construction"
+      "Durable hand-finished construction",
     ],
   },
   {
     _id: "prd-toy-2",
-    title: "Alpine Vista 1000-Piece Scenic Puzzle - High-Definition Art Print with Anti-Glare Finish and Precision-Fit Pieces",
-    description: "Lose yourself in the beauty of the mountains with our Alpine Vista 1000-Piece Scenic Puzzle. This high-quality puzzle features a breathtaking high-definition photograph of a serene mountain landscape, printed on premium, heavy-duty cardboard. Each of the 1000 pieces is precision-cut to ensure a perfect fit with a satisfying 'click'. The anti-glare linen finish reduces reflections, making it easier to see the fine details as you build. Completing this puzzle is not only a fun and relaxing activity but also a great way to improve focus and spatial reasoning. Once finished, it makes a stunning piece of wall art for your home or office. Includes a full-size reference poster.",
-    image: "https://images.unsplash.com/photo-1585338927000-1c787b17eb5e?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1585338927000-1c787b17eb5e?w=900&q=80"],
+    title:
+      "Alpine Vista 1000-Piece Scenic Puzzle - High-Definition Art Print with Anti-Glare Finish and Precision-Fit Pieces",
+    description:
+      "Lose yourself in the beauty of the mountains with our Alpine Vista 1000-Piece Scenic Puzzle. This high-quality puzzle features a breathtaking high-definition photograph of a serene mountain landscape, printed on premium, heavy-duty cardboard. Each of the 1000 pieces is precision-cut to ensure a perfect fit with a satisfying 'click'. The anti-glare linen finish reduces reflections, making it easier to see the fine details as you build. Completing this puzzle is not only a fun and relaxing activity but also a great way to improve focus and spatial reasoning. Once finished, it makes a stunning piece of wall art for your home or office. Includes a full-size reference poster.",
+    image:
+      "https://images.unsplash.com/photo-1585338927000-1c787b17eb5e?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1585338927000-1c787b17eb5e?w=900&q=80",
+    ],
     brand: "alpha",
     category: "puzzle",
     price: 249,
@@ -1282,16 +1982,19 @@ const productsRaw = [
       "Anti-glare finish for better visibility",
       "Durable heavy-duty premium cardboard",
       "Relaxing and rewarding hobby activity",
-      "Includes helpful reference poster"
+      "Includes helpful reference poster",
     ],
   },
 
   // --- Books & Media ---
   {
     _id: "prd-book-1",
-    title: "The Art of Modern Living: A Comprehensive Guide to Minimalism, Intentional Living, and Sustainable Design",
-    description: "In 'The Art of Modern Living', renowned designer and lifestyle expert Elena Rossi provides a comprehensive roadmap for anyone seeking a more meaningful and organized life. This beautifully illustrated book explores the principles of minimalism, teaching you how to declutter your physical space and your mind to focus on what truly matters. From interior design tips that create a sense of calm to practical advice on sustainable consumption and intentional decision-making, this guide is packed with actionable insights. Whether you're living in a small apartment or a large family home, the strategies shared in these pages will help you create a sanctuary that reflects your values and supports your well-being. A must-read for the modern era.",
-    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=900&q=80",
+    title:
+      "The Art of Modern Living: A Comprehensive Guide to Minimalism, Intentional Living, and Sustainable Design",
+    description:
+      "In 'The Art of Modern Living', renowned designer and lifestyle expert Elena Rossi provides a comprehensive roadmap for anyone seeking a more meaningful and organized life. This beautifully illustrated book explores the principles of minimalism, teaching you how to declutter your physical space and your mind to focus on what truly matters. From interior design tips that create a sense of calm to practical advice on sustainable consumption and intentional decision-making, this guide is packed with actionable insights. Whether you're living in a small apartment or a large family home, the strategies shared in these pages will help you create a sanctuary that reflects your values and supports your well-being. A must-read for the modern era.",
+    image:
+      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=900&q=80",
     brand: "alpha",
     category: "kitaplar",
     price: 129,
@@ -1302,10 +2005,15 @@ const productsRaw = [
   // --- Automotive ---
   {
     _id: "prd-auto-1",
-    title: "Orbit Premium All-Weather Car Floor Mats - Heavy-Duty Rubber Protection for Cars, SUVs, and Trucks (4-Piece Set)",
-    description: "Protect your vehicle's interior from the elements with Orbit Premium All-Weather Car Floor Mats. This 4-piece set is manufactured from high-density, heavy-duty rubber that is designed to withstand extreme temperatures without cracking or warping. The deep-dish channels and raised edges are specifically engineered to trap water, mud, sand, and snow, keeping your carpets clean and dry. Featuring a custom-fit design that can be easily trimmed with scissors to fit most car, SUV, and truck models perfectly. The non-slip nibbed backing ensures the mats stay securely in place, providing safety and peace of mind while driving. Easy to clean—simply remove and hose down.",
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=80"],
+    title:
+      "Orbit Premium All-Weather Car Floor Mats - Heavy-Duty Rubber Protection for Cars, SUVs, and Trucks (4-Piece Set)",
+    description:
+      "Protect your vehicle's interior from the elements with Orbit Premium All-Weather Car Floor Mats. This 4-piece set is manufactured from high-density, heavy-duty rubber that is designed to withstand extreme temperatures without cracking or warping. The deep-dish channels and raised edges are specifically engineered to trap water, mud, sand, and snow, keeping your carpets clean and dry. Featuring a custom-fit design that can be easily trimmed with scissors to fit most car, SUV, and truck models perfectly. The non-slip nibbed backing ensures the mats stay securely in place, providing safety and peace of mind while driving. Easy to clean—simply remove and hose down.",
+    image:
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=80",
+    ],
     brand: "orbit",
     category: "arac-aksesuarlari",
     price: 799,
@@ -1327,17 +2035,22 @@ const productsRaw = [
       "Custom trim-to-fit universal design",
       "Durable high-density rubber material",
       "Secure non-slip anti-skid backing",
-      "Easy to clean and maintain"
+      "Easy to clean and maintain",
     ],
   },
 
   // --- Jewelry ---
   {
     _id: "prd-jewel-1",
-    title: "Lumina 18K Solid Gold Minimalist Pendant Necklace - Hand-Crafted Fine Jewelry with Adjustable Chain",
-    description: "Elevate your everyday style with the Lumina 18K Solid Gold Minimalist Pendant Necklace. This exquisite piece is hand-crafted from genuine 18K solid yellow gold, offering a timeless radiance that will never tarnish. The delicate minimalist pendant features a smooth, polished finish that catches the light beautifully from every angle. It comes with a matching 18K gold chain that is adjustable from 40cm to 45cm, allowing you to customize the length to suit your neckline. Perfect for layering with other necklaces or wearing alone for a subtle, sophisticated look. This necklace comes beautifully packaged in a luxury gift box, making it an ideal gift for a loved one or a special treat for yourself.",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80"],
+    title:
+      "Lumina 18K Solid Gold Minimalist Pendant Necklace - Hand-Crafted Fine Jewelry with Adjustable Chain",
+    description:
+      "Elevate your everyday style with the Lumina 18K Solid Gold Minimalist Pendant Necklace. This exquisite piece is hand-crafted from genuine 18K solid yellow gold, offering a timeless radiance that will never tarnish. The delicate minimalist pendant features a smooth, polished finish that catches the light beautifully from every angle. It comes with a matching 18K gold chain that is adjustable from 40cm to 45cm, allowing you to customize the length to suit your neckline. Perfect for layering with other necklaces or wearing alone for a subtle, sophisticated look. This necklace comes beautifully packaged in a luxury gift box, making it an ideal gift for a loved one or a special treat for yourself.",
+    image:
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80",
+    ],
     brand: "lumina",
     category: "altin",
     price: 3499,
@@ -1359,17 +2072,22 @@ const productsRaw = [
       "Adjustable chain for versatile fit",
       "Timeless high-polished mirror shine",
       "Hypoallergenic and skin-friendly",
-      "Includes luxury gift packaging"
+      "Includes luxury gift packaging",
     ],
   },
 
   // --- Pets ---
   {
     _id: "prd-pet-1",
-    title: "Alpha Premium Grain-Free Adult Dog Food - High-Protein Salmon & Sweet Potato Formula with Omega Fatty Acids",
-    description: "Give your canine companion the nutrition they deserve with Alpha Premium Grain-Free Adult Dog Food. Our high-protein formula features real salmon as the primary ingredient, providing essential amino acids for strong muscles and a healthy heart. The grain-free recipe uses sweet potatoes as a highly digestible source of energy, making it ideal for dogs with sensitivities or allergies. Enriched with Omega-3 and Omega-6 fatty acids, it promotes a shiny coat and healthy skin. We've also included a blend of antioxidants, vitamins, and minerals to support a robust immune system. Free from artificial colors, flavors, and preservatives, this is a wholesome and delicious meal that dogs love.",
-    image: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=900&q=80"],
+    title:
+      "Alpha Premium Grain-Free Adult Dog Food - High-Protein Salmon & Sweet Potato Formula with Omega Fatty Acids",
+    description:
+      "Give your canine companion the nutrition they deserve with Alpha Premium Grain-Free Adult Dog Food. Our high-protein formula features real salmon as the primary ingredient, providing essential amino acids for strong muscles and a healthy heart. The grain-free recipe uses sweet potatoes as a highly digestible source of energy, making it ideal for dogs with sensitivities or allergies. Enriched with Omega-3 and Omega-6 fatty acids, it promotes a shiny coat and healthy skin. We've also included a blend of antioxidants, vitamins, and minerals to support a robust immune system. Free from artificial colors, flavors, and preservatives, this is a wholesome and delicious meal that dogs love.",
+    image:
+      "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=900&q=80",
+    ],
     brand: "alpha",
     category: "evcil-hayvan-mamasi",
     price: 549,
@@ -1390,17 +2108,22 @@ const productsRaw = [
       "Promotes shiny coat and skin",
       "No artificial colors or flavors",
       "Rich in essential vitamins/minerals",
-      "High-protein for active muscles"
+      "High-protein for active muscles",
     ],
   },
 
   // --- Tools ---
   {
     _id: "prd-tool-1",
-    title: "Orbit 100-Piece Ultimate Multi-Tool Set - Professional Home Repair Kit with Cordless Drill and Heavy-Duty Carry Case",
-    description: "Be prepared for any home project with the Orbit 100-Piece Ultimate Multi-Tool Set. This comprehensive kit includes every essential tool you need for furniture assembly, basic repairs, and DIY projects. The centerpiece is a powerful 18V cordless drill with a variable speed trigger and an integrated LED work light. The set also features a wide array of hand tools, including a forged steel hammer, adjustable wrenches, precision screwdrivers, and a complete socket set. Each tool is manufactured from high-quality heat-treated steel for maximum strength and corrosion resistance. Everything stays organized and portable in the included heavy-duty, blow-molded carry case, which is designed to withstand the rigors of the job site.",
-    image: "https://images.unsplash.com/photo-1581147036324-c17ac41dfa6c?w=900&q=80",
-    images: ["https://images.unsplash.com/photo-1581147036324-c17ac41dfa6c?w=900&q=80"],
+    title:
+      "Orbit 100-Piece Ultimate Multi-Tool Set - Professional Home Repair Kit with Cordless Drill and Heavy-Duty Carry Case",
+    description:
+      "Be prepared for any home project with the Orbit 100-Piece Ultimate Multi-Tool Set. This comprehensive kit includes every essential tool you need for furniture assembly, basic repairs, and DIY projects. The centerpiece is a powerful 18V cordless drill with a variable speed trigger and an integrated LED work light. The set also features a wide array of hand tools, including a forged steel hammer, adjustable wrenches, precision screwdrivers, and a complete socket set. Each tool is manufactured from high-quality heat-treated steel for maximum strength and corrosion resistance. Everything stays organized and portable in the included heavy-duty, blow-molded carry case, which is designed to withstand the rigors of the job site.",
+    image:
+      "https://images.unsplash.com/photo-1581147036324-c17ac41dfa6c?w=900&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1581147036324-c17ac41dfa6c?w=900&q=80",
+    ],
     brand: "orbit",
     category: "el-aletleri",
     price: 1899,
@@ -1422,7 +2145,7 @@ const productsRaw = [
       "Durable heat-treated steel construction",
       "Heavy-duty organized carry case",
       "Ergonomic comfortable soft-grips",
-      "Comprehensive socket and bit set"
+      "Comprehensive socket and bit set",
     ],
   },
 ];
@@ -1442,11 +2165,13 @@ const defaultDelivery = {
 };
 
 const defaultReturns = {
-  message: "Exchange/return options are provided based on product eligibility. Details on the order page.",
+  message:
+    "Exchange/return options are provided based on product eligibility. Details on the order page.",
 };
 
 const defaultWarranty = {
-  message: "Warranty coverage varies by product category. Support is provided through authorized service centers.",
+  message:
+    "Warranty coverage varies by product category. Support is provided through authorized service centers.",
 };
 
 const defaultInTheBox = ["Product", "User manual", "Warranty card"];
@@ -1479,7 +2204,8 @@ const featureImages = [
   {
     _id: "feat-1",
     title: "New Season Fashion",
-    image: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1600&q=80",
     link: "/shop/listing?category=kadin",
   },
   {
@@ -1523,7 +2249,7 @@ const sideBanners = [
 const homeSections = [
   {
     _id: "hs-1",
-    title: "Best Selling",
+    title: "BEST SELLING",
     contentType: "BEST_SELLING",
     contentValue: "",
     itemLimit: 20,
@@ -1531,17 +2257,17 @@ const homeSections = [
   },
   {
     _id: "hs-2",
-    title: "New Fashion Arrivals",
+    title: "NEW FASHION ARRIVALS",
     contentType: "CATEGORY",
     contentValue: "kadin",
-    itemLimit: 20,
+    itemLimit: 22,
     isActive: true,
   },
   {
     _id: "hs-3",
-    title: "AudioX Campaigns",
-    contentType: "BRAND",
-    contentValue: "audiox",
+    title: "MAN SPECIAL OFFERS",
+    contentType: "CATEGORY",
+    contentValue: "erkek",
     itemLimit: 20,
     isActive: true,
   },
@@ -1552,7 +2278,8 @@ const productReviews = {
     {
       user: { name: "Ahmet Y." },
       rating: 5,
-      comment: "The screen is very clear and the performance is really good. Great for the price.",
+      comment:
+        "The screen is very clear and the performance is really good. Great for the price.",
       createdAt: "2026-03-18T12:00:00.000Z",
       verified: true,
     },
@@ -1593,7 +2320,8 @@ const productReviews = {
     {
       user: { name: "Zeynep B." },
       rating: 5,
-      comment: "Tam istediğim kalıp! Kumaşı çok kaliteli ve oversize duruşu mükemmel.",
+      comment:
+        "Tam istediğim kalıp! Kumaşı çok kaliteli ve oversize duruşu mükemmel.",
       createdAt: "2026-04-10T12:00:00.000Z",
       verified: true,
     },
@@ -1606,7 +2334,313 @@ const productReviews = {
       createdAt: "2026-04-12T14:30:00.000Z",
       verified: true,
     },
-  ]
+  ],
+};
+
+const quickExploreItems = [
+  {
+    title: "Phones",
+    image: "/bannerx/1.webp",
+    link: "/shop/listing?category=telefon",
+  },
+  {
+    title: "Sound",
+    image: "/bannerx/2.webp",
+    link: "/shop/listing?category=ses-sistemi",
+  },
+  {
+    title: "Orbit",
+    image: "/bannerx/3.webp",
+    link: "/shop/listing?brand=orbit",
+  },
+  {
+    title: "AudioX",
+    image: "/bannerx/4.webp",
+    link: "/shop/listing?brand=audiox",
+  },
+  {
+    title: "Lumina",
+    image: "/bannerx/5.webp",
+    link: "/shop/listing?brand=lumina",
+  },
+  {
+    title: "Novatek",
+    image: "/bannerx/6.webp",
+    link: "/shop/listing?brand=novatek",
+  },
+  {
+    title: "Gadgets",
+    image: "/bannerx/2.webp",
+    link: "/shop/listing?category=aksesuar",
+  },
+  {
+    title: "Deals",
+    image: "/bannerx/2.webp",
+    link: "/shop/listing?category=firsatlar",
+  },
+];
+
+// Mapping for various home section subcategories
+const homeSubcategoriesData = {
+  "New Fashion Arrivals": [
+    {
+      title: "Bluz",
+      image: "/sub_woman/1.avif",
+      link: "/shop/listing?category=bluz",
+    },
+    {
+      title: "Fistan",
+      image: "/sub_woman/2.avif",
+      link: "/shop/listing?category=fistan",
+    },
+    {
+      title: "Spor Giyim",
+      image: "/sub_woman/3.avif",
+      link: "/shop/listing?category=spor-giyim",
+    },
+    {
+      title: "Takı",
+      image: "/sub_woman/4.avif",
+      link: "/shop/listing?category=taki",
+    },
+    {
+      title: "Toka",
+      image: "/sub_woman/5.avif",
+      link: "/shop/listing?category=toka",
+    },
+    {
+      title: "Çanta",
+      image: "/sub_woman/7.avif",
+      link: "/shop/listing?category=canta",
+    },
+    {
+      title: "Tümü",
+      image: "/sub_woman/6.avif",
+      link: "/shop/listing?category=women-fashion",
+    },
+  ],
+  "Fashion for Men": [
+    {
+      title: "T-Shirt",
+      image: "/bannerx/1.webp",
+      link: "/shop/listing?category=t-shirt",
+    },
+    {
+      title: "Pantolon",
+      image: "/bannerx/2.webp",
+      link: "/shop/listing?category=pantolon",
+    },
+    {
+      title: "Ceket",
+      image: "/bannerx/3.webp",
+      link: "/shop/listing?category=ceket",
+    },
+    {
+      title: "Ayakkabı",
+      image: "/bannerx/4.webp",
+      link: "/shop/listing?category=men-shoes",
+    },
+    {
+      title: "Saat",
+      image: "/bannerx/5.webp",
+      link: "/shop/listing?category=watches",
+    },
+    {
+      title: "Sweatshirt",
+      image: "/sub_man/7.avif",
+      link: "/shop/listing?category=sweatshirt",
+    },
+    {
+      title: "Tümü",
+      image: "/bannerx/6.webp",
+      link: "/shop/listing?category=men-fashion",
+    },
+  ],
+  Electronics: [
+    {
+      title: "Laptop",
+      image: "/Electronics/1.avif",
+      link: "/shop/listing?category=laptop",
+    },
+    {
+      title: "Telefon",
+      image: "/Electronics/2.avif",
+      link: "/shop/listing?category=telefon",
+    },
+    {
+      title: "Tablet",
+      image: "/Electronics/3.avif",
+      link: "/shop/listing?category=tablet",
+    },
+    {
+      title: "Kulaklık",
+      image: "/Electronics/4.avif",
+      link: "/shop/listing?category=kulaklik",
+    },
+    {
+      title: "Kamera",
+      image: "/Electronics/5.avif",
+      link: "/shop/listing?category=kamera",
+    },
+    {
+      title: "Akıllı Saat",
+      image: "/Electronics/7.avif",
+      link: "/shop/listing?category=akilli-saat",
+    },
+    {
+      title: "Tümü",
+      image: "/Electronics/6.avif",
+      link: "/shop/listing?category=electronics",
+    },
+  ],
+  "Beauty & Care": [
+    {
+      title: "Makyaj",
+      image: "/Beauty&Care/1.avif",
+      link: "/shop/listing?category=makyaj",
+    },
+    {
+      title: "Cilt Bakımı",
+      image: "/Beauty&Care/2.avif",
+      link: "/shop/listing?category=cilt-bakimi",
+    },
+    {
+      title: "Saç Bakımı",
+      image: "/Beauty&Care/3.avif",
+      link: "/shop/listing?category=sac-bakimi",
+    },
+    {
+      title: "Parfüm",
+      image: "/Beauty&Care/4.avif",
+      link: "/shop/listing?category=parfum",
+    },
+    {
+      title: "Erkek Bakım",
+      image: "/Beauty&Care/5.avif",
+      link: "/shop/listing?category=men-beauty",
+    },
+    {
+      title: "Duş Jeli",
+      image: "/Beauty&Care/7.avif",
+      link: "/shop/listing?category=dus-jeli",
+    },
+    {
+      title: "Tümü",
+      image: "/Beauty&Care/6.avif",
+      link: "/shop/listing?category=beauty",
+    },
+  ],
+  Cosmetics: [
+    {
+      title: "Ruj",
+      image: "/Cosmetics/1.avif",
+      link: "/shop/listing?category=ruj",
+    },
+    {
+      title: "Far Paleti",
+      image: "/Cosmetics/2.avif",
+      link: "/shop/listing?category=makyaj",
+    },
+    {
+      title: "Güneş Kremi",
+      image: "/Cosmetics/3.avif",
+      link: "/shop/listing?category=cilt-bakimi",
+    },
+    {
+      title: "Oje",
+      image: "/Cosmetics/4.avif",
+      link: "/shop/listing?category=oje",
+    },
+    {
+      title: "Rimel",
+      image: "/Cosmetics/5.avif",
+      link: "/shop/listing?category=rimel",
+    },
+    {
+      title: "Fondöten",
+      image: "/Cosmetics/7.avif",
+      link: "/shop/listing?category=fondoten",
+    },
+    {
+      title: "Tümü",
+      image: "/Cosmetics/6.avif",
+      link: "/shop/listing?category=kozmetik",
+    },
+  ],
+  "Supermarket & Food": [
+    {
+      title: "Atıştırmalık",
+      image: "/Supermarket&Food/1.avif",
+      link: "/shop/listing?category=atistirmalik",
+    },
+    {
+      title: "İçecek",
+      image: "/Supermarket&Food/2.avif",
+      link: "/shop/listing?category=icecek",
+    },
+    {
+      title: "Kahvaltı",
+      image: "/Supermarket&Food/3.avif",
+      link: "/shop/listing?category=kahvalti",
+    },
+    {
+      title: "Temizlik",
+      image: "/Supermarket&Food/4.avif",
+      link: "/shop/listing?category=temizlik",
+    },
+    {
+      title: "Süt Ürünleri",
+      image: "/Supermarket&Food/5.avif",
+      link: "/shop/listing?category=market",
+    },
+    {
+      title: "Dondurulmuş Gıda",
+      image: "/Supermarket&Food/7.avif",
+      link: "/shop/listing?category=dondurulmus-gida",
+    },
+    {
+      title: "Tümü",
+      image: "/Supermarket&Food/6.avif",
+      link: "/shop/listing?category=market",
+    },
+  ],
+  "Erkeklere Özel Seçenekler": [
+    {
+      title: "Gömlek",
+      image: "/sub_man/1.avif",
+      link: "/shop/listing?category=gomlek",
+    },
+    {
+      title: "Pantolon",
+      image: "/sub_man/2.avif",
+      link: "/shop/listing?category=pantolon",
+    },
+    {
+      title: "Ceket",
+      image: "/sub_man/3.avif",
+      link: "/shop/listing?category=ceket",
+    },
+    {
+      title: "T-Shirt",
+      image: "/sub_man/4.avif",
+      link: "/shop/listing?category=t-shirt",
+    },
+    {
+      title: "Ayakkabı",
+      image: "/sub_man/5.avif",
+      link: "/shop/listing?category=erkek-ayakkabi",
+    },
+    {
+      title: "Kazak",
+      image: "/sub_man/7.avif",
+      link: "/shop/listing?category=kazak",
+    },
+    {
+      title: "Tümü",
+      image: "/sub_man/6.avif",
+      link: "/shop/listing?category=erkeklere-ozel-secenekler",
+    },
+  ],
 };
 
 export {
@@ -1617,4 +2651,6 @@ export {
   productReviews,
   products,
   sideBanners,
+  quickExploreItems,
+  homeSubcategoriesData,
 };

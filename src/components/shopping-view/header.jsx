@@ -1,5 +1,20 @@
-import { MessageCircle, Search, ChevronDown, X } from "lucide-react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import {
+  MessageCircle,
+  Search,
+  ChevronDown,
+  ShoppingCart,
+  Globe,
+  LayoutGrid,
+  Heart,
+  MapPin,
+  Menu,
+} from "lucide-react";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useDispatch, useSelector } from "react-redux";
@@ -228,7 +243,7 @@ function CategorySubMenu() {
 
   return (
     <div className="bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
-      <nav className="mx-auto w-full max-w-[1400px] px-4 max-[1024px]:px-1 flex items-center justify-center gap-x-2 min-h-[44px] overflow-x-auto no-scrollbar category-menu-container relative z-40">
+      <nav className="mx-auto w-full max-w-[96rem] px-4 lg:px-1 max-[1024px]:px-1 flex items-center justify-center gap-x-2 min-h-[44px] overflow-x-auto no-scrollbar category-menu-container relative z-40">
         {categoryList.slice(0, 10).map((category) =>
           category.children && category.children.length > 0 ? (
             <HoverMenu
@@ -282,6 +297,32 @@ function CategorySubMenu() {
 }
 
 function MainHeaderActions() {
+  const navigate = useNavigate();
+  const { cartItems } = useSelector((state) => state.cart || { cartItems: [] });
+  const [selectedCurrency, setSelectedCurrency] = useState("TRY");
+  const totalCartItems = cartItems.reduce(
+    (acc, item) => acc + (item.quantity || 1),
+    0,
+  );
+  const currencyLabels = {
+    TRY: "TRY",
+    USD: "USD",
+    EUR: "EUR",
+  };
+  const currencyIcons = {
+    TRY: "₺",
+    USD: "$",
+    EUR: "€",
+  };
+
+  const handleCurrencyChange = () => {
+    setSelectedCurrency((prev) => {
+      if (prev === "TRY") return "USD";
+      if (prev === "USD") return "EUR";
+      return "TRY";
+    });
+  };
+
   const handleWhatsApp = () => {
     window.open(
       "https://wa.me/905347168754?text=Merhaba%2C%20site%20uzerinden%20iletisime%20gecmek%20istiyorum.",
@@ -289,9 +330,129 @@ function MainHeaderActions() {
       "noopener,noreferrer",
     );
   };
+  const handleStoreLocation = () => {
+    window.open(
+      "https://maps.google.com/?q=Istanbul+store",
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
+  const handleOpenMobileCategoriesMenu = () => {
+    window.dispatchEvent(new Event("open-mobile-categories-menu"));
+  };
 
   return (
     <div className="flex items-center gap-2 md:gap-4">
+      <div className="flex items-center gap-1 md:hidden">
+        <Button
+          variant="outline"
+          className="h-9 px-2 rounded-full border border-slate-200 bg-white text-slate-700"
+          aria-label="Dil Seçimi"
+          onClick={() => navigate("/shop/home")}
+        >
+          <Globe className="w-3.5 h-3.5" />
+          <span className="ml-1 text-[10px] font-semibold">TR/EN</span>
+        </Button>
+
+        <Button
+          variant="outline"
+          className="h-9 w-9 p-0 rounded-full border border-slate-200 bg-white text-slate-700"
+          aria-label="Kur Seçimi"
+          onClick={handleCurrencyChange}
+        >
+          <span className="text-sm font-bold leading-none">
+            {currencyIcons[selectedCurrency]}
+          </span>
+        </Button>
+
+        <Button
+          variant="outline"
+          className="h-9 w-9 p-0 rounded-full border border-slate-200 bg-white text-slate-700"
+          aria-label="Mağaza Konumu"
+          onClick={handleStoreLocation}
+        >
+          <MapPin className="w-4 h-4" />
+        </Button>
+
+        <Button
+          variant="outline"
+          className="h-9 w-9 p-0 rounded-full border border-slate-200 bg-white text-slate-700"
+          aria-label="Kategori Menüsü"
+          onClick={handleOpenMobileCategoriesMenu}
+        >
+          <Menu className="w-4 h-4" />
+        </Button>
+      </div>
+
+      <Button
+        variant="outline"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
+        aria-label="Tüm Ürünler"
+        onClick={() => navigate("/shop/listing")}
+      >
+        <LayoutGrid className="w-4 h-4" />
+        <span className="text-sm font-semibold">Tüm Ürünler</span>
+      </Button>
+
+      <Button
+        variant="outline"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
+        aria-label="Dil Seçimi"
+        onClick={() => navigate("/shop/home")}
+      >
+        <Globe className="w-4 h-4" />
+        <span className="text-sm font-semibold">TR | EN</span>
+      </Button>
+
+      <Button
+        variant="outline"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
+        aria-label="Kur Seçimi"
+        onClick={handleCurrencyChange}
+      >
+        <span className="text-base font-bold leading-none">
+          {currencyIcons[selectedCurrency]}
+        </span>
+        <span className="text-sm font-semibold">
+          {currencyLabels[selectedCurrency]}
+        </span>
+      </Button>
+
+      <Button
+        variant="outline"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
+        aria-label="Favoriler"
+        onClick={() => navigate("/shop/listing")}
+      >
+        <Heart className="w-4 h-4" />
+        <span className="text-sm font-semibold">Favoriler</span>
+      </Button>
+
+      <Button
+        variant="outline"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
+        aria-label="Mağaza Konumu"
+        onClick={handleStoreLocation}
+      >
+        <MapPin className="w-4 h-4" />
+        <span className="text-sm font-semibold">Konum</span>
+      </Button>
+
+      <Button
+        variant="outline"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-3 py-2 h-10 text-purple-700 hover:bg-purple-100 hover:border-purple-300 relative"
+        aria-label="Sepet"
+        onClick={() => navigate("/shop/cart")}
+      >
+        <ShoppingCart className="w-4 h-4" />
+        <span className="text-sm font-semibold">Sepetim</span>
+        {totalCartItems > 0 && (
+          <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-rose-500 text-white text-[10px] font-bold flex items-center justify-center">
+            {totalCartItems}
+          </span>
+        )}
+      </Button>
+
       <Button
         variant="secondary"
         className="hidden md:flex items-center gap-2 rounded-full border border-green-100 bg-green-50 px-3 md:px-4 py-2 h-10 text-green-700 hover:bg-green-100"
@@ -307,29 +468,9 @@ function MainHeaderActions() {
   );
 }
 
-function TopStrip() {
-  return (
-    <div className="bg-slate-100 text-xs max-[720px]:text-[10px] text-slate-600 border-b block">
-      <div className="mx-auto w-full max-w-[1400px] px-2 md:px-4 h-8 md:h-9 flex justify-end items-center">
-        <div className="flex items-center gap-4 divide-x divide-slate-300">
-          <Link to="#" className="hover:text-primary transition-colors">
-            Store Locator
-          </Link>
-          <div className="pl-4 flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
-            {/* <img src="https://flagcdn.com/w20/sa.png" alt="SA" className="w-4 h-3" /> */}
-            <span>Saudi Arabia | SAR</span>
-          </div>
-          <div className="pl-4 flex items-center gap-1 cursor-pointer hover:text-primary transition-colors font-medium text-jarir-blue">
-            <span>English</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function ShoppingHeader() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState({
     products: [],
@@ -446,6 +587,16 @@ function ShoppingHeader() {
     }
   };
 
+  const handleDesktopSearchFocus = () => {
+    if (location.pathname.startsWith("/shop/search")) return;
+    const keyword = searchTerm.trim();
+    navigate(
+      keyword
+        ? `/shop/search?keyword=${encodeURIComponent(keyword)}`
+        : "/shop/search",
+    );
+  };
+
   const hasSuggestions =
     suggestions.products.length > 0 ||
     suggestions.categories.length > 0 ||
@@ -537,14 +688,30 @@ function ShoppingHeader() {
     </div>
   );
 
+  const sloganItems = Array.from({ length: 10 });
+
   return (
     <header className="sticky top-0 z-[60] w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85 shadow-sm">
-      <TopStrip />
-      <div className="mx-auto w-full max-w-[1400px] px-2 md:px-4">
+      <div className="header-top-stripe" aria-hidden="true">
+        <div className="header-top-stripe-track">
+          {sloganItems.map((_, idx) => (
+            <span key={`slogan-a-${idx}`} className="header-top-stripe-text">
+              Fast Delivery • Secure Payment • Premium Quality • Special Deals
+            </span>
+          ))}
+          {sloganItems.map((_, idx) => (
+            <span key={`slogan-b-${idx}`} className="header-top-stripe-text">
+              Fast Delivery • Secure Payment • Premium Quality • Special Deals
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="mx-auto w-full max-w-[96rem] px-2 md:px-4 lg:px-1">
         <div className="flex h-20 items-center justify-between gap-3 md:gap-6 max-[767px]:h-16 relative">
           <Link to="/shop/home" className="flex-shrink-0 rounded-xl px-1 py-1">
             <img
-              className="h-24 w-auto max-[690px]:h-[70px] max-[490px]:h-[55px] transition-all"
+              className="h-16 w-auto max-[690px]:h-[40px] max-[490px]:h-[40px] transition-all"
               src="/logoo.png"
               alt="logo"
               aria-label="Ana Sayfa"
@@ -553,7 +720,7 @@ function ShoppingHeader() {
           </Link>
 
           {/* Search Container (Desktop & Mobile) */}
-          <div className="flex-grow flex items-center justify-end min-w-0 px-2 md:px-0">
+          <div className="flex-grow flex items-center justify-end min-w-0 md:px-0">
             {/* Desktop Search */}
             <form
               onSubmit={handleSearchSubmit}
@@ -566,7 +733,8 @@ function ShoppingHeader() {
                   placeholder="Search products, categories, or brands..."
                   value={searchTerm}
                   onChange={(e) => handleSearchChange(e, "desktop")}
-                  className="w-full rounded-full bg-slate-50 pl-10 pr-4 py-2.5 h-11 text-sm border border-slate-200 focus:border-primary focus:bg-background focus:ring-1 focus:ring-primary"
+                  onFocus={handleDesktopSearchFocus}
+                  className="w-full rounded-full bg-slate-50 pl-10 pr-4 py-2.5 h-11 text-sm border border-slate-200 focus:bg-background focus:outline-none focus:border-slate-200 focus-visible:outline-none focus-visible:border-slate-200 focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
                 {showSuggest &&
                   activeInput === "desktop" &&
@@ -589,15 +757,16 @@ function ShoppingHeader() {
             </form>
 
             {/* Mobile Search (Always Visible & Embedded) */}
-            <div className="md:hidden flex items-center justify-end w-full max-w-[320px]">
-              <div className="bg-slate-50 rounded-full flex items-center gap-2 px-3 py-1.5 border border-slate-200 h-10 w-full shadow-sm focus-within:border-purple-200 focus-within:bg-white focus-within:shadow-md transition-all">
+            <div className="md:hidden flex items-center justify-end w-full max-w-[360px] m-0 p-0">
+              <div className="bg-slate-50 rounded-full flex items-center gap-2 py-1.5 border border-slate-200 h-10 w-full m-0 px-3 focus-within:bg-white transition-colors duration-200">
                 <Search className="h-4 w-4 text-slate-400 flex-shrink-0" />
                 <Input
                   type="search"
                   placeholder="Ara..."
                   value={searchTerm}
                   onChange={(e) => handleSearchChange(e, "mobile")}
-                  className="flex-grow border-none bg-transparent focus-visible:ring-0 h-full text-sm px-1 min-w-0"
+                  onFocus={handleDesktopSearchFocus}
+                  className="flex-grow border-none bg-transparent h-full text-sm px-1 min-w-0 focus:outline-none focus:border-transparent focus-visible:outline-none focus-visible:border-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
                 {showSuggest &&
                   activeInput === "mobile" &&

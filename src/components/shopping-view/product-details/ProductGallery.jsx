@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useMemo } from "react";
 
-const FALLBACK_IMAGE = "/tutu.png";
+const FALLBACK_IMAGE = "/sub_woman/5.avif";
 
 function ProductGallery({ productDetails, selectedImage, onSelectImage }) {
   const images = useMemo(() => {
@@ -40,10 +40,11 @@ function ProductGallery({ productDetails, selectedImage, onSelectImage }) {
           <div className="mt-5 flex gap-2.5 overflow-x-auto no-scrollbar pt-2 px-1 pb-1 items-center justify-center">
             <button
               type="button"
-              className={`flex-shrink-0 w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-xl overflow-hidden cursor-pointer border-2 transition-all duration-200 bg-white flex items-center justify-center shadow-sm hover:shadow-md ${selectedImage === productDetails.image
-                ? "border-purple-500 ring-2 ring-purple-200 scale-105"
-                : "border-slate-200 hover:border-purple-300"
-                }`}
+              className={`flex-shrink-0 w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-xl overflow-hidden cursor-pointer border-2 transition-all duration-200 bg-white flex items-center justify-center shadow-sm hover:shadow-md ${
+                selectedImage === productDetails.image
+                  ? "border-purple-500 ring-2 ring-purple-200 scale-105"
+                  : "border-slate-200 hover:border-purple-300"
+              }`}
               onClick={() => onSelectImage(productDetails.image)}
               aria-label="Ana resim"
             >
@@ -62,10 +63,11 @@ function ProductGallery({ productDetails, selectedImage, onSelectImage }) {
               <button
                 type="button"
                 key={`${image}-${index}`}
-                className={`flex-shrink-0 w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-xl overflow-hidden cursor-pointer border-2 transition-all duration-200 bg-white flex items-center justify-center shadow-sm hover:shadow-md ${selectedImage === image
-                  ? "border-purple-500 ring-2 ring-purple-200 scale-105"
-                  : "border-slate-200 hover:border-purple-300"
-                  }`}
+                className={`flex-shrink-0 w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-xl overflow-hidden cursor-pointer border-2 transition-all duration-200 bg-white flex items-center justify-center shadow-sm hover:shadow-md ${
+                  selectedImage === image
+                    ? "border-purple-500 ring-2 ring-purple-200 scale-105"
+                    : "border-slate-200 hover:border-purple-300"
+                }`}
                 onClick={() => onSelectImage(image)}
                 aria-label={`Resim ${index + 2}`}
               >
@@ -98,4 +100,3 @@ ProductGallery.propTypes = {
 };
 
 export default ProductGallery;
-

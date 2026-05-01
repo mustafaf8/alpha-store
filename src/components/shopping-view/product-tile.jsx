@@ -11,7 +11,7 @@ import {
   Star,
 } from "lucide-react";
 
-const FALLBACK_IMAGE = "/tutu.png";
+const FALLBACK_IMAGE = "/sub_woman/5.avif";
 
 const ShoppingProductTile = React.memo(function ShoppingProductTile({
   product,
@@ -61,7 +61,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
       onClick={handleProductClick}
     >
       {/* Product Image area with Badges */}
-      <div className="product-tile-image relative z-0 w-full flex-shrink-0 bg-white rounded-xl overflow-hidden">
+      <div className="product-tile-image relative z-0 w-[calc(100%+1.5rem)] -mx-3 -mt-3 flex-shrink-0 bg-white overflow-hidden">
         <img
           src={product?.image}
           alt={product?.title}
@@ -75,7 +75,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
 
         <div className="absolute inset-0 z-30 pointer-events-none">
           {/* Top Left Heart Icon */}
-          <div className="absolute top-2 left-2 z-10 max-[720px]:top-1 max-[720px]:left-1">
+          <div className="absolute top-1 left-1 z-10 max-[720px]:top-0.5 max-[720px]:left-0.5">
             <button
               onClick={handleAction}
               className="pointer-events-auto bg-white border border-slate-200 p-2 max-[720px]:p-1.5 rounded-xl max-[720px]:rounded-lg text-slate-600 hover:text-purple-600 transition-colors"
@@ -85,7 +85,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
           </div>
 
           {/* Top Right Status Badge */}
-          <div className="absolute top-2 right-2 z-10 max-[720px]:top-1 max-[720px]:right-1">
+          <div className="absolute top-1 right-1 z-10 max-[720px]:top-0.5 max-[720px]:right-0.5">
             <span className="bg-white border border-slate-200 text-blue-600 font-bold text-[10px] max-[720px]:text-[8px] px-2 py-1 max-[720px]:px-1.5 max-[720px]:py-0.5 rounded-md max-[720px]:rounded tracking-wide">
               {statusText}
             </span>
@@ -94,7 +94,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
       </div>
 
       {/* Product Details */}
-      <div className="flex flex-col gap-2 relative z-0">
+      <div className="flex flex-col gap-1.5 relative z-0">
         {/* Vendor */}
         <span className="product-tile-vendor text-purple-500 font-bold text-xs truncate">
           {vendorName}
@@ -114,7 +114,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
         </h2>
 
         {/* Attributes */}
-        <div className="flex flex-nowrap overflow-hidden gap-1.5 mt-1">
+        <div className="flex flex-nowrap overflow-hidden gap-1 mt-0.5">
           {attributes.slice(0, 6).map((attr, idx) => (
             <span
               key={idx}
@@ -126,7 +126,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
         </div>
 
         {/* Pricing */}
-        <div className="flex items-end gap-2 mt-2">
+        <div className="flex items-end gap-1.5 mt-1.5">
           <div className="bg-pink-500 text-white p-1 rounded self-start mt-1">
             <Percent className="w-3 h-3 max-[640px]:w-2 max-[640px]:h-2" />
           </div>
@@ -143,7 +143,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
         </div>
 
         {/* Extra Info */}
-        <div className="flex flex-col gap-1.5 mt-2 mb-2">
+        <div className="flex flex-col gap-1 mt-1.5 mb-1">
           <div className="flex items-center gap-2">
             <Ticket className="w-3.5 h-3.5 text-green-500 product-tile-badge-icon" />
             <span className="product-tile-extra text-slate-800 text-xs font-semibold">

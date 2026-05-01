@@ -54,7 +54,7 @@ function SearchProducts() {
   return (
     <div className="container mx-auto md:px-6 px-4 py-8">
       {isMobileInitialState && (
-        <div className="md:hidden space-y-5">
+        <div className="space-y-5">
           <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
             <div className="flex items-center gap-2">
               <Compass className="w-5 h-5 text-purple-600" />

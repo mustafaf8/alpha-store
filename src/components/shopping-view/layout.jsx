@@ -31,7 +31,7 @@ function ShoppingLayout() {
  
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="shop-layout flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
       <ShoppingHeader />
       <main className="flex-grow w-full">
         <Outlet />

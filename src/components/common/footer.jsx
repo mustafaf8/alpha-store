@@ -57,19 +57,19 @@ const Footer = () => {
     {
       title: "Company",
       links: [
-        { label: "About Us", href: "#" },
+        { label: "About Us", href: "/shop/about-us" },
         { label: "Careers", href: "#" },
-        { label: "Store Locator", href: "#" },
+        { label: "Store Locator", href: "/shop/store-locator" },
         { label: "Partnerships", href: "#" },
       ],
     },
     {
       title: "Legal",
       links: [
-        { label: "Privacy Policy", href: "#" },
-        { label: "Terms & Conditions", href: "#" },
-        { label: "Cookie Policy", href: "#" },
-        { label: "Warranty Info", href: "#" },
+        { label: "Privacy Policy", href: "/shop/privacy-policy" },
+        { label: "Terms & Conditions", href: "/shop/terms-and-conditions" },
+        { label: "Cookie Policy", href: "/shop/cookie-policy" },
+        { label: "Warranty Info", href: "/shop/warranty-info" },
       ],
     },
   ];
@@ -199,46 +199,92 @@ const Footer = () => {
       </div>
 
       {/* Payment methods */}
-      <div className="shop-container py-4 md:py-6 flex flex-wrap items-center justify-start gap-3">
-        {paymentMethods.map((p) => {
-          if (hiddenPaymentMethods[p.name]) {
-            return null;
-          }
+      <div className="shop-container py-4 md:py-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-wrap items-center justify-start gap-3">
+          {paymentMethods.map((p) => {
+            if (hiddenPaymentMethods[p.name]) {
+              return null;
+            }
 
-          return (
-            <div
-              key={p.name}
-              className="bg-white rounded-xl px-4 py-2 flex items-center justify-center h-10"
-            >
-              {p.name === "visa" ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 262.3 85"
-                  role="img"
-                  aria-label="visa"
-                  className="h-6 w-[70px]"
-                >
-                  <path
-                    fill="#1434CB"
-                    d="M170.9,0c-18.6,0-35.3,9.7-35.3,27.5c0,20.5,29.5,21.9,29.5,32.1c0,4.3-5,8.2-13.4,8.2c-12,0-21-5.4-21-5.4l-3.8,18c0,0,10.3,4.6,24.1,4.6c20.4,0,36.4-10.1,36.4-28.3c0-21.6-29.6-23-29.6-32.5c0-3.4,4.1-7.1,12.5-7.1c9.5,0,17.3,3.9,17.3,3.9l3.8-17.4C191.3,3.6,182.8,0,170.9,0L170.9,0z M0.5,1.3L0,3.9c0,0,7.8,1.4,14.9,4.3c9.1,3.3,9.7,5.2,11.3,11.1l16.7,64.3h22.4L99.6,1.3H77.3l-22.1,56l-9-47.5c-0.8-5.4-5-8.5-10.2-8.5C36,1.3,0.5,1.3,0.5,1.3z M108.6,1.3L91.1,83.6h21.3l17.4-82.3L108.6,1.3L108.6,1.3z M227.2,1.3c-5.1,0-7.8,2.7-9.8,7.5l-31.2,74.8h22.3l4.3-12.5H240l2.6,12.5h19.7L245.2,1.3L227.2,1.3L227.2,1.3z M230.1,23.6l6.6,30.9H219L230.1,23.6L230.1,23.6z"
+            return (
+              <div
+                key={p.name}
+                className="bg-white rounded-xl px-4 py-2 flex items-center justify-center h-10"
+              >
+                {p.name === "visa" ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 262.3 85"
+                    role="img"
+                    aria-label="visa"
+                    className="h-6 w-[70px]"
+                  >
+                    <path
+                      fill="#1434CB"
+                      d="M170.9,0c-18.6,0-35.3,9.7-35.3,27.5c0,20.5,29.5,21.9,29.5,32.1c0,4.3-5,8.2-13.4,8.2c-12,0-21-5.4-21-5.4l-3.8,18c0,0,10.3,4.6,24.1,4.6c20.4,0,36.4-10.1,36.4-28.3c0-21.6-29.6-23-29.6-32.5c0-3.4,4.1-7.1,12.5-7.1c9.5,0,17.3,3.9,17.3,3.9l3.8-17.4C191.3,3.6,182.8,0,170.9,0L170.9,0z M0.5,1.3L0,3.9c0,0,7.8,1.4,14.9,4.3c9.1,3.3,9.7,5.2,11.3,11.1l16.7,64.3h22.4L99.6,1.3H77.3l-22.1,56l-9-47.5c-0.8-5.4-5-8.5-10.2-8.5C36,1.3,0.5,1.3,0.5,1.3z M108.6,1.3L91.1,83.6h21.3l17.4-82.3L108.6,1.3L108.6,1.3z M227.2,1.3c-5.1,0-7.8,2.7-9.8,7.5l-31.2,74.8h22.3l4.3-12.5H240l2.6,12.5h19.7L245.2,1.3L227.2,1.3L227.2,1.3z M230.1,23.6l6.6,30.9H219L230.1,23.6L230.1,23.6z"
+                    />
+                  </svg>
+                ) : (
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    className="max-h-6 max-w-[70px] object-contain"
+                    onError={() =>
+                      setHiddenPaymentMethods((prev) => ({
+                        ...prev,
+                        [p.name]: true,
+                      }))
+                    }
                   />
-                </svg>
-              ) : (
-                <img
-                  src={p.img}
-                  alt={p.name}
-                  className="max-h-6 max-w-[70px] object-contain"
-                  onError={() =>
-                    setHiddenPaymentMethods((prev) => ({
-                      ...prev,
-                      [p.name]: true,
-                    }))
-                  }
-                />
-              )}
-            </div>
-          );
-        })}
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="self-center lg:self-auto flex items-center gap-2">
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-3 py-2 hover:bg-white/15 transition-colors"
+            aria-label="Download on Google Play"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              role="img"
+              aria-hidden="true"
+              className="h-5 w-5 flex-shrink-0"
+            >
+              <path fill="#34A853" d="M3 2.5 13.5 13 3 23.5z" />
+              <path fill="#4285F4" d="M13.5 13 17 9.5l4 2.5-4 2.5z" />
+              <path fill="#FBBC04" d="M3 2.5 9.9 9.4 13.5 13 3 23.5z" />
+              <path fill="#EA4335" d="M13.5 13 9.9 16.6 3 23.5l18-11.5z" />
+            </svg>
+            <span className="flex flex-col leading-tight">
+              <span className="text-[10px] text-slate-300">GET IT ON</span>
+              <span className="text-sm font-semibold text-white">Google Play</span>
+            </span>
+          </a>
+
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-3 py-2 hover:bg-white/15 transition-colors"
+            aria-label="Download on the App Store"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              role="img"
+              aria-hidden="true"
+              className="h-5 w-5 flex-shrink-0 text-white"
+              fill="currentColor"
+            >
+              <path d="M16.37 12.15c.02 2.38 2.09 3.17 2.12 3.18-.02.06-.33 1.13-1.08 2.24-.65.96-1.33 1.92-2.39 1.94-1.04.02-1.37-.62-2.56-.62-1.19 0-1.56.6-2.53.64-1 .04-1.77-1-2.42-1.95-1.33-1.93-2.35-5.46-.98-7.84.68-1.18 1.9-1.93 3.22-1.95 1.01-.02 1.96.68 2.56.68.6 0 1.73-.84 2.92-.72.5.02 1.9.2 2.8 1.51-.07.04-1.67.97-1.65 2.89zM14.93 5.2c.54-.66.9-1.58.8-2.5-.77.03-1.7.51-2.25 1.17-.49.57-.92 1.5-.8 2.38.86.07 1.72-.44 2.25-1.05z" />
+            </svg>
+            <span className="flex flex-col leading-tight">
+              <span className="text-[10px] text-slate-300">Download on the</span>
+              <span className="text-sm font-semibold text-white">App Store</span>
+            </span>
+          </a>
+        </div>
       </div>
 
       {/* Copyright */}

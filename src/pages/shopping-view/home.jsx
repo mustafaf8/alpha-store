@@ -9,9 +9,10 @@ import ProductTileSkeleton from "@/components/shopping-view/product-tile-skeleto
 import ProductCarousel from "@/components/shopping-view/ProductCarousel";
 import { fetchActiveHomeSections } from "@/store/common-slice/home-sections-slice";
 import { fetchProductDetails } from "@/store/shop/products-slice";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import { quickExploreItems, homeSubcategoriesData } from "@/mockSite/catalog";
 
 function ShoppingHome() {
   const dispatch = useDispatch();
@@ -73,7 +74,9 @@ function ShoppingHome() {
 
       if (!product && productInput) {
         try {
-          const payload = await dispatch(fetchProductDetails(productInput)).unwrap();
+          const payload = await dispatch(
+            fetchProductDetails(productInput),
+          ).unwrap();
           product = payload?.data || { _id: productInput };
         } catch {
           product = { _id: productInput };
@@ -98,49 +101,6 @@ function ShoppingHome() {
     },
     [dispatch, toast],
   );
-
-  const quickExploreItems = [
-    {
-      title: "Phones",
-      image: "/bannerx/1.webp",
-      link: "/shop/listing?category=telefon",
-    },
-    {
-      title: "Sound",
-      image: "/bannerx/2.webp",
-      link: "/shop/listing?category=ses-sistemleri",
-    },
-    {
-      title: "Orbit",
-      image: "/bannerx/3.webp",
-      link: "/shop/listing?brand=orbit",
-    },
-    {
-      title: "AudioX",
-      image: "/bannerx/4.webp",
-      link: "/shop/listing?brand=audiox",
-    },
-    {
-      title: "Lumina",
-      image: "/bannerx/5.webp",
-      link: "/shop/listing?brand=lumina",
-    },
-    {
-      title: "Novatek",
-      image: "/bannerx/6.webp",
-      link: "/shop/listing?brand=novatek",
-    },
-    {
-      title: "Gadgets",
-      image: "/bannerx/2.webp",
-      link: "/shop/listing?category=aksesuar",
-    },
-    {
-      title: "Deals",
-      image: "/bannerx/2.webp",
-      link: "/shop/listing?category=firsatlar",
-    },
-  ];
 
   useEffect(() => {
     if (featureImageList?.length > 1) {
@@ -172,9 +132,89 @@ function ShoppingHome() {
 
   return (
     <div className="bg-white flex flex-col min-h-screen">
+      {/* Hero Banner Section */}
+      <div className="container mx-auto px-4 max-[1024px]:px-0 my-1 md:my-2 pt-1 max-[1024px]:pt-1 relative z-0">
+        <div className="shop-container max-[1024px]:px-2">
+          <div className="w-full">
+            {featuresLoading ? (
+              <div className="flex gap-4 h-[400px] max-sm:h-[250px] max-md:h-[300px]">
+                <Skeleton className="w-full h-full rounded-sm bg-gray-200 animate-pulse" />
+              </div>
+            ) : (
+              <div className="flex w-full">
+                <div className="hero-banner-container relative w-full rounded-sm overflow-hidden shadow-sm group">
+                  {featureImageList && featureImageList.length > 0 ? (
+                    <img
+                      key={
+                        featureImageList[currentSlide]?._id ??
+                        `banner-${currentSlide}`
+                      }
+                      src={featureImageList[currentSlide]?.image}
+                      alt={
+                        featureImageList[currentSlide]?.title ||
+                        `Banner ${currentSlide + 1}`
+                      }
+                      onClick={() =>
+                        handlePromoCardClick(
+                          featureImageList[currentSlide]?.link,
+                        )
+                      }
+                      className={`hero-banner-slide-left absolute inset-0 z-0 h-full w-full object-cover object-center ${
+                        featureImageList[currentSlide]?.link
+                          ? "cursor-pointer"
+                          : ""
+                      }`}
+                      loading="eager"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-gray-400 text-sm">Banner Area</span>
+                    </div>
+                  )}
+                  {featureImageList && featureImageList.length > 1 && (
+                    <>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentSlide(
+                            (prev) =>
+                              (prev - 1 + featureImageList.length) %
+                              featureImageList.length,
+                          );
+                        }}
+                        className="absolute top-1/2 left-3 z-20 -translate-y-1/2 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto"
+                        aria-label="Scroll left"
+                      >
+                        <ChevronLeftIcon className="h-5 w-5" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentSlide(
+                            (prev) => (prev + 1) % featureImageList.length,
+                          );
+                        }}
+                        className="absolute top-1/2 right-3 z-20 -translate-y-1/2 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto"
+                        aria-label="Scroll right"
+                      >
+                        <ChevronRightIcon className="h-5 w-5" />
+                      </Button>
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
       {/* Quick Explore Section */}
       <div className="container mx-auto px-4 max-[1024px]:px-0 max-[720px]:mt-0 mt-4 md:mt-2 relative z-0">
-        <div className="shop-container max-[1024px]:px-2">
+        <div className="shop-container mb-3 max-[1024px]:px-2">
           <section className="px-0 py-1">
             <div className="mb-2 flex items-center justify-between gap-2">
               {/*<h3 className="text-base sm:text-lg font-bold text-purple-700">
@@ -196,7 +236,9 @@ function ShoppingHome() {
                       className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
-
+                  {/* <span className="text-xs sm:text-sm font-semibold text-slate-700 transition-colors group-hover:text-purple-700">
+                    {item.title}
+                  </span>*/}
                 </button>
               ))}
             </div>
@@ -204,107 +246,32 @@ function ShoppingHome() {
         </div>
       </div>
 
-      {/* Hero Banner Section */}
-      <div className="container mx-auto px-4 max-[1024px]:px-0 my-3 md:my-4 pt-1 max-[1024px]:pt-1 relative z-0">
-        <div className="shop-container max-[1024px]:px-2">
-          <div className="w-full">
-            {featuresLoading ? (
-              <div className="flex gap-4 h-[400px] max-sm:h-[250px] max-md:h-[300px]">
-                <Skeleton className="w-full h-full rounded-3xl bg-gray-200 animate-pulse" />
-              </div>
-            ) : (
-              <div className="flex w-full">
-                <div className="hero-banner-container relative w-full rounded-3xl overflow-hidden shadow-sm group">
-                  {featureImageList && featureImageList.length > 0 ? (
-                    <img
-                      key={
-                        featureImageList[currentSlide]?._id ??
-                        `banner-${currentSlide}`
-                      }
-                      src={featureImageList[currentSlide]?.image}
-                      alt={
-                        featureImageList[currentSlide]?.title ||
-                        `Banner ${currentSlide + 1}`
-                      }
-                      onClick={() =>
-                        handlePromoCardClick(
-                          featureImageList[currentSlide]?.link,
-                        )
-                      }
-                      className={`hero-banner-slide-left absolute inset-0 z-0 h-full w-full object-cover object-center ${featureImageList[currentSlide]?.link
-                        ? "cursor-pointer"
-                        : ""
-                        }`}
-                      loading="eager"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-gray-400 text-sm">Banner Area</span>
-                    </div>
-                  )}
-                  {featureImageList && featureImageList.length > 1 && (
-                    <>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setCurrentSlide(
-                            (prev) =>
-                              (prev - 1 + featureImageList.length) %
-                              featureImageList.length,
-                          );
-                        }}
-                        className="absolute top-1/2 left-3 z-20 -translate-y-1/2 bg-white/60 hover:bg-white rounded-full h-8 w-8 max-sm:h-6 max-md:h-6 max-sm:w-6 max-md:w-6 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity"
-                        aria-label="Scroll left"
-                      >
-                        <ChevronLeftIcon className="w-5 h-5 text-gray-700" />
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setCurrentSlide(
-                            (prev) => (prev + 1) % featureImageList.length,
-                          );
-                        }}
-                        className="absolute top-1/2 right-3 z-20 -translate-y-1/2 bg-white/60 hover:bg-white rounded-full h-8 w-8 shadow-md max-sm:h-6 max-md:h-6 max-sm:w-6 max-md:w-6 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity"
-                        aria-label="Scroll right"
-                      >
-                        <ChevronRightIcon className="w-5 h-5 text-gray-700" />
-                      </Button>
-                    </>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-
       {/* Top Brands Section */}
-      <div className="hidden lg:block shop-container mx-auto">
-        <div className="pt-2 pb-0 sm:pt-2 sm:pb-5 sm:px-4">
-          <div className="flex items-center justify-between mb-4 px-1">
-            {/* <h3 className="text-base sm:text-lg font-bold text-purple-700">Top Brands</h3> */}
+      <div className="shop-container mx-auto mb-2 sm:my-1">
+        <div className="pt-0 pb-0 sm:pb-5 sm:px-2 flex items-center md:gap-4 gap-2">
+          {/* Vertical Title */}
+          <div className="flex items-center justify-center [writing-mode:vertical-lr] rotate-180 border-r border-purple-200 pr-1 md:pr-4 self-stretch">
+            <span className="text-[9px] sm:text-xs md:text-sm font-black text-purple-700 uppercase tracking-[0.22em] sm:tracking-[0.26em] md:tracking-[0.3em] py-2">
+              Brands
+            </span>
           </div>
-          <div className="relative group">
+
+          <div className="relative group flex-1 self-center min-w-0">
             <Button
-              variant="outline"
+              variant="ghost"
               size="icon"
               onClick={(e) => {
                 e.stopPropagation();
                 scrollBrands("left");
               }}
-              className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-md bg-white h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity max-md:hidden"
+              className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0 opacity-0 group-hover:opacity-100 max-md:hidden"
             >
-              <ChevronLeftIcon className="h-4 w-4 text-gray-700" />
+              <ChevronLeftIcon className="h-5 w-5" />
             </Button>
 
             <div
               ref={brandScrollRef}
-              className="flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar pb-2 px-1 snap-x scroll-smooth"
+              className="flex gap-1.5 md:gap-3 sm:gap-4 overflow-x-auto no-scrollbar pb-0 px-1 snap-x scroll-smooth"
             >
               {[
                 {
@@ -371,6 +338,14 @@ function ShoppingHome() {
                     </svg>
                   ),
                 },
+                {
+                  name: "Logitech",
+                  img: "https://upload.wikimedia.org/wikipedia/commons/1/17/Logitech_logo.svg",
+                },
+                {
+                  name: "Xiaomi",
+                  img: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Xiaomi_logo_%282021-%29.svg",
+                },
               ].map((brand, idx) => (
                 <div
                   key={idx}
@@ -392,15 +367,15 @@ function ShoppingHome() {
             </div>
 
             <Button
-              variant="outline"
+              variant="ghost"
               size="icon"
               onClick={(e) => {
                 e.stopPropagation();
                 scrollBrands("right");
               }}
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-md bg-white h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity max-md:hidden"
+              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0 opacity-0 group-hover:opacity-100 max-md:hidden"
             >
-              <ChevronRightIcon className="h-4 w-4 text-gray-700" />
+              <ChevronRightIcon className="h-5 w-5" />
             </Button>
           </div>
         </div>
@@ -449,6 +424,22 @@ function ShoppingHome() {
             let sortParams = "salesCount-desc";
             let fetchKey = section._id;
             let viewAllPath = "/shop/listing";
+            const isMenSection =
+              section.contentType === "CATEGORY" &&
+              section.contentValue === "erkek";
+            const isWomenSection =
+              section.contentType === "CATEGORY" &&
+              section.contentValue === "kadin";
+            const sectionSubcategoryKey = isMenSection
+              ? "Erkeklere Özel Seçenekler"
+              : isWomenSection
+                ? "New Fashion Arrivals"
+                : section.title;
+            const sectionSubcategoryLabel = isMenSection
+              ? "Erkeklere Özel Seçenekler"
+              : isWomenSection
+                ? "Kadınlara Özel Seçenekler"
+                : section.title;
 
             if (section.contentType === "BEST_SELLING") {
               sortParams = "salesCount-desc";
@@ -476,7 +467,7 @@ function ShoppingHome() {
               key: fetchKey,
               filterParams: filterParams,
               sortParams: sortParams,
-              limit: section.itemLimit || 10,
+              limit: isWomenSection ? 8 : section.itemLimit || 10,
             };
 
             return (
@@ -487,6 +478,129 @@ function ShoppingHome() {
                   handleAddtoCart={handleAddtoCart}
                   viewAllPath={viewAllPath}
                 />
+
+                {/* Dynamic Subcategories based on mapping */}
+                {homeSubcategoriesData[sectionSubcategoryKey] && (
+                  <div className="shop-container mx-auto max-[1024px]:px-2 mt-4 md:mt-2 mb-8 relative z-0">
+                    {(() => {
+                      const subcategories =
+                        homeSubcategoriesData[sectionSubcategoryKey] || [];
+                      const allItem = subcategories.find(
+                        (item) => item.title === "Tümü",
+                      );
+                      const visibleSubcategories = subcategories.filter(
+                        (item) => item.title !== "Tümü",
+                      );
+
+                      return (
+                        <section className="px-0 py-1">
+                          <div className="flex items-center justify-between mb-3 px-1 gap-2">
+                            <span className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide border-l-4 border-purple-500 pl-2">
+                              {sectionSubcategoryLabel}
+                            </span>
+                            {allItem && (
+                              <Button
+                                variant="link"
+                                onClick={() => navigate(allItem.link)}
+                                className="text-primary p-0 h-auto font-medium text-sm flex items-center gap-1"
+                              >
+                                <span>View All</span>
+                                <ArrowRight className="h-3.5 w-3.5" />
+                              </Button>
+                            )}
+                          </div>
+                          <div className="category-grid-tiles flex gap-2 sm:gap-3.5 overflow-x-auto no-scrollbar snap-x scroll-smooth lg:grid lg:grid-cols-6 lg:gap-4">
+                            {visibleSubcategories.map((item, index) => (
+                              <button
+                                key={index}
+                                type="button"
+                                onClick={() => navigate(item.link)}
+                                className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-white hover:shadow-md hover:border-purple-200 transition-all"
+                              >
+                                <div className="w-full aspect-square overflow-hidden bg-slate-50">
+                                  <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="h-full w-full object-cover object-top transition-transform duration-500 scale-110 group-hover:scale-105"
+                                  />
+                                </div>
+                                <div className="py-2 px-2 w-full flex items-center justify-center border-t border-slate-100 bg-white group-hover:bg-slate-50 transition-colors">
+                                  <span className="text-[11px] sm:text-xs font-semibold text-slate-700 transition-colors group-hover:text-purple-700 text-center truncate">
+                                    {item.title}
+                                  </span>
+                                </div>
+                              </button>
+                            ))}
+                          </div>
+                        </section>
+                      );
+                    })()}
+                  </div>
+                )}
+
+                {isMenSection && (
+                  <div className="shop-container mx-auto max-[1024px]:px-2 space-y-8 mb-10">
+                    {[
+                      "Electronics",
+                      "Beauty & Care",
+                      "Cosmetics",
+                      "Supermarket & Food",
+                    ].map((groupTitle) => {
+                      const groupSubcategories =
+                        homeSubcategoriesData[groupTitle] || [];
+                      const allItem = groupSubcategories.find(
+                        (item) => item.title === "Tümü",
+                      );
+                      const visibleGroupSubcategories =
+                        groupSubcategories.filter(
+                          (item) => item.title !== "Tümü",
+                        );
+
+                      return (
+                        <section key={groupTitle} className="px-0 py-1">
+                          <div className="flex items-center justify-between mb-3 px-1 gap-2">
+                            <span className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide border-l-4 border-purple-500 pl-2">
+                              {groupTitle}
+                            </span>
+                            {allItem && (
+                              <Button
+                                variant="link"
+                                onClick={() => navigate(allItem.link)}
+                                className="text-primary p-0 h-auto font-medium text-sm flex items-center gap-1"
+                              >
+                                <span>View All</span>
+                                <ArrowRight className="h-3.5 w-3.5" />
+                              </Button>
+                            )}
+                          </div>
+                          <div className="category-grid-tiles flex gap-2.5 sm:gap-3.5 overflow-x-auto no-scrollbar snap-x scroll-smooth lg:grid lg:grid-cols-6 lg:gap-4">
+                            {visibleGroupSubcategories.map((item, index) => (
+                              <button
+                                key={`${groupTitle}-${index}`}
+                                type="button"
+                                onClick={() => navigate(item.link)}
+                                className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-white hover:shadow-md hover:border-purple-200 transition-all"
+                              >
+                                <div className="w-full aspect-square overflow-hidden bg-slate-50">
+                                  <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="h-full w-full object-cover object-top transition-transform duration-500 scale-110 group-hover:scale-105"
+                                  />
+                                </div>
+                                <div className="py-2 px-2 w-full flex items-center justify-center border-t border-slate-100 bg-white group-hover:bg-slate-50 transition-colors">
+                                  <span className="text-[11px] sm:text-xs font-semibold text-slate-700 transition-colors group-hover:text-purple-700 text-center truncate">
+                                    {item.title}
+                                  </span>
+                                </div>
+                              </button>
+                            ))}
+                          </div>
+                        </section>
+                      );
+                    })}
+                  </div>
+                )}
 
                 {/* Banners after Best Selling */}
                 {section.contentType === "BEST_SELLING" && (
@@ -520,7 +634,7 @@ function ShoppingHome() {
                 )}
 
                 {/* Banners after New Fashion Arrivals */}
-                {section.title === "New Fashion Arrivals" && (
+                {isWomenSection && (
                   <div className="shop-container mx-auto max-[1024px]:px-2 space-y-4 max-[720px]:space-y-2">
                     {/* First Row - 2 Banners */}
                     <div className="grid grid-cols-2 md:grid-cols-2 gap-4 max-[720px]:gap-2">
@@ -555,6 +669,39 @@ function ShoppingHome() {
                           className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Promotional Banners after men section */}
+                {isMenSection && (
+                  <div className="shop-container mx-auto max-[1024px]:px-2 mb-10">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 max-[720px]:gap-2">
+                      {[
+                        { src: "/bannar2.avif", alt: "Campaign 1" },
+                        { src: "/bannar2.avif", alt: "Campaign 2" },
+                        { src: "/banner3.avif", alt: "Campaign 3" },
+                        { src: "/banner5.avif", alt: "Campaign 4" },
+                        { src: "/banner5.avif", alt: "Campaign 5" },
+                        { src: "/banner6.avif", alt: "Campaign 6" },
+                        { src: "/banner3.avif", alt: "Campaign 7" },
+                        { src: "/bannar2.avif", alt: "Campaign 8" },
+                        { src: "/bannar2.avif", alt: "Campaign 9" },
+                        { src: "/banner5.avif", alt: "Campaign 10" },
+                        { src: "/banner5.avif", alt: "Campaign 11" },
+                        { src: "/banner5.avif", alt: "Campaign 12" },
+                      ].map((banner, idx) => (
+                        <div
+                          key={idx}
+                          className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+                        >
+                          <img
+                            src={banner.src}
+                            alt={banner.alt}
+                            className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}
