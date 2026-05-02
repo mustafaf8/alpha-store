@@ -247,7 +247,7 @@ function ShoppingHome() {
       </div>
 
       {/* Top Brands Section */}
-      <div className="shop-container mx-auto mb-2 sm:my-1">
+      <div className="shop-container mx-auto max-[1024px]:px-2 mb-2 sm:my-1">
         <div className="pt-0 pb-0 sm:pb-5 sm:px-2 flex items-center md:gap-4 gap-2">
           {/* Vertical Title */}
           <div className="flex items-center justify-center [writing-mode:vertical-lr] rotate-180 border-r border-purple-200 pr-1 md:pr-4 self-stretch">
