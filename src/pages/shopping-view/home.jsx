@@ -134,10 +134,10 @@ function ShoppingHome() {
     <div className="bg-white flex flex-col min-h-screen">
       {/* Hero Banner Section */}
       <div className="container mx-auto px-4 max-[1024px]:px-0 my-1 md:my-2 pt-1 max-[1024px]:pt-1 relative z-0">
-        <div className="shop-container max-[1024px]:px-2">
+        <div className="shop-container max-[1024px]:px-2 max-[640px]:px-1">
           <div className="w-full">
             {featuresLoading ? (
-              <div className="flex gap-4 h-[400px] max-sm:h-[250px] max-md:h-[300px]">
+              <div className="flex h-[400px] gap-4 max-[1023px]:h-[350px] max-[640px]:h-[180px]">
                 <Skeleton className="w-full h-full rounded-sm bg-gray-200 animate-pulse" />
               </div>
             ) : (
@@ -184,10 +184,10 @@ function ShoppingHome() {
                               featureImageList.length,
                           );
                         }}
-                        className="absolute top-1/2 left-3 z-20 -translate-y-1/2 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto"
+                        className="pointer-events-auto absolute left-0.5 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 opacity-100 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-purple-600 hover:bg-purple-600 hover:text-white active:scale-95 md:left-1 md:h-8 md:w-8 lg:pointer-events-none lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100"
                         aria-label="Scroll left"
                       >
-                        <ChevronLeftIcon className="h-5 w-5" />
+                        <ChevronLeftIcon className="size-3.5 md:size-4" />
                       </Button>
                       <Button
                         variant="ghost"
@@ -198,10 +198,10 @@ function ShoppingHome() {
                             (prev) => (prev + 1) % featureImageList.length,
                           );
                         }}
-                        className="absolute top-1/2 right-3 z-20 -translate-y-1/2 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto"
+                        className="pointer-events-auto absolute right-0.5 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 opacity-100 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-purple-600 hover:bg-purple-600 hover:text-white active:scale-95 md:right-1 md:h-8 md:w-8 lg:pointer-events-none lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100"
                         aria-label="Scroll right"
                       >
-                        <ChevronRightIcon className="h-5 w-5" />
+                        <ChevronRightIcon className="size-3.5 md:size-4" />
                       </Button>
                     </>
                   )}
@@ -381,7 +381,7 @@ function ShoppingHome() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 space-y-4 pb-8 max-[1024px]:px-0 mt-0">
+      <div className="container mx-auto px-4 space-y-4 pb-16 max-[1024px]:px-0 mt-0">
         {/* Custom Banner Row */}
         <div className="shop-container mx-auto max-[1024px]:px-2">
           <div className="promo-banner-grid grid grid-cols-2 gap-4 max-[720px]:gap-2">
@@ -509,7 +509,7 @@ function ShoppingHome() {
                               </Button>
                             )}
                           </div>
-                          <div className="category-grid-tiles flex gap-2 sm:gap-3.5 overflow-x-auto no-scrollbar snap-x scroll-smooth lg:grid lg:grid-cols-6 lg:gap-4">
+                          <div className="category-grid-tiles flex gap-1 sm:gap-3 overflow-x-auto no-scrollbar snap-x scroll-smooth lg:grid lg:grid-cols-7 lg:gap-3">
                             {visibleSubcategories.map((item, index) => (
                               <button
                                 key={index}
@@ -539,7 +539,7 @@ function ShoppingHome() {
                 )}
 
                 {isMenSection && (
-                  <div className="shop-container mx-auto max-[1024px]:px-2 space-y-8 mb-10">
+                  <div className="shop-container mx-auto max-[1024px]:px-2 space-y-2 md:space-y-4 mb-10">
                     {[
                       "Electronics",
                       "Beauty & Care",
@@ -573,7 +573,7 @@ function ShoppingHome() {
                               </Button>
                             )}
                           </div>
-                          <div className="category-grid-tiles flex gap-2.5 sm:gap-3.5 overflow-x-auto no-scrollbar snap-x scroll-smooth lg:grid lg:grid-cols-6 lg:gap-4">
+                          <div className="category-grid-tiles flex gap-1 sm:gap-3 overflow-x-auto no-scrollbar snap-x scroll-smooth lg:grid lg:grid-cols-7 lg:gap-3">
                             {visibleGroupSubcategories.map((item, index) => (
                               <button
                                 key={`${groupTitle}-${index}`}

@@ -211,7 +211,9 @@ const CATEGORY_TRANSLATIONS = {
 };
 
 const translateName = (name = "") => {
-  return CATEGORY_TRANSLATIONS[name.toLowerCase()] || translateCategoryName(name);
+  return (
+    CATEGORY_TRANSLATIONS[name.toLowerCase()] || translateCategoryName(name)
+  );
 };
 
 function CategorySubMenu() {

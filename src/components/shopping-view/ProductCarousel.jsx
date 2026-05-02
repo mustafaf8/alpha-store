@@ -110,7 +110,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
 
   return (
     <section className="shop-section my-1 py-2 max-[720px]:py-0 max-[720px]:my-0">
-      <div className="shop-container max-[1024px]:px-2">
+      <div className="shop-container max-[1024px]:px-2 max-[640px]:px-1">
         {/* Section header */}
         <div className="flex items-center justify-between mb-2 px-1">
           <h2 className="text-base sm:text-lg md:text-xl font-semibold text-purple-700 flex items-center">
@@ -136,8 +136,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
             variant="ghost"
             size="icon"
             className={cn(
-              "absolute -left-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0",
-              "max-md:-left-2",
+              "absolute left-0.5 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-purple-600 hover:bg-purple-600 hover:text-white active:scale-95 md:left-1 md:h-8 md:w-8",
               !internalLoading && canScrollLeft
                 ? "opacity-100 pointer-events-auto"
                 : "opacity-0 pointer-events-none",
@@ -149,7 +148,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
             aria-disabled={!canScrollLeft || internalLoading}
             aria-label="Scroll left"
           >
-            <ChevronLeftIcon className="h-5 w-5" />
+            <ChevronLeftIcon className="size-3.5 md:size-4" />
           </Button>
 
           {/* Products container */}
@@ -195,8 +194,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
             variant="ghost"
             size="icon"
             className={cn(
-              "absolute -right-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0",
-              "max-md:-right-2",
+              "absolute right-0.5 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-purple-600 hover:bg-purple-600 hover:text-white active:scale-95 md:right-1 md:h-8 md:w-8",
               !internalLoading && canScrollRight
                 ? "opacity-100 pointer-events-auto"
                 : "opacity-0 pointer-events-none",
@@ -208,7 +206,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
             aria-disabled={!canScrollRight || internalLoading}
             aria-label="Scroll right"
           >
-            <ChevronRightIcon className="h-5 w-5" />
+            <ChevronRightIcon className="size-3.5 md:size-4" />
           </Button>
         </div>
       </div>

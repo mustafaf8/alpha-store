@@ -873,7 +873,8 @@ const productsRaw = [
   {
     _id: "prd-23",
     title: "Polarized Retro Sunglasses",
-    description: "Classic sunglasses with UV400 protection and a lightweight frame.",
+    description:
+      "Classic sunglasses with UV400 protection and a lightweight frame.",
     image:
       "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=900&q=80",
     images: [
@@ -2330,7 +2331,8 @@ const productReviews = {
     {
       user: { name: "Caner T." },
       rating: 5,
-      comment: "Great for running, very light, and the sole is extremely comfortable.",
+      comment:
+        "Great for running, very light, and the sole is extremely comfortable.",
       createdAt: "2026-04-12T14:30:00.000Z",
       verified: true,
     },
@@ -2418,6 +2420,11 @@ const homeSubcategoriesData = {
       image: "/sub_woman/6.avif",
       link: "/shop/listing?category=women-fashion",
     },
+    {
+      title: "Blouse",
+      image: "/sub_woman/1.avif",
+      link: "/shop/listing?category=blouse",
+    },
   ],
   "Fashion for Men": [
     {
@@ -2451,9 +2458,9 @@ const homeSubcategoriesData = {
       link: "/shop/listing?category=sweatshirt",
     },
     {
-      title: "All",
-      image: "/bannerx/6.webp",
-      link: "/shop/listing?category=men-fashion",
+      title: "T-Shirt",
+      image: "/bannerx/1.webp",
+      link: "/shop/listing?category=t-shirt",
     },
   ],
   Electronics: [
@@ -2492,6 +2499,11 @@ const homeSubcategoriesData = {
       image: "/Electronics/6.avif",
       link: "/shop/listing?category=electronics",
     },
+    {
+      title: "Laptop",
+      image: "/Electronics/1.avif",
+      link: "/shop/listing?category=laptop",
+    },
   ],
   "Beauty & Care": [
     {
@@ -2529,6 +2541,11 @@ const homeSubcategoriesData = {
       image: "/Beauty&Care/6.avif",
       link: "/shop/listing?category=beauty",
     },
+    {
+      title: "Makeup",
+      image: "/Beauty&Care/1.avif",
+      link: "/shop/listing?category=makeup",
+    },
   ],
   Cosmetics: [
     {
@@ -2562,9 +2579,9 @@ const homeSubcategoriesData = {
       link: "/shop/listing?category=foundation",
     },
     {
-      title: "All",
-      image: "/Cosmetics/6.avif",
-      link: "/shop/listing?category=cosmetics",
+      title: "Lipstick",
+      image: "/Cosmetics/1.avif",
+      link: "/shop/listing?category=lipstick",
     },
   ],
   "Supermarket & Food": [
@@ -2599,9 +2616,9 @@ const homeSubcategoriesData = {
       link: "/shop/listing?category=frozen-food",
     },
     {
-      title: "All",
-      image: "/Supermarket&Food/6.avif",
-      link: "/shop/listing?category=market",
+      title: "Snacks",
+      image: "/Supermarket&Food/1.avif",
+      link: "/shop/listing?category=snacks",
     },
   ],
   "Men's Special Offers": [
@@ -2636,9 +2653,9 @@ const homeSubcategoriesData = {
       link: "/shop/listing?category=sweaters",
     },
     {
-      title: "All",
-      image: "/sub_man/6.avif",
-      link: "/shop/listing?category=mens-special-offers",
+      title: "Pants",
+      image: "/sub_man/2.avif",
+      link: "/shop/listing?category=pants",
     },
   ],
 };
