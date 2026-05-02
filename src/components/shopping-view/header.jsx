@@ -345,21 +345,23 @@ function MainHeaderActions() {
   };
 
   return (
-    <div className="flex items-center gap-2 md:gap-4">
-      <div className="flex items-center gap-1 md:hidden">
+    <div className="flex items-center gap-2 max-[519px]:gap-1 md:gap-4">
+      <div className="flex max-[519px]:gap-0.5 items-center gap-1 md:hidden">
         <Button
           variant="outline"
-          className="h-9 px-2 rounded-full border border-slate-200 bg-white text-slate-700"
-          aria-label="Language Selection"
+          className="h-9 shrink-0 rounded-full border border-slate-200 bg-white px-2 text-slate-700 max-[519px]:h-9 max-[519px]:w-9 max-[519px]:p-0"
+          aria-label="Language: TR / EN"
           onClick={() => navigate("/shop/home")}
         >
-          <Globe className="w-3.5 h-3.5" />
-          <span className="ml-1 text-[10px] font-semibold">TR/EN</span>
+          <Globe className="h-4 w-4 min-[520px]:h-3.5 min-[520px]:w-3.5" />
+          <span className="ml-1 text-[10px] font-semibold max-[519px]:hidden">
+            TR/EN
+          </span>
         </Button>
 
         <Button
           variant="outline"
-          className="h-9 w-9 p-0 rounded-full border border-slate-200 bg-white text-slate-700"
+          className="h-9 w-9 shrink-0 rounded-full border border-slate-200 bg-white p-0 text-slate-700 max-[519px]:hidden"
           aria-label="Currency Selection"
           onClick={handleCurrencyChange}
         >
@@ -713,7 +715,7 @@ function ShoppingHeader() {
       </div>
 
       <div className="mx-auto w-full max-w-[96rem] px-2 md:px-4 lg:px-1">
-        <div className="flex h-20 items-center justify-between gap-3 md:gap-6 max-[767px]:h-16 relative">
+        <div className="relative flex h-14 items-center justify-between gap-3 md:h-20 md:gap-6">
           <Link to="/shop/home" className="flex-shrink-0 rounded-xl px-1 py-1">
             <img
               className="h-16 w-auto max-[690px]:h-[40px] max-[490px]:h-[40px] transition-all"
@@ -725,21 +727,21 @@ function ShoppingHeader() {
           </Link>
 
           {/* Search Container (Desktop & Mobile) */}
-          <div className="flex-grow flex items-center justify-end min-w-0 md:px-0">
+          <div className="flex min-w-0 flex-1 items-center justify-stretch md:flex-grow md:px-0">
             {/* Desktop Search */}
             <form
               onSubmit={handleSearchSubmit}
               className="w-full max-w-5xl max-md:hidden mr-auto"
             >
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   type="search"
                   placeholder="Search products, categories, or brands..."
                   value={searchTerm}
                   onChange={(e) => handleSearchChange(e, "desktop")}
                   onFocus={handleDesktopSearchFocus}
-                  className="w-full rounded-full bg-slate-50 pl-10 pr-4 py-2.5 h-11 text-sm border border-slate-200 focus:bg-background focus:outline-none focus:border-slate-200 focus-visible:outline-none focus-visible:border-slate-200 focus-visible:ring-0 focus-visible:ring-offset-0"
+                  className="h-10 w-full rounded-full border border-slate-200 bg-slate-50 py-2 pl-10 pr-4 text-xs sm:text-[13px] lg:text-sm xl:text-[0.9375rem] placeholder:text-muted-foreground/55 focus:bg-background focus:outline-none focus:border-slate-200 focus-visible:outline-none focus-visible:border-slate-200 focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
                 {showSuggest &&
                   activeInput === "desktop" &&
@@ -748,7 +750,7 @@ function ShoppingHeader() {
                     <div
                       className="fixed z-[70]"
                       style={{
-                        top: "114px",
+                        top: "108px",
                         left: "calc(50% - 320px)",
                         width: "600px",
                         maxWidth: "90vw",
@@ -762,16 +764,16 @@ function ShoppingHeader() {
             </form>
 
             {/* Mobile Search (Always Visible & Embedded) */}
-            <div className="md:hidden flex items-center justify-end w-full max-w-[360px] m-0 p-0">
-              <div className="bg-slate-50 rounded-full flex items-center gap-2 py-1.5 border border-slate-200 h-10 w-full m-0 px-3 focus-within:bg-white transition-colors duration-200">
-                <Search className="h-4 w-4 text-slate-400 flex-shrink-0" />
+            <div className="m-0 flex w-full min-w-0 flex-1 items-center p-0 max-[519px]:max-w-none md:hidden min-[520px]:max-w-[360px]">
+              <div className="m-0 flex h-9 w-full items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 transition-colors duration-200 focus-within:bg-white">
+                <Search className="h-3.5 w-3.5 shrink-0 text-slate-400" />
                 <Input
                   type="search"
                   placeholder="Search..."
                   value={searchTerm}
                   onChange={(e) => handleSearchChange(e, "mobile")}
                   onFocus={handleDesktopSearchFocus}
-                  className="flex-grow border-none bg-transparent h-full text-sm px-1 min-w-0 focus:outline-none focus:border-transparent focus-visible:outline-none focus-visible:border-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
+                  className="h-full min-w-0 flex-grow border-none bg-transparent px-1 text-[11px] min-[430px]:text-xs min-[520px]:text-[13px] sm:text-sm placeholder:text-muted-foreground/55 focus:outline-none focus:border-transparent focus-visible:outline-none focus-visible:border-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
                 {showSuggest &&
                   activeInput === "mobile" &&
@@ -780,7 +782,7 @@ function ShoppingHeader() {
                     <div
                       className="fixed z-[80]"
                       style={{
-                        top: "75px",
+                        top: "78px",
                         left: "50%",
                         transform: "translateX(-50%)",
                         width: "calc(100vw - 32px)",

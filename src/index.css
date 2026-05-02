@@ -293,6 +293,21 @@
   pointer-events: none;
 }
 
+@media (max-width: 767px) {
+  .header-top-stripe {
+    height: 22px;
+  }
+
+  .header-top-stripe-track {
+    gap: 1.1rem;
+  }
+
+  .header-top-stripe-text {
+    font-size: 9px;
+    letter-spacing: 0.06em;
+  }
+}
+
 @keyframes header-stripe-scroll {
   0% {
     transform: translateX(0);
