@@ -204,16 +204,17 @@
 }
 
 @media (min-width: 1024px) {
+
   .shop-layout main .container,
   .shop-layout footer .container {
     max-width: 96rem !important;
-    padding-left: 0.25rem !important;
-    padding-right: 0.25rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
   }
 
   .shop-layout main .shop-container {
-    padding-left: 0.25rem !important;
-    padding-right: 0.25rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
   }
 
   .shop-layout footer .shop-container {
@@ -312,6 +313,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
