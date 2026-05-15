@@ -96,8 +96,8 @@ function PurchaseCard({
                   type="button"
                   onClick={() => handleVariantSelect(attr.name, opt)}
                   className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full border-2 transition-all duration-200 shadow-sm hover:scale-110 ${isSelected
-                      ? "border-primary ring-2 ring-primary/20 scale-110"
-                      : "border-slate-200 hover:border-slate-300"
+                    ? "border-primary ring-2 ring-primary/20 scale-110"
+                    : "border-slate-200 hover:border-slate-300"
                     }`}
                   style={{ backgroundColor: hex }}
                   aria-label={`${attr.name}: ${label}`}
@@ -113,8 +113,8 @@ function PurchaseCard({
                   type="button"
                   onClick={() => handleVariantSelect(attr.name, opt)}
                   className={`min-w-[36px] h-8 sm:min-w-[40px] sm:h-10 px-2 sm:px-3 rounded-lg border-2 font-semibold text-[12px] sm:text-sm transition-all duration-200 flex items-center justify-center ${isSelected
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
+                    ? "border-primary bg-primary/10 text-primary"
+                    : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
                     }`}
                 >
                   {label}
@@ -129,8 +129,8 @@ function PurchaseCard({
                 type="button"
                 onClick={() => handleVariantSelect(attr.name, opt)}
                 className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl border-2 font-medium text-[12px] sm:text-sm transition-all duration-200 ${isSelected
-                    ? "border-primary bg-primary/10 text-primary shadow-sm"
-                    : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50"
+                  ? "border-primary bg-primary/10 text-primary shadow-sm"
+                  : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50"
                   }`}
               >
                 {label}
@@ -146,7 +146,7 @@ function PurchaseCard({
     <div className="min-w-0 h-full">
       <div className="relative bg-white border border-slate-100 rounded-2xl shadow-lg p-4 sm:p-5 h-full flex flex-col gap-3 sm:gap-4 overflow-hidden">
         {/* Decorative gradient */}
-        <div className="absolute -top-16 -right-16 w-40 h-40 bg-primary/20 to-blue-100/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-16 -right-12 w-40 h-40 bg-primary/20 to-blue-100/40 rounded-full blur-3xl pointer-events-none" />
 
         {/* Brand / Vendor */}
         {productDetails.brand && (
@@ -181,8 +181,8 @@ function PurchaseCard({
           </span>
           <span
             className={`inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${stock > 0
-                ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
-                : "bg-red-50 text-red-700 border border-red-100"
+              ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
+              : "bg-red-50 text-red-700 border border-red-100"
               }`}
           >
             <span className={`w-1.5 h-1.5 rounded-full ${stock > 0 ? "bg-emerald-500 animate-pulse" : "bg-red-500"}`} />
@@ -263,8 +263,8 @@ function PurchaseCard({
 
             <Button
               className={`flex-1 min-w-0 max-w-72 text-sm sm:text-base font-semibold py-3 sm:py-3.5 rounded-xl transition-all duration-300 ${stock === 0 || (!allVariantsSelected && attributes.length > 0)
-                  ? "bg-slate-200 text-slate-400 cursor-not-allowed shadow-none"
-                  : "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:shadow-primary/30"
+                ? "bg-slate-200 text-slate-400 cursor-not-allowed shadow-none"
+                : "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:shadow-primary/30"
                 }`}
               onClick={() => onAddToCart({ ...productDetails, selectedVariants })}
               disabled={stock === 0 || (!allVariantsSelected && attributes.length > 0)}

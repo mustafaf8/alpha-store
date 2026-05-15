@@ -341,11 +341,7 @@ function MainHeaderActions() {
     );
   };
   const handleStoreLocation = () => {
-    window.open(
-      "https://maps.google.com/?q=Istanbul+store",
-      "_blank",
-      "noopener,noreferrer",
-    );
+    navigate("/shop/store-locator");
   };
   const handleOpenMobileCategoriesMenu = () => {
     window.dispatchEvent(new Event("open-mobile-categories-menu"));

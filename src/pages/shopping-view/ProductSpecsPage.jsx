@@ -38,7 +38,7 @@ function ProductSpecsPage() {
 
   const breadcrumbs = useMemo(() => {
     if (!productDetails?.category || !categoryList?.length) return [];
-    
+
     const findPath = (cats, slug, path = []) => {
       for (const cat of cats) {
         if (cat.slug === slug) return [...path, cat];
@@ -172,16 +172,16 @@ function ProductSpecsPage() {
       <div className="relative z-10 shop-container mx-auto py-2 sm:py-4 max-[1024px]:px-3">
         {/* Breadcrumb */}
         <nav className="flex items-center flex-wrap gap-2 text-[12px] sm:text-xs text-slate-500 mb-4 px-1">
-          <button 
-            onClick={() => navigate("/shop/home")} 
+          <button
+            onClick={() => navigate("/shop/home")}
             className="flex items-center gap-1.5 hover:text-primary transition-colors font-medium text-slate-400"
           >
             <Home className="w-4 h-4" />
             <span>Home</span>
           </button>
-          
+
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
-          
+
           {breadcrumbs.map((crumb, index) => (
             <div key={crumb._id} className="flex items-center gap-2">
               <button
@@ -193,7 +193,7 @@ function ProductSpecsPage() {
               <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
             </div>
           ))}
-          
+
           <span className="text-slate-700 font-bold truncate max-w-[280px]">
             {productDetails.title}
           </span>

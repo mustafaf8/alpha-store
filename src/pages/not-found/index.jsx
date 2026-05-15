@@ -1,4 +1,4 @@
-import { Search, Home, ArrowLeft, Compass } from "lucide-react";
+import { Search, Home, ArrowLeft, MoveRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -12,105 +12,94 @@ function NotFound() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="flex flex-col items-center justify-center min-h-screen text-center p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-[10%] -right-[5%] w-[400px] h-[400px] rounded-full bg-primary/5 blur-3xl animate-pulse"></div>
+        <div className="absolute top-[20%] -left-[10%] w-[300px] h-[300px] rounded-full bg-blue-500/5 blur-3xl animate-pulse delay-700"></div>
+        <div className="absolute -bottom-[10%] left-[20%] w-[500px] h-[500px] rounded-full bg-purple-500/5 blur-3xl animate-pulse delay-1000"></div>
+      </div>
 
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-gradient-to-r from-blue-200 to-purple-200 opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-r from-green-200 to-blue-200 opacity-20 animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-r from-purple-200 to-pink-200 opacity-10 animate-pulse delay-500"></div>
-        </div>
-
-
-        <div className={`relative z-10 max-w-2xl mx-auto transform transition-all duration-1000 ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-
-          <div className="relative mb-8">
-            <h1 className="text-8xl md:text-9xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent animate-pulse">
+      <div className={`relative z-10 w-full max-w-xl mx-auto text-center transform transition-all duration-1000 ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+        
+        {/* Main Card */}
+        <div className="bg-white/40 backdrop-blur-xl rounded-[40px] border border-slate-100 p-8 md:p-12 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)]">
+          
+          {/* Big 404 Display */}
+          <div className="relative inline-block mb-8">
+            <h1 className="text-[120px] md:text-[180px] font-black leading-none text-slate-800 tracking-tighter select-none">
               404
             </h1>
-            <div className="absolute inset-0 text-8xl md:text-9xl font-black text-gray-200 dark:text-gray-700 -z-10 blur-sm">
-              404
+            <div className="absolute -top-4 -right-4 bg-primary text-white p-3 rounded-2xl shadow-xl shadow-primary/30 animate-bounce">
+              <Search className="w-6 h-6 md:w-8 md:h-8" />
             </div>
           </div>
 
-          <div className="mb-6 animate-bounce">
-            <Compass className="w-20 h-20 text-blue-500 mx-auto" />
+          <div className="space-y-4 mb-10">
+            <h2 className="text-2xl md:text-3xl font-black text-slate-800 uppercase tracking-tight">
+              Oops! Page Not Found
+            </h2>
+            <p className="text-slate-500 text-sm md:text-base font-medium max-w-sm mx-auto leading-relaxed">
+              The page you are looking for doesn't exist or has been moved to another universe.
+            </p>
           </div>
 
-    
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-4">
-            Looks Like You're Lost!
-          </h2>
-
-      
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-            The page you are looking for may have moved. 🚀<br />
-            No worries, we can guide you back to a safe place.
-          </p>
-
-         
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <Button 
               asChild 
-              size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-              aria-label="Back to Home"
+              className="w-full sm:w-auto h-14 px-8 bg-primary hover:bg-primary/90 text-white rounded-2xl font-black uppercase tracking-widest shadow-lg shadow-primary/20 transition-all active:scale-95 group"
             >
               <Link to="/shop/home">
-                <Home className="mr-2 h-5 w-5" /> 
-                Back to Home
+                <Home className="mr-2 h-4 w-4" /> 
+                Back Home
               </Link>
             </Button>
 
             <Button 
               variant="outline" 
-              size="lg" 
               onClick={() => navigate(-1)}
-              className="border-gray-300 hover:border-gray-400 hover:bg-gray-50 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-800 transform hover:scale-105 transition-all duration-200"
-              aria-label="Go Back"
+              className="w-full sm:w-auto h-14 px-8 border-slate-200 text-slate-700 hover:bg-slate-50 rounded-2xl font-black uppercase tracking-widest transition-all active:scale-95"
             >
-              <ArrowLeft className="mr-2 h-5 w-5" /> 
+              <ArrowLeft className="mr-2 h-4 w-4" /> 
               Go Back
             </Button>
-
-            <Button 
-              asChild 
-              variant="ghost" 
-              size="lg"
-              className="hover:bg-blue-50 dark:hover:bg-gray-800 transform hover:scale-105 transition-all duration-200"
-              aria-label="Search"
-              >
-              <Link to="/shop/search">
-                <Search className="mr-2 h-5 w-5" /> 
-                Search
-              </Link>
-            </Button>
           </div>
 
-          {/* Help Text */}
-          <div className="mt-12 p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
-              How Can We Help?
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div className="flex items-center text-gray-600 dark:text-gray-300">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                Return to home
-              </div>
-              <div className="flex items-center text-gray-600 dark:text-gray-300">
-                <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                Explore products
-              </div>
-              <div className="flex items-center text-gray-600 dark:text-gray-300">
-                <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
-                Search for items
-              </div>
+          {/* Quick Links Section */}
+          <div className="mt-12 pt-8 border-t border-slate-100">
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">
+              Try exploring these instead
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link 
+                to="/shop/listing" 
+                className="flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-primary transition-colors group"
+              >
+                All Products
+                <MoveRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <div className="w-1 h-1 rounded-full bg-slate-200 self-center"></div>
+              <Link 
+                to="/shop/search" 
+                className="flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-primary transition-colors group"
+              >
+                Search Store
+                <MoveRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
           </div>
+
         </div>
+
+        {/* Brand Footer */}
+        <p className="mt-8 text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em]">
+          Circle Store © 2024
+        </p>
       </div>
     </div>
   );
 }
 
 export default NotFound;
+
