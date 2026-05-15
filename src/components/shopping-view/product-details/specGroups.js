@@ -68,6 +68,9 @@ export const buildSpecGroups = (mergedSpecs) => {
     const k = specKey(spec);
     const lower = k.toLowerCase();
 
+    // Skip description and highlights as they are redundant with the description panel
+    if (lower === "description" || lower === "highlights") return;
+
     const match = groupDefs.find((g) => g.matcher(lower));
     const targetTitle = match?.title || "Other";
     bucket.get(targetTitle).push(spec);

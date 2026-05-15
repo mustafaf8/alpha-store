@@ -15,7 +15,7 @@ function ProductFilter({
   onClearFilters,
 }) {
   const { categories = [], brands = [] } = dynamicFilterOptions;
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const selectedCount = (filters.category?.length || 0) + (filters.brand?.length || 0);
 
@@ -28,11 +28,10 @@ function ProductFilter({
         variant="outline"
         size="sm"
         onClick={() => handleFilter(sectionId, id)}
-        className={`h-8 whitespace-nowrap rounded-full border px-3 text-[11px] font-bold transition-all duration-200 ${
-          isChecked
+        className={`h-8 whitespace-nowrap rounded-full border px-3 text-[11px] font-bold transition-all duration-200 ${isChecked
             ? "border-primary bg-primary text-white hover:bg-primary/90 shadow-md shadow-primary/20"
             : "bg-white border-slate-100 text-slate-600 hover:border-primary/30 hover:bg-primary/10 hover:text-primary shadow-sm"
-        }`}
+          }`}
       >
         {label}
       </Button>
@@ -40,23 +39,26 @@ function ProductFilter({
   };
 
   return (
-    <Card className="border-none bg-white/40 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl overflow-hidden">
+    <Card className="border-none bg-white/40 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-3xl overflow-hidden transition-all duration-300">
       <CardContent className="p-0 space-y-0">
-        {/* Header - Always Visible, Clickable on Mobile */}
-        <div 
-          className="p-4 md:p-6 flex items-center justify-between cursor-pointer md:cursor-default"
-          onClick={() => {
-            if (window.innerWidth < 768) setIsMobileOpen(!isMobileOpen);
-          }}
+        {/* Header - Always Visible, Clickable on All Screens */}
+        <div
+          className="p-4 md:p-6 flex items-center justify-between cursor-pointer group/filter-header"
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
         >
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary/10 rounded-xl">
+            <div className="p-2 bg-primary/10 rounded-xl group-hover/filter-header:bg-primary/20 transition-colors">
               <Filter className="h-4 w-4 text-primary" />
             </div>
             <div>
-              <p className="text-sm font-black text-slate-800 uppercase tracking-wider">Filters</p>
+              <p className="text-sm font-black text-slate-800 uppercase tracking-wider flex items-center gap-2">
+                Filters
+                <span className="text-[10px] font-bold text-slate-400 normal-case tracking-normal">
+                  (Click to {isFilterOpen ? 'close' : 'open'})
+                </span>
+              </p>
               {selectedCount > 0 && (
-                <p className="text-[10px] font-bold text-primary uppercase tracking-widest mt-0.5">
+                <p className="text-[10px] font-bold text-primary uppercase tracking-widest mt-0.5 animate-in fade-in slide-in-from-left-1">
                   {selectedCount} Selected
                 </p>
               )}
@@ -77,18 +79,14 @@ function ProductFilter({
                 <span className="hidden sm:inline">Clear All</span>
               </Button>
             )}
-            <div className="md:hidden">
-              {isMobileOpen ? (
-                <ChevronDown className="h-5 w-5 text-slate-400" />
-              ) : (
-                <ChevronRight className="h-5 w-5 text-slate-400" />
-              )}
+            <div className={`transition-transform duration-300 ${isFilterOpen ? 'rotate-90' : ''}`}>
+              <ChevronRight className="h-5 w-5 text-slate-400" />
             </div>
           </div>
         </div>
 
-        {/* Filter Content - Collapsible on Mobile */}
-        <div className={`px-4 md:px-6 pb-6 space-y-6 ${isMobileOpen ? 'block' : 'hidden md:block'}`}>
+        {/* Filter Content - Collapsible on All Screens (Inline) */}
+        <div className={`px-4 md:px-6 pb-6 space-y-6 overflow-hidden transition-all duration-300 ${isFilterOpen ? 'block animate-in fade-in slide-in-from-top-2' : 'hidden'}`}>
           {isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Skeleton className="h-24 w-full rounded-2xl" />
@@ -115,7 +113,7 @@ function ProductFilter({
                   <Tag className="h-3 w-3" />
                   <span>Shop by Category</span>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
                   {categories.map((category) => (
                     <div key={category._id} className="space-y-3 group">
@@ -159,11 +157,11 @@ ProductFilter.propTypes = {
   handleFilter: PropTypes.func.isRequired,
   dynamicFilterOptions: PropTypes.shape({
     categories: PropTypes.arrayOf(
-      PropTypes.shape({ 
-        _id: PropTypes.string, 
+      PropTypes.shape({
+        _id: PropTypes.string,
         name: PropTypes.string,
         slug: PropTypes.string,
-        children: PropTypes.array 
+        children: PropTypes.array
       })
     ),
     brands: PropTypes.arrayOf(

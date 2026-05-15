@@ -143,7 +143,7 @@ function ShoppingHome() {
               </div>
             ) : (
               <div className="flex w-full">
-                <div className="hero-banner-container relative w-full rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm group" style={{ perspective: "1200px", transformStyle: "preserve-3d" }}>
+                <div className="hero-banner-container relative w-full rounded-desktop max-md:rounded-mobile overflow-hidden group" style={{ perspective: "1200px", transformStyle: "preserve-3d" }}>
                   <AnimatePresence mode="popLayout">
                     {featureImageList && featureImageList.length > 0 ? (
                       <motion.img
@@ -164,7 +164,7 @@ function ShoppingHome() {
                         initial={{ opacity: 0, x: "100%", z: -400, rotateY: 10 }}
                         animate={{ opacity: 1, x: 0, z: 0, rotateY: 0 }}
                         exit={{ opacity: 0, x: "-100%", z: -400, rotateY: -10 }}
-                        transition={{ 
+                        transition={{
                           x: { type: "spring", stiffness: 100, damping: 20 },
                           opacity: { duration: 0.4 },
                           default: { duration: 0.8 }
@@ -396,7 +396,7 @@ function ShoppingHome() {
       <div className="container mx-auto max-lg:px-0 space-y-4 pb-16 mt-0">
         {/* Custom Banner Row */}
         <div className="shop-container mx-auto max-lg:px-2">
-          <div className="promo-banner-grid grid grid-cols-2 gap-4 max-[720px]:gap-2">
+          <div className="promo-banner-grid grid grid-cols-2 gap-4 max-[720px]:grid-cols-1">
             <div className="promo-banner-item rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
               <img
                 src="/bannar2.avif"
@@ -404,7 +404,7 @@ function ShoppingHome() {
                 className="w-full object-cover transform group-hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <div className="promo-banner-item rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+            <div className="promo-banner-item rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group max-[720px]:hidden">
               <img
                 src="/banner3.avif"
                 alt="Promo 2"
@@ -618,7 +618,7 @@ function ShoppingHome() {
                 {section.contentType === "BEST_SELLING" && (
                   <div className="shop-container mx-auto max-lg:px-2 space-y-4 max-[720px]:space-y-2">
                     {/* Banner 7 - Full width */}
-                    <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group w-full">
+                    <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group w-full max-[720px]:hidden">
                       <img
                         src="/banner7.avif"
                         alt="Promotion Banner"
@@ -626,8 +626,8 @@ function ShoppingHome() {
                       />
                     </div>
                     {/* Banner 5 & 6 - Side by side */}
-                    <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2">
-                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                    <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2 max-[720px]:grid-cols-1">
+                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group max-[720px]:hidden">
                         <img
                           src="/banner5.avif"
                           alt="Promo Banner 5"
@@ -649,7 +649,7 @@ function ShoppingHome() {
                 {isWomenSection && (
                   <div className="shop-container mx-auto max-lg:px-2 space-y-4 max-[720px]:space-y-2">
                     {/* First Row - 2 Banners */}
-                    <div className="grid grid-cols-2 md:grid-cols-2 gap-4 max-[720px]:gap-2">
+                    <div className="grid grid-cols-2 md:grid-cols-2 gap-4 max-[720px]:gap-2 max-[720px]:grid-cols-1">
                       <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/bannar2.avif"
@@ -657,7 +657,7 @@ function ShoppingHome() {
                           className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
-                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer max-[720px]:hidden group">
                         <img
                           src="/banner3.avif"
                           alt="Promo 3"
@@ -666,7 +666,7 @@ function ShoppingHome() {
                       </div>
                     </div>
                     {/* Second Row - 2 Banners */}
-                    <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2">
+                    <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2 max-[720px]:hidden">
                       <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/banner5.avif"
@@ -688,7 +688,7 @@ function ShoppingHome() {
                 {/* Promotional Banners after men section */}
                 {isMenSection && (
                   <div className="shop-container mx-auto max-lg:px-2 mb-10">
-                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 max-[720px]:gap-2">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 max-[720px]:gap-2 max-[720px]:grid-cols-1">
                       {[
                         { src: "/bannar2.avif", alt: "Campaign 1" },
                         { src: "/bannar2.avif", alt: "Campaign 2" },

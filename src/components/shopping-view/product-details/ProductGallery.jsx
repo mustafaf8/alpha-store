@@ -36,7 +36,7 @@ function ProductGallery({ productDetails, selectedImage, onSelectImage }) {
 
             {/* Thumbnails Overlay */}
             {images.length > 0 && (
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 p-1.5 bg-white/20 backdrop-blur-lg rounded-xl border border-white/30 shadow-2xl max-w-[90%] overflow-x-auto no-scrollbar z-10 transition-all group-hover/gallery:bottom-4">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 p-1.5 bg-white/20 backdrop-blur-lg rounded-xl border border-white/30 shadow-2xl max-w-[90%] overflow-x-auto no-scrollbar z-10 transition-all">
                 <button
                   type="button"
                   className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden cursor-pointer border-2 transition-all duration-200 bg-white/80 flex items-center justify-center shadow-sm ${selectedImage === productDetails.image
@@ -87,7 +87,7 @@ function ProductGallery({ productDetails, selectedImage, onSelectImage }) {
 
       {/* Key Features (Quick Specs) Moved here for better layout balance */}
       {productDetails?.technicalSpecs && productDetails.technicalSpecs.some(s => 
-        ["Dimensions", "Capacity", "Material", "Screen", "Battery", "Processor", "Storage", "OS", "Weight", "Warranty"].includes(s.key)
+        ["Dimensions", "Capacity", "Material", "Screen", "Battery", "Processor", "Storage", "OS", "Weight", "Warranty", "Connection", "Load Capacity", "Spin Speed", "Energy Rating", "Energy Class", "Noise Level", "Camera", "Display", "Resolution", "RAM", "Interface", "Power", "Voltage"].includes(s.key)
       ) && (
         <div className="mt-4 bg-white/60 backdrop-blur-md rounded-2xl border border-slate-100 p-4 shadow-sm">
           <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
@@ -96,10 +96,13 @@ function ProductGallery({ productDetails, selectedImage, onSelectImage }) {
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {productDetails.technicalSpecs
-              .filter(s => ["Dimensions", "Capacity", "Material", "Screen", "Battery", "Processor", "Storage", "OS", "Weight", "Warranty"].includes(s.key))
+              .filter(s => ["Dimensions", "Capacity", "Material", "Screen", "Battery", "Processor", "Storage", "OS", "Weight", "Warranty", "Connection", "Load Capacity", "Spin Speed", "Energy Rating", "Energy Class", "Noise Level", "Camera", "Display", "Resolution", "RAM", "Interface", "Power", "Voltage"].includes(s.key))
               .slice(0, 6)
               .map((spec, i) => (
-                <div key={i} className="flex flex-col bg-slate-50/50 border border-slate-100 p-2 rounded-xl transition-all hover:bg-white hover:shadow-sm">
+                <div 
+                  key={i} 
+                  className={`flex flex-col bg-slate-50/50 border border-slate-100 p-2 rounded-xl transition-all hover:bg-white hover:shadow-sm ${i >= 2 ? "hidden sm:flex" : "flex"}`}
+                >
                   <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">{spec.key}</span>
                   <span className="text-[11px] font-black text-slate-700 truncate">{spec.value}</span>
                 </div>

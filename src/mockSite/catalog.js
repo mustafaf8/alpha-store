@@ -696,6 +696,18 @@ const productsRaw = [
         key: "Material",
         value: "Engineered Breathable Mesh & Synthetic Overlays",
       },
+      {
+        key: "Material",
+        value: "Engineered Breathable Mesh & Synthetic Overlays",
+      },
+      {
+        key: "Material",
+        value: "Synthetic Overlays",
+      },
+      {
+        key: "Material",
+        value: "Engineered Breathable Mesh",
+      },
       { key: "Weight", value: "280g (Size 42)" },
       { key: "Dimensions", value: "Fits True to Size" },
       {
@@ -716,7 +728,7 @@ const productsRaw = [
       "Reflective elements for low-light visibility",
     ],
     variantOptions: {
-      size: ["38", "39", "40", "41", "42", "43", "44", "45"],
+      size: ["38", "39", "40", "41", "42", "43", "44"],
       color: ["#FF0000", "#000000", "#0000FF", "#00FF00", "#FFFF00"],
     },
   },
