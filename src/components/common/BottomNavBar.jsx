@@ -249,7 +249,7 @@ const BottomNavBar = () => {
       icon: ShieldCheck,
       onClick: () => {
         closeMenu();
-        navigate("/shop/home");
+        navigate("/shop/privacy-policy");
       },
     },
     {
@@ -269,11 +269,8 @@ const BottomNavBar = () => {
       label: "Store Location and Address Details",
       icon: MapPin,
       onClick: () => {
-        window.open(
-          "https://maps.google.com/?q=Istanbul+store",
-          "_blank",
-          "noopener,noreferrer",
-        );
+        closeMenu();
+        navigate("/shop/store-locator");
       },
     },
   ];

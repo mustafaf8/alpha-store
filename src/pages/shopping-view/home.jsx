@@ -234,7 +234,7 @@ function ShoppingHome() {
         <div className="shop-container max-lg:px-2 mb-3">
           <section className="px-0 py-1">
             <div className="mb-2 flex items-center justify-between gap-2">
-              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-primary flex items-center ">
+              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-primary flex items-center">
                 BROWSE CATAGORIES
               </h3>
             </div>

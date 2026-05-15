@@ -37,32 +37,35 @@ function WarrantyInfoPage() {
   return (
     <section className="shop-container py-8 md:py-14">
       <div className="mx-auto max-w-6xl space-y-6 md:space-y-8">
-        <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-violet-700 via-purple-700 to-indigo-700 p-6 md:p-10 text-white shadow-xl text-center">
-          <p className="inline-flex rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide">
+        <div className="rounded-3xl border border-slate-200 bg-primary p-6 md:p-10 text-white shadow-xl text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_50%)]" />
+          <p className="relative inline-flex rounded-full border border-white/30 bg-white/10 px-3 py-1 text-[10px] font-black uppercase tracking-widest">
             Legal
           </p>
-          <h1 className="mt-4 text-3xl md:text-5xl font-black leading-tight">
+          <h1 className="relative mt-4 text-3xl md:text-5xl font-black leading-tight uppercase tracking-tighter">
             Warranty Info
           </h1>
-          <p className="mt-4 text-sm md:text-base text-white/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="relative mt-4 text-sm md:text-base text-white/90 max-w-3xl mx-auto font-medium leading-relaxed">
             You can find warranty scope, claim steps, and process details on
             this page. Our goal is to resolve warranty requests quickly and transparently.
           </p>
         </div>
 
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
-          <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-purple-600" />
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+          <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-3 uppercase tracking-tight">
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <ShieldCheck className="w-5 h-5 text-primary" />
+            </div>
             Warranty Coverage
           </h2>
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {coverage.map((item) => (
               <article
                 key={item.title}
-                className="rounded-xl border border-slate-100 bg-slate-50 p-4"
+                className="rounded-2xl border border-slate-100 bg-slate-50 p-6 hover:border-primary/30 transition-colors"
               >
-                <h3 className="text-sm font-bold text-slate-900">{item.title}</h3>
-                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                <h3 className="text-sm font-black text-slate-900 uppercase tracking-tight">{item.title}</h3>
+                <p className="mt-3 text-sm text-slate-500 font-medium leading-relaxed">
                   {item.detail}
                 </p>
               </article>
@@ -70,17 +73,19 @@ function WarrantyInfoPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
-            <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
-              <Wrench className="w-5 h-5 text-purple-600" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+            <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-3 uppercase tracking-tight mb-6">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <Wrench className="w-5 h-5 text-primary" />
+              </div>
               Warranty Claim Steps
             </h2>
-            <ul className="mt-4 space-y-2 text-sm text-slate-600">
+            <ul className="space-y-2.5">
               {claimSteps.map((step) => (
                 <li
                   key={step}
-                  className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2"
+                  className="rounded-xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-black text-slate-700 uppercase tracking-tight hover:border-primary/30 transition-colors"
                 >
                   {step}
                 </li>
@@ -88,16 +93,18 @@ function WarrantyInfoPage() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
-            <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-2">
-              <BadgeCheck className="w-5 h-5 text-purple-600" />
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+            <h2 className="text-lg md:text-xl font-black text-slate-900 flex items-center gap-3 uppercase tracking-tight mb-6">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <BadgeCheck className="w-5 h-5 text-primary" />
+              </div>
               Exclusions
             </h2>
-            <ul className="mt-4 space-y-2 text-sm text-slate-600">
+            <ul className="space-y-2.5">
               {exclusions.map((item) => (
                 <li
                   key={item}
-                  className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2"
+                  className="rounded-xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-black text-slate-700 uppercase tracking-tight hover:border-primary/30 transition-colors"
                 >
                   {item}
                 </li>
@@ -106,26 +113,32 @@ function WarrantyInfoPage() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm text-center">
-          <h2 className="text-lg md:text-xl font-black text-slate-900">
+        <div className="rounded-2xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm text-center">
+          <h2 className="text-xl md:text-3xl font-black text-slate-900 uppercase tracking-tight">
             Process and Contact
           </h2>
-          <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed max-w-3xl mx-auto">
+          <p className="mt-4 text-sm md:text-base text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto">
             Warranty timelines may vary by product and brand. Once your request
             is received, we provide detailed updates on inspection and service steps.
           </p>
-          <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-            <div className="rounded-xl border border-slate-100 bg-slate-50 p-3 text-sm font-semibold text-slate-700 flex items-center justify-center gap-2">
-              <FileText className="w-4 h-4 text-purple-600" />
-              Keep Invoice Ready
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6 flex flex-col items-center gap-3 group hover:border-primary/30 transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <FileText className="w-6 h-6 text-primary" />
+              </div>
+              <span className="text-sm font-black text-slate-700 uppercase tracking-tight">Keep Invoice Ready</span>
             </div>
-            <div className="rounded-xl border border-slate-100 bg-slate-50 p-3 text-sm font-semibold text-slate-700 flex items-center justify-center gap-2">
-              <Clock3 className="w-4 h-4 text-purple-600" />
-              Fast Evaluation
+            <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6 flex flex-col items-center gap-3 group hover:border-primary/30 transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <Clock3 className="w-6 h-6 text-primary" />
+              </div>
+              <span className="text-sm font-black text-slate-700 uppercase tracking-tight">Fast Evaluation</span>
             </div>
-            <div className="rounded-xl border border-slate-100 bg-slate-50 p-3 text-sm font-semibold text-slate-700 flex items-center justify-center gap-2">
-              <Phone className="w-4 h-4 text-purple-600" />
-              Support: +90 534 716 87 54
+            <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6 flex flex-col items-center gap-3 group hover:border-primary/30 transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <Phone className="w-6 h-6 text-primary" />
+              </div>
+              <span className="text-sm font-black text-slate-700 uppercase tracking-tight">Support Line</span>
             </div>
           </div>
         </div>
