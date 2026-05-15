@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { addToCart } from "@/store/shop/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -138,38 +139,48 @@ function ShoppingHome() {
           <div className="w-full">
             {featuresLoading ? (
               <div className="flex h-[400px] gap-4 max-[1023px]:h-[350px] max-[640px]:h-[180px]">
-                <Skeleton className="w-full h-full rounded-sm bg-gray-200 animate-pulse" />
+                <Skeleton className="w-full h-full rounded-mobile bg-gray-200 animate-pulse" />
               </div>
             ) : (
               <div className="flex w-full">
-                <div className="hero-banner-container relative w-full rounded-sm overflow-hidden shadow-sm group">
-                  {featureImageList && featureImageList.length > 0 ? (
-                    <img
-                      key={
-                        featureImageList[currentSlide]?._id ??
-                        `banner-${currentSlide}`
-                      }
-                      src={featureImageList[currentSlide]?.image}
-                      alt={
-                        featureImageList[currentSlide]?.title ||
-                        `Banner ${currentSlide + 1}`
-                      }
-                      onClick={() =>
-                        handlePromoCardClick(
-                          featureImageList[currentSlide]?.link,
-                        )
-                      }
-                      className={`hero-banner-slide-left absolute inset-0 z-0 h-full w-full object-cover object-center ${featureImageList[currentSlide]?.link
-                        ? "cursor-pointer"
-                        : ""
-                        }`}
-                      loading="eager"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-gray-400 text-sm">Banner Area</span>
-                    </div>
-                  )}
+                <div className="hero-banner-container relative w-full rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm group" style={{ perspective: "1200px", transformStyle: "preserve-3d" }}>
+                  <AnimatePresence mode="popLayout">
+                    {featureImageList && featureImageList.length > 0 ? (
+                      <motion.img
+                        key={
+                          featureImageList[currentSlide]?._id ??
+                          `banner-${currentSlide}`
+                        }
+                        src={featureImageList[currentSlide]?.image}
+                        alt={
+                          featureImageList[currentSlide]?.title ||
+                          `Banner ${currentSlide + 1}`
+                        }
+                        onClick={() =>
+                          handlePromoCardClick(
+                            featureImageList[currentSlide]?.link,
+                          )
+                        }
+                        initial={{ opacity: 0, x: "100%", z: -400, rotateY: 10 }}
+                        animate={{ opacity: 1, x: 0, z: 0, rotateY: 0 }}
+                        exit={{ opacity: 0, x: "-100%", z: -400, rotateY: -10 }}
+                        transition={{ 
+                          x: { type: "spring", stiffness: 100, damping: 20 },
+                          opacity: { duration: 0.4 },
+                          default: { duration: 0.8 }
+                        }}
+                        className={`absolute inset-0 z-0 h-full w-full object-cover object-center ${featureImageList[currentSlide]?.link
+                          ? "cursor-pointer"
+                          : ""
+                          }`}
+                        loading="eager"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span className="text-gray-400 text-sm">Banner Area</span>
+                      </div>
+                    )}
+                  </AnimatePresence>
                   {featureImageList && featureImageList.length > 1 && (
                     <>
                       <Button
@@ -216,7 +227,7 @@ function ShoppingHome() {
         <div className="shop-container max-lg:px-2 mb-3">
           <section className="px-0 py-1">
             <div className="mb-2 flex items-center justify-between gap-2">
-              <h3 className="text-base sm:text-lg font-bold text-primary ">
+              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-primary flex items-center ">
                 BROWSE CATAGORIES
               </h3>
             </div>
@@ -226,20 +237,18 @@ function ShoppingHome() {
                   key={index}
                   type="button"
                   onClick={() => navigate(item.link)}
-                  className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start rounded-2xl overflow-hidden bg-white transition-all"
+                  className="category-grid-item group flex flex-col items-center justify-start gap-2"
                 >
-                  <div className="w-full aspect-square overflow-hidden rounded-2xl">
+                  <div className="category-card w-full aspect-square rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm transition-all duration-300">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover object-center scale-105 transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <div className="py-2 px-2 w-full flex items-center justify-center bg-white">
-                    <span className="text-[11px] sm:text-xs font-semibold text-slate-700 transition-colors group-hover:text-primary text-center truncate">
-                      {item.title}
-                    </span>
-                  </div>
+                  <span className="text-xs sm:text-sm font-semibold text-slate-700 transition-colors group-hover:text-primary">
+                    {item.title}
+                  </span>
                 </button>
               ))}
             </div>
@@ -252,7 +261,7 @@ function ShoppingHome() {
         <div className="shop-container max-lg:px-2 max-[640px]:px-1">
           <div className="pt-0 pb-0 sm:pb-5 sm:px-2 flex items-center md:gap-4 gap-2">
             {/* Vertical Title */}
-            <div className="flex items-center justify-center [writing-mode:vertical-lr] rotate-180 border-r border-purple-200 pr-1 md:pr-4 self-stretch">
+            <div className="flex items-center justify-center [writing-mode:vertical-lr] rotate-180 border-r border-primary/50 pr-1 md:pr-4 self-stretch">
               <span className="text-[9px] sm:text-xs md:text-sm font-black text-primary uppercase tracking-[0.22em] sm:tracking-[0.26em] md:tracking-[0.3em] py-2">
                 Brands
               </span>
@@ -351,7 +360,7 @@ function ShoppingHome() {
                 ].map((brand, idx) => (
                   <div
                     key={idx}
-                    className="snap-start flex-shrink-0 w-[90px] h-[45px] sm:w-[130px] sm:h-[70px] md:w-[150px] md:h-[80px] bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center p-3 sm:p-4 hover:shadow-md transition-shadow cursor-pointer"
+                    className="snap-start flex-shrink-0 w-[90px] h-[45px] sm:w-[130px] sm:h-[70px] md:w-[150px] md:h-[80px] bg-slate-50 border border-slate-100 rounded-desktop max-md:rounded-mobile flex items-center justify-center p-3 sm:p-4 hover:shadow-md transition-shadow cursor-pointer"
                   >
                     {brand.logo ? (
                       <div className="w-full h-full transition-opacity">
@@ -388,14 +397,14 @@ function ShoppingHome() {
         {/* Custom Banner Row */}
         <div className="shop-container mx-auto max-lg:px-2">
           <div className="promo-banner-grid grid grid-cols-2 gap-4 max-[720px]:gap-2">
-            <div className="promo-banner-item rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+            <div className="promo-banner-item rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
               <img
                 src="/bannar2.avif"
                 alt="Promo 1"
                 className="w-full object-cover transform group-hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <div className="promo-banner-item rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+            <div className="promo-banner-item rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
               <img
                 src="/banner3.avif"
                 alt="Promo 2"
@@ -518,9 +527,9 @@ function ShoppingHome() {
                                 key={index}
                                 type="button"
                                 onClick={() => navigate(item.link)}
-                                className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start rounded-2xl overflow-hidden bg-white transition-all"
+                                className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start rounded-desktop max-md:rounded-mobile overflow-hidden bg-white transition-all"
                               >
-                                <div className="w-full aspect-square overflow-hidden rounded-2xl">
+                                <div className="w-full aspect-square overflow-hidden rounded-desktop max-md:rounded-mobile">
                                   <img
                                     src={item.image}
                                     alt={item.title}
@@ -582,9 +591,9 @@ function ShoppingHome() {
                                 key={`${groupTitle}-${index}`}
                                 type="button"
                                 onClick={() => navigate(item.link)}
-                                className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start rounded-2xl overflow-hidden bg-white transition-all"
+                                className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start rounded-desktop max-md:rounded-mobile overflow-hidden bg-white transition-all"
                               >
-                                <div className="w-full aspect-square overflow-hidden rounded-2xl">
+                                <div className="w-full aspect-square overflow-hidden rounded-desktop max-md:rounded-mobile">
                                   <img
                                     src={item.image}
                                     alt={item.title}
@@ -609,7 +618,7 @@ function ShoppingHome() {
                 {section.contentType === "BEST_SELLING" && (
                   <div className="shop-container mx-auto max-lg:px-2 space-y-4 max-[720px]:space-y-2">
                     {/* Banner 7 - Full width */}
-                    <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group w-full">
+                    <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group w-full">
                       <img
                         src="/banner7.avif"
                         alt="Promotion Banner"
@@ -618,14 +627,14 @@ function ShoppingHome() {
                     </div>
                     {/* Banner 5 & 6 - Side by side */}
                     <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2">
-                      <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/banner5.avif"
                           alt="Promo Banner 5"
                           className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
-                      <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/banner6.avif"
                           alt="Promo Banner 6"
@@ -641,14 +650,14 @@ function ShoppingHome() {
                   <div className="shop-container mx-auto max-lg:px-2 space-y-4 max-[720px]:space-y-2">
                     {/* First Row - 2 Banners */}
                     <div className="grid grid-cols-2 md:grid-cols-2 gap-4 max-[720px]:gap-2">
-                      <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/bannar2.avif"
                           alt="Promo 2"
                           className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
-                      <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/banner3.avif"
                           alt="Promo 3"
@@ -658,14 +667,14 @@ function ShoppingHome() {
                     </div>
                     {/* Second Row - 2 Banners */}
                     <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2">
-                      <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/banner5.avif"
                           alt="Promo 4"
                           className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
-                      <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/banner5.avif"
                           alt="Promo 5"
@@ -696,7 +705,7 @@ function ShoppingHome() {
                       ].map((banner, idx) => (
                         <div
                           key={idx}
-                          className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+                          className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
                         >
                           <img
                             src={banner.src}

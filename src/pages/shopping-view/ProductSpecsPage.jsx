@@ -169,9 +169,9 @@ function ProductSpecsPage() {
       <div className="absolute top-20 -left-32 w-96 h-96 bg-purple-200/20 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-40 -right-32 w-96 h-96 bg-blue-200/20 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 shop-container mx-auto py-6 max-[1024px]:px-3">
+      <div className="relative z-10 shop-container mx-auto py-2 sm:py-4 max-[1024px]:px-3">
         {/* Breadcrumb */}
-        <nav className="flex items-center flex-wrap gap-2 text-sm text-slate-500 mb-8 px-1">
+        <nav className="flex items-center flex-wrap gap-2 text-[12px] sm:text-xs text-slate-500 mb-4 px-1">
           <button 
             onClick={() => navigate("/shop/home")} 
             className="flex items-center gap-1.5 hover:text-primary transition-colors font-medium text-slate-400"
@@ -199,7 +199,7 @@ function ProductSpecsPage() {
           </span>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-stretch">
           <ProductGallery
             productDetails={enrichedProduct}
             selectedImage={selectedImage}
@@ -214,7 +214,7 @@ function ProductSpecsPage() {
           />
         </div>
 
-        <div className="mt-8">
+        <div className="mt-6">
           <ProductTabs
             productDetails={enrichedProduct}
             mergedSpecs={mergedSpecs}

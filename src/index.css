@@ -75,6 +75,7 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
+    /* Primary colors */
     --brand: 0 84% 69%;
     --primary: var(--brand);
     --primary-foreground: 0 0% 100%;
@@ -89,7 +90,10 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 214 80% 50%;
-    --radius: 0.5rem;
+    /* Border radius */
+    --radius-mobile: 6px;
+    --radius-desktop: 10px;
+    --radius: var(--radius-desktop);
     --chart-1: 214 80% 50%;
     --chart-2: 214 60% 65%;
     --chart-3: 214 40% 80%;
@@ -144,6 +148,18 @@
     --shop-warning: 38 92% 50%;
     --shop-info: 200 98% 39%;
     --shop-discount: 0 84% 60%;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --radius: var(--radius-mobile);
+    }
+  }
+
+  @media (min-width: 769px) {
+    :root {
+      --radius: var(--radius-desktop);
+    }
   }
 }
 

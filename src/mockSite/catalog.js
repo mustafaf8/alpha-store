@@ -617,7 +617,7 @@ const brands = [
   { _id: "brand-lumina", name: "Lumina", slug: "lumina", isActive: true },
   { _id: "brand-audiox", name: "AudioX", slug: "audiox", isActive: true },
   { _id: "brand-orbit", name: "Orbit", slug: "orbit", isActive: true },
-  { _id: "brand-alpha", name: "Alpha", slug: "alpha", isActive: true },
+  { _id: "brand-circle", name: "Circle", slug: "circle", isActive: true },
   { _id: "brand-step", name: "Step", slug: "step", isActive: true },
   { _id: "brand-zenith", name: "Zenith", slug: "zenith", isActive: true },
   { _id: "brand-vera", name: "Vera", slug: "vera", isActive: true },
@@ -630,13 +630,13 @@ const productsRaw = [
     title:
       "Premium Cotton Oversize Comfort Fit Unisex T-Shirt with Reinforced Neckline and Breathable Fabric Technology for All Seasons",
     description:
-      "Experience the ultimate comfort with our Premium Cotton Oversize Comfort Fit Unisex T-Shirt. Crafted from 100% sustainable organic cotton, this t-shirt features a reinforced neckline that maintains its shape even after multiple washes. The breathable fabric technology ensures you stay cool during summer and warm during winter. Designed with a modern minimalist aesthetic, it fits perfectly into any wardrobe. Available in a variety of colors, each treated with eco-friendly dyes to prevent fading. Perfect for casual outings, lounging at home, or layering under a jacket for a more sophisticated look. Join the revolution of comfort and style today with Alpha's signature collection.",
+      "Experience the ultimate comfort with our Premium Cotton Oversize Comfort Fit Unisex T-Shirt. Crafted from 100% sustainable organic cotton, this t-shirt features a reinforced neckline that maintains its shape even after multiple washes. The breathable fabric technology ensures you stay cool during summer and warm during winter. Designed with a modern minimalist aesthetic, it fits perfectly into any wardrobe. Available in a variety of colors, each treated with eco-friendly dyes to prevent fading. Perfect for casual outings, lounging at home, or layering under a jacket for a more sophisticated look. Join the revolution of comfort and style today with Circle's signature collection.",
     image:
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=80",
     images: [
       "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=900&q=80",
     ],
-    brand: "alpha",
+    brand: "circle",
     category: "men",
     price: 349.99,
     salePrice: 299.99,
@@ -731,7 +731,7 @@ const productsRaw = [
     images: [
       "https://images.unsplash.com/photo-1544441893-675973e31985?w=900&q=80",
     ],
-    brand: "alpha",
+    brand: "circle",
     category: "men",
     price: 899.99,
     salePrice: 799.99,
@@ -813,7 +813,7 @@ const productsRaw = [
     images: [
       "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=900&q=80",
     ],
-    brand: "alpha",
+    brand: "circle",
     category: "women",
     price: 399.99,
     salePrice: 349.99,
@@ -880,7 +880,7 @@ const productsRaw = [
     images: [
       "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=900&q=80",
     ],
-    brand: "alpha",
+    brand: "circle",
     category: "women",
     price: 649.99,
     salePrice: 499.99,
@@ -908,7 +908,7 @@ const productsRaw = [
     images: [
       "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=900&q=80",
     ],
-    brand: "alpha",
+    brand: "circle",
     category: "women",
     price: 249.99,
     salePrice: 199.99,
@@ -958,7 +958,7 @@ const productsRaw = [
     images: [
       "https://images.unsplash.com/photo-1520367745676-81f5d8d3f6f9?w=900&q=80",
     ],
-    brand: "alpha",
+    brand: "circle",
     category: "men",
     price: 1199.99,
     salePrice: 999.99,
@@ -1732,7 +1732,7 @@ const productsRaw = [
     images: [
       "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80",
     ],
-    brand: "alpha",
+    brand: "circle",
     category: "furniture",
     price: 12999,
     salePrice: 10999,
@@ -1812,7 +1812,7 @@ const productsRaw = [
     description: "Extra virgin cold-pressed organic olive oil.",
     image:
       "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=900&q=80",
-    brand: "alpha",
+    brand: "circle",
     category: "basic-food",
     price: 189,
     salePrice: 169,
@@ -1826,7 +1826,7 @@ const productsRaw = [
     description: "Hypoallergenic and eco-friendly baby diapers.",
     image:
       "https://images.unsplash.com/photo-1522771935876-2497116a7a9e?w=900&q=80",
-    brand: "alpha",
+    brand: "circle",
     category: "baby-diapers",
     price: 349,
     salePrice: 299,
@@ -1929,7 +1929,7 @@ const productsRaw = [
     images: [
       "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=900&q=80",
     ],
-    brand: "alpha",
+    brand: "circle",
     category: "toys",
     price: 599,
     salePrice: 499,
@@ -1963,7 +1963,7 @@ const productsRaw = [
     images: [
       "https://images.unsplash.com/photo-1585338927000-1c787b17eb5e?w=900&q=80",
     ],
-    brand: "alpha",
+    brand: "circle",
     category: "puzzle",
     price: 249,
     salePrice: 199,
@@ -1996,7 +1996,7 @@ const productsRaw = [
       "In 'The Art of Modern Living', renowned designer and lifestyle expert Elena Rossi provides a comprehensive roadmap for anyone seeking a more meaningful and organized life. This beautifully illustrated book explores the principles of minimalism, teaching you how to declutter your physical space and your mind to focus on what truly matters. From interior design tips that create a sense of calm to practical advice on sustainable consumption and intentional decision-making, this guide is packed with actionable insights. Whether you're living in a small apartment or a large family home, the strategies shared in these pages will help you create a sanctuary that reflects your values and supports your well-being. A must-read for the modern era.",
     image:
       "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=900&q=80",
-    brand: "alpha",
+    brand: "circle",
     category: "books",
     price: 129,
     salePrice: 99,
@@ -2081,15 +2081,15 @@ const productsRaw = [
   {
     _id: "prd-pet-1",
     title:
-      "Alpha Premium Grain-Free Adult Dog Food - High-Protein Salmon & Sweet Potato Formula with Omega Fatty Acids",
+      "Circle Premium Grain-Free Adult Dog Food - High-Protein Salmon & Sweet Potato Formula with Omega Fatty Acids",
     description:
-      "Give your canine companion the nutrition they deserve with Alpha Premium Grain-Free Adult Dog Food. Our high-protein formula features real salmon as the primary ingredient, providing essential amino acids for strong muscles and a healthy heart. The grain-free recipe uses sweet potatoes as a highly digestible source of energy, making it ideal for dogs with sensitivities or allergies. Enriched with Omega-3 and Omega-6 fatty acids, it promotes a shiny coat and healthy skin. We've also included a blend of antioxidants, vitamins, and minerals to support a robust immune system. Free from artificial colors, flavors, and preservatives, this is a wholesome and delicious meal that dogs love.",
+      "Give your canine companion the nutrition they deserve with Circle Premium Grain-Free Adult Dog Food. Our high-protein formula features real salmon as the primary ingredient, providing essential amino acids for strong muscles and a healthy heart. The grain-free recipe uses sweet potatoes as a highly digestible source of energy, making it ideal for dogs with sensitivities or allergies. Enriched with Omega-3 and Omega-6 fatty acids, it promotes a shiny coat and healthy skin. We've also included a blend of antioxidants, vitamins, and minerals to support a robust immune system. Free from artificial colors, flavors, and preservatives, this is a wholesome and delicious meal that dogs love.",
     image:
       "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=900&q=80",
     images: [
       "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=900&q=80",
     ],
-    brand: "alpha",
+    brand: "circle",
     category: "pet-food",
     price: 549,
     salePrice: 499,

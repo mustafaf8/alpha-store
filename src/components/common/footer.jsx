@@ -134,9 +134,9 @@ const Footer = () => {
             <input
               type="email"
               placeholder="Enter your email address"
-              className="flex-1 px-4 py-2.5 max-[720px]:px-3 max-[720px]:py-2 bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-400 text-sm max-[720px]:text-xs"
+              className="flex-1 px-4 py-2.5 max-[720px]:px-3 max-[720px]:py-2 bg-white/10 border border-white/20 rounded-desktop max-md:rounded-mobile text-white placeholder-slate-400 focus:outline-none focus:border-purple-400 text-sm max-[720px]:text-xs"
             />
-            <button className="px-4 py-2 max-[720px]:px-3 max-[720px]:py-1.5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl transition-colors text-sm max-[720px]:text-xs whitespace-nowrap">
+            <button className="px-4 py-2 max-[720px]:px-3 max-[720px]:py-1.5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-desktop max-md:rounded-mobile transition-colors text-sm max-[720px]:text-xs whitespace-nowrap">
               Subscribe
             </button>
           </div>
@@ -147,7 +147,7 @@ const Footer = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className={`w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center transition-colors ${item.color}`}
+                  className={`w-10 h-10 rounded-mobile border border-white/10 bg-white/5 flex items-center justify-center transition-colors ${item.color}`}
                   aria-label={item.label}
                 >
                   <Icon size={20} className="shrink-0" />
@@ -166,7 +166,7 @@ const Footer = () => {
               key={i}
               className="flex flex-col items-center text-center gap-3"
             >
-              <div className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+              <div className="w-11 h-11 rounded-desktop max-md:rounded-mobile bg-white/5 border border-white/10 flex items-center justify-center">
                 {s.icon}
               </div>
               <h4 className="text-white font-bold text-sm">{s.title}</h4>
@@ -209,7 +209,7 @@ const Footer = () => {
             return (
               <div
                 key={p.name}
-                className="bg-white rounded-xl px-4 py-2 flex items-center justify-center h-10"
+                className="bg-white rounded-mobile px-4 py-2 flex items-center justify-center h-10"
               >
                 {p.name === "visa" ? (
                   <svg
@@ -245,7 +245,7 @@ const Footer = () => {
         <div className="self-center lg:self-auto flex items-center gap-2">
           <a
             href="#"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-3 py-2 hover:bg-white/15 transition-colors"
+            className="inline-flex items-center gap-2 rounded-desktop max-md:rounded-mobile border border-white/20 bg-white/10 px-3 py-2 hover:bg-white/15 transition-colors"
             aria-label="Download on Google Play"
           >
             <svg
@@ -269,7 +269,7 @@ const Footer = () => {
 
           <a
             href="#"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-3 py-2 hover:bg-white/15 transition-colors"
+            className="inline-flex items-center gap-2 rounded-desktop max-md:rounded-mobile border border-white/20 bg-white/10 px-3 py-2 hover:bg-white/15 transition-colors"
             aria-label="Download on the App Store"
           >
             <svg
@@ -296,7 +296,7 @@ const Footer = () => {
       {/* Copyright */}
       <div className="border-t border-white/10 py-3">
         <div className="shop-container text-center text-xs text-slate-500">
-          All Rights Reserved © {new Date().getFullYear()} — Alpha Store
+          All Rights Reserved © {new Date().getFullYear()} — Circle Store
         </div>
       </div>
     </footer>

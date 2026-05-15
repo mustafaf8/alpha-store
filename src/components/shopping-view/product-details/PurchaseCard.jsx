@@ -24,11 +24,13 @@ function PurchaseCard({
   const rating = productDetails?.averageReview || 0;
   const reviewCount = productDetails?.numReviews || 0;
 
+  const [isTitleExpanded, setIsTitleExpanded] = useState(false);
+
   // 1. Normalize Attributes from various possible backend structures
   const normalizeAttributes = () => {
     let attrs = [];
     if (productDetails?.attributes && Array.isArray(productDetails.attributes) && productDetails.attributes.length > 0) {
-      attrs = productDetails.attributes; 
+      attrs = productDetails.attributes;
     } else if (productDetails?.variantOptions && typeof productDetails.variantOptions === "object" && Object.keys(productDetails.variantOptions).length > 0) {
       attrs = Object.entries(productDetails.variantOptions).map(([name, options]) => ({ name, options }));
     } else if (productDetails?.attributes && typeof productDetails.attributes === "object" && Object.keys(productDetails.attributes).length > 0) {
@@ -71,7 +73,7 @@ function PurchaseCard({
     const nameLower = attr.name.toLowerCase();
     const isColor = nameLower.includes("renk") || nameLower.includes("color");
     const isSize = nameLower.includes("beden") || nameLower.includes("size");
-    
+
     return (
       <div key={attr.name} className="mb-4 last:mb-0">
         <div className="text-sm font-semibold text-gray-700 mb-2.5 flex items-center justify-between">
@@ -80,12 +82,12 @@ function PurchaseCard({
             {selectedVariants[attr.name] || "Select"}
           </span>
         </div>
-        
+
         <div className="flex items-center gap-2.5 flex-wrap">
           {attr.options.map((opt, idx) => {
             const label = typeof opt === "object" ? opt.name : opt;
             const isSelected = selectedVariants[attr.name] === label;
-            
+
             if (isColor) {
               const hex = resolveColorHex(opt);
               return (
@@ -93,46 +95,43 @@ function PurchaseCard({
                   key={label + idx}
                   type="button"
                   onClick={() => handleVariantSelect(attr.name, opt)}
-                  className={`w-9 h-9 rounded-full border-2 transition-all duration-200 shadow-sm hover:scale-110 ${
-                    isSelected
+                  className={`w-9 h-9 rounded-full border-2 transition-all duration-200 shadow-sm hover:scale-110 ${isSelected
                       ? "border-primary ring-2 ring-primary/20 scale-110"
                       : "border-slate-200 hover:border-slate-300"
-                  }`}
+                    }`}
                   style={{ backgroundColor: hex }}
                   aria-label={`${attr.name}: ${label}`}
                   title={label}
                 />
               );
             }
-            
+
             if (isSize) {
               return (
                 <button
                   key={label + idx}
                   type="button"
                   onClick={() => handleVariantSelect(attr.name, opt)}
-                  className={`min-w-[40px] h-10 px-3 rounded-lg border-2 font-semibold text-sm transition-all duration-200 flex items-center justify-center ${
-                    isSelected
+                  className={`min-w-[40px] h-10 px-3 rounded-lg border-2 font-semibold text-sm transition-all duration-200 flex items-center justify-center ${isSelected
                       ? "border-primary bg-primary/10 text-primary"
                       : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
-                  }`}
+                    }`}
                 >
                   {label}
                 </button>
               );
             }
-            
+
             // Storage, RAM or any other text type
             return (
               <button
                 key={label + idx}
                 type="button"
                 onClick={() => handleVariantSelect(attr.name, opt)}
-                className={`px-4 py-2 rounded-xl border-2 font-medium text-sm transition-all duration-200 ${
-                  isSelected
+                className={`px-4 py-2 rounded-xl border-2 font-medium text-sm transition-all duration-200 ${isSelected
                     ? "border-primary bg-primary/10 text-primary shadow-sm"
                     : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50"
-                }`}
+                  }`}
               >
                 {label}
               </button>
@@ -145,7 +144,7 @@ function PurchaseCard({
 
   return (
     <div className="min-w-0 h-full">
-      <div className="relative bg-white border border-slate-100 rounded-3xl shadow-lg p-5 sm:p-8 h-full flex flex-col gap-5 overflow-hidden">
+      <div className="relative bg-white border border-slate-100 rounded-2xl shadow-lg p-4 sm:p-5 h-full flex flex-col gap-3 sm:gap-4 overflow-hidden">
         {/* Decorative gradient */}
         <div className="absolute -top-16 -right-16 w-40 h-40 bg-primary/20 to-blue-100/40 rounded-full blur-3xl pointer-events-none" />
 
@@ -157,13 +156,23 @@ function PurchaseCard({
         )}
 
         {/* Title */}
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight break-words">
-          {productDetails.title}
-        </h1>
+        <div className="flex flex-col gap-1">
+          <h1 className={`text-lg sm:text-xl md:text-2xl font-extrabold text-gray-900 leading-tight break-words transition-all duration-300 ${!isTitleExpanded ? "line-clamp-2" : ""}`}>
+            {productDetails.title}
+          </h1>
+          {productDetails.title.length > 50 && (
+            <button
+              onClick={() => setIsTitleExpanded(!isTitleExpanded)}
+              className="text-[10px] font-black text-primary uppercase tracking-widest self-start hover:underline"
+            >
+              {isTitleExpanded ? "Show Less" : "Read More"}
+            </button>
+          )}
+        </div>
 
         {/* Rating */}
         <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
-          <StarRatingComponent rating={rating} size={24} />
+          <StarRatingComponent rating={rating} size={20} />
           <span className="text-sm font-semibold text-gray-700">
             {rating ? rating.toFixed(1) : "0.0"}
           </span>
@@ -171,11 +180,10 @@ function PurchaseCard({
             ({reviewCount} Reviews)
           </span>
           <span
-            className={`inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${
-              stock > 0
+            className={`inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${stock > 0
                 ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
                 : "bg-red-50 text-red-700 border border-red-100"
-            }`}
+              }`}
           >
             <span className={`w-1.5 h-1.5 rounded-full ${stock > 0 ? "bg-emerald-500 animate-pulse" : "bg-red-500"}`} />
             {stock > 0 ? `In Stock: ${stock} Units` : "Out of Stock"}
@@ -189,7 +197,7 @@ function PurchaseCard({
         <div className="flex items-end gap-3 flex-wrap">
           {productDetails.salePrice ? (
             <>
-              <span className="bg-primary text-white font-bold px-5 py-2 rounded-2xl text-xl sm:text-2xl shadow-md">
+              <span className="bg-primary text-white font-bold px-4 py-1.5 rounded-xl text-lg sm:text-xl shadow-md">
                 {formatPrice(productDetails.salePrice)}
               </span>
               <span className="line-through text-base sm:text-lg text-slate-400 mb-0.5">
@@ -200,7 +208,7 @@ function PurchaseCard({
               </span>
             </>
           ) : (
-            <span className="bg-primary text-white font-bold px-5 py-2 rounded-2xl text-xl sm:text-2xl shadow-md">
+            <span className="bg-primary text-white font-bold px-4 py-1.5 rounded-xl text-lg sm:text-xl shadow-md">
               {formatPrice(productDetails.price)}
             </span>
           )}
@@ -213,25 +221,7 @@ function PurchaseCard({
           </div>
         )}
 
-        {/* Key Features (Quick Specs) */}
-        {productDetails.technicalSpecs && productDetails.technicalSpecs.some(s => 
-          ["Dimensions", "Capacity", "Material", "Screen", "Battery", "Processor", "Storage", "OS", "Weight", "Warranty"].includes(s.key)
-        ) && (
-          <div className="flex flex-col gap-2.5">
-            <h3 className="text-sm font-bold text-slate-800 tracking-tight">Key Features</h3>
-            <div className="grid grid-cols-2 gap-2">
-              {productDetails.technicalSpecs
-                .filter(s => ["Dimensions", "Capacity", "Material", "Screen", "Battery", "Processor", "Storage", "OS", "Weight", "Warranty"].includes(s.key))
-                .slice(0, 6)
-                .map((spec, i) => (
-                  <div key={i} className="flex flex-col bg-slate-50/80 border border-slate-100 p-2.5 rounded-2xl">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{spec.key}</span>
-                    <span className="text-xs font-extrabold text-slate-700 truncate">{spec.value}</span>
-                  </div>
-                ))}
-            </div>
-          </div>
-        )}
+
 
         {/* Divider */}
         <div className="h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
@@ -239,11 +229,11 @@ function PurchaseCard({
         {/* Quantity + Add to Cart */}
         <div className="flex flex-col gap-3">
           {!allVariantsSelected && attributes.length > 0 && (
-             <div className="text-xs text-red-500 font-medium bg-red-50 px-3 py-1.5 rounded-lg border border-red-100 inline-block self-start">
-               Please select all options (variants) before adding to cart.
-             </div>
+            <div className="text-xs text-red-500 font-medium bg-red-50 px-3 py-1.5 rounded-lg border border-red-100 inline-block self-start">
+              Please select all options (variants) before adding to cart.
+            </div>
           )}
-          
+
           <div className="flex items-center gap-3 sm:gap-4 w-full">
             <div className="flex items-center border border-slate-200 rounded-full px-1.5 sm:px-2 py-1 bg-slate-50/80">
               <Button
@@ -272,11 +262,10 @@ function PurchaseCard({
             </div>
 
             <Button
-              className={`flex-1 min-w-0 max-w-72 text-sm sm:text-base font-semibold py-3 sm:py-3.5 rounded-xl transition-all duration-300 ${
-                stock === 0 || (!allVariantsSelected && attributes.length > 0)
+              className={`flex-1 min-w-0 max-w-72 text-sm sm:text-base font-semibold py-3 sm:py-3.5 rounded-xl transition-all duration-300 ${stock === 0 || (!allVariantsSelected && attributes.length > 0)
                   ? "bg-slate-200 text-slate-400 cursor-not-allowed shadow-none"
                   : "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:shadow-primary/30"
-              }`}
+                }`}
               onClick={() => onAddToCart({ ...productDetails, selectedVariants })}
               disabled={stock === 0 || (!allVariantsSelected && attributes.length > 0)}
               aria-label="Add to cart"
@@ -296,17 +285,17 @@ function PurchaseCard({
 
         {/* Quick Feature Badges */}
         <div className="grid grid-cols-3 gap-2 mt-1">
-          <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
-            <Truck className="w-5 h-5 text-sky-500" />
-            <span className="text-[11px] text-slate-600 font-medium text-center leading-tight">Fast Delivery</span>
+          <div className="flex flex-col items-center gap-1 p-2 rounded-xl bg-slate-50 border border-slate-100">
+            <Truck className="w-4 h-4 text-sky-500" />
+            <span className="text-[10px] text-slate-600 font-medium text-center leading-tight">Fast Delivery</span>
           </div>
-          <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
-            <Shield className="w-5 h-5 text-emerald-500" />
-            <span className="text-[11px] text-slate-600 font-medium text-center leading-tight">2-Year Warranty</span>
+          <div className="flex flex-col items-center gap-1 p-2 rounded-xl bg-slate-50 border border-slate-100">
+            <Shield className="w-4 h-4 text-emerald-500" />
+            <span className="text-[10px] text-slate-600 font-medium text-center leading-tight">2-Year Warranty</span>
           </div>
-          <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
-            <RotateCcw className="w-5 h-5 text-amber-500" />
-            <span className="text-[11px] text-slate-600 font-medium text-center leading-tight">Easy Returns</span>
+          <div className="flex flex-col items-center gap-1 p-2 rounded-xl bg-slate-50 border border-slate-100">
+            <RotateCcw className="w-4 h-4 text-amber-500" />
+            <span className="text-[10px] text-slate-600 font-medium text-center leading-tight">Easy Returns</span>
           </div>
         </div>
       </div>

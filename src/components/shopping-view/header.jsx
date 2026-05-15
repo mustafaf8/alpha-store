@@ -30,7 +30,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { translateCategoryName } from "@/lib/taxonomy-translations";
 
 // Hover-based dropdown menu
-const HoverMenu = ({ children, trigger, className = "" }) => {
+const HoverMenu = ({ children, trigger, className = "", align = "left" }) => {
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef(null);
   const menuRef = useRef(null);
@@ -70,7 +70,8 @@ const HoverMenu = ({ children, trigger, className = "" }) => {
       {isOpen && (
         <div
           ref={menuRef}
-          className="absolute top-full left-0 z-50 min-w-[280px] max-w-[360px] overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/95 shadow-2xl backdrop-blur-sm mt-1"
+          className={`absolute top-full ${align === "right" ? "right-0" : "left-0"
+            } z-50 min-w-[280px] max-w-[360px] overflow-hidden rounded-desktop border border-slate-200 bg-slate-50/95 shadow-2xl backdrop-blur-sm mt-1`}
           onMouseEnter={handleMenuMouseEnter}
           onMouseLeave={handleMenuMouseLeave}
         >
@@ -82,7 +83,7 @@ const HoverMenu = ({ children, trigger, className = "" }) => {
 };
 
 // Recursive menu item component
-const RecursiveMenuItem = ({ category, handleNavigate }) => {
+const RecursiveMenuItem = ({ category, handleNavigate, side = "right" }) => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const timeoutRef = useRef(null);
 
@@ -130,7 +131,8 @@ const RecursiveMenuItem = ({ category, handleNavigate }) => {
         </button>
         {isSubMenuOpen && (
           <div
-            className="absolute left-full top-0 z-50 min-w-[260px] max-w-[340px] overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/95 shadow-2xl backdrop-blur-sm p-3 ml-1 flex flex-wrap gap-2"
+            className={`absolute ${side === "right" ? "left-full ml-1" : "right-full mr-1"
+              } top-0 z-50 min-w-[260px] max-w-[340px] overflow-hidden rounded-desktop border border-slate-200 bg-slate-50/95 shadow-2xl backdrop-blur-sm p-3 flex flex-wrap gap-2`}
             onMouseEnter={handleSubMenuMouseEnter}
             onMouseLeave={handleSubMenuMouseLeave}
           >
@@ -150,6 +152,7 @@ const RecursiveMenuItem = ({ category, handleNavigate }) => {
                 key={child._id}
                 category={child}
                 handleNavigate={handleNavigate}
+                side={side}
               />
             ))}
           </div>
@@ -248,12 +251,13 @@ function CategorySubMenu() {
     <div className="bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
       <div className="mx-10">
         <nav className="mx-auto w-full max-w-[96rem] px-4 lg:px-1 max-[1024px]:px-1 flex items-center justify-center gap-x-2 min-h-[44px] overflow-x-auto no-scrollbar category-menu-container relative z-40">
-          {categoryList.slice(0, 10).map((category) =>
+          {categoryList.slice(0, 10).map((category, index) =>
             category.children && category.children.length > 0 ? (
               <HoverMenu
                 key={category._id}
+                align={index >= 7 ? "right" : "left"}
                 trigger={
-                  <button className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-primary px-2 py-1.5 flex items-center justify-center gap-1 rounded-xl hover:bg-slate-100 transition-all duration-200 text-center">
+                  <button className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-primary px-2 py-1.5 flex items-center justify-center gap-1 rounded-desktop hover:bg-slate-100 transition-all duration-200 text-center">
                     <span className="max-w-[150px] whitespace-normal break-words">
                       {translateName(category.name)}
                     </span>
@@ -278,6 +282,7 @@ function CategorySubMenu() {
                       key={subCategory._id}
                       category={subCategory}
                       handleNavigate={handleNavigate}
+                      side={index >= 7 ? "left" : "right"}
                     />
                   ))}
                 </div>
@@ -287,7 +292,7 @@ function CategorySubMenu() {
               <button
                 key={category._id}
                 onClick={() => handleNavigate(category.slug)}
-                className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-primary px-2 py-1.5 flex items-center justify-center rounded-xl hover:bg-slate-100 transition-all duration-200 text-center"
+                className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-primary px-2 py-1.5 flex items-center justify-center rounded-desktop hover:bg-slate-100 transition-all duration-200 text-center"
               >
                 <span className="max-w-[100px] whitespace-normal break-words">
                   {translateName(category.name)}
@@ -609,12 +614,12 @@ function ShoppingHeader() {
             <button
               key={item._id}
               type="button"
-              className="flex items-center gap-4 w-full p-2.5 rounded-2xl transition-all hover:bg-primary/5 hover:shadow-lg group text-left"
+              className="flex items-center gap-4 w-full p-2.5 rounded-desktop transition-all hover:bg-primary/5 hover:shadow-lg group text-left"
               onClick={() =>
                 handleSuggestionClick(`/shop/product/${item._id}/specs`)
               }
             >
-              <div className="w-14 h-14 rounded-xl bg-white border border-slate-100 flex-shrink-0 overflow-hidden shadow-sm">
+              <div className="w-14 h-14 rounded-mobile bg-white border border-slate-100 flex-shrink-0 overflow-hidden shadow-sm">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -662,7 +667,7 @@ function ShoppingHeader() {
   };
 
   const renderSuggestionsContent = () => (
-    <div className="search-suggestions-portal w-full overflow-hidden rounded-3xl border border-white/40 bg-slate-50/95 shadow-[0_20px_50px_rgba(0,0,0,0.1)] backdrop-blur-xl animate-in fade-in zoom-in duration-200">
+    <div className="search-suggestions-portal w-full overflow-hidden rounded-desktop border border-white/40 bg-slate-50/95 shadow-[0_20px_50px_rgba(0,0,0,0.1)] backdrop-blur-xl animate-in fade-in zoom-in duration-200">
       <div className="max-h-[min(70vh,500px)] overflow-y-auto no-scrollbar">
         {renderProductSuggestions(suggestions.products)}
         {renderChipSuggestions("Categories", suggestions.categories, (c) =>
@@ -706,7 +711,7 @@ function ShoppingHeader() {
 
       <div className="mx-auto w-full max-w-[96rem] px-2 md:px-4 lg:px-5">
         <div className="relative flex h-14 items-center justify-between gap-3 md:h-20 lg:gap-6">
-          <Link to="/shop/home" className="flex-shrink-0 rounded-xl px-1 py-1">
+          <Link to="/shop/home" className="flex-shrink-0 rounded-desktop px-1 py-1">
             <img
               className="h-20 w-auto max-[767px]:h-[50px] transition-all"
               src="/logo.png"
