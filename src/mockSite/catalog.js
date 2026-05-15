@@ -2354,42 +2354,42 @@ const productReviews = {
 const quickExploreItems = [
   {
     title: "Phones",
-    image: "/bannerx/1.webp",
+    image: "/bannerx/categori.jpg",
     link: "/shop/listing?category=phones",
   },
   {
     title: "Sound",
-    image: "/bannerx/2.webp",
+    image: "/bannerx/categori1.jpg",
     link: "/shop/listing?category=audio-systems",
   },
   {
     title: "Orbit",
-    image: "/bannerx/3.webp",
+    image: "/bannerx/categori2.jpg",
     link: "/shop/listing?brand=orbit",
   },
   {
     title: "AudioX",
-    image: "/bannerx/4.webp",
+    image: "/bannerx/categori3.jpg",
     link: "/shop/listing?brand=audiox",
   },
   {
     title: "Lumina",
-    image: "/bannerx/5.webp",
+    image: "/bannerx/categori4.jpg",
     link: "/shop/listing?brand=lumina",
   },
   {
     title: "Novatek",
-    image: "/bannerx/6.webp",
+    image: "/bannerx/categori5.jpg",
     link: "/shop/listing?brand=novatek",
   },
   {
     title: "Gadgets",
-    image: "/bannerx/2.webp",
+    image: "/bannerx/categori6.jpg",
     link: "/shop/listing?category=accessories",
   },
   {
     title: "Deals",
-    image: "/bannerx/2.webp",
+    image: "/bannerx/categori7.jpg",
     link: "/shop/listing?category=deals",
   },
 ];

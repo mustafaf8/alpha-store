@@ -179,10 +179,9 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
         <button
           onClick={(e) => {
             e.stopPropagation();
-            if (handleAddtoCart)
-              handleAddtoCart(product._id, product.totalStock);
+            handleProductClick();
           }}
-          className="product-tile-cart-btn w-full bg-primary hover:bg-primary/90 text-white text-xs sm:text-sm font-semibold py-1.5 sm:py-2 rounded-mobile sm:rounded-desktop transition-colors shadow-md"
+          className="product-tile-cart-btn w-full bg-primary hover:bg-primary/90 text-white text-[11px] sm:text-xs font-black uppercase tracking-wider py-1.5 sm:py-2 rounded-mobile sm:rounded-desktop transition-all duration-300 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30"
         >
           Add to Cart
         </button>
