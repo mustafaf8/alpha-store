@@ -95,7 +95,7 @@ function PurchaseCard({
                   key={label + idx}
                   type="button"
                   onClick={() => handleVariantSelect(attr.name, opt)}
-                  className={`w-9 h-9 rounded-full border-2 transition-all duration-200 shadow-sm hover:scale-110 ${isSelected
+                  className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full border-2 transition-all duration-200 shadow-sm hover:scale-110 ${isSelected
                       ? "border-primary ring-2 ring-primary/20 scale-110"
                       : "border-slate-200 hover:border-slate-300"
                     }`}
@@ -112,7 +112,7 @@ function PurchaseCard({
                   key={label + idx}
                   type="button"
                   onClick={() => handleVariantSelect(attr.name, opt)}
-                  className={`min-w-[40px] h-10 px-3 rounded-lg border-2 font-semibold text-sm transition-all duration-200 flex items-center justify-center ${isSelected
+                  className={`min-w-[36px] h-8 sm:min-w-[40px] sm:h-10 px-2 sm:px-3 rounded-lg border-2 font-semibold text-[12px] sm:text-sm transition-all duration-200 flex items-center justify-center ${isSelected
                       ? "border-primary bg-primary/10 text-primary"
                       : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
                     }`}
@@ -128,7 +128,7 @@ function PurchaseCard({
                 key={label + idx}
                 type="button"
                 onClick={() => handleVariantSelect(attr.name, opt)}
-                className={`px-4 py-2 rounded-xl border-2 font-medium text-sm transition-all duration-200 ${isSelected
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl border-2 font-medium text-[12px] sm:text-sm transition-all duration-200 ${isSelected
                     ? "border-primary bg-primary/10 text-primary shadow-sm"
                     : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50"
                   }`}

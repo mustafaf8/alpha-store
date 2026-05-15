@@ -103,16 +103,29 @@ function ShoppingHome() {
     [dispatch, toast],
   );
 
+  const heroBanners = [
+    { _id: "b2", image: "/hero _banner/b2.jpg", title: "Banner 2" },
+    { _id: "b1", image: "/hero _banner/b1.jpg", title: "Banner 1" },
+    { _id: "b3", image: "/hero _banner/b3.jpg", title: "Banner 3" },
+    { _id: "b4", image: "/hero _banner/b4.jpg", title: "Banner 4" },
+    { _id: "b5", image: "/hero _banner/b5.jpg", title: "Banner 5" },
+    { _id: "b6", image: "/hero _banner/b6.jpg", title: "Banner 6" },
+    { _id: "b7", image: "/hero _banner/b7.jpg", title: "Banner 7" },
+    { _id: "b8", image: "/hero _banner/b8.jpg", title: "Banner 8" },
+    { _id: "b9", image: "/hero _banner/b9.jpg", title: "Banner 9" },
+    { _id: "b10", image: "/hero _banner/b10.jpg", title: "Banner 10" },
+    { _id: "b11", image: "/hero _banner/b11.jpg", title: "Banner 11" },
+    { _id: "b12", image: "/hero _banner/b12.jpg", title: "Banner 12" },
+  ];
+
   useEffect(() => {
-    if (featureImageList?.length > 1) {
+    if (heroBanners.length > 1) {
       const timer = setInterval(() => {
-        setCurrentSlide(
-          (prevSlide) => (prevSlide + 1) % featureImageList.length,
-        );
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % heroBanners.length);
       }, 5000);
       return () => clearInterval(timer);
     }
-  }, [featureImageList]);
+  }, [heroBanners.length]);
 
   useEffect(() => {
     if (sideBannerList?.length > 1) {
@@ -137,87 +150,81 @@ function ShoppingHome() {
       <div className="container mx-auto max-lg:px-0 my-1 md:my-2 pt-1 max-lg:pt-1 relative z-0">
         <div className="shop-container max-lg:px-2 max-[640px]:px-1">
           <div className="w-full">
-            {featuresLoading ? (
-              <div className="flex h-[400px] gap-4 max-[1023px]:h-[350px] max-[640px]:h-[180px]">
-                <Skeleton className="w-full h-full rounded-mobile bg-gray-200 animate-pulse" />
+            <div className="flex w-full">
+              <div className="hero-banner-container relative w-full h-[180px] sm:h-[350px] md:h-[400px] lg:h-[450px] rounded-desktop max-md:rounded-mobile overflow-hidden group" style={{ perspective: "1200px", transformStyle: "preserve-3d" }}>
+                <AnimatePresence mode="popLayout">
+
+                  <motion.img
+                    key={heroBanners[currentSlide]?._id}
+                    src={heroBanners[currentSlide]?.image}
+                    alt={heroBanners[currentSlide]?.title}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.2}
+                    onDragEnd={(e, { offset, velocity }) => {
+                      const swipeThreshold = 50;
+                      if (offset.x > swipeThreshold) {
+                        setCurrentSlide((prev) => (prev - 1 + heroBanners.length) % heroBanners.length);
+                      } else if (offset.x < -swipeThreshold) {
+                        setCurrentSlide((prev) => (prev + 1) % heroBanners.length);
+                      }
+                    }}
+                    initial={{ opacity: 0, x: "100%", z: -400, rotateY: 10 }}
+                    animate={{ opacity: 1, x: 0, z: 0, rotateY: 0 }}
+                    exit={{ opacity: 0, x: "-100%", z: -400, rotateY: -10 }}
+                    transition={{
+                      x: { type: "spring", stiffness: 100, damping: 20 },
+                      opacity: { duration: 0.4 },
+                      default: { duration: 0.8 }
+                    }}
+                    className="absolute inset-0 z-0 h-full w-full object-cover object-center touch-pan-y"
+                    loading="eager"
+                  />
+                </AnimatePresence>
+
+                {heroBanners.length > 1 && (
+                  <>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentSlide((prev) => (prev - 1 + heroBanners.length) % heroBanners.length);
+                      }}
+                      className="pointer-events-auto absolute left-2 top-1/2 z-20 hidden md:flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-primary hover:bg-primary hover:text-white lg:opacity-0 lg:group-hover:opacity-100"
+                      aria-label="Previous slide"
+                    >
+                      <ChevronLeftIcon className="size-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentSlide((prev) => (prev + 1) % heroBanners.length);
+                      }}
+                      className="pointer-events-auto absolute right-2 top-1/2 z-20 hidden md:flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-primary hover:bg-primary hover:text-white lg:opacity-0 lg:group-hover:opacity-100"
+                      aria-label="Next slide"
+                    >
+                      <ChevronRightIcon className="size-4" />
+                    </Button>
+
+                    {/* Dots indicator */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-1.5 sm:gap-2">
+                      {heroBanners.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentSlide(idx)}
+                          className={`h-1.5 transition-all duration-300 rounded-full ${currentSlide === idx ? "w-5 sm:w-6 bg-primary" : "w-1.5 bg-white/50 hover:bg-white"
+                            }`}
+                          aria-label={`Go to slide ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
-            ) : (
-              <div className="flex w-full">
-                <div className="hero-banner-container relative w-full rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm group" style={{ perspective: "1200px", transformStyle: "preserve-3d" }}>
-                  <AnimatePresence mode="popLayout">
-                    {featureImageList && featureImageList.length > 0 ? (
-                      <motion.img
-                        key={
-                          featureImageList[currentSlide]?._id ??
-                          `banner-${currentSlide}`
-                        }
-                        src={featureImageList[currentSlide]?.image}
-                        alt={
-                          featureImageList[currentSlide]?.title ||
-                          `Banner ${currentSlide + 1}`
-                        }
-                        onClick={() =>
-                          handlePromoCardClick(
-                            featureImageList[currentSlide]?.link,
-                          )
-                        }
-                        initial={{ opacity: 0, x: "100%", z: -400, rotateY: 10 }}
-                        animate={{ opacity: 1, x: 0, z: 0, rotateY: 0 }}
-                        exit={{ opacity: 0, x: "-100%", z: -400, rotateY: -10 }}
-                        transition={{ 
-                          x: { type: "spring", stiffness: 100, damping: 20 },
-                          opacity: { duration: 0.4 },
-                          default: { duration: 0.8 }
-                        }}
-                        className={`absolute inset-0 z-0 h-full w-full object-cover object-center ${featureImageList[currentSlide]?.link
-                          ? "cursor-pointer"
-                          : ""
-                          }`}
-                        loading="eager"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">Banner Area</span>
-                      </div>
-                    )}
-                  </AnimatePresence>
-                  {featureImageList && featureImageList.length > 1 && (
-                    <>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setCurrentSlide(
-                            (prev) =>
-                              (prev - 1 + featureImageList.length) %
-                              featureImageList.length,
-                          );
-                        }}
-                        className="pointer-events-auto absolute left-0.5 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 opacity-100 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-primary hover:bg-primary hover:text-white active:scale-95 md:left-1 md:h-8 md:w-8 lg:pointer-events-none lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100"
-                        aria-label="Scroll left"
-                      >
-                        <ChevronLeftIcon className="size-3.5 md:size-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setCurrentSlide(
-                            (prev) => (prev + 1) % featureImageList.length,
-                          );
-                        }}
-                        className="pointer-events-auto absolute right-0.5 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 opacity-100 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-primary hover:bg-primary hover:text-white active:scale-95 md:right-1 md:h-8 md:w-8 lg:pointer-events-none lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100"
-                        aria-label="Scroll right"
-                      >
-                        <ChevronRightIcon className="size-3.5 md:size-4" />
-                      </Button>
-                    </>
-                  )}
-                </div>
-              </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
@@ -257,8 +264,8 @@ function ShoppingHome() {
       </div>
 
       {/* Top Brands Section */}
-      <div className="container mx-auto max-lg:px-0 mb-2 sm:my-1 relative z-0">
-        <div className="shop-container max-lg:px-2 max-[640px]:px-1">
+      <div className="container mx-auto max-lg:px-0 mb-4 sm:my-1 relative z-0">
+        <div className="shop-container max-lg:px-2 max-[640px]:px-2">
           <div className="pt-0 pb-0 sm:pb-5 sm:px-2 flex items-center md:gap-4 gap-2">
             {/* Vertical Title */}
             <div className="flex items-center justify-center [writing-mode:vertical-lr] rotate-180 border-r border-primary/50 pr-1 md:pr-4 self-stretch">
@@ -396,7 +403,7 @@ function ShoppingHome() {
       <div className="container mx-auto max-lg:px-0 space-y-4 pb-16 mt-0">
         {/* Custom Banner Row */}
         <div className="shop-container mx-auto max-lg:px-2">
-          <div className="promo-banner-grid grid grid-cols-2 gap-4 max-[720px]:gap-2">
+          <div className="promo-banner-grid grid grid-cols-2 gap-4 max-[720px]:grid-cols-1">
             <div className="promo-banner-item rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
               <img
                 src="/bannar2.avif"
@@ -404,7 +411,7 @@ function ShoppingHome() {
                 className="w-full object-cover transform group-hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <div className="promo-banner-item rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+            <div className="promo-banner-item rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group max-[720px]:hidden">
               <img
                 src="/banner3.avif"
                 alt="Promo 2"
@@ -618,7 +625,7 @@ function ShoppingHome() {
                 {section.contentType === "BEST_SELLING" && (
                   <div className="shop-container mx-auto max-lg:px-2 space-y-4 max-[720px]:space-y-2">
                     {/* Banner 7 - Full width */}
-                    <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group w-full">
+                    <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group w-full max-[720px]:hidden">
                       <img
                         src="/banner7.avif"
                         alt="Promotion Banner"
@@ -626,8 +633,8 @@ function ShoppingHome() {
                       />
                     </div>
                     {/* Banner 5 & 6 - Side by side */}
-                    <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2">
-                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                    <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2 max-[720px]:grid-cols-1">
+                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group max-[720px]:hidden">
                         <img
                           src="/banner5.avif"
                           alt="Promo Banner 5"
@@ -649,7 +656,7 @@ function ShoppingHome() {
                 {isWomenSection && (
                   <div className="shop-container mx-auto max-lg:px-2 space-y-4 max-[720px]:space-y-2">
                     {/* First Row - 2 Banners */}
-                    <div className="grid grid-cols-2 md:grid-cols-2 gap-4 max-[720px]:gap-2">
+                    <div className="grid grid-cols-2 md:grid-cols-2 gap-4 max-[720px]:gap-2 max-[720px]:grid-cols-1">
                       <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/bannar2.avif"
@@ -657,7 +664,7 @@ function ShoppingHome() {
                           className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
-                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+                      <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer max-[720px]:hidden group">
                         <img
                           src="/banner3.avif"
                           alt="Promo 3"
@@ -666,7 +673,7 @@ function ShoppingHome() {
                       </div>
                     </div>
                     {/* Second Row - 2 Banners */}
-                    <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2">
+                    <div className="grid grid-cols-2 gap-4 max-[720px]:gap-2 max-[720px]:hidden">
                       <div className="rounded-desktop max-md:rounded-mobile overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                         <img
                           src="/banner5.avif"
@@ -688,7 +695,7 @@ function ShoppingHome() {
                 {/* Promotional Banners after men section */}
                 {isMenSection && (
                   <div className="shop-container mx-auto max-lg:px-2 mb-10">
-                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 max-[720px]:gap-2">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 max-[720px]:gap-2 max-[720px]:grid-cols-1">
                       {[
                         { src: "/bannar2.avif", alt: "Campaign 1" },
                         { src: "/bannar2.avif", alt: "Campaign 2" },

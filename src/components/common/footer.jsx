@@ -84,10 +84,6 @@ const Footer = () => {
       img: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg",
     },
     { name: "visa", img: "/visa.svg" },
-    {
-      name: "amex",
-      img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg",
-    },
   ];
 
   const socialLinks = [
@@ -242,7 +238,7 @@ const Footer = () => {
           })}
         </div>
 
-        <div className="self-center lg:self-auto flex items-center gap-2">
+        <div className="self-start lg:self-auto flex items-center gap-2">
           <a
             href="#"
             className="inline-flex items-center gap-2 rounded-desktop max-md:rounded-mobile border border-white/20 bg-white/10 px-3 py-2 hover:bg-white/15 transition-colors"

@@ -1,20 +1,32 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 function ProductDescriptionPanel({ productDetails }) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const highlights = Array.isArray(productDetails?.highlights)
     ? productDetails.highlights
     : [];
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
-        <div className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+      <div className="rounded-2xl border border-slate-100 bg-white p-5 sm:p-6 shadow-sm">
+        <div className="text-base sm:text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
           <span className="w-1 h-5 rounded-full bg-primary shadow-sm" />
           Description
         </div>
-        <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-          {productDetails?.description || "No description has been added for this product."}
-        </p>
+        <div className="relative">
+          <p className={`text-slate-600 text-sm sm:text-base leading-relaxed transition-all duration-300 ${!isExpanded ? "line-clamp-3 sm:line-clamp-4" : ""}`}>
+            {productDetails?.description || "No description has been added for this product."}
+          </p>
+          {productDetails?.description && productDetails.description.length > 180 && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="mt-2 text-xs font-black text-primary uppercase tracking-widest hover:underline"
+            >
+              {isExpanded ? "Show Less" : "Read More"}
+            </button>
+          )}
+        </div>
       </div>
 
       {highlights.length > 0 && (

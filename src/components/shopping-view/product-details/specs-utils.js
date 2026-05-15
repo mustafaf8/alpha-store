@@ -149,8 +149,6 @@ export const buildMergedSpecs = (productDetails) => {
   );
 
   const extraSpecs = [
-    { key: "Urun Adi", value: productDetails?.title },
-    { key: "Aciklama", value: productDetails?.description },
     {
       key: "Liste Fiyati",
       value:
