@@ -138,7 +138,7 @@ const BottomNavBar = () => {
           <div
             key={category._id}
             className={cn(
-              "rounded-xl border overflow-hidden",
+              "rounded-mobile border overflow-hidden",
               level === 0
                 ? "border-slate-200 bg-slate-50/70"
                 : "border-slate-200 bg-white",
@@ -301,7 +301,7 @@ const BottomNavBar = () => {
     <div className="lg:hidden">
       {isMenuOpen && (
         <div className="fixed inset-0 z-[2147483646] bg-black/40 backdrop-blur-[2px]">
-          <div className="absolute inset-x-0 bottom-0 h-[84vh] max-h-[84vh] rounded-t-2xl bg-white shadow-2xl flex flex-col">
+          <div className="absolute inset-x-0 bottom-0 h-[84vh] max-h-[84vh] rounded-t-mobile bg-white shadow-2xl flex flex-col">
             <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 bg-slate-50">
               <div className="flex flex-col">
                 <h3 className="text-base font-bold text-slate-800">
@@ -335,10 +335,10 @@ const BottomNavBar = () => {
                         key={item.id}
                         type="button"
                         onClick={item.onClick}
-                        className="w-full rounded-xl border border-slate-200 bg-white px-3 py-3 flex items-center justify-between text-left hover:bg-slate-50 transition-colors"
+                        className="w-full rounded-mobile border border-slate-200 bg-white px-3 py-3 flex items-center justify-between text-left hover:bg-slate-50 transition-colors"
                       >
                         <span className="flex items-center gap-2.5">
-                          <span className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600">
+                          <span className="w-8 h-8 rounded-mobile bg-slate-100 flex items-center justify-center text-slate-600">
                             <Icon className="w-4 h-4" />
                           </span>
                           <span className="text-sm font-semibold text-slate-800">
@@ -381,7 +381,7 @@ const BottomNavBar = () => {
                     aria-label={item.label}
                     onClick={() => handleNavigate(item.to)}
                     className={cn(
-                      "flex flex-col items-center justify-start -translate-y-1.5 gap-1 px-1.5 py-1 rounded-xl transition-colors duration-300 sm:gap-1.5 sm:px-2 sm:py-1.5 sm:rounded-2xl",
+                      "flex flex-col items-center justify-start -translate-y-1.5 gap-1 px-1.5 py-1 rounded-mobile transition-colors duration-300 sm:gap-1.5 sm:px-2 sm:py-1.5",
                       isActive
                         ? "text-primary"
                         : "text-slate-400 hover:text-slate-600",

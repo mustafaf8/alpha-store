@@ -73,9 +73,11 @@ export default {
         }
       },
       borderRadius: {
+        'mobile': 'var(--radius-mobile)',
+        'desktop': 'var(--radius-desktop)',
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "var(--radius-mobile)",
+        sm: "calc(var(--radius-mobile) - 2px)",
       },
       keyframes: {
         "accordion-down": {

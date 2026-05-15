@@ -52,7 +52,7 @@ function StoreLocatorPage() {
                     Email
                   </p>
                   <p className="text-sm font-medium text-slate-800">
-                    support@alphastore.com
+                    support@circlestore.com
                   </p>
                 </div>
               </div>
@@ -96,7 +96,7 @@ function StoreLocatorPage() {
           <div className="lg:col-span-3 rounded-2xl border border-slate-200 bg-white p-3 md:p-4 shadow-sm">
             <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
               <iframe
-                title="Alpha Store Location"
+                title="Circle Store Location"
                 src="https://maps.google.com/maps?q=Istanbul+store&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-[280px] sm:h-[340px] lg:h-[460px]"
                 loading="lazy"

@@ -46,7 +46,7 @@ function AboutUsPage() {
               A Better Way to Shop
             </h1>
             <p className="mt-4 text-sm md:text-base text-white/90 leading-relaxed max-w-3xl mx-auto">
-              Alpha Store delivers a modern e-commerce experience built on
+              Circle Store delivers a modern e-commerce experience built on
               quality, speed, and trust. Our goal is to help you find the
               right product quickly and receive it with confidence.
             </p>
@@ -74,10 +74,10 @@ function AboutUsPage() {
             Who We Are
           </p>
           <h2 className="mt-3 text-2xl md:text-4xl font-black text-slate-900 leading-tight">
-            About Alpha Store
+            About Circle Store
           </h2>
           <p className="mt-4 text-sm md:text-base text-slate-600 leading-relaxed max-w-3xl mx-auto">
-            Alpha Store is a modern e-commerce platform designed to bring
+            Circle Store is a modern e-commerce platform designed to bring
             quality products, competitive pricing, and a smooth shopping
             journey together in one place.
           </p>
@@ -160,7 +160,7 @@ function AboutUsPage() {
           </h2>
           <p className="mt-3 text-sm md:text-base text-slate-600 max-w-3xl mx-auto leading-relaxed">
             We treat every piece of feedback as an opportunity to improve.
-            Our team keeps refining the Alpha Store experience month by month.
+            Our team keeps refining the Circle Store experience month by month.
           </p>
         </div>
       </div>

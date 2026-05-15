@@ -57,7 +57,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
 
   return (
     <div
-      className="group relative isolate flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer p-3 pb-12"
+      className="group relative isolate flex flex-col bg-white rounded-desktop max-md:rounded-mobile border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer p-3 pb-12"
       onClick={handleProductClick}
     >
       {/* Product Image area with Badges */}
@@ -78,7 +78,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
           <div className="absolute top-1 left-1 z-10 max-[720px]:top-0.5 max-[720px]:left-0.5">
             <button
               onClick={handleAction}
-              className="pointer-events-auto bg-white border border-slate-200 p-2 max-[720px]:p-1.5 rounded-xl max-[720px]:rounded-lg text-slate-600 hover:text-primary transition-colors"
+              className="pointer-events-auto bg-white border border-slate-200 p-2 max-[720px]:p-1.5 rounded-desktop max-[720px]:rounded-mobile text-slate-600 hover:text-primary transition-colors"
             >
               <Heart className="w-4 h-4 max-[720px]:w-3.5 max-[720px]:h-3.5" />
             </button>
@@ -86,7 +86,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
 
           {/* Top Right Status Badge */}
           <div className="absolute top-1 right-1 z-10 max-[720px]:top-0.5 max-[720px]:right-0.5">
-            <span className="bg-white border border-slate-200 text-primary font-bold text-[10px] max-[720px]:text-[8px] px-2 py-1 max-[720px]:px-1.5 max-[720px]:py-0.5 rounded-md max-[720px]:rounded tracking-wide">
+            <span className="bg-white border border-slate-200 text-primary font-bold text-[10px] max-[720px]:text-[8px] px-2 py-1 max-[720px]:px-1.5 max-[720px]:py-0.5 rounded-md max-[720px]:rounded-sm tracking-wide">
               {statusText}
             </span>
           </div>
@@ -182,7 +182,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
             if (handleAddtoCart)
               handleAddtoCart(product._id, product.totalStock);
           }}
-          className="product-tile-cart-btn w-full bg-primary hover:bg-primary/90 text-white text-xs sm:text-sm font-semibold py-1.5 sm:py-2 rounded-lg sm:rounded-xl transition-colors shadow-md"
+          className="product-tile-cart-btn w-full bg-primary hover:bg-primary/90 text-white text-xs sm:text-sm font-semibold py-1.5 sm:py-2 rounded-mobile sm:rounded-desktop transition-colors shadow-md"
         >
           Add to Cart
         </button>
