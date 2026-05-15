@@ -85,7 +85,7 @@ function ProductDeliveryReturnsPanel({ productDetails }) {
       {inTheBox.length > 0 && (
         <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <div className="flex items-center gap-2 mb-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-violet-600 shadow-md">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary shadow-md">
               <Package className="h-5 w-5 text-white" />
             </div>
             <div className="text-lg font-bold text-gray-900">In the Box</div>
@@ -94,7 +94,7 @@ function ProductDeliveryReturnsPanel({ productDetails }) {
             {inTheBox.map((item) => (
               <span
                 key={item}
-                className="px-3 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-sm font-medium"
+                className="px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium"
               >
                 {item}
               </span>

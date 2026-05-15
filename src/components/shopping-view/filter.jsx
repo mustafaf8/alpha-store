@@ -30,8 +30,8 @@ function ProductFilter({
         onClick={() => handleFilter(sectionId, id)}
         className={`h-8 whitespace-nowrap rounded-full border px-3 text-[11px] font-bold transition-all duration-200 ${
           isChecked
-            ? "border-purple-500 bg-purple-500 text-white hover:bg-purple-600 shadow-md shadow-purple-200"
-            : "bg-white border-slate-100 text-slate-600 hover:border-purple-200 hover:bg-purple-50 hover:text-purple-600 shadow-sm"
+            ? "border-primary bg-primary text-white hover:bg-primary/90 shadow-md shadow-primary/20"
+            : "bg-white border-slate-100 text-slate-600 hover:border-primary/30 hover:bg-primary/10 hover:text-primary shadow-sm"
         }`}
       >
         {label}
@@ -50,13 +50,13 @@ function ProductFilter({
           }}
         >
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-purple-100 rounded-xl">
-              <Filter className="h-4 w-4 text-purple-600" />
+            <div className="p-2 bg-primary/10 rounded-xl">
+              <Filter className="h-4 w-4 text-primary" />
             </div>
             <div>
               <p className="text-sm font-black text-slate-800 uppercase tracking-wider">Filters</p>
               {selectedCount > 0 && (
-                <p className="text-[10px] font-bold text-purple-500 uppercase tracking-widest mt-0.5">
+                <p className="text-[10px] font-bold text-primary uppercase tracking-widest mt-0.5">
                   {selectedCount} Selected
                 </p>
               )}
@@ -120,7 +120,7 @@ function ProductFilter({
                   {categories.map((category) => (
                     <div key={category._id} className="space-y-3 group">
                       <div className="flex items-center gap-2">
-                        <span className="text-[12px] font-black text-slate-800 uppercase tracking-wider group-hover:text-purple-600 transition-colors">
+                        <span className="text-[12px] font-black text-slate-800 uppercase tracking-wider group-hover:text-primary transition-colors">
                           {translateCategoryName(category.name, category.slug)}
                         </span>
                         <div className="h-px flex-1 bg-slate-100" />

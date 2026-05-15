@@ -58,7 +58,7 @@ function SearchProducts() {
         <div className="space-y-5">
           <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
             <div className="flex items-center gap-2">
-              <Compass className="w-5 h-5 text-purple-600" />
+              <Compass className="w-5 h-5 text-primary" />
               <h2 className="text-base font-bold text-slate-800">
                 Search & Discover
               </h2>
@@ -70,7 +70,7 @@ function SearchProducts() {
 
           <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
             <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="w-4 h-4 text-purple-600" />
+              <Sparkles className="w-4 h-4 text-primary" />
               <h3 className="text-sm font-semibold text-slate-800">Popular Categories</h3>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -79,7 +79,7 @@ function SearchProducts() {
                   key={category._id}
                   type="button"
                   onClick={() => navigate(`/shop/listing?category=${category.slug}`)}
-                  className="px-3 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 hover:bg-purple-50 hover:text-purple-700 hover:border-purple-200 transition-colors"
+                  className="px-3 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors"
                 >
                   {translateCategoryName(category.name, category.slug)}
                 </button>
@@ -95,7 +95,7 @@ function SearchProducts() {
                   key={brand._id}
                   type="button"
                   onClick={() => navigate(`/shop/listing?brand=${brand.slug}`)}
-                  className="px-3 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 hover:bg-purple-50 hover:text-purple-700 hover:border-purple-200 transition-colors"
+                  className="px-3 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors"
                 >
                   {brand.name}
                 </button>

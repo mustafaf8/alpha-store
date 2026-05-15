@@ -113,7 +113,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
       <div className="shop-container max-[1024px]:px-2 max-[640px]:px-1">
         {/* Section header */}
         <div className="flex items-center justify-between mb-2 px-1">
-          <h2 className="text-base sm:text-lg md:text-xl font-semibold text-purple-700 flex items-center">
+          <h2 className="text-base sm:text-lg md:text-xl font-semibold text-primary flex items-center">
             {title}
           </h2>
 
@@ -136,7 +136,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
             variant="ghost"
             size="icon"
             className={cn(
-              "absolute left-0.5 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-purple-600 hover:bg-purple-600 hover:text-white active:scale-95 md:left-1 md:h-8 md:w-8",
+              "absolute left-0.5 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-primary hover:bg-primary hover:text-white active:scale-95 md:left-1 md:h-8 md:w-8",
               !internalLoading && canScrollLeft
                 ? "opacity-100 pointer-events-auto"
                 : "opacity-0 pointer-events-none",
@@ -194,7 +194,7 @@ function ProductCarousel({ title, handleAddtoCart, viewAllPath, fetchConfig }) {
             variant="ghost"
             size="icon"
             className={cn(
-              "absolute right-0.5 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-purple-600 hover:bg-purple-600 hover:text-white active:scale-95 md:right-1 md:h-8 md:w-8",
+              "absolute right-0.5 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-primary hover:bg-primary hover:text-white active:scale-95 md:right-1 md:h-8 md:w-8",
               !internalLoading && canScrollRight
                 ? "opacity-100 pointer-events-auto"
                 : "opacity-0 pointer-events-none",

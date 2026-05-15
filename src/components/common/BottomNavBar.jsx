@@ -162,7 +162,7 @@ const BottomNavBar = () => {
               </span>
               <div className="flex items-center gap-1.5">
                 {category.children?.length > 0 && (
-                  <span className="rounded-full bg-purple-100 px-2 py-0.5 text-[10px] font-bold text-purple-700">
+                  <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">
                     {category.children.length}
                   </span>
                 )}
@@ -347,7 +347,7 @@ const BottomNavBar = () => {
                         </span>
                         <span className="flex items-center gap-2">
                           {item.badge ? (
-                            <span className="min-w-[20px] h-5 px-1.5 rounded-full bg-purple-600 text-white text-[10px] font-bold flex items-center justify-center">
+                            <span className="min-w-[20px] h-5 px-1.5 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center">
                               {item.badge > 99 ? "99+" : item.badge}
                             </span>
                           ) : null}
@@ -383,7 +383,7 @@ const BottomNavBar = () => {
                     className={cn(
                       "flex flex-col items-center justify-start -translate-y-1.5 gap-1 px-1.5 py-1 rounded-xl transition-colors duration-300 sm:gap-1.5 sm:px-2 sm:py-1.5 sm:rounded-2xl",
                       isActive
-                        ? "text-purple-600"
+                        ? "text-primary"
                         : "text-slate-400 hover:text-slate-600",
                     )}
                   >
@@ -393,11 +393,11 @@ const BottomNavBar = () => {
                         className={cn(
                           "h-5 w-5 sm:h-6 sm:w-6",
                           isActive &&
-                          "drop-shadow-[0_0_12px_rgba(147,51,234,0.5)]",
+                          "drop-shadow-[0_0_12px_rgba(242,108,108,0.5)]",
                         )}
                       />
                       {item.to === "/shop/cart" && totalCartItems > 0 && (
-                        <span className="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full bg-purple-600 text-white text-[10px] font-bold leading-4 text-center">
+                        <span className="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full bg-primary text-white text-[10px] font-bold leading-4 text-center">
                           {totalCartItems > 99 ? "99+" : totalCartItems}
                         </span>
                       )}
@@ -405,7 +405,7 @@ const BottomNavBar = () => {
                     <span
                       className={cn(
                         "h-3 text-[10px] sm:h-3.5 sm:text-xs font-semibold leading-none",
-                        isActive ? "text-purple-700" : "text-slate-500",
+                        isActive ? "text-primary" : "text-slate-500",
                       )}
                     >
                       {item.label}

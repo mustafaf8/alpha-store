@@ -138,9 +138,9 @@ const RecursiveMenuItem = ({ category, handleNavigate }) => {
             <button
               type="button"
               onClick={() => handleNavigate(category.slug)}
-              className="inline-flex w-auto max-w-full items-center rounded-full border border-purple-200 bg-purple-50 px-3 py-1.5 text-left transition-colors hover:border-purple-300 hover:bg-purple-100 shadow-sm"
+              className="inline-flex w-auto max-w-full items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-left transition-colors hover:border-primary/30 hover:bg-primary/10 shadow-sm"
             >
-              <span className="block truncate text-[13px] font-semibold text-purple-700">
+              <span className="block truncate text-[13px] font-semibold text-primary">
                 All {translateCategoryName(category.name, category.slug)}
               </span>
             </button>
@@ -246,55 +246,57 @@ function CategorySubMenu() {
 
   return (
     <div className="bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100">
-      <nav className="mx-auto w-full max-w-[96rem] px-4 lg:px-1 max-[1024px]:px-1 flex items-center justify-center gap-x-2 min-h-[44px] overflow-x-auto no-scrollbar category-menu-container relative z-40">
-        {categoryList.slice(0, 10).map((category) =>
-          category.children && category.children.length > 0 ? (
-            <HoverMenu
-              key={category._id}
-              trigger={
-                <button className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-purple-700 px-2 py-1.5 flex items-center justify-center gap-1 rounded-xl hover:bg-slate-100 transition-all duration-200 text-center">
-                  <span className="max-w-[100px] whitespace-normal break-words">
-                    {translateName(category.name)}
-                  </span>
-                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 flex-shrink-0" />
-                </button>
-              }
-            >
-              <div className="flex flex-wrap gap-2 p-3">
-                {/* Link to the main category itself */}
-                <button
-                  type="button"
-                  onClick={() => handleNavigate(category.slug)}
-                  className="inline-flex w-auto max-w-full items-center rounded-full border border-purple-200 bg-purple-50 px-3 py-1.5 text-left transition-colors hover:border-purple-300 hover:bg-purple-100 shadow-sm"
-                >
-                  <span className="block truncate text-[13px] font-semibold text-purple-700">
-                    All {translateName(category.name)}
-                  </span>
-                </button>
-                {/* Render sub-categories recursively */}
-                {category.children.map((subCategory) => (
-                  <RecursiveMenuItem
-                    key={subCategory._id}
-                    category={subCategory}
-                    handleNavigate={handleNavigate}
-                  />
-                ))}
-              </div>
-            </HoverMenu>
-          ) : (
-            // Category with no sub-categories
-            <button
-              key={category._id}
-              onClick={() => handleNavigate(category.slug)}
-              className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-purple-700 px-2 py-1.5 flex items-center justify-center rounded-xl hover:bg-slate-100 transition-all duration-200 text-center"
-            >
-              <span className="max-w-[100px] whitespace-normal break-words">
-                {translateName(category.name)}
-              </span>
-            </button>
-          ),
-        )}
-      </nav>
+      <div className="mx-10">
+        <nav className="mx-auto w-full max-w-[96rem] px-4 lg:px-1 max-[1024px]:px-1 flex items-center justify-center gap-x-2 min-h-[44px] overflow-x-auto no-scrollbar category-menu-container relative z-40">
+          {categoryList.slice(0, 10).map((category) =>
+            category.children && category.children.length > 0 ? (
+              <HoverMenu
+                key={category._id}
+                trigger={
+                  <button className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-primary px-2 py-1.5 flex items-center justify-center gap-1 rounded-xl hover:bg-slate-100 transition-all duration-200 text-center">
+                    <span className="max-w-[150px] whitespace-normal break-words">
+                      {translateName(category.name)}
+                    </span>
+                    <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 flex-shrink-0" />
+                  </button>
+                }
+              >
+                <div className="flex flex-wrap gap-2 p-3">
+                  {/* Link to the main category itself */}
+                  <button
+                    type="button"
+                    onClick={() => handleNavigate(category.slug)}
+                    className="inline-flex w-auto max-w-full items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-left transition-colors hover:border-primary/30 hover:bg-primary/10 shadow-sm"
+                  >
+                    <span className="block truncate text-[13px] font-semibold text-primary">
+                      All {translateName(category.name)}
+                    </span>
+                  </button>
+                  {/* Render sub-categories recursively */}
+                  {category.children.map((subCategory) => (
+                    <RecursiveMenuItem
+                      key={subCategory._id}
+                      category={subCategory}
+                      handleNavigate={handleNavigate}
+                    />
+                  ))}
+                </div>
+              </HoverMenu>
+            ) : (
+              // Category with no sub-categories
+              <button
+                key={category._id}
+                onClick={() => handleNavigate(category.slug)}
+                className="text-[12px] leading-tight font-semibold text-slate-700 hover:text-primary px-2 py-1.5 flex items-center justify-center rounded-xl hover:bg-slate-100 transition-all duration-200 text-center"
+              >
+                <span className="max-w-[100px] whitespace-normal break-words">
+                  {translateName(category.name)}
+                </span>
+              </button>
+            ),
+          )}
+        </nav>
+      </div>
     </div>
   );
 }
@@ -345,8 +347,8 @@ function MainHeaderActions() {
   };
 
   return (
-    <div className="flex items-center gap-2 max-[519px]:gap-1 md:gap-4">
-      <div className="flex max-[519px]:gap-0.5 items-center gap-1 md:hidden">
+    <div className="flex items-center gap-2 max-[519px]:gap-1">
+      <div className="flex max-[519px]:gap-0.5 items-center gap-1 lg:hidden">
         <Button
           variant="outline"
           className="h-9 shrink-0 rounded-full border border-slate-200 bg-white px-2 text-slate-700 max-[519px]:h-9 max-[519px]:w-9 max-[519px]:p-0"
@@ -391,7 +393,7 @@ function MainHeaderActions() {
 
       <Button
         variant="outline"
-        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors"
         aria-label="All Products"
         onClick={() => navigate("/shop/listing")}
       >
@@ -401,7 +403,7 @@ function MainHeaderActions() {
 
       <Button
         variant="outline"
-        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors"
         aria-label="Language Selection"
         onClick={() => navigate("/shop/home")}
       >
@@ -411,7 +413,7 @@ function MainHeaderActions() {
 
       <Button
         variant="outline"
-        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors"
         aria-label="Currency Selection"
         onClick={handleCurrencyChange}
       >
@@ -425,7 +427,7 @@ function MainHeaderActions() {
 
       <Button
         variant="outline"
-        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors"
         aria-label="Favorites"
         onClick={() => navigate("/shop/listing")}
       >
@@ -435,7 +437,7 @@ function MainHeaderActions() {
 
       <Button
         variant="outline"
-        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-slate-50"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 h-10 text-slate-700 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors"
         aria-label="Store Location"
         onClick={handleStoreLocation}
       >
@@ -445,7 +447,7 @@ function MainHeaderActions() {
 
       <Button
         variant="outline"
-        className="hidden lg:flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-3 py-2 h-10 text-purple-700 hover:bg-purple-100 hover:border-purple-300 relative"
+        className="hidden lg:flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-2 h-10 text-primary hover:bg-primary/10 hover:border-primary/30 relative"
         aria-label="Cart"
         onClick={() => navigate("/shop/cart")}
       >
@@ -456,18 +458,6 @@ function MainHeaderActions() {
             {totalCartItems}
           </span>
         )}
-      </Button>
-
-      <Button
-        variant="secondary"
-        className="hidden md:flex items-center gap-2 rounded-full border border-green-100 bg-green-50 px-3 md:px-4 py-2 h-10 text-green-700 hover:bg-green-100"
-        aria-label="WhatsApp"
-        onClick={handleWhatsApp}
-      >
-        <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
-        <span className="inline text-[11px] md:text-sm font-semibold">
-          WhatsApp
-        </span>
       </Button>
     </div>
   );
@@ -611,7 +601,7 @@ function ShoppingHeader() {
     if (!items.length) return null;
     return (
       <div className="py-2 border-b border-slate-100/50">
-        <div className="px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-purple-500">
+        <div className="px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
           Products
         </div>
         <div className="flex flex-col gap-1 px-2">
@@ -619,7 +609,7 @@ function ShoppingHeader() {
             <button
               key={item._id}
               type="button"
-              className="flex items-center gap-4 w-full p-2.5 rounded-2xl transition-all hover:bg-white hover:shadow-lg group text-left"
+              className="flex items-center gap-4 w-full p-2.5 rounded-2xl transition-all hover:bg-primary/5 hover:shadow-lg group text-left"
               onClick={() =>
                 handleSuggestionClick(`/shop/product/${item._id}/specs`)
               }
@@ -632,10 +622,10 @@ function ShoppingHeader() {
                 />
               </div>
               <div className="flex flex-col min-w-0 flex-1">
-                <span className="text-sm font-bold text-slate-800 truncate group-hover:text-purple-600 transition-colors">
+                <span className="text-sm font-bold text-slate-800 truncate group-hover:text-primary transition-colors">
                   {item.title}
                 </span>
-                <span className="text-xs font-black text-purple-600 mt-0.5">
+                <span className="text-xs font-black text-primary mt-0.5">
                   {formatPrice(item.price)}
                 </span>
               </div>
@@ -658,7 +648,7 @@ function ShoppingHeader() {
             <button
               key={item.slug || item._id}
               type="button"
-              className="inline-flex items-center rounded-full border border-slate-100 bg-white px-3.5 py-1.5 text-xs font-bold text-slate-600 transition-all hover:border-purple-200 hover:bg-purple-50 hover:text-purple-600 shadow-sm hover:shadow-md"
+              className="inline-flex items-center rounded-full border border-slate-100 bg-white px-3.5 py-1.5 text-xs font-bold text-slate-600 transition-all hover:border-primary/30 hover:bg-primary/10 hover:text-primary shadow-sm hover:shadow-md"
               onClick={() => onItemClick(item)}
             >
               {title === "Categories"
@@ -686,7 +676,7 @@ function ShoppingHeader() {
         <div className="bg-slate-100/50 p-3 text-center border-t border-slate-100/50">
           <button
             onClick={handleSearchSubmit}
-            className="text-[11px] font-bold text-purple-600 hover:underline uppercase tracking-widest"
+            className="text-[11px] font-bold text-primary hover:underline uppercase tracking-widest"
           >
             Show All Results for "{searchTerm}"
           </button>
@@ -714,12 +704,12 @@ function ShoppingHeader() {
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[96rem] px-2 md:px-4 lg:px-1">
-        <div className="relative flex h-14 items-center justify-between gap-3 md:h-20 md:gap-6">
+      <div className="mx-auto w-full max-w-[96rem] px-2 md:px-4 lg:px-5">
+        <div className="relative flex h-14 items-center justify-between gap-3 md:h-20 lg:gap-6">
           <Link to="/shop/home" className="flex-shrink-0 rounded-xl px-1 py-1">
             <img
-              className="h-16 w-auto max-[690px]:h-[40px] max-[490px]:h-[40px] transition-all"
-              src="/logoo.png"
+              className="h-20 w-auto max-[767px]:h-[50px] transition-all"
+              src="/logo.png"
               alt="logo"
               aria-label="Home"
               loading="eager"
@@ -764,7 +754,7 @@ function ShoppingHeader() {
             </form>
 
             {/* Mobile Search (Always Visible & Embedded) */}
-            <div className="m-0 flex w-full min-w-0 flex-1 items-center p-0 max-[519px]:max-w-none md:hidden min-[520px]:max-w-[360px]">
+            <div className="m-0 flex w-full min-w-0 flex-1 items-center p-0 max-[519px]:max-w-none md:hidden">
               <div className="m-0 flex h-9 w-full items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 transition-colors duration-200 focus-within:bg-white">
                 <Search className="h-3.5 w-3.5 shrink-0 text-slate-400" />
                 <Input
@@ -773,7 +763,7 @@ function ShoppingHeader() {
                   value={searchTerm}
                   onChange={(e) => handleSearchChange(e, "mobile")}
                   onFocus={handleDesktopSearchFocus}
-                  className="h-full min-w-0 flex-grow border-none bg-transparent px-1 text-[11px] min-[430px]:text-xs min-[520px]:text-[13px] sm:text-sm placeholder:text-muted-foreground/55 focus:outline-none focus:border-transparent focus-visible:outline-none focus-visible:border-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
+                  className="h-full min-w-50 flex-grow border-none bg-transparent px-1 text-[11px] min-[430px]:text-xs min-[520px]:text-[13px] sm:text-sm placeholder:text-muted-foreground/55 focus:outline-none focus:border-transparent focus-visible:outline-none focus-visible:border-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
                 {showSuggest &&
                   activeInput === "mobile" &&

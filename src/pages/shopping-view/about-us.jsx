@@ -70,7 +70,7 @@ function AboutUsPage() {
         </div>
 
         <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-8 shadow-sm text-center">
-          <p className="inline-flex rounded-full border border-purple-200 bg-purple-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-purple-700">
+          <p className="inline-flex rounded-full border border-purple-200 bg-purple-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
             Who We Are
           </p>
           <h2 className="mt-3 text-2xl md:text-4xl font-black text-slate-900 leading-tight">

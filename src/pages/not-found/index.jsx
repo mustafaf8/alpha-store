@@ -102,7 +102,7 @@ function NotFound() {
                 Explore products
               </div>
               <div className="flex items-center text-gray-600 dark:text-gray-300">
-                <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
+                <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
                 Search for items
               </div>
             </div>

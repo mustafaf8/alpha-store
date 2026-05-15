@@ -183,7 +183,7 @@ function ShoppingHome() {
                               featureImageList.length,
                           );
                         }}
-                        className="pointer-events-auto absolute left-0.5 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 opacity-100 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-purple-600 hover:bg-purple-600 hover:text-white active:scale-95 md:left-1 md:h-8 md:w-8 lg:pointer-events-none lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100"
+                        className="pointer-events-auto absolute left-0.5 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 opacity-100 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-primary hover:bg-primary hover:text-white active:scale-95 md:left-1 md:h-8 md:w-8 lg:pointer-events-none lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100"
                         aria-label="Scroll left"
                       >
                         <ChevronLeftIcon className="size-3.5 md:size-4" />
@@ -197,7 +197,7 @@ function ShoppingHome() {
                             (prev) => (prev + 1) % featureImageList.length,
                           );
                         }}
-                        className="pointer-events-auto absolute right-0.5 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 opacity-100 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-purple-600 hover:bg-purple-600 hover:text-white active:scale-95 md:right-1 md:h-8 md:w-8 lg:pointer-events-none lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100"
+                        className="pointer-events-auto absolute right-0.5 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white/90 p-0 opacity-100 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-primary hover:bg-primary hover:text-white active:scale-95 md:right-1 md:h-8 md:w-8 lg:pointer-events-none lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:opacity-100"
                         aria-label="Scroll right"
                       >
                         <ChevronRightIcon className="size-3.5 md:size-4" />
@@ -216,7 +216,7 @@ function ShoppingHome() {
         <div className="shop-container max-lg:px-2 mb-3">
           <section className="px-0 py-1">
             <div className="mb-2 flex items-center justify-between gap-2">
-              <h3 className="text-base sm:text-lg font-bold text-purple-700 ">
+              <h3 className="text-base sm:text-lg font-bold text-primary ">
                 BROWSE CATAGORIES
               </h3>
             </div>
@@ -226,18 +226,20 @@ function ShoppingHome() {
                   key={index}
                   type="button"
                   onClick={() => navigate(item.link)}
-                  className="category-grid-item group flex flex-col items-center justify-start gap-2"
+                  className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start rounded-2xl overflow-hidden bg-white transition-all"
                 >
-                  <div className="category-card w-full aspect-square rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:border-purple-200">
+                  <div className="w-full aspect-square overflow-hidden rounded-2xl">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-slate-700 transition-colors group-hover:text-purple-700">
-                    {item.title}
-                  </span>
+                  <div className="py-2 px-2 w-full flex items-center justify-center bg-white">
+                    <span className="text-[11px] sm:text-xs font-semibold text-slate-700 transition-colors group-hover:text-primary text-center truncate">
+                      {item.title}
+                    </span>
+                  </div>
                 </button>
               ))}
             </div>
@@ -251,7 +253,7 @@ function ShoppingHome() {
           <div className="pt-0 pb-0 sm:pb-5 sm:px-2 flex items-center md:gap-4 gap-2">
             {/* Vertical Title */}
             <div className="flex items-center justify-center [writing-mode:vertical-lr] rotate-180 border-r border-purple-200 pr-1 md:pr-4 self-stretch">
-              <span className="text-[9px] sm:text-xs md:text-sm font-black text-purple-700 uppercase tracking-[0.22em] sm:tracking-[0.26em] md:tracking-[0.3em] py-2">
+              <span className="text-[9px] sm:text-xs md:text-sm font-black text-primary uppercase tracking-[0.22em] sm:tracking-[0.26em] md:tracking-[0.3em] py-2">
                 Brands
               </span>
             </div>
@@ -264,7 +266,7 @@ function ShoppingHome() {
                   e.stopPropagation();
                   scrollBrands("left");
                 }}
-                className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0 opacity-0 group-hover:opacity-100 max-md:hidden"
+                className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary hover:scale-110 active:scale-95 flex items-center justify-center p-0 opacity-0 group-hover:opacity-100 max-md:hidden"
               >
                 <ChevronLeftIcon className="h-5 w-5" />
               </Button>
@@ -373,7 +375,7 @@ function ShoppingHome() {
                   e.stopPropagation();
                   scrollBrands("right");
                 }}
-                className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-purple-600 hover:text-white hover:border-purple-600 hover:scale-110 active:scale-95 flex items-center justify-center p-0 opacity-0 group-hover:opacity-100 max-md:hidden"
+                className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 rounded-full shadow-lg bg-white/90 backdrop-blur-sm border border-slate-200 h-9 w-9 transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary hover:scale-110 active:scale-95 flex items-center justify-center p-0 opacity-0 group-hover:opacity-100 max-md:hidden"
               >
                 <ChevronRightIcon className="h-5 w-5" />
               </Button>
@@ -496,7 +498,7 @@ function ShoppingHome() {
                       return (
                         <section className="px-0 py-1">
                           <div className="flex items-center justify-between mb-3 px-1 gap-2">
-                            <span className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide border-l-4 border-purple-500 pl-2">
+                            <span className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide border-l-4 border-primary pl-2">
                               {sectionSubcategoryLabel}
                             </span>
                             {allItem && (
@@ -516,17 +518,17 @@ function ShoppingHome() {
                                 key={index}
                                 type="button"
                                 onClick={() => navigate(item.link)}
-                                className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-white hover:shadow-md hover:border-purple-200 transition-all"
+                                className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start rounded-2xl overflow-hidden bg-white transition-all"
                               >
-                                <div className="w-full aspect-square overflow-hidden bg-slate-50">
+                                <div className="w-full aspect-square overflow-hidden rounded-2xl">
                                   <img
                                     src={item.image}
                                     alt={item.title}
                                     className="h-full w-full object-cover object-top transition-transform duration-500 scale-110 group-hover:scale-105"
                                   />
                                 </div>
-                                <div className="py-2 px-2 w-full flex items-center justify-center border-t border-slate-100 bg-white group-hover:bg-slate-50 transition-colors">
-                                  <span className="text-[11px] sm:text-xs font-semibold text-slate-700 transition-colors group-hover:text-purple-700 text-center truncate">
+                                <div className="py-2 px-2 w-full flex items-center justify-center bg-white">
+                                  <span className="text-[11px] sm:text-xs font-semibold text-slate-700 transition-colors group-hover:text-primary text-center truncate">
                                     {item.title}
                                   </span>
                                 </div>
@@ -560,7 +562,7 @@ function ShoppingHome() {
                       return (
                         <section key={groupTitle} className="px-0 py-1">
                           <div className="flex items-center justify-between mb-3 px-1 gap-2">
-                            <span className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide border-l-4 border-purple-500 pl-2">
+                            <span className="text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide border-l-4 border-primary pl-2">
                               {groupTitle}
                             </span>
                             {allItem && (
@@ -580,17 +582,17 @@ function ShoppingHome() {
                                 key={`${groupTitle}-${index}`}
                                 type="button"
                                 onClick={() => navigate(item.link)}
-                                className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-white hover:shadow-md hover:border-purple-200 transition-all"
+                                className="category-tile flex-shrink-0 w-[105px] sm:w-[140px] lg:w-full snap-start group flex flex-col items-center justify-start rounded-2xl overflow-hidden bg-white transition-all"
                               >
-                                <div className="w-full aspect-square overflow-hidden bg-slate-50">
+                                <div className="w-full aspect-square overflow-hidden rounded-2xl">
                                   <img
                                     src={item.image}
                                     alt={item.title}
                                     className="h-full w-full object-cover object-top transition-transform duration-500 scale-110 group-hover:scale-105"
                                   />
                                 </div>
-                                <div className="py-2 px-2 w-full flex items-center justify-center border-t border-slate-100 bg-white group-hover:bg-slate-50 transition-colors">
-                                  <span className="text-[11px] sm:text-xs font-semibold text-slate-700 transition-colors group-hover:text-purple-700 text-center truncate">
+                                <div className="py-2 px-2 w-full flex items-center justify-center bg-white">
+                                  <span className="text-[11px] sm:text-xs font-semibold text-slate-700 transition-colors group-hover:text-primary text-center truncate">
                                     {item.title}
                                   </span>
                                 </div>

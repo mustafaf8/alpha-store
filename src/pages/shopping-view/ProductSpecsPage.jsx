@@ -174,7 +174,7 @@ function ProductSpecsPage() {
         <nav className="flex items-center flex-wrap gap-2 text-sm text-slate-500 mb-8 px-1">
           <button 
             onClick={() => navigate("/shop/home")} 
-            className="flex items-center gap-1.5 hover:text-purple-600 transition-colors font-medium text-slate-400"
+            className="flex items-center gap-1.5 hover:text-primary transition-colors font-medium text-slate-400"
           >
             <Home className="w-4 h-4" />
             <span>Home</span>
@@ -186,7 +186,7 @@ function ProductSpecsPage() {
             <div key={crumb._id} className="flex items-center gap-2">
               <button
                 onClick={() => navigate(`/shop/listing?category=${crumb.slug}`)}
-                className="hover:text-purple-600 transition-colors font-medium"
+                className="hover:text-primary transition-colors font-medium"
               >
                 {translateCategoryName(crumb.name, crumb.slug)}
               </button>

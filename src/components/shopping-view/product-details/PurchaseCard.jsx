@@ -76,7 +76,7 @@ function PurchaseCard({
       <div key={attr.name} className="mb-4 last:mb-0">
         <div className="text-sm font-semibold text-gray-700 mb-2.5 flex items-center justify-between">
           <span>{attr.name}</span>
-          <span className="text-purple-600 font-medium text-xs bg-purple-50 px-2 py-0.5 rounded-md">
+          <span className="text-primary font-medium text-xs bg-primary/10 px-2 py-0.5 rounded-md">
             {selectedVariants[attr.name] || "Select"}
           </span>
         </div>
@@ -95,7 +95,7 @@ function PurchaseCard({
                   onClick={() => handleVariantSelect(attr.name, opt)}
                   className={`w-9 h-9 rounded-full border-2 transition-all duration-200 shadow-sm hover:scale-110 ${
                     isSelected
-                      ? "border-purple-500 ring-2 ring-purple-200 scale-110"
+                      ? "border-primary ring-2 ring-primary/20 scale-110"
                       : "border-slate-200 hover:border-slate-300"
                   }`}
                   style={{ backgroundColor: hex }}
@@ -113,7 +113,7 @@ function PurchaseCard({
                   onClick={() => handleVariantSelect(attr.name, opt)}
                   className={`min-w-[40px] h-10 px-3 rounded-lg border-2 font-semibold text-sm transition-all duration-200 flex items-center justify-center ${
                     isSelected
-                      ? "border-purple-500 bg-purple-50 text-purple-700"
+                      ? "border-primary bg-primary/10 text-primary"
                       : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
                   }`}
                 >
@@ -130,7 +130,7 @@ function PurchaseCard({
                 onClick={() => handleVariantSelect(attr.name, opt)}
                 className={`px-4 py-2 rounded-xl border-2 font-medium text-sm transition-all duration-200 ${
                   isSelected
-                    ? "border-purple-500 bg-purple-50 text-purple-700 shadow-sm"
+                    ? "border-primary bg-primary/10 text-primary shadow-sm"
                     : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50"
                 }`}
               >
@@ -147,11 +147,11 @@ function PurchaseCard({
     <div className="min-w-0 h-full">
       <div className="relative bg-white border border-slate-100 rounded-3xl shadow-lg p-5 sm:p-8 h-full flex flex-col gap-5 overflow-hidden">
         {/* Decorative gradient */}
-        <div className="absolute -top-16 -right-16 w-40 h-40 bg-gradient-to-br from-purple-100/40 to-blue-100/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-16 -right-16 w-40 h-40 bg-primary/20 to-blue-100/40 rounded-full blur-3xl pointer-events-none" />
 
         {/* Brand / Vendor */}
         {productDetails.brand && (
-          <span className="inline-flex items-center self-start px-3 py-1 rounded-full bg-purple-50 text-purple-600 text-xs font-semibold border border-purple-100 tracking-wide uppercase">
+          <span className="inline-flex items-center self-start px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold border border-primary/20 tracking-wide uppercase">
             {productDetails.brand}
           </span>
         )}
@@ -189,7 +189,7 @@ function PurchaseCard({
         <div className="flex items-end gap-3 flex-wrap">
           {productDetails.salePrice ? (
             <>
-              <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold px-5 py-2 rounded-2xl text-xl sm:text-2xl shadow-md">
+              <span className="bg-primary text-white font-bold px-5 py-2 rounded-2xl text-xl sm:text-2xl shadow-md">
                 {formatPrice(productDetails.salePrice)}
               </span>
               <span className="line-through text-base sm:text-lg text-slate-400 mb-0.5">
@@ -200,7 +200,7 @@ function PurchaseCard({
               </span>
             </>
           ) : (
-            <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold px-5 py-2 rounded-2xl text-xl sm:text-2xl shadow-md">
+            <span className="bg-primary text-white font-bold px-5 py-2 rounded-2xl text-xl sm:text-2xl shadow-md">
               {formatPrice(productDetails.price)}
             </span>
           )}
@@ -249,7 +249,7 @@ function PurchaseCard({
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-7 w-7 sm:h-9 sm:w-9 rounded-full hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                className="h-7 w-7 sm:h-9 sm:w-9 rounded-full hover:bg-primary/10 hover:text-primary transition-colors"
                 disabled={quantity <= 1}
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
               >
@@ -261,7 +261,7 @@ function PurchaseCard({
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-7 w-7 sm:h-9 sm:w-9 rounded-full hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                className="h-7 w-7 sm:h-9 sm:w-9 rounded-full hover:bg-primary/10 hover:text-primary transition-colors"
                 disabled={quantity >= stock}
                 onClick={() =>
                   setQuantity((q) => Math.min(stock, q + 1))
@@ -275,7 +275,7 @@ function PurchaseCard({
               className={`flex-1 min-w-0 max-w-72 text-sm sm:text-base font-semibold py-3 sm:py-3.5 rounded-xl transition-all duration-300 ${
                 stock === 0 || (!allVariantsSelected && attributes.length > 0)
                   ? "bg-slate-200 text-slate-400 cursor-not-allowed shadow-none"
-                  : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white shadow-lg shadow-purple-500/20 hover:shadow-purple-500/30"
+                  : "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:shadow-primary/30"
               }`}
               onClick={() => onAddToCart({ ...productDetails, selectedVariants })}
               disabled={stock === 0 || (!allVariantsSelected && attributes.length > 0)}

@@ -78,7 +78,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
           <div className="absolute top-1 left-1 z-10 max-[720px]:top-0.5 max-[720px]:left-0.5">
             <button
               onClick={handleAction}
-              className="pointer-events-auto bg-white border border-slate-200 p-2 max-[720px]:p-1.5 rounded-xl max-[720px]:rounded-lg text-slate-600 hover:text-purple-600 transition-colors"
+              className="pointer-events-auto bg-white border border-slate-200 p-2 max-[720px]:p-1.5 rounded-xl max-[720px]:rounded-lg text-slate-600 hover:text-primary transition-colors"
             >
               <Heart className="w-4 h-4 max-[720px]:w-3.5 max-[720px]:h-3.5" />
             </button>
@@ -86,7 +86,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
 
           {/* Top Right Status Badge */}
           <div className="absolute top-1 right-1 z-10 max-[720px]:top-0.5 max-[720px]:right-0.5">
-            <span className="bg-white border border-slate-200 text-blue-600 font-bold text-[10px] max-[720px]:text-[8px] px-2 py-1 max-[720px]:px-1.5 max-[720px]:py-0.5 rounded-md max-[720px]:rounded tracking-wide">
+            <span className="bg-white border border-slate-200 text-primary font-bold text-[10px] max-[720px]:text-[8px] px-2 py-1 max-[720px]:px-1.5 max-[720px]:py-0.5 rounded-md max-[720px]:rounded tracking-wide">
               {statusText}
             </span>
           </div>
@@ -96,7 +96,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
       {/* Product Details */}
       <div className="flex flex-col gap-1.5 relative z-0">
         {/* Vendor */}
-        <span className="product-tile-vendor text-purple-500 font-bold text-xs truncate">
+        <span className="product-tile-vendor text-primary font-bold text-xs truncate">
           {vendorName}
         </span>
 
@@ -127,11 +127,11 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
 
         {/* Pricing */}
         <div className="flex items-end gap-1.5 mt-1.5">
-          <div className="bg-pink-500 text-white p-1 rounded self-start mt-1">
+          <div className="bg-primary text-white p-1 rounded self-start mt-1">
             <Percent className="w-3 h-3 max-[640px]:w-2 max-[640px]:h-2" />
           </div>
           <div className="flex flex-row max-[460px]:flex-col items-baseline max-[460px]:items-start gap-1.5">
-            <span className="product-tile-price text-purple-500 font-extrabold text-lg leading-none order-2 max-[460px]:order-2">
+            <span className="product-tile-price text-primary font-extrabold text-lg leading-none order-2 max-[460px]:order-2">
               {formatPrice(product?.salePrice || product?.price || 1600)}
             </span>
             {(product?.price > product?.salePrice || !product?.salePrice) && (
@@ -182,7 +182,7 @@ const ShoppingProductTile = React.memo(function ShoppingProductTile({
             if (handleAddtoCart)
               handleAddtoCart(product._id, product.totalStock);
           }}
-          className="product-tile-cart-btn w-full bg-jarir-blue hover:bg-jarir-blueHover text-white text-xs sm:text-sm font-semibold py-1.5 sm:py-2 rounded-lg sm:rounded-xl transition-colors shadow-md"
+          className="product-tile-cart-btn w-full bg-primary hover:bg-primary/90 text-white text-xs sm:text-sm font-semibold py-1.5 sm:py-2 rounded-lg sm:rounded-xl transition-colors shadow-md"
         >
           Add to Cart
         </button>

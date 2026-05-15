@@ -48,8 +48,8 @@ function ProductReviewsPanel({ reviews, isLoading }) {
   if (safeReviews.length === 0) {
     return (
       <div className="rounded-2xl border border-slate-100 bg-white p-10 shadow-sm text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-purple-100 to-blue-100 mb-4">
-          <MessageSquareText className="h-8 w-8 text-purple-400" />
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+          <MessageSquareText className="h-8 w-8 text-primary/80" />
         </div>
         <div className="text-gray-800 font-semibold text-base">No reviews yet</div>
         <div className="text-slate-400 text-sm mt-1.5">Be the first to leave a review.</div>
@@ -63,7 +63,7 @@ function ProductReviewsPanel({ reviews, isLoading }) {
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div>
             <div className="text-lg font-bold text-gray-900 flex items-center gap-2">
-              <span className="w-1 h-5 rounded-full bg-gradient-to-b from-purple-500 to-blue-500" />
+              <span className="w-1 h-5 rounded-full bg-primary" />
               Reviews
             </div>
             <div className="text-sm text-slate-500 mt-1.5">
@@ -85,7 +85,7 @@ function ProductReviewsPanel({ reviews, isLoading }) {
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 text-white text-sm font-bold">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white text-sm font-bold">
                     {(r.user?.name || "M")[0].toUpperCase()}
                   </div>
                   <div className="font-semibold text-gray-900">{r.user?.name || "Customer"}</div>

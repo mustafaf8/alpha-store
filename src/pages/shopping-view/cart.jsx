@@ -38,14 +38,14 @@ const ShoppingCartPage = () => {
   if (cartItems.length === 0) {
     return (
       <div className="container mx-auto px-4 py-16 flex flex-col items-center justify-center min-h-[60vh]">
-        <div className="bg-purple-50 p-8 rounded-[40px] mb-8 shadow-xl shadow-purple-500/10">
+        <div className="bg-primary/10 p-8 rounded-[40px] mb-8 shadow-xl shadow-primary/10">
           <ShoppingBag className="w-16 h-16 text-purple-300" />
         </div>
         <h2 className="text-3xl font-black text-slate-800 mb-3 uppercase tracking-tighter">Your Cart is Empty</h2>
         <p className="text-slate-500 mb-10 text-center max-w-sm font-medium leading-relaxed">
           Looks like you haven't added anything to your cart yet. Discover our latest products and deals!
         </p>
-        <Button onClick={() => navigate("/shop/home")} className="bg-purple-600 hover:bg-purple-700 text-white px-10 py-4 h-auto rounded-2xl text-lg font-black uppercase tracking-widest transition-all active:scale-95 shadow-xl shadow-purple-200">
+        <Button onClick={() => navigate("/shop/home")} className="bg-primary hover:bg-primary/90 text-white px-10 py-4 h-auto rounded-2xl text-lg font-black uppercase tracking-widest transition-all active:scale-95 shadow-xl shadow-primary/20">
           Continue Shopping
         </Button>
       </div>
@@ -58,13 +58,13 @@ const ShoppingCartPage = () => {
         <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-8">
           <button 
             onClick={() => navigate(-1)} 
-            className="p-2 sm:p-2.5 bg-white rounded-xl sm:rounded-2xl border border-slate-100 text-slate-500 hover:text-purple-600 hover:border-purple-200 transition-all shadow-sm"
+            className="p-2 sm:p-2.5 bg-white rounded-xl sm:rounded-2xl border border-slate-100 text-slate-500 hover:text-primary hover:border-primary/30 transition-all shadow-sm"
           >
             <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
           <div>
             <h1 className="text-2xl sm:text-3xl font-black text-slate-800 uppercase tracking-tighter">My Cart</h1>
-            <p className="text-[11px] sm:text-sm font-bold text-purple-500 uppercase tracking-widest">
+            <p className="text-[11px] sm:text-sm font-bold text-primary uppercase tracking-widest">
               {cartItems.length} Items Selected
             </p>
           </div>
@@ -95,12 +95,12 @@ const ShoppingCartPage = () => {
                   <div className="flex flex-col flex-1 min-w-0 w-full">
                     <div className="flex justify-between items-start mb-2 gap-2">
                       <div className="space-y-0.5">
-                        <span className="text-[10px] font-black text-purple-500 uppercase tracking-widest">
+                        <span className="text-[10px] font-black text-primary uppercase tracking-widest">
                           {item.brand || "Alpha Store"}
                         </span>
                         <Link 
                           to={`/shop/product/${item._id}/specs`} 
-                          className="block text-base sm:text-lg font-bold text-slate-800 leading-tight line-clamp-2 hover:text-purple-600 transition-colors"
+                          className="block text-base sm:text-lg font-bold text-slate-800 leading-tight line-clamp-2 hover:text-primary transition-colors"
                         >
                           {item.title}
                         </Link>
@@ -190,8 +190,8 @@ const ShoppingCartPage = () => {
                 </div>
                 
                 {shippingCost > 0 && (
-                  <div className="bg-purple-50 p-3 sm:p-4 rounded-2xl sm:rounded-3xl border border-purple-100">
-                    <p className="text-[11px] font-bold text-purple-600 leading-relaxed text-center">
+                  <div className="bg-primary/10 p-3 sm:p-4 rounded-2xl sm:rounded-3xl border border-primary/20">
+                    <p className="text-[11px] font-bold text-primary leading-relaxed text-center">
                       Add <span className="text-sm font-black underline">{formatPrice(1000 - subtotal)} TL</span> more for <span className="uppercase">Free Delivery</span>
                     </p>
                   </div>
@@ -202,7 +202,7 @@ const ShoppingCartPage = () => {
                 <div className="flex justify-between items-center">
                   <span className="text-base sm:text-lg font-black text-slate-800 uppercase tracking-tight">Total</span>
                   <div className="flex flex-col items-end">
-                    <span className="text-2xl sm:text-3xl font-black text-purple-600 tracking-tighter">
+                    <span className="text-2xl sm:text-3xl font-black text-primary tracking-tighter">
                       {formatPrice(total)} TL
                     </span>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tax Included</span>
@@ -210,7 +210,7 @@ const ShoppingCartPage = () => {
                 </div>
               </div>
 
-              <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white h-14 sm:h-16 rounded-2xl sm:rounded-[24px] text-base sm:text-lg font-black uppercase tracking-widest shadow-xl shadow-purple-200 transition-all active:scale-95 group">
+              <Button className="w-full bg-primary hover:bg-primary/90 text-white h-14 sm:h-16 rounded-2xl sm:rounded-[24px] text-base sm:text-lg font-black uppercase tracking-widest shadow-xl shadow-primary/20 transition-all active:scale-95 group">
                 Checkout Now
                 <ArrowLeft className="w-5 h-5 rotate-180 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>

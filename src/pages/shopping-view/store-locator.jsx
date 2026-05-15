@@ -86,7 +86,7 @@ function StoreLocatorPage() {
               href="https://maps.google.com/?q=Istanbul+store"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-4 py-3 text-sm font-semibold text-white hover:bg-purple-700 transition-colors"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-4 py-3 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
             >
               <Navigation className="w-4 h-4" />
               Get Directions

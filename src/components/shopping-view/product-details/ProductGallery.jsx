@@ -16,7 +16,7 @@ function ProductGallery({ productDetails, selectedImage, onSelectImage }) {
       <div className="relative bg-white border border-slate-100 rounded-3xl shadow-lg p-4 sm:p-6 group/gallery">
         {/* Decorative gradient accent */}
         <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
-          <div className="absolute -top-20 -right-20 w-48 h-48 bg-gradient-to-br from-purple-200/30 to-blue-200/30 rounded-full blur-3xl" />
+          <div className="absolute -top-20 -right-20 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
           <div className="absolute -bottom-16 -left-16 w-40 h-40 bg-gradient-to-tr from-indigo-200/20 to-pink-200/20 rounded-full blur-3xl" />
         </div>
 
@@ -42,8 +42,8 @@ function ProductGallery({ productDetails, selectedImage, onSelectImage }) {
               type="button"
               className={`flex-shrink-0 w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-xl overflow-hidden cursor-pointer border-2 transition-all duration-200 bg-white flex items-center justify-center shadow-sm hover:shadow-md ${
                 selectedImage === productDetails.image
-                  ? "border-purple-500 ring-2 ring-purple-200 scale-105"
-                  : "border-slate-200 hover:border-purple-300"
+                  ? "border-primary ring-2 ring-primary/20 scale-105"
+                  : "border-slate-200 hover:border-primary/50"
               }`}
               onClick={() => onSelectImage(productDetails.image)}
               aria-label="Ana resim"
@@ -65,8 +65,8 @@ function ProductGallery({ productDetails, selectedImage, onSelectImage }) {
                 key={`${image}-${index}`}
                 className={`flex-shrink-0 w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-xl overflow-hidden cursor-pointer border-2 transition-all duration-200 bg-white flex items-center justify-center shadow-sm hover:shadow-md ${
                   selectedImage === image
-                    ? "border-purple-500 ring-2 ring-purple-200 scale-105"
-                    : "border-slate-200 hover:border-purple-300"
+                    ? "border-primary ring-2 ring-primary/20 scale-105"
+                    : "border-slate-200 hover:border-primary/50"
                 }`}
                 onClick={() => onSelectImage(image)}
                 aria-label={`Resim ${index + 2}`}

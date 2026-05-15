@@ -136,7 +136,7 @@ const Footer = () => {
               placeholder="Enter your email address"
               className="flex-1 px-4 py-2.5 max-[720px]:px-3 max-[720px]:py-2 bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-400 text-sm max-[720px]:text-xs"
             />
-            <button className="px-4 py-2 max-[720px]:px-3 max-[720px]:py-1.5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-colors text-sm max-[720px]:text-xs whitespace-nowrap">
+            <button className="px-4 py-2 max-[720px]:px-3 max-[720px]:py-1.5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl transition-colors text-sm max-[720px]:text-xs whitespace-nowrap">
               Subscribe
             </button>
           </div>

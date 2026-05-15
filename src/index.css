@@ -75,13 +75,14 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 214 80% 50%;
+    --brand: 0 84% 69%;
+    --primary: var(--brand);
     --primary-foreground: 0 0% 100%;
     --secondary: 213 30% 95%;
-    --secondary-foreground: 214 80% 50%;
+    --secondary-foreground: var(--brand);
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 214 80% 50%;
+    --accent: var(--brand);
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -96,10 +97,10 @@
     --chart-5: 230 70% 60%;
 
     /* Shop specific colors */
-    --shop-primary: 214 80% 50%;
-    --shop-primary-light: 214 80% 90%;
+    --shop-primary: var(--brand);
+    --shop-primary-light: 0 84% 95%;
     --shop-secondary: 210 40% 96.1%;
-    --shop-accent: 214 80% 40%;
+    --shop-accent: 0 84% 60%;
     --shop-accent-light: 214 60% 95%;
     --shop-success: 142 76% 36%;
     --shop-warning: 38 92% 50%;
@@ -114,13 +115,13 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 214 80% 50%;
+    --primary: 0 84% 60%;
     --primary-foreground: 0 0% 100%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 214 80% 50%;
+    --accent: 0 84% 60%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -134,11 +135,11 @@
     --chart-5: 230 70% 60%;
 
     /* Shop specific colors - dark mode */
-    --shop-primary: 214 70% 50%;
-    --shop-primary-light: 214 70% 25%;
+    --shop-primary: 0 84% 60%;
+    --shop-primary-light: 0 84% 20%;
     --shop-secondary: 217 30% 15%;
-    --shop-accent: 214 70% 60%;
-    --shop-accent-light: 214 60% 20%;
+    --shop-accent: 0 84% 70%;
+    --shop-accent-light: 0 60% 20%;
     --shop-success: 142 76% 36%;
     --shop-warning: 38 92% 50%;
     --shop-info: 200 98% 39%;
@@ -267,7 +268,7 @@
   height: 28px;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-  background: linear-gradient(90deg, #4c1d95 0%, #6d28d9 45%, #7c3aed 100%);
+  background: hsl(var(--brand));
 }
 
 .header-top-stripe-track {
@@ -768,7 +769,8 @@ header .relative {
 }
 
 .category-menu-item:hover {
-  background-color: hsl(var(--muted));
+  background-color: hsl(var(--brand) / 0.1);
+  color: hsl(var(--brand));
   transform: translateX(2px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -784,8 +786,8 @@ header .relative {
 }
 
 .submenu-item:hover {
-  background-color: hsl(var(--accent) / 0.1);
-  color: hsl(var(--accent));
+  background-color: hsl(var(--brand) / 0.1);
+  color: hsl(var(--brand));
   transform: translateX(2px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
